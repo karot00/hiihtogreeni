@@ -1,0 +1,131 @@
+import { SiteShell } from "../../../../components/SiteShell.tsx";
+import { Hero, Section, Eyebrow, ButtonLink } from "../../../../components/ui/Primitives.tsx";
+import { ContactForm } from "../../../../components/ContactForm.tsx";
+import { enContact, enContactSections } from "../../../../content/en.ts";
+import { getUI } from "../../../../content/index.ts";
+import { COMPANY, RENTAL_CONTACT, MAINTENANCE_CONTACT, EXTERNAL_LINKS } from "../../../../content/shared.ts";
+import { getHref } from "../../../../lib/routes.ts";
+import { buildPageMetadata, OG_IMAGES } from "../../../../lib/seo.ts";
+
+export const metadata = buildPageMetadata({
+  lang: "en",
+  key: "contact",
+  title: enContact.title,
+  description: enContact.description,
+  ogImage: OG_IMAGES.default,
+});
+
+export default function ContactPage() {
+  const s = enContactSections;
+  const ui = getUI("en");
+
+  return (
+    <SiteShell lang="en" activeKey="contact">
+      <Hero
+        image={{
+          src: "/wp-content/uploads/2022/10/banner-levin-hiihtogreeni-2.jpg",
+          width: 750,
+          height: 1900,
+          alt: "Hiihtogreeni in Levi",
+        }}
+        eyebrow="Levi, Lapland"
+        title={enContact.h1}
+        lead={s.lead}
+      />
+
+      <Section>
+        <div className="grid gap-10 md:grid-cols-2">
+          <div>
+            <Eyebrow>Rental contact</Eyebrow>
+            <h2 className="mt-3 text-h2 font-display text-ink">Reach us directly</h2>
+            <p className="mt-4 max-w-[60ch] text-body">{s.intro}</p>
+            <address className="mt-6 not-italic text-body">
+              <p className="font-display text-h3 font-bold text-fjord-dark">{COMPANY.name}</p>
+              <p className="mt-1">
+                {COMPANY.address.street}
+                <br />
+                {COMPANY.address.postalCode} {COMPANY.address.city}
+                <br />
+                {COMPANY.address.country}
+              </p>
+              <p className="mt-3">
+                <span className="font-semibold">Rental:</span> {RENTAL_CONTACT.name}
+                <br />
+                <a
+                  href={`tel:${RENTAL_CONTACT.phone}`}
+                  className="font-semibold text-fjord-dark underline-offset-2 hover:underline"
+                >
+                  {RENTAL_CONTACT.phoneDisplay}
+                </a>
+                <br />
+                <a
+                  href={`mailto:${RENTAL_CONTACT.email}`}
+                  className="font-semibold text-fjord-dark underline-offset-2 hover:underline"
+                >
+                  {RENTAL_CONTACT.email}
+                </a>
+              </p>
+              <p className="mt-3">
+                <span className="font-semibold">Maintenance:</span> {MAINTENANCE_CONTACT.name}
+                <br />
+                <a
+                  href={`tel:${MAINTENANCE_CONTACT.phone}`}
+                  className="font-semibold text-fjord-dark underline-offset-2 hover:underline"
+                >
+                  {MAINTENANCE_CONTACT.phoneDisplay}
+                </a>
+                <br />
+                <a
+                  href={`mailto:${MAINTENANCE_CONTACT.email}`}
+                  className="font-semibold text-fjord-dark underline-offset-2 hover:underline"
+                >
+                  {MAINTENANCE_CONTACT.email}
+                </a>
+              </p>
+            </address>
+            <div className="mt-6">
+              <a
+                href={EXTERNAL_LINKS.leviEn}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center rounded-[var(--radius-control)] border border-fjord px-4 font-display text-sm font-semibold text-fjord-dark transition-colors hover:bg-fjord/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fjord"
+              >
+                See location (levifinland.fi)
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <Eyebrow>Contact form</Eyebrow>
+            <h2 className="mt-3 text-h2 font-display text-ink">Send a message</h2>
+            <ContactForm
+              lang="en"
+              fields={s.formFields}
+              consentLabel={s.consentLabel}
+              contactMethodLabel={s.contactMethodLabel}
+              contactMethods={s.contactMethods}
+              sourcePage={enContact.slug}
+            />
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="mist">
+        <div className="flex flex-wrap items-center justify-between gap-6">
+          <div>
+            <h2 className="text-h2 font-display text-ink">Ready to help?</h2>
+            <p className="mt-2 max-w-[60ch] text-body">
+              Call us directly or send a message – we will reply as soon as possible.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <ButtonLink href={`tel:${RENTAL_CONTACT.phone}`}>{ui.contactCta}</ButtonLink>
+            <ButtonLink href={getHref("en", "cabin")} variant="secondary">
+              Cabin details
+            </ButtonLink>
+          </div>
+        </div>
+      </Section>
+    </SiteShell>
+  );
+}

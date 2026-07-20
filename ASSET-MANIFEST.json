@@ -1,0 +1,599 @@
+{
+  "generated": "2026-07-19",
+  "origin": "https://www.hiihtogreeni.fi",
+  "totalAssets": 53,
+  "assets": [
+    {
+      "url": "https://www.hiihtogreeni.fi/og/default.jpg",
+      "localPath": "/og/default.jpg",
+      "mime": "image/jpeg",
+      "width": 1200,
+      "height": 630,
+      "bytes": 89639,
+      "checksum": "3ae0e3e58d941304",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/og/home-en.jpg",
+      "localPath": "/og/home-en.jpg",
+      "mime": "image/jpeg",
+      "width": 1200,
+      "height": 630,
+      "bytes": 95221,
+      "checksum": "8d2f69c69a428a31",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/og/home-fi.jpg",
+      "localPath": "/og/home-fi.jpg",
+      "mime": "image/jpeg",
+      "width": 1200,
+      "height": 630,
+      "bytes": 94507,
+      "checksum": "04b29614e2d56044",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/banner_mokki-lapista-vuokralle.jpg",
+      "localPath": "/wp-content/uploads/2022/10/banner_mokki-lapista-vuokralle.jpg",
+      "mime": "image/jpeg",
+      "width": 1900,
+      "height": 450,
+      "bytes": 191605,
+      "checksum": "c56f12db541fb4fd",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/banner_mokki-levilla.jpg",
+      "localPath": "/wp-content/uploads/2022/10/banner_mokki-levilla.jpg",
+      "mime": "image/jpeg",
+      "width": 1900,
+      "height": 450,
+      "bytes": 148679,
+      "checksum": "4853b596e8731306",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/banner-kuvagalleria.jpg",
+      "localPath": "/wp-content/uploads/2022/10/banner-kuvagalleria.jpg",
+      "mime": "image/jpeg",
+      "width": 1900,
+      "height": 450,
+      "bytes": 181098,
+      "checksum": "db6d50ca97f96315",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/banner-levin-hiihtogreeni-2.jpg",
+      "localPath": "/wp-content/uploads/2022/10/banner-levin-hiihtogreeni-2.jpg",
+      "mime": "image/jpeg",
+      "width": 1900,
+      "height": 750,
+      "bytes": 343970,
+      "checksum": "e856f5cfbc8e274a",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/banner-levin-hiihtogreeni-3.jpg",
+      "localPath": "/wp-content/uploads/2022/10/banner-levin-hiihtogreeni-3.jpg",
+      "mime": "image/jpeg",
+      "width": 1900,
+      "height": 750,
+      "bytes": 351871,
+      "checksum": "ade1ccb2426096eb",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/banner-levin-hiihtogreeni.jpg",
+      "localPath": "/wp-content/uploads/2022/10/banner-levin-hiihtogreeni.jpg",
+      "mime": "image/jpeg",
+      "width": 1900,
+      "height": 750,
+      "bytes": 243666,
+      "checksum": "635c553d5e6abc62",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/banner-mokki-levi.jpg",
+      "localPath": "/wp-content/uploads/2022/10/banner-mokki-levi.jpg",
+      "mime": "image/jpeg",
+      "width": 1900,
+      "height": 750,
+      "bytes": 193152,
+      "checksum": "e821beed8e46268c",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/banner-vuokramokki-levi.jpg",
+      "localPath": "/wp-content/uploads/2022/10/banner-vuokramokki-levi.jpg",
+      "mime": "image/jpeg",
+      "width": 1900,
+      "height": 750,
+      "bytes": 353429,
+      "checksum": "38fa8fad9b122154",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/banneri_mokki.jpg",
+      "localPath": "/wp-content/uploads/2022/10/banneri_mokki.jpg",
+      "mime": "image/jpeg",
+      "width": 1900,
+      "height": 450,
+      "bytes": 200644,
+      "checksum": "dc4fdbd713546177",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/bg.jpg",
+      "localPath": "/wp-content/uploads/2022/10/bg.jpg",
+      "mime": "image/jpeg",
+      "width": 1900,
+      "height": 1080,
+      "bytes": 369140,
+      "checksum": "0e018494bbf5dd85",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hgr3dalakerta.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hgr3dalakerta.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 594,
+      "bytes": 79097,
+      "checksum": "7b82735c312a9918",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hgr3dylakerta.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hgr3dylakerta.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 499,
+      "bytes": 71843,
+      "checksum": "80fa4bef2e4fbedc",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-1.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-1.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 681,
+      "bytes": 166257,
+      "checksum": "1f75518b6e0106b5",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-22-of-32.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-22-of-32.jpg",
+      "mime": "image/jpeg",
+      "width": 682,
+      "height": 1024,
+      "bytes": 88770,
+      "checksum": "9414e9c5c43bbe64",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-29-of-32.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-29-of-32.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 682,
+      "bytes": 165839,
+      "checksum": "3282d59afc1be7a1",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-4Text.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-4Text.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 681,
+      "bytes": 180999,
+      "checksum": "cecb0c68882426f7",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-8.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-8.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 570,
+      "bytes": 138463,
+      "checksum": "ef8bd70580b361c8",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-mokki-1.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-1.jpg",
+      "mime": "image/jpeg",
+      "width": 800,
+      "height": 533,
+      "bytes": 95658,
+      "checksum": "2562c02890569d8f",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-mokki-10.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-10.jpg",
+      "mime": "image/jpeg",
+      "width": 800,
+      "height": 534,
+      "bytes": 37758,
+      "checksum": "522a98111ea5cd82",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-mokki-2.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-2.jpg",
+      "mime": "image/jpeg",
+      "width": 800,
+      "height": 533,
+      "bytes": 63572,
+      "checksum": "cae7311dbb5361e4",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-mokki-3.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-3.jpg",
+      "mime": "image/jpeg",
+      "width": 800,
+      "height": 534,
+      "bytes": 78506,
+      "checksum": "85555bc99b5b443b",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-mokki-4.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-4.jpg",
+      "mime": "image/jpeg",
+      "width": 800,
+      "height": 533,
+      "bytes": 89437,
+      "checksum": "4dd3a2a43f9ae904",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-mokki-5.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-5.jpg",
+      "mime": "image/jpeg",
+      "width": 800,
+      "height": 533,
+      "bytes": 66088,
+      "checksum": "91c4e3a17f0ee54b",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-mokki-6.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-6.jpg",
+      "mime": "image/jpeg",
+      "width": 800,
+      "height": 533,
+      "bytes": 55030,
+      "checksum": "d050f9630bcff6c9",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-mokki-7.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-7.jpg",
+      "mime": "image/jpeg",
+      "width": 800,
+      "height": 533,
+      "bytes": 84584,
+      "checksum": "7ff234a1e2a5daf2",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-mokki-8.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-8.jpg",
+      "mime": "image/jpeg",
+      "width": 800,
+      "height": 533,
+      "bytes": 76624,
+      "checksum": "e16b44490202d3f6",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-mokki-9.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-9.jpg",
+      "mime": "image/jpeg",
+      "width": 800,
+      "height": 533,
+      "bytes": 70270,
+      "checksum": "aca3d77c58964569",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hiihtogreeni-tekstit2.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hiihtogreeni-tekstit2.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 575,
+      "bytes": 163342,
+      "checksum": "1070ea6c829fc413",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Hinnasto21-22-11.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Hinnasto21-22-11.jpg",
+      "mime": "image/jpeg",
+      "width": 1000,
+      "height": 1414,
+      "bytes": 134264,
+      "checksum": "c09402b29d96cc72",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/nosto_hinnasto.jpg",
+      "localPath": "/wp-content/uploads/2022/10/nosto_hinnasto.jpg",
+      "mime": "image/jpeg",
+      "width": 433,
+      "height": 226,
+      "bytes": 31319,
+      "checksum": "34b302196ffbb25e",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/nosto_mokki.jpg",
+      "localPath": "/wp-content/uploads/2022/10/nosto_mokki.jpg",
+      "mime": "image/jpeg",
+      "width": 433,
+      "height": 226,
+      "bytes": 28122,
+      "checksum": "0ed24bc36d341b01",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/nosto_vuokramokki-galleria.jpg",
+      "localPath": "/wp-content/uploads/2022/10/nosto_vuokramokki-galleria.jpg",
+      "mime": "image/jpeg",
+      "width": 433,
+      "height": 226,
+      "bytes": 27596,
+      "checksum": "338f38610e8d2cfb",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Ruokailu-Neuvottelutila-kuva-2.jpg",
+      "localPath": "/wp-content/uploads/2022/10/Ruokailu-Neuvottelutila-kuva-2.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 768,
+      "bytes": 104910,
+      "checksum": "9c6c33a1854c517e",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/10/Varausehdot2020.pdf",
+      "localPath": "/wp-content/uploads/2022/10/Varausehdot2020.pdf",
+      "mime": "application/pdf",
+      "width": null,
+      "height": null,
+      "bytes": 575863,
+      "checksum": "3a74bd7519c078cc",
+      "usage": [
+        "rates (fi)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/11/cropped-hiihtogreeni-favicon-180x180.png",
+      "localPath": "/wp-content/uploads/2022/11/cropped-hiihtogreeni-favicon-180x180.png",
+      "mime": "image/png",
+      "width": 180,
+      "height": 180,
+      "bytes": 19089,
+      "checksum": "141ea6b87d64f2de",
+      "usage": [
+        "favicon (all pages)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/11/cropped-hiihtogreeni-favicon-192x192.png",
+      "localPath": "/wp-content/uploads/2022/11/cropped-hiihtogreeni-favicon-192x192.png",
+      "mime": "image/png",
+      "width": 192,
+      "height": 192,
+      "bytes": 20929,
+      "checksum": "623ab2bfaa16be34",
+      "usage": [
+        "favicon (all pages)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/11/cropped-hiihtogreeni-favicon-270x270.png",
+      "localPath": "/wp-content/uploads/2022/11/cropped-hiihtogreeni-favicon-270x270.png",
+      "mime": "image/png",
+      "width": 270,
+      "height": 270,
+      "bytes": 37108,
+      "checksum": "efc6c5e483c7ea37",
+      "usage": [
+        "favicon (all pages)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2022/11/cropped-hiihtogreeni-favicon-32x32.png",
+      "localPath": "/wp-content/uploads/2022/11/cropped-hiihtogreeni-favicon-32x32.png",
+      "mime": "image/png",
+      "width": 32,
+      "height": 32,
+      "bytes": 1422,
+      "checksum": "df71043833a715ed",
+      "usage": [
+        "favicon (all pages)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2024/07/Hiihtogreeni-sopii-alppihiihto-ja-maastohiihtojoukkueille.jpg",
+      "localPath": "/wp-content/uploads/2024/07/Hiihtogreeni-sopii-alppihiihto-ja-maastohiihtojoukkueille.jpg",
+      "mime": "image/jpeg",
+      "width": 2160,
+      "height": 1216,
+      "bytes": 449724,
+      "checksum": "c6b844b54509ed30",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2024/07/Isot-tilat-suksien-huoltoon-maajoukkueille-ja-seuroille-Levilla.jpg",
+      "localPath": "/wp-content/uploads/2024/07/Isot-tilat-suksien-huoltoon-maajoukkueille-ja-seuroille-Levilla.jpg",
+      "mime": "image/jpeg",
+      "width": 2160,
+      "height": 1216,
+      "bytes": 390371,
+      "checksum": "b59a9e626ec8fe1c",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2024/07/Lahella-mokkia-on-Levijarven-uimaranta.jpg",
+      "localPath": "/wp-content/uploads/2024/07/Lahella-mokkia-on-Levijarven-uimaranta.jpg",
+      "mime": "image/jpeg",
+      "width": 2160,
+      "height": 1216,
+      "bytes": 416698,
+      "checksum": "9400469c2f958b78",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2024/07/Large-and-warm-space-for-ski-maintenance.jpg",
+      "localPath": "/wp-content/uploads/2024/07/Large-and-warm-space-for-ski-maintenance.jpg",
+      "mime": "image/jpeg",
+      "width": 2160,
+      "height": 1215,
+      "bytes": 212859,
+      "checksum": "88188f534fac1fdf",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2024/07/Levi-Majoitus-suuri-olohuone-Hiihtogreeni.jpg",
+      "localPath": "/wp-content/uploads/2024/07/Levi-Majoitus-suuri-olohuone-Hiihtogreeni.jpg",
+      "mime": "image/jpeg",
+      "width": 2160,
+      "height": 1250,
+      "bytes": 398605,
+      "checksum": "d45e5d1c40db667b",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2024/07/Levijarven-hiekkaranta-lahella-mokkia.jpg",
+      "localPath": "/wp-content/uploads/2024/07/Levijarven-hiekkaranta-lahella-mokkia.jpg",
+      "mime": "image/jpeg",
+      "width": 2160,
+      "height": 1216,
+      "bytes": 485720,
+      "checksum": "01de47d3ca9fe580",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2024/07/Majoitus-Levilla-isolla-suksien-huoltotilalla.jpg",
+      "localPath": "/wp-content/uploads/2024/07/Majoitus-Levilla-isolla-suksien-huoltotilalla.jpg",
+      "mime": "image/jpeg",
+      "width": 2160,
+      "height": 1216,
+      "bytes": 316558,
+      "checksum": "e730dd904e7fba37",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg",
+      "localPath": "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg",
+      "mime": "image/jpeg",
+      "width": 2160,
+      "height": 1216,
+      "bytes": 437137,
+      "checksum": "4d92c82e073464c7",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2025/06/Buy-Levi-Golf-Green-Fees.jpg",
+      "localPath": "/wp-content/uploads/2025/06/Buy-Levi-Golf-Green-Fees.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 177148,
+      "checksum": "5d08074712f71c7f",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2025/06/Levi-golf-peliliput-edullisesti-1.jpg",
+      "localPath": "/wp-content/uploads/2025/06/Levi-golf-peliliput-edullisesti-1.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 178493,
+      "checksum": "58e414ecf30906b9",
+      "usage": []
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2025/07/Points-of-interest-Hiihtogreeni-summer.jpg",
+      "localPath": "/wp-content/uploads/2025/07/Points-of-interest-Hiihtogreeni-summer.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 681,
+      "bytes": 257187,
+      "checksum": "141c49f33fca1326",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    },
+    {
+      "url": "https://www.hiihtogreeni.fi/wp-content/uploads/2025/07/Points-of-interest-Hiihtogreeni-winter.jpg",
+      "localPath": "/wp-content/uploads/2025/07/Points-of-interest-Hiihtogreeni-winter.jpg",
+      "mime": "image/jpeg",
+      "width": 1024,
+      "height": 681,
+      "bytes": 296089,
+      "checksum": "79c97c6d6987e32d",
+      "usage": [
+        "gallery (fi/en)"
+      ]
+    }
+  ]
+}

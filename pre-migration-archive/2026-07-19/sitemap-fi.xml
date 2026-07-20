@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="//www.hiihtogreeni.fi/wp-sitemap-posts-page-0.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.hiihtogreeni.fi/</loc>
+    <lastmod>2026-06-15T15:22:32+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hiihtogreeni.fi/mokki/</loc>
+    <lastmod>2023-06-13T15:29:02+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hiihtogreeni.fi/kuvagalleria/</loc>
+    <lastmod>2025-07-29T11:16:47+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hiihtogreeni.fi/hinnoittelu/</loc>
+    <lastmod>2026-04-29T11:53:36+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://www.hiihtogreeni.fi/yhteystiedot/</loc>
+    <lastmod>2026-03-03T09:37:43+02:00</lastmod>
+  </url>
+</urlset>
