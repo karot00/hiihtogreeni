@@ -23,9 +23,11 @@ export default function GalleryPage() {
     <SiteShell lang="fi" activeKey="gallery">
       <Hero
         image={{
-          src: "/wp-content/uploads/2022/10/banner-kuvagalleria.jpg",
-          width: 450,
-          height: 1900,
+          avif: "/hero/gallery.avif",
+          webp: "/hero/gallery.webp",
+          jpg: "/hero/gallery.jpg",
+          width: 1600,
+          height: 1067,
           alt: "Hiihtogreeni-kuvagalleria",
         }}
         eyebrow="Levi, Lappi"

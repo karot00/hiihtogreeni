@@ -36,10 +36,12 @@ export default function EnglishHomePage() {
     <SiteShell lang="en" activeKey="home">
       <Hero
         image={{
-          src: "/wp-content/uploads/2022/10/banner-levin-hiihtogreeni.jpg",
-          width: 750,
-          height: 1900,
-          alt: "Hiihtogreeni in winter by Levi fell and lake",
+          avif: "/hero/home-en.avif",
+          webp: "/hero/home-en.webp",
+          jpg: "/hero/home-en.jpg",
+          width: 1600,
+          height: 1067,
+          alt: "Hiihtogreeni in winter by Levi fell and the lake",
         }}
         eyebrow="Levi, Lapland"
         title={enHome.h1}

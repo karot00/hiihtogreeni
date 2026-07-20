@@ -20,9 +20,11 @@ export default function RatesPage() {
     <SiteShell lang="en" activeKey="rates">
       <Hero
         image={{
-          src: "/wp-content/uploads/2022/10/nosto_hinnasto.jpg",
-          width: 450,
-          height: 1900,
+          avif: "/hero/rates.avif",
+          webp: "/hero/rates.webp",
+          jpg: "/hero/rates.jpg",
+          width: 1600,
+          height: 1067,
           alt: "Hiihtogreeni rates",
         }}
         eyebrow="Levi, Lapland"

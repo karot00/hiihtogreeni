@@ -28,9 +28,11 @@ export default function CabinPage() {
     <SiteShell lang="en" activeKey="cabin">
       <Hero
         image={{
-          src: "/wp-content/uploads/2022/10/banneri_mokki.jpg",
-          width: 450,
-          height: 1900,
+          avif: "/hero/cabin.avif",
+          webp: "/hero/cabin.webp",
+          jpg: "/hero/cabin.jpg",
+          width: 1600,
+          height: 1067,
           alt: "Hiihtogreeni cabin exterior in winter",
         }}
         eyebrow="Levi, Lapland"

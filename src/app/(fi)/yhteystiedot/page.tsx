@@ -22,9 +22,11 @@ export default function ContactPage() {
     <SiteShell lang="fi" activeKey="contact">
       <Hero
         image={{
-          src: "/wp-content/uploads/2022/10/banner-levin-hiihtogreeni-2.jpg",
-          width: 750,
-          height: 1900,
+          avif: "/hero/contact.avif",
+          webp: "/hero/contact.webp",
+          jpg: "/hero/contact.jpg",
+          width: 1600,
+          height: 1067,
           alt: "Hiihtogreeni Levillä",
         }}
         eyebrow="Levi, Lappi"

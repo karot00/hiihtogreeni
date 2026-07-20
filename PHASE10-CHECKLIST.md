@@ -32,8 +32,10 @@ Production origin (substituted in metadata checks): https://www.hiihtogreeni.fi
       provider, timeout, duplicate, payload, and rate-limit tests.
 - [ ] Run page, redirect, and internal-link live HTTP tests in CI after `next build`;
       these currently remain opt-in and are skipped by the normal test command.
-- [ ] Correct image dimensions that contradict `ASSET-MANIFEST.json`; add intrinsic
+- [x] Correct image dimensions that contradict `ASSET-MANIFEST.json`; add intrinsic
       gallery dimensions before signing off CLS/Lighthouse image checks.
+      (Hero LCP images regenerated as optimized AVIF/WebP/JPEG in `/hero/` and
+      served via `<picture>` + preload; below-fold JPEGs recompressed in place.)
 
 ## B. Manual QA — HUMAN IN BROWSER (against the Vercel preview)
 

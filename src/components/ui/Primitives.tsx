@@ -43,7 +43,8 @@ export function Section({ children, tone = "snow", className = "", id }: Section
 }
 
 interface HeroProps {
-  image: { src: string; width: number; height: number; alt: string };
+  /** Optimized hero (AVIF/WebP + JPEG fallback) used for the LCP image. */
+  image: { avif: string; webp: string; jpg: string; width: number; height: number; alt: string };
   eyebrow?: string;
   title: string;
   lead?: string;
@@ -53,20 +54,26 @@ interface HeroProps {
 
 /**
  * Photography-led hero. The heading and value proposition live in initial
- * server-rendered HTML. Image is prioritized for LCP; overlay gradient keeps
- * text contrast without heavy text shadows.
+ * server-rendered HTML. The hero image is the LCP element: it ships as a
+ * <picture> with modern formats and is marked fetchpriority=high so the
+ * browser starts the download during HTML parse rather than after CSS.
  */
-export function Hero({ image, eyebrow, title, lead, children, overlay = true }: HeroProps) {
+export function Hero({ image, legacySrc, eyebrow, title, lead, children, overlay = true }: HeroProps) {
   return (
     <header className="relative isolate overflow-hidden">
-      <img
-        src={image.src}
-        width={image.width}
-        height={image.height}
-        alt={image.alt}
-        fetchPriority="high"
-        className="absolute inset-0 -z-10 h-full w-full object-cover"
-      />
+      <picture>
+        <source srcSet={image.avif} type="image/avif" />
+        <source srcSet={image.webp} type="image/webp" />
+        <img
+          src={image.jpg}
+          width={image.width}
+          height={image.height}
+          alt={image.alt}
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 -z-10 h-full w-full object-cover"
+        />
+      </picture>
       {overlay ? (
         <div
           aria-hidden="true"

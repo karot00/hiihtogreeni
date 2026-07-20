@@ -259,3 +259,16 @@ One deliberate removal: the "Siirry sisältöön" skip link was taken out of the
 
 All changes were committed and pushed. The build, lint, type check, and the full test suite pass, and all ten pages remain static HTML. What is still open before launch is the Lighthouse performance budget (mobile Performance scored 87 with a 3.9-second LCP against a 2.5-second target — the one real gap), the structured-data and content-diff confirmation in the rich-results tools, the hosting-level HTTPS and apex-to-www rules, and the WordPress rollback rehearsal, the last two of which need DNS and old-hosting access.
 
+## Where the Project Is Now - Phase 10 performance fix (LCP/Lighthouse)
+
+The Lighthouse mobile check returned a Performance score of 72 with an 8-second LCP and a 4.7-second Speed Index, while desktop was fine. That gap was a clear, fixable problem and pointed straight at the hero photograph: it is the largest element on every page and therefore the LCP element.
+
+The root cause was that every page loaded its hero as a large JPEG (between 240 KB and 370 KB) through a plain `<img>` tag, with no modern format and no preload. Because the project deliberately keeps the original `/wp-content/uploads/...` image URLs untouched for image-search and backlinks, those legacy files could not simply be swapped. The fix keeps that rule intact and adds a separate, optimized LCP pipeline.
+
+Each of the six hero photographs now has a purpose-built lightweight twin in a new `/hero/` folder, generated with sharp: an AVIF (roughly 60–130 KB), a WebP, and a compact JPEG fallback, all capped at 1600 pixels wide. The `Hero` component now renders a `<picture>` element that serves AVIF first, then WebP, then JPEG, and the shared shell emits a `<link rel="preload" as="image">` for the AVIF variant during HTML parsing. The browser therefore starts the LCP download immediately instead of waiting for CSS, and it receives a fraction of the old bytes. The old `/wp-content/uploads/` hero files still serve a real `200` for any external reference.
+
+As a bonus, the largest content photographs below the fold (the 13 files above 250 KB, including the maps and interior shots) were recompressed in place with mozjpeg, keeping their exact dimensions and URLs but saving about 1.1 MB in total transfer weight. No visible quality was lost.
+
+The build, lint, type check, and the full test suite still pass, all ten pages remain static HTML, and a rendered-HTML check confirms the preload link and the `<picture>`/AVIF markup are present on every page. The remaining step is to re-run PageSpeed Insights against the rebuilt staging deployment and confirm the mobile LCP and Performance score now meet the budget. The structured-data/content-diff confirmation, the hosting-level HTTPS and apex-to-www rules, and the WordPress rollback rehearsal still need the owner's DNS and old-hosting access.
+
+

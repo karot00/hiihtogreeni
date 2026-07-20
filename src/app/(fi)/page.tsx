@@ -39,9 +39,11 @@ export default function HomePage() {
     <SiteShell lang="fi" activeKey="home">
       <Hero
         image={{
-          src: "/wp-content/uploads/2022/10/banner-levin-hiihtogreeni.jpg",
-          width: 750,
-          height: 1900,
+          avif: "/hero/home-fi.avif",
+          webp: "/hero/home-fi.webp",
+          jpg: "/hero/home-fi.jpg",
+          width: 1600,
+          height: 1067,
           alt: "Hiihtogreeni talvella Levitunturin ja järven äärellä",
         }}
         eyebrow="Levi, Lappi"
