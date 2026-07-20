@@ -5,6 +5,8 @@ import {
   CONTACT_SENDER,
   MAX_PAYLOAD_BYTES,
   SITE_NAME,
+  buildConfirmationHtml,
+  buildConfirmationText,
   buildHtml,
   buildPlainText,
   looksLikeSpam,
@@ -109,6 +111,21 @@ export async function POST(req: NextRequest) {
     if (error || !data) {
       release();
       return NextResponse.json({ ok: false, error: "mail-failed" }, { status: 502 });
+    }
+
+    // Send a confirmation copy to the visitor. Failure here must not void the
+    // primary delivery; log it and still report success to the browser.
+    try {
+      await resend.emails.send({
+        from: CONTACT_SENDER,
+        to: [p.email],
+        replyTo: CONTACT_RECIPIENT,
+        subject: `[${SITE_NAME}] ${p.sourcePage.startsWith("/en") ? "We received your message" : "Viestisi vastaanotettu"}`,
+        text: buildConfirmationText(p),
+        html: buildConfirmationHtml(p),
+      });
+    } catch {
+      // Confirmation is best-effort; do not surface to the visitor.
     }
 
     release();

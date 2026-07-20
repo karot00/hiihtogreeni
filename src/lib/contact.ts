@@ -113,6 +113,37 @@ export function buildHtml(p: ContactPayload): string {
   return `<!doctype html><html lang="en"><body style="font-family:sans-serif;color:#0f172a"><h2 style="font-size:16px">New contact message — Hiihtogreeni</h2><table style="border-collapse:collapse;font-size:14px">${row("Language", p.sourcePage.startsWith("/en") ? "en-GB" : "fi")}${row("Source", p.sourcePage)}${row("Name", p.name)}${row("Email", p.email)}${row("Phone", p.phone || "-")}${row("Preferred contact", p.contactMethod || "-")}${row("Marketing consent", p.consent ? "yes" : "no")}</table><p style="white-space:pre-wrap;font-size:14px;line-height:1.5">${escapeHtml(p.message)}</p></body></html>`;
 }
 
+/** Confirmation copy sent to the visitor after a successful submission. */
+export function buildConfirmationText(p: ContactPayload): string {
+  const isEn = p.sourcePage.startsWith("/en");
+  const greeting = isEn ? `Hi ${p.name},` : `Hei ${p.name},`;
+  const body = isEn
+    ? "Thank you for your message. We have received it and will get back to you using your preferred contact method. This is an automatic confirmation — you do not need to reply."
+    : "Kiitos viestistäsi. Olemme vastaanottaneet sen ja otamme sinuun yhteyttä valitsemaasi tapaan. Tämä on automaattinen vahvistus — et tarvitse vastata tähän viestiin.";
+  const summary = isEn ? "Your message:" : "Viestisi:";
+  return [
+    greeting,
+    "",
+    body,
+    "",
+    summary,
+    p.message,
+    "",
+    `— ${SITE_NAME}`,
+  ].join("\n");
+}
+
+/** Minimal HTML confirmation for the visitor. No external resources, no scripts. */
+export function buildConfirmationHtml(p: ContactPayload): string {
+  const isEn = p.sourcePage.startsWith("/en");
+  const greeting = isEn ? `Hi ${escapeHtml(p.name)},` : `Hei ${escapeHtml(p.name)},`;
+  const body = isEn
+    ? "Thank you for your message. We have received it and will get back to you using your preferred contact method. This is an automatic confirmation &mdash; you do not need to reply."
+    : "Kiitos viestistäsi. Olemme vastaanottaneet sen ja otamme sinuun yhteyttä valitsemaasi tapaan. Tämä on automaattinen vahvistus &mdash; et tarvitse vastata tähän viestiin.";
+  const summary = isEn ? "Your message:" : "Viestisi:";
+  return `<!doctype html><html lang="${isEn ? "en" : "fi"}"><body style="font-family:sans-serif;color:#0f172a"><h2 style="font-size:16px">${SITE_NAME}</h2><p style="font-size:14px;line-height:1.5">${greeting}</p><p style="font-size:14px;line-height:1.5">${body}</p><p style="white-space:pre-wrap;font-size:14px;line-height:1.5"><strong>${summary}</strong><br>${escapeHtml(p.message)}</p><p style="font-size:14px;line-height:1.5">— ${SITE_NAME}</p></body></html>`;
+}
+
 function escapeHtml(s: string): string {
   return s
     .replace(/&/g, "&amp;")
