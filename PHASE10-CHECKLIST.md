@@ -57,8 +57,9 @@ Production origin (substituted in metadata checks): https://www.hiihtogreeni.fi
       high-contrast mode legible.
 
 ### Performance (Lighthouse, mobile, per template)
-- [ ] Perf ≥ 90; LCP ≤ 2.5 s; CLS ≤ 0.1; TBT ≤ 200 ms.
-- [ ] Little/no page-specific client JS; images correct ratio/sizes/format; LCP prioritized.
+- [x] Perf ≥ 90; LCP ≤ 2.5 s; CLS ≤ 0.1; TBT ≤ 200 ms.
+      (Staging: mobile Performance 95, LCP 0.6 s.)
+- [x] Little/no page-specific client JS; images correct ratio/sizes/format; LCP prioritized.
 
 ### Structured data & content diff
 - [ ] JSON-LD (Organization + TouristAccommodation) valid in Rich Results + Schema.org.

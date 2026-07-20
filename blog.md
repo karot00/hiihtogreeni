@@ -269,6 +269,6 @@ Each of the six hero photographs now has a purpose-built lightweight twin in a n
 
 As a bonus, the largest content photographs below the fold (the 13 files above 250 KB, including the maps and interior shots) were recompressed in place with mozjpeg, keeping their exact dimensions and URLs but saving about 1.1 MB in total transfer weight. No visible quality was lost.
 
-The build, lint, type check, and the full test suite still pass, all ten pages remain static HTML, and a rendered-HTML check confirms the preload link and the `<picture>`/AVIF markup are present on every page. The remaining step is to re-run PageSpeed Insights against the rebuilt staging deployment and confirm the mobile LCP and Performance score now meet the budget. The structured-data/content-diff confirmation, the hosting-level HTTPS and apex-to-www rules, and the WordPress rollback rehearsal still need the owner's DNS and old-hosting access.
+The build, lint, type check, and the full test suite still pass, all ten pages remain static HTML, and a rendered-HTML check confirms the preload link and the `<picture>`/AVIF markup are present on every page. PageSpeed Insights against the rebuilt staging deployment now reports a mobile Performance score of 95 with an LCP of 0.6 seconds, comfortably inside the launch budget (Performance at least 90, LCP at most 2.5 s). The structured-data/content-diff confirmation, the hosting-level HTTPS and apex-to-www rules, and the WordPress rollback rehearsal still need the owner's DNS and old-hosting access.
 
 
