@@ -58,7 +58,7 @@ interface HeroProps {
  * <picture> with modern formats and is marked fetchpriority=high so the
  * browser starts the download during HTML parse rather than after CSS.
  */
-export function Hero({ image, legacySrc, eyebrow, title, lead, children, overlay = true }: HeroProps) {
+export function Hero({ image, eyebrow, title, lead, children, overlay = true }: HeroProps) {
   return (
     <header className="relative isolate overflow-hidden">
       <picture>
