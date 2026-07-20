@@ -4,7 +4,9 @@ import { SITE_CONFIG } from "./config.ts";
 export const CONTACT_RECIPIENT =
   process.env.CONTACT_RECIPIENT || RENTAL_CONTACT.email;
 
-export const CONTACT_SENDER = "Hiihtogreeni website <website@hiihtogreeni.fi>";
+// Sender on the Resend-verified levifinland.fi domain. Replies go to the
+// recipient below (hiihtogreeni@hiihtogreeni.fi) via the visitor's replyTo.
+export const CONTACT_SENDER = "Hiihtogreeni website <hiihtogreeni@levifinland.fi>";
 
 export const MAX_FIELD_LENGTH = 2000;
 export const MAX_MESSAGE_LENGTH = 5000;
