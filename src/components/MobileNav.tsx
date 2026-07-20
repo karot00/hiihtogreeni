@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import type { Lang, NavItem, NavKey } from "../content/types.ts";
 import { getNav, getUI } from "../content/index.ts";
@@ -70,44 +71,47 @@ export function MobileNav({ lang, activeKey }: MobileNavProps) {
       </button>
 
       {open ? (
-        <div
-          id={panelId}
-          ref={panelRef}
-          role="dialog"
-          aria-modal="true"
-          aria-label={ui.primaryNav}
-          className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto bg-white px-4 py-6 shadow-lg"
-        >
-          <nav aria-label={ui.primaryNav}>
-            <ul className="flex flex-col gap-1">
-              {nav.map((item: NavItem) => {
-                const isActive = item.key === activeKey;
-                return (
-                  <li key={item.key}>
-                    <Link
-                      href={item.href}
-                      aria-current={isActive ? "page" : undefined}
-                      onClick={() => setOpen(false)}
-                      className={
-                        "flex min-h-12 items-center rounded-[var(--radius-control)] px-3 font-display text-base font-semibold transition-colors " +
-                        (isActive
-                          ? "bg-mist text-fjord-dark"
-                          : "text-ink hover:bg-mist hover:text-fjord-dark")
-                      }
-                    >
-                      {item.label}
-                      {isActive ? <span className="sr-only"> {ui.currentPage}</span> : null}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
+        createPortal(
+          <div
+            id={panelId}
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={ui.primaryNav}
+            className="fixed inset-x-0 top-16 bottom-0 z-[60] overflow-y-auto bg-white px-4 py-6 shadow-lg md:top-20"
+          >
+            <nav aria-label={ui.primaryNav}>
+              <ul className="flex flex-col gap-1">
+                {nav.map((item: NavItem) => {
+                  const isActive = item.key === activeKey;
+                  return (
+                    <li key={item.key}>
+                      <Link
+                        href={item.href}
+                        aria-current={isActive ? "page" : undefined}
+                        onClick={() => setOpen(false)}
+                        className={
+                          "flex min-h-12 items-center rounded-[var(--radius-control)] px-3 font-display text-base font-semibold transition-colors " +
+                          (isActive
+                            ? "bg-mist text-fjord-dark"
+                            : "text-ink hover:bg-mist hover:text-fjord-dark")
+                        }
+                      >
+                        {item.label}
+                        {isActive ? <span className="sr-only"> {ui.currentPage}</span> : null}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
 
-          <div className="mt-6 border-t border-frost/70 pt-4">
-            <LanguageSwitcher lang={lang} activeKey={activeKey} />
-          </div>
-        </div>
+            <div className="mt-6 border-t border-frost/70 pt-4">
+              <LanguageSwitcher lang={lang} activeKey={activeKey} />
+            </div>
+          </div>,
+          document.body,
+        )
       ) : null}
     </div>
   );

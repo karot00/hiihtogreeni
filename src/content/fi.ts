@@ -1,4 +1,4 @@
-import type { NavItem, PageContent, GalleryImage, UILabels } from "./types.ts";
+import type { NavItem, PageContent, GalleryImage, UILabels, FormStrings } from "./types.ts";
 import { EXTERNAL_LINKS } from "./shared.ts";
 
 export const FI_NAV: NavItem[] = [
@@ -77,6 +77,18 @@ export const fiCabin: PageContent = {
   nav: FI_NAV,
   external: EXTERNAL_LINKS,
 };
+
+export const FI_FORM_STRINGS = {
+  required: "Tämä kenttä on pakollinen.",
+  emailInvalid: "Syötä kelvollinen sähköpostiosoite.",
+  tooMany: "Liikaa lähetyksiä. Odota hetki ja yritä uudelleen.",
+  serverError: "Viestin lähettäminen epäonnistui. Yritä hetken kuluttua uudelleen.",
+  connectionError: "Viestin lähettäminen epäonnistui. Tarkista yhteys ja yritä uudelleen.",
+  submit: "Lähetä viesti",
+  sending: "Lähetetään…",
+  success: "Kiitos! Viestisi on lähetetty. Olemme yhteydessä pian.",
+  optional: "(valinnainen)",
+} satisfies FormStrings;
 
 export const fiCabinSections = {
   lead:

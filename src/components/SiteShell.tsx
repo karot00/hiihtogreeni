@@ -1,5 +1,4 @@
 import type { Lang, NavKey } from "../content/types.ts";
-import { getUI } from "../content/index.ts";
 import { Header } from "./Header.tsx";
 import { Footer } from "./Footer.tsx";
 import { CookieConsent } from "./CookieConsent.tsx";
@@ -19,13 +18,8 @@ interface SiteShellProps {
  * mobile nav disclosure and the cookie-consent boundary.
  */
 export function SiteShell({ lang, activeKey, children }: SiteShellProps) {
-  const ui = getUI(lang);
-
   return (
     <>
-      <a href="#main" className="skip-link">
-        {ui.skipToContent}
-      </a>
       <Header lang={lang} activeKey={activeKey} />
       <main id="main">{children}</main>
       <Footer lang={lang} />

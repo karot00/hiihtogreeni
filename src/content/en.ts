@@ -1,4 +1,4 @@
-import type { NavItem, PageContent, GalleryImage, UILabels } from "./types.ts";
+import type { NavItem, PageContent, GalleryImage, UILabels, FormStrings } from "./types.ts";
 import { EXTERNAL_LINKS } from "./shared.ts";
 
 export const EN_NAV: NavItem[] = [
@@ -77,6 +77,18 @@ export const enCabin: PageContent = {
   nav: EN_NAV,
   external: EXTERNAL_LINKS,
 };
+
+export const EN_FORM_STRINGS = {
+  required: "This field is required.",
+  emailInvalid: "Enter a valid e-mail address.",
+  tooMany: "Too many attempts. Please wait a moment and try again.",
+  serverError: "Sending the message failed. Please try again shortly.",
+  connectionError: "Sending the message failed. Check your connection and try again.",
+  submit: "Send message",
+  sending: "Sending…",
+  success: "Thank you! Your message has been sent. We will be in touch soon.",
+  optional: "(optional)",
+} satisfies FormStrings;
 
 export const enCabinSections = {
   lead:

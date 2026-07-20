@@ -23,6 +23,14 @@ export default function EnglishHomePage() {
       </ButtonLink>
     </>
   );
+  const heroCta = (
+    <>
+      <ButtonLink href={getHref("en", "cabin")}>Explore the cabin</ButtonLink>
+      <ButtonLink href={getHref("en", "contact")} variant="light">
+        Get in touch
+      </ButtonLink>
+    </>
+  );
 
   return (
     <SiteShell lang="en" activeKey="home">
@@ -37,7 +45,7 @@ export default function EnglishHomePage() {
         title={enHome.h1}
         lead="A high-quality rental cabin next to the Levi pistes and golf course – up to 14 guests per apartment."
       >
-        {cta}
+        {heroCta}
       </Hero>
 
       <Section>
@@ -155,7 +163,7 @@ export default function EnglishHomePage() {
           <p className="mt-4 text-body">{s.golf}</p>
           <p className="mt-4 text-body">{s.golfAfter}</p>
           <div className="mt-6">
-            <ButtonLink href={getHref("en", "rates")}>{s.golfCta}</ButtonLink>
+            <ButtonLink href={EXTERNAL_LINKS.greenFee} external>{s.golfCta}</ButtonLink>
           </div>
         </SplitSection>
       </Section>
@@ -182,8 +190,8 @@ export default function EnglishHomePage() {
         title="Get in touch and ask about availability"
         body={`${CAPACITY.guestsPerApartment} guests per apartment. Rental: ${RENTAL_CONTACT.name}, ${RENTAL_CONTACT.phoneDisplay}.`}
       >
-        <ButtonLink href={getHref("en", "contact")}>Contact information</ButtonLink>
-        <ButtonLink href={`tel:${RENTAL_CONTACT.phone}`} variant="secondary">
+        <ButtonLink href={getHref("en", "contact")} variant="light">Contact information</ButtonLink>
+        <ButtonLink href={`tel:${RENTAL_CONTACT.phone}`} variant="light">
           {RENTAL_CONTACT.phoneDisplay}
         </ButtonLink>
       </CallToAction>

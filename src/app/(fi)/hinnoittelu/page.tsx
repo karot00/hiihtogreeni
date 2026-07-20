@@ -97,21 +97,10 @@ export default function RatesPage() {
         <h2 className="mt-3 text-h2 font-display text-ink">Levi Golf -green fee</h2>
         <p className="mt-4 max-w-[68ch] text-body">{s.greenFee}</p>
         <div className="mt-6">
-          <ButtonLink href={getHref("fi", "contact")} external={false}>
+          <ButtonLink href={EXTERNAL_LINKS.greenFee} external>
             {s.greenFeeCta}
           </ButtonLink>
         </div>
-        <p className="mt-4 text-sm text-slate">
-          Green fee -varaus:{" "}
-          <a
-            href={EXTERNAL_LINKS.greenFee}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-fjord-dark underline-offset-2 hover:underline"
-          >
-            greenfee.levifinland.fi
-          </a>
-        </p>
       </Section>
 
       <CallToAction
@@ -119,8 +108,8 @@ export default function RatesPage() {
         title="Kysy saatavuutta ja tarjousta"
         body={`Vuokraus: ${RENTAL_CONTACT.name}, ${RENTAL_CONTACT.phoneDisplay}.`}
       >
-        <ButtonLink href={getHref("fi", "contact")}>Ota yhteyttä</ButtonLink>
-        <ButtonLink href={`tel:${RENTAL_CONTACT.phone}`} variant="secondary">
+        <ButtonLink href={getHref("fi", "contact")} variant="light">Ota yhteyttä</ButtonLink>
+        <ButtonLink href={`tel:${RENTAL_CONTACT.phone}`} variant="light">
           {RENTAL_CONTACT.phoneDisplay}
         </ButtonLink>
       </CallToAction>

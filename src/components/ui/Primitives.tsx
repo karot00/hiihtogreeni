@@ -83,7 +83,7 @@ export function Hero({ image, eyebrow, title, lead, children, overlay = true }: 
   );
 }
 
-type Variant = "primary" | "secondary";
+type Variant = "primary" | "secondary" | "light";
 
 interface ButtonLinkProps {
   href: string;
@@ -109,7 +109,9 @@ export function ButtonLink({
   const variantClass =
     variant === "primary"
       ? "bg-fjord-dark text-white hover:bg-pine"
-      : "border border-fjord text-fjord-dark hover:bg-fjord/10";
+      : variant === "light"
+        ? "bg-white text-fjord-dark hover:bg-mist"
+        : "border border-fjord text-fjord-dark hover:bg-fjord/10";
 
   const shared = `${base} ${variantClass} ${className}`;
 

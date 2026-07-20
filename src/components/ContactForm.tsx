@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useRef, useState } from "react";
-import type { Lang } from "../content/types.ts";
+import type { Lang, FormStrings } from "../content/types.ts";
 
 export interface ContactField {
   id: string;
@@ -16,6 +16,8 @@ interface ContactFormProps {
   contactMethodLabel: string;
   contactMethods: readonly string[];
   sourcePage: string;
+  /** Localized validation, button, and status strings. */
+  strings: FormStrings;
 }
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -40,6 +42,7 @@ export function ContactForm({
   contactMethodLabel,
   contactMethods,
   sourcePage,
+  strings,
 }: ContactFormProps) {
   const formId = useId();
   const [status, setStatus] = useState<Status>("idle");
@@ -52,13 +55,11 @@ export function ContactForm({
     for (const field of fields) {
       const value = String(data.get(field.id) ?? "").trim();
       if (!value) {
-        next[field.id] = field.type === "email"
-          ? "Tämä kenttä on pakollinen."
-          : "Tämä kenttä on pakollinen.";
+        next[field.id] = strings.required;
         continue;
       }
       if (field.type === "email" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) {
-        next[field.id] = "Syötä kelvollinen sähköpostiosoite.";
+        next[field.id] = strings.emailInvalid;
       }
     }
     return next;
@@ -89,14 +90,14 @@ export function ContactForm({
         formRef.current?.reset();
       } else if (res.status === 429) {
         setStatus("error");
-        setServerMessage("Liikaa lähetyksiä. Odota hetki ja yritä uudelleen.");
+        setServerMessage(strings.tooMany);
       } else {
         setStatus("error");
-        setServerMessage("Viestin lähettäminen epäonnistui. Yritä hetken kuluttua uudelleen.");
+        setServerMessage(strings.serverError);
       }
     } catch {
       setStatus("error");
-      setServerMessage("Viestin lähettäminen epäonnistui. Tarkista yhteys ja yritä uudelleen.");
+      setServerMessage(strings.connectionError);
     }
   }
 
@@ -113,6 +114,7 @@ export function ContactForm({
     >
       {fields.map((field) => {
         const invalid = Boolean(errors[field.id]);
+        const optional = field.id === "phone";
         const common = "min-h-12 w-full rounded-[var(--radius-control)] border bg-white px-3 py-2 text-body " +
           (invalid
             ? "border-error focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-error"
@@ -121,15 +123,19 @@ export function ContactForm({
           <div key={field.id}>
             <label htmlFor={fieldId(field.id)} className="block text-sm font-semibold text-ink">
               {field.label}
-              <span className="ml-1 text-error" aria-hidden="true">*</span>
+              {optional ? (
+                <span className="ml-1 font-normal text-slate">{strings.optional}</span>
+              ) : (
+                <span className="ml-1 text-error" aria-hidden="true">*</span>
+              )}
             </label>
             {field.type === "textarea" ? (
               <textarea
                 id={fieldId(field.id)}
                 name={field.id}
                 rows={5}
-                required
-                aria-required="true"
+                required={!optional}
+                aria-required={optional ? undefined : "true"}
                 aria-invalid={invalid}
                 aria-describedby={invalid ? errorId(field.id) : undefined}
                 className={`mt-2 ${common}`}
@@ -139,8 +145,8 @@ export function ContactForm({
                 id={fieldId(field.id)}
                 name={field.id}
                 type={field.type}
-                required
-                aria-required="true"
+                required={!optional}
+                aria-required={optional ? undefined : "true"}
                 autoComplete={AUTOCOMPLETE[field.id] ?? "on"}
                 aria-invalid={invalid}
                 aria-describedby={invalid ? errorId(field.id) : undefined}
@@ -197,7 +203,7 @@ export function ContactForm({
         aria-busy={status === "sending"}
         className="inline-flex min-h-12 items-center justify-center rounded-[var(--radius-control)] bg-fjord-dark px-5 font-display text-sm font-semibold text-white transition-colors hover:bg-pine focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:opacity-60"
       >
-        {status === "sending" ? "Lähetetään…" : "Lähetä viesti"}
+        {status === "sending" ? strings.sending : strings.submit}
       </button>
 
       <div
@@ -208,7 +214,7 @@ export function ContactForm({
       >
         {status === "success" ? (
           <p className="rounded-[var(--radius-control)] bg-success/10 p-3 text-success">
-            Kiitos! Viestisi on lähetetty. Olemme yhteydessä pian.
+            {strings.success}
           </p>
         ) : null}
         {status === "error" ? (

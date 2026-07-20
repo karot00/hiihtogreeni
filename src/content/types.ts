@@ -76,6 +76,28 @@ export interface UILabels {
   galleryNext: string;
 }
 
+/** Localized runtime strings for the contact form client island. */
+export interface FormStrings {
+  /** Required-field validation message. */
+  required: string;
+  /** Invalid e-mail validation message. */
+  emailInvalid: string;
+  /** Rate-limit (HTTP 429) message. */
+  tooMany: string;
+  /** Generic server error message. */
+  serverError: string;
+  /** Network/connection failure message. */
+  connectionError: string;
+  /** Submit button label when idle. */
+  submit: string;
+  /** Submit button label while sending. */
+  sending: string;
+  /** Success status message. */
+  success: string;
+  /** Marker shown next to optional fields. */
+  optional: string;
+}
+
 /** Metadata for one selectable language in the switcher. */
 export interface LanguageOption {
   /** Language key used to resolve translated routes. */

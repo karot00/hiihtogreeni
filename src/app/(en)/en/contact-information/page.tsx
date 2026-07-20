@@ -1,10 +1,9 @@
 import { SiteShell } from "../../../../components/SiteShell.tsx";
-import { Hero, Section, Eyebrow, ButtonLink } from "../../../../components/ui/Primitives.tsx";
+import { Hero, Section, Eyebrow } from "../../../../components/ui/Primitives.tsx";
 import { ContactForm } from "../../../../components/ContactForm.tsx";
 import { enContact, enContactSections } from "../../../../content/en.ts";
-import { getUI } from "../../../../content/index.ts";
+import { getFormStrings } from "../../../../content/index.ts";
 import { COMPANY, RENTAL_CONTACT, MAINTENANCE_CONTACT, EXTERNAL_LINKS } from "../../../../content/shared.ts";
-import { getHref } from "../../../../lib/routes.ts";
 import { buildPageMetadata, OG_IMAGES } from "../../../../lib/seo.ts";
 
 export const metadata = buildPageMetadata({
@@ -17,7 +16,7 @@ export const metadata = buildPageMetadata({
 
 export default function ContactPage() {
   const s = enContactSections;
-  const ui = getUI("en");
+  const formStrings = getFormStrings("en");
 
   return (
     <SiteShell lang="en" activeKey="contact">
@@ -105,24 +104,8 @@ export default function ContactPage() {
               contactMethodLabel={s.contactMethodLabel}
               contactMethods={s.contactMethods}
               sourcePage={enContact.slug}
+              strings={formStrings}
             />
-          </div>
-        </div>
-      </Section>
-
-      <Section tone="mist">
-        <div className="flex flex-wrap items-center justify-between gap-6">
-          <div>
-            <h2 className="text-h2 font-display text-ink">Ready to help?</h2>
-            <p className="mt-2 max-w-[60ch] text-body">
-              Call us directly or send a message – we will reply as soon as possible.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-4">
-            <ButtonLink href={`tel:${RENTAL_CONTACT.phone}`}>{ui.contactCta}</ButtonLink>
-            <ButtonLink href={getHref("en", "cabin")} variant="secondary">
-              Cabin details
-            </ButtonLink>
           </div>
         </div>
       </Section>

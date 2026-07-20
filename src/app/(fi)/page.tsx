@@ -26,6 +26,14 @@ export default function HomePage() {
       </ButtonLink>
     </>
   );
+  const heroButtons = (
+    <>
+      <ButtonLink href={getHref("fi", "cabin")}>Tutustu mökkiin</ButtonLink>
+      <ButtonLink href={getHref("fi", "contact")} variant="light">
+        Ota yhteyttä
+      </ButtonLink>
+    </>
+  );
 
   return (
     <SiteShell lang="fi" activeKey="home">
@@ -40,7 +48,7 @@ export default function HomePage() {
         title={fiHome.h1}
         lead="Korkeatasoinen vuokramökki Levin rinteiden ja golfkentän vieressä – aina 14 hengelle per huoneisto."
       >
-        {ctaButtons}
+        {heroButtons}
       </Hero>
 
       <Section>
@@ -158,7 +166,7 @@ export default function HomePage() {
           <p className="mt-4 text-body">{s.golf}</p>
           <p className="mt-4 text-body">{s.golfAfter}</p>
           <div className="mt-6">
-            <ButtonLink href={getHref("fi", "rates")}>{s.golfCta}</ButtonLink>
+            <ButtonLink href={EXTERNAL_LINKS.greenFee} external>{s.golfCta}</ButtonLink>
           </div>
         </SplitSection>
       </Section>
@@ -185,8 +193,8 @@ export default function HomePage() {
         title="Ota yhteyttä ja kysy saatavuutta"
         body={`${COMPANY.name}, ${COMPANY.address.street}, ${COMPANY.address.postalCode} ${COMPANY.address.city}. Vuokraus: ${RENTAL_CONTACT.name}, ${RENTAL_CONTACT.phoneDisplay}.`}
       >
-        <ButtonLink href={getHref("fi", "contact")}>Yhteystiedot</ButtonLink>
-        <ButtonLink href={`tel:${RENTAL_CONTACT.phone}`} variant="secondary">
+        <ButtonLink href={getHref("fi", "contact")} variant="light">Yhteystiedot</ButtonLink>
+        <ButtonLink href={`tel:${RENTAL_CONTACT.phone}`} variant="light">
           {RENTAL_CONTACT.phoneDisplay}
         </ButtonLink>
       </CallToAction>
