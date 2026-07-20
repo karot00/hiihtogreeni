@@ -227,4 +227,20 @@ The remaining Phase 9 items are the hands-on review: keyboard and screen-reader 
 
 The automated QA portion of Phase 9 took about 15 minutes and cost 0 € in AI usage, using the free hy3 model in Kilo Code. The next step is the manual review pass, followed by the Phase 10 staging and pre-launch SEO validation.
 
+## Where the Project Is Now - Phase 10 in progress (staging live)
+
+Phase 10 is the pre-launch validation that proves the rebuilt site is safe to switch on, using a real production-mode deployment rather than a local preview. The project was pushed to GitHub and connected to Vercel, which now builds and deploys automatically on every push. The staging site is live at `https://hiihtogreeni.vercel.app`, and it is the exact production build we will later point the real domain at.
+
+The first job was to confirm the staging build matches the frozen SEO baseline, substituting the production origin `https://www.hiihtogreeni.fi` in the metadata checks so we catch any staging leakage. An executable check crawled all ten pages and asserted the essentials: every page returns `200`, carries the correct document language (`fi` or `en-GB`), its exact title, exactly one main heading, no `noindex` instruction, the full reciprocal hreflang set, and a self-canonical pointing at the production `www` domain rather than the staging address. All ten passed, which means a crawler seeing the staging pages would read them exactly as the finished site.
+
+The same check confirmed the redirect discipline from Phase 8 holds in the real deployment: the English homepage and the retired gallery redirect permanently in one hop, the old WordPress sitemap address redirects to the new one, the retired WordPress endpoints return `410 Gone`, and unknown addresses return a genuine `404`. The generated sitemap contains only the ten canonical pages, all on the production origin, and the link and media crawler found zero broken internal references.
+
+The contact form was the one piece that needed real credentials, and it exposed a useful lesson. The first live test returned a delivery failure, and the Resend logs showed the cause clearly: the code was still sending from `website@hiihtogreeni.fi`, but the verified sending domain in Resend is `levifinland.fi`. The fix was twofold. First, the sender address was changed to `hiihtogreeni@levifinland.fi` to match the verified domain. Second, we discovered Vercel had been running an older commit, because the local edits had not yet been committed and pushed; once the change was deployed, the form delivered successfully. Messages now arrive at `hiihtogreeni@hiihtogreeni.fi` with the visitor's address as the reply-to. We also added a customer confirmation email: after a successful submission the visitor receives a short bilingual acknowledgment (reply-to points back to the business), while a failure to send that copy never blocks the main delivery.
+
+A small CI fix was needed along the way. The GitHub workflow read the Node version from `.nvmrc`, but the runner image had moved on and no longer had that version preinstalled, so the build step failed. Pinning the Node version explicitly in the workflow resolved it, and we also silenced a lint warning about the intentional direct `<img>` tags used to preserve the legacy `/wp-content/uploads/` image URLs, which is a deliberate Phase 3 decision rather than an oversight.
+
+What remains before launch is partly human and partly owner-access work, captured in a Phase 10 checklist file. The hands-on review (keyboard and screen-reader testing, WCAG 2.2 AA, responsive and reduced-motion behavior, and Lighthouse budgets per page) needs a person in a browser against the staging URL. The hosting-level rules (HTTPS, apex to `www`, trailing-slash, TLS, caching) and the WordPress rollback rehearsal need access to DNS and the old hosting, and they are validated at the cutover itself rather than on the preview.
+
+Phase 10 automated validation took about [TIME] and cost [COST] in AI usage, using the free hy3 model in Kilo Code. The remaining step is the manual browser review and the pre-cutover host and rollback checks.
+
 
