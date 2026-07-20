@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
-/* Direct <img> is intentional: Phase 3 preserves legacy /wp-content/uploads media
- * URLs as-is so image-search and backlinks keep resolving; next/image is deferred. */
+// Direct <img> is intentional: Phase 3 preserves legacy /wp-content/uploads media
+// URLs as-is so image-search and backlinks keep resolving; next/image is deferred.
 import Link from "next/link";
 import type { ReactNode } from "react";
 
