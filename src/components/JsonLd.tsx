@@ -25,6 +25,7 @@ function buildJsonLd(lang: Lang) {
           addressCountry: "FI",
         },
         sameAs: [EXTERNAL_LINKS.leviFi, EXTERNAL_LINKS.leviEn],
+        image: `${SITE_CONFIG.url}/og/default.jpg`,
       },
       {
         "@type": "TouristAccommodation",
