@@ -2,6 +2,7 @@
   "name": "hiihtogreeni",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "test": "node --test --experimental-strip-types tests/**/*.test.ts",
     "test:live": "npm run build && PAGE_LIVE_TEST=1 REDIRECT_LIVE_TEST=1 npm run test -- tests/pages.test.ts tests/redirects.test.ts",
-    "ci": "npm ci && npm run lint && npm run typecheck && npm run test && npm run build"
+    "ci": "npm ci && npm run lint && npm run typecheck && npm run build && npm run test"
   },
   "dependencies": {
     "next": "16.2.10",

@@ -18,8 +18,22 @@ Production origin (substituted in metadata checks): https://www.hiihtogreeni.fi
       `hiihtogreeni@levifinland.fi` → `hiihtogreeni@hiihtogreeni.fi`
       (`replyTo` = visitor). Customer confirmation email added
       (best-effort second send, `replyTo` = business).
-- [x] CI green: Node pinned to 22 in workflow; intentional `<img>` rule muted
-      (Phase 3 legacy `/wp-content/uploads` preservation).
+- [x] CI configuration corrected and verified locally: Node pinned to 22, production
+      build runs before build-output tests, official actions use their Node 24-based
+      releases, and intentional `<img>` lint rule remains muted for preserved media.
+
+## A2. Known implementation follow-ups — PRE-LAUNCH
+
+- [ ] Localize English contact-form validation, sending, success, and error states;
+      align the client/server phone requirement.
+- [ ] Harden contact payload limits, field constraints, shared rate limiting, trusted
+      client-IP handling, and durable idempotency for Vercel/serverless instances.
+- [ ] Add privacy-safe Resend delivery/confirmation observability and route-level
+      provider, timeout, duplicate, payload, and rate-limit tests.
+- [ ] Run page, redirect, and internal-link live HTTP tests in CI after `next build`;
+      these currently remain opt-in and are skipped by the normal test command.
+- [ ] Correct image dimensions that contradict `ASSET-MANIFEST.json`; add intrinsic
+      gallery dimensions before signing off CLS/Lighthouse image checks.
 
 ## B. Manual QA — HUMAN IN BROWSER (against the Vercel preview)
 
