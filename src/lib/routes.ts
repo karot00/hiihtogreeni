@@ -1,17 +1,17 @@
 export const ROUTES = {
   fi: {
     home: "/",
-    cabin: "/mokki",
-    gallery: "/kuvagalleria",
-    rates: "/hinnoittelu",
-    contact: "/yhteystiedot",
+    cabin: "/mokki/",
+    gallery: "/kuvagalleria/",
+    rates: "/hinnoittelu/",
+    contact: "/yhteystiedot/",
   },
   en: {
-    home: "/en/home",
-    cabin: "/en/cabin",
-    gallery: "/en/photo-gallery",
-    rates: "/en/rates",
-    contact: "/en/contact-information",
+    home: "/en/home/",
+    cabin: "/en/cabin/",
+    gallery: "/en/photo-gallery/",
+    rates: "/en/rates/",
+    contact: "/en/contact-information/",
   },
 } as const;
 

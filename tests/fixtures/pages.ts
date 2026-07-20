@@ -20,16 +20,16 @@ export interface PageSmokeFixture {
  * exactly one `h1`, no `noindex`, and the full reciprocal hreflang set.
  */
 export const PAGE_SMOKE_FIXTURES: PageSmokeFixture[] = [
-  { path: ROUTES.fi.home === "/" ? "/" : ROUTES.fi.home + "/", lang: "fi", title: "Hiihtogreeni - Vuokramökki Levillä", canonicalHost: "www.hiihtogreeni.fi" },
-  { path: ROUTES.fi.cabin + "/", lang: "fi", title: "Mökki - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
-  { path: ROUTES.fi.gallery + "/", lang: "fi", title: "Kuvagalleria - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
-  { path: ROUTES.fi.rates + "/", lang: "fi", title: "Hinnoittelu - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
-  { path: ROUTES.fi.contact + "/", lang: "fi", title: "Yhteystiedot - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
-  { path: ROUTES.en.home + "/", lang: "en", title: "Hiihtogreeni - Cabin for Rent in Levi", canonicalHost: "www.hiihtogreeni.fi" },
-  { path: ROUTES.en.cabin + "/", lang: "en", title: "Cabin - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
-  { path: ROUTES.en.gallery + "/", lang: "en", title: "Photo Gallery - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
-  { path: ROUTES.en.rates + "/", lang: "en", title: "Rates - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
-  { path: ROUTES.en.contact + "/", lang: "en", title: "Contact Information - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
+  { path: ROUTES.fi.home, lang: "fi", title: "Hiihtogreeni - Vuokramökki Levillä", canonicalHost: "www.hiihtogreeni.fi" },
+  { path: ROUTES.fi.cabin, lang: "fi", title: "Mökki - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
+  { path: ROUTES.fi.gallery, lang: "fi", title: "Kuvagalleria - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
+  { path: ROUTES.fi.rates, lang: "fi", title: "Hinnoittelu - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
+  { path: ROUTES.fi.contact, lang: "fi", title: "Yhteystiedot - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
+  { path: ROUTES.en.home, lang: "en", title: "Hiihtogreeni - Cabin for Rent in Levi", canonicalHost: "www.hiihtogreeni.fi" },
+  { path: ROUTES.en.cabin, lang: "en", title: "Cabin - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
+  { path: ROUTES.en.gallery, lang: "en", title: "Photo Gallery - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
+  { path: ROUTES.en.rates, lang: "en", title: "Rates - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
+  { path: ROUTES.en.contact, lang: "en", title: "Contact Information - Hiihtogreeni", canonicalHost: "www.hiihtogreeni.fi" },
 ];
 
 void SITE_CONFIG;

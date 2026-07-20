@@ -4,16 +4,16 @@ import { ROUTES } from "../../src/lib/routes.ts";
  * Pages to crawl for the link/media check, keyed by their canonical path.
  */
 export const LINK_CHECK_PAGES: string[] = [
-  ROUTES.fi.home + "/",
-  ROUTES.fi.cabin + "/",
-  ROUTES.fi.gallery + "/",
-  ROUTES.fi.rates + "/",
-  ROUTES.fi.contact + "/",
-  ROUTES.en.home + "/",
-  ROUTES.en.cabin + "/",
-  ROUTES.en.gallery + "/",
-  ROUTES.en.rates + "/",
-  ROUTES.en.contact + "/",
+  ROUTES.fi.home,
+  ROUTES.fi.cabin,
+  ROUTES.fi.gallery,
+  ROUTES.fi.rates,
+  ROUTES.fi.contact,
+  ROUTES.en.home,
+  ROUTES.en.cabin,
+  ROUTES.en.gallery,
+  ROUTES.en.rates,
+  ROUTES.en.contact,
 ];
 
 /**

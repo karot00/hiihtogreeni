@@ -48,9 +48,9 @@ test("migration redirects target canonical routes", () => {
 });
 
 test("language switcher maps each page to its translation pair", () => {
-  assert.equal(getTranslation("fi", "home", "en"), ROUTES.en.home + "/");
-  assert.equal(getTranslation("en", "cabin", "fi"), ROUTES.fi.cabin + "/");
-  assert.equal(getTranslation("fi", "rates", "en"), ROUTES.en.rates + "/");
+  assert.equal(getTranslation("fi", "home", "en"), ROUTES.en.home);
+  assert.equal(getTranslation("en", "cabin", "fi"), ROUTES.fi.cabin);
+  assert.equal(getTranslation("fi", "rates", "en"), ROUTES.en.rates);
 });
 
 test("owner-approved contacts and capacity are present in site config", () => {
@@ -108,6 +108,8 @@ test("galleries reference retained legacy media URLs under wp-content/uploads", 
       `legacy media URL under wp-content/uploads required: ${img.src}`,
     );
     assert.ok(img.alt.length > 0, `alt text required: ${img.src}`);
+    assert.ok(img.width > 0, `intrinsic width required: ${img.src}`);
+    assert.ok(img.height > 0, `intrinsic height required: ${img.src}`);
   }
 });
 

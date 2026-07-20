@@ -90,6 +90,8 @@ export function GalleryGrid({ images, label, strings }: GalleryGridProps) {
                 <img
                   src={image.src}
                   alt={image.alt}
+                  width={image.width}
+                  height={image.height}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-300 ease-[var(--ease-natural)] group-hover:scale-[1.025]"
                 />
@@ -139,6 +141,8 @@ export function GalleryGrid({ images, label, strings }: GalleryGridProps) {
               <img
                 src={images[openIndex].src}
                 alt={images[openIndex].alt}
+                width={images[openIndex].width}
+                height={images[openIndex].height}
                 className="max-h-[70vh] w-auto max-w-full rounded-[var(--radius-card)] object-contain"
               />
               {images[openIndex].caption ? (

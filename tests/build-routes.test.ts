@@ -40,12 +40,13 @@ test("production build marks all ten canonical pages as static", () => {
   const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
   const routes = Object.keys(manifest.routes ?? {});
   for (const page of CANONICAL) {
+    const manifestRoute = page === "/" ? page : page.slice(0, -1);
     assert.ok(
-      routes.includes(page),
+      routes.includes(manifestRoute),
       `canonical page must be prerendered static: ${page}`,
     );
     assert.equal(
-      manifest.routes[page].initialRevalidateSeconds,
+      manifest.routes[manifestRoute].initialRevalidateSeconds,
       false,
       `static page must not be revalidated: ${page}`,
     );
@@ -54,4 +55,16 @@ test("production build marks all ten canonical pages as static", () => {
   const dynamic = Object.keys(manifest.dynamicRoutes ?? {});
   assert.deepEqual(dynamic.sort(), [], "no app-router dynamicRoutes expected for canonical pages");
   void EXPECTED_DYNAMIC;
+});
+
+test("generated sitemap uses trailing-slash canonical URLs", () => {
+  const sitemapPath = resolve(".next/server/app/sitemap.xml.body");
+  assert.ok(existsSync(sitemapPath), "generated sitemap must exist (run build first)");
+  const sitemap = readFileSync(sitemapPath, "utf8");
+  const urls = [...sitemap.matchAll(/(?:<loc>|href=")([^<"]+)/g)].map((match) => match[1]);
+
+  assert.equal(sitemap.match(/<loc>/g)?.length, 10, "sitemap must contain ten pages");
+  for (const value of urls) {
+    assert.ok(new URL(value).pathname.endsWith("/"), `sitemap URL must be canonical: ${value}`);
+  }
 });

@@ -271,4 +271,15 @@ As a bonus, the largest content photographs below the fold (the 13 files above 2
 
 The build, lint, type check, and the full test suite still pass, all ten pages remain static HTML, and a rendered-HTML check confirms the preload link and the `<picture>`/AVIF markup are present on every page. PageSpeed Insights against the rebuilt staging deployment now reports a mobile Performance score of 95 with an LCP of 0.6 seconds, comfortably inside the launch budget (Performance at least 90, LCP at most 2.5 s). The structured-data/content-diff confirmation, the hosting-level HTTPS and apex-to-www rules, and the WordPress rollback rehearsal still need the owner's DNS and old-hosting access.
 
+## Where the Project Is Now - Phase 10 pre-cutover SEO audit complete
+
+Before attaching the production domain, we ran a page-by-page SEO comparison between the existing WordPress site at `hiihtogreeni.fi` and the replacement at `hiihtogreeni.vercel.app`. The crawl covered both sitemap inventories, HTTP status and redirect behavior, canonical URLs, Finnish and English hreflang links, titles, descriptions, robots directives, main headings, image alt attributes, internal links, assets, and real not-found responses.
+
+The replacement passed the important page-level checks. Its ten canonical pages map directly to the established WordPress URLs, while the old orphaned `/en/gallery/` page redirects permanently to `/en/photo-gallery/`. Every replacement page has a unique title and description, a production-domain canonical, reciprocal `fi`, `en-GB`, and `x-default` hreflang links, exactly one `h1`, and complete image alt attributes. No production page emits `noindex` or an `X-Robots-Tag`, unknown URLs return genuine `404` responses, and the crawl found no broken navigation links or rendered assets.
+
+The audit found two code-level improvements before cutover. First, the generated sitemap listed slashless paths even though the application canonicalizes pages with trailing slashes. The central route map now stores canonical paths such as `/mokki/` and `/en/cabin/` directly, so sitemap page locations and language alternates exactly match the final URLs without a redirect. A regression test reads the generated sitemap and verifies all ten entries and their hreflang targets end in a trailing slash. Second, the gallery images now carry their real intrinsic pixel dimensions, and both the grid and lightbox render `width` and `height` attributes to reserve the correct space and reduce layout shift.
+
+The remaining launch work is outside the application code: Vercel must make `www.hiihtogreeni.fi` the primary domain, redirect the apex domain and HTTP directly to the final HTTPS `www` URLs, and deliberately handle the public `vercel.app` hostname. These settings will be checked again immediately after the domain is attached. The updated application passes lint, type checking, the production build, and the full automated test suite.
+
+This pre-cutover SEO audit and fix phase took about 20 minutes and cost approximately 3 € in AI usage, using GPT-5.6 Sol in Kilo Code.
 
