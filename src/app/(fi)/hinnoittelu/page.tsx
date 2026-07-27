@@ -25,7 +25,7 @@ export default function RatesPage() {
           jpg: "/hero/rates.jpg",
           width: 1600,
           height: 1067,
-          alt: "Hiihtogreeni talvella Levillä",
+          alt: "Hiihtogreeni-mökki Levillä",
         }}
         eyebrow="Levi, Lappi"
         title={fiRates.h1}

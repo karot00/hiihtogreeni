@@ -25,7 +25,7 @@ export default function RatesPage() {
           jpg: "/hero/rates.jpg",
           width: 1600,
           height: 1067,
-          alt: "Hiihtogreeni cabin in winter in Levi",
+          alt: "Hiihtogreeni cabin in Levi",
         }}
         eyebrow="Levi, Lapland"
         title={enRates.h1}
