@@ -283,3 +283,17 @@ The remaining launch work is outside the application code: Vercel must make `www
 
 This pre-cutover SEO audit and fix phase took about 20 minutes and cost approximately 3 € in AI usage, using GPT-5.6 Sol in Kilo Code.
 
+## Where the Project Is Now - Production launch complete
+
+The final launch phase moved the complete setup from staging to the production domain. This was more than a single DNS change: it included requesting the `.fi` domain transfer key from the previous provider, transferring the domain to Domainhotelli, setting up the DNS zone in Cloudflare, connecting both the apex and `www` domains to Vercel, and confirming that Vercel could issue valid TLS certificates for both addresses.
+
+Email was moved to Purelymail at the same time. The `hiihtogreeni@hiihtogreeni.fi` mailbox and the required MX, SPF, DKIM, and DMARC records were configured there, with incoming mail routed to Gmail. Both incoming and outgoing email were tested after the DNS change. The website contact form was also tested in production and successfully delivered its messages.
+
+The final technical checks were run directly against the new Vercel deployment so that an old DNS response cached on the local computer or network could not produce a false result. All ten Finnish and English canonical pages returned `200`, the HTTP and apex-domain redirects reached the final HTTPS `www` address, the retired English URLs and old WordPress sitemap redirected correctly, and an unknown URL returned a genuine `404`. The production sitemap, robots file, canonical and hreflang metadata, images, legacy `/wp-content/uploads/` paths, and booking-conditions PDF all passed. Public Cloudflare and Google DNS resolvers showed the new Cloudflare, Vercel, and Purelymail records even while the local router still temporarily cached the old provider's records.
+
+This final setup and launch phase took about four hours. That time included the provider communication and transfer-key request, domain transfer, Cloudflare configuration, Purelymail email setup and routing, Vercel domain setup, DNS propagation checks, and the final production verification. The last AI-assisted checks cost approximately 0,90 € using GPT-5.6 Sol in Kilo Code. Purelymail cost 9 € for a one-year subscription.
+
+The new Next.js website is now live at `https://www.hiihtogreeni.fi`. The new sitemap has been submitted to Google Search Console and processed successfully. I am now waiting for the indexing results and monitoring how the migration affects the site's Google rankings.
+
+After this is done, I will monitor the site's performance and search visibility, confirm that the email delivery works consistently, and begin decommissioning the old WordPress infrastructure while keeping the WordPress backup as a safety net. I will also setup GA4, add cookie consent banner that I have created for two other projects and do a final refiniment of the website. 
+

@@ -43,6 +43,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${baseUrl}${ROUTES.fi.teams}`,
+      lastModified: new Date("2026-07-27"),
+      changeFrequency: "yearly",
+      priority: 0.8,
+      alternates: {
+        languages: {
+          fi: `${baseUrl}${ROUTES.fi.teams}`,
+          "en-GB": `${baseUrl}${ROUTES.en.teams}`,
+        },
+      },
+    },
+    {
       url: `${baseUrl}${ROUTES.fi.rates}`,
       lastModified: new Date("2026-04-29"),
       changeFrequency: "monthly",
@@ -99,6 +111,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: {
           fi: `${baseUrl}${ROUTES.fi.gallery}`,
           "en-GB": `${baseUrl}${ROUTES.en.gallery}`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}${ROUTES.en.teams}`,
+      lastModified: new Date("2026-07-27"),
+      changeFrequency: "yearly",
+      priority: 0.8,
+      alternates: {
+        languages: {
+          fi: `${baseUrl}${ROUTES.fi.teams}`,
+          "en-GB": `${baseUrl}${ROUTES.en.teams}`,
         },
       },
     },

@@ -11,11 +11,12 @@ function abs(path: string): string {
   return `${SITE_CONFIG.url}${path}`;
 }
 
-test("page fixtures cover all ten canonical pages", () => {
-  const fiExpected = ["/", "/mokki/", "/kuvagalleria/", "/hinnoittelu/", "/yhteystiedot/"];
+test("page fixtures cover all twelve canonical pages", () => {
+  const fiExpected = ["/", "/mokki/", "/joukkueille/", "/kuvagalleria/", "/hinnoittelu/", "/yhteystiedot/"];
   const enExpected = [
     "/en/home/",
     "/en/cabin/",
+    "/en/teams/",
     "/en/photo-gallery/",
     "/en/rates/",
     "/en/contact-information/",

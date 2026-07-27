@@ -54,7 +54,7 @@ export default function HomePage() {
       </Hero>
 
       <Section>
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <ImageCard
             href={getHref("fi", "cabin")}
             image={{
@@ -65,6 +65,17 @@ export default function HomePage() {
             }}
             title="Mökki"
             description="Kaksi 14 hengen huoneistoa, oma kylpyhuone jokaisessa makuuhuoneessa."
+          />
+          <ImageCard
+            href={getHref("fi", "teams")}
+            image={{
+              src: "/wp-content/uploads/2026/07/large_warm_ski_maintenance_facilities_for_alpine_skiing_teams.jpg",
+              width: 1613,
+              height: 907,
+              alt: "Lämmin suksien huoltotila alppihiihtojoukkueille",
+            }}
+            title="Joukkueille"
+            description="Hiihtojoukkueille: 28 hengelle, oma suksien huoltotila ja neuvottelutila."
           />
           <ImageCard
             href={getHref("fi", "rates")}

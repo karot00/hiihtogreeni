@@ -16,8 +16,8 @@ interface SiteShellProps {
  * Maps to the optimized /hero/* assets generated for the LCP element.
  */
 const HERO_KEY: Record<Lang, Partial<Record<NavKey, string>>> = {
-  fi: { home: "home-fi", cabin: "cabin", gallery: "gallery", rates: "rates", contact: "contact" },
-  en: { home: "home-en", cabin: "cabin", gallery: "gallery", rates: "rates", contact: "contact" },
+  fi: { home: "home-fi", cabin: "cabin", teams: "teams", gallery: "gallery", rates: "rates", contact: "contact" },
+  en: { home: "home-en", cabin: "cabin", teams: "teams", gallery: "gallery", rates: "rates", contact: "contact" },
 };
 
 /**

@@ -13,11 +13,13 @@ import { ROUTES } from "../src/lib/routes.ts";
 const CANONICAL = [
   ROUTES.fi.home,
   ROUTES.fi.cabin,
+  ROUTES.fi.teams,
   ROUTES.fi.gallery,
   ROUTES.fi.rates,
   ROUTES.fi.contact,
   ROUTES.en.home,
   ROUTES.en.cabin,
+  ROUTES.en.teams,
   ROUTES.en.gallery,
   ROUTES.en.rates,
   ROUTES.en.contact,
@@ -34,7 +36,7 @@ const EXPECTED_DYNAMIC = [
   "/wp-json/[...path]",
 ];
 
-test("production build marks all ten canonical pages as static", () => {
+test("production build marks all twelve canonical pages as static", () => {
   const manifestPath = resolve(".next/prerender-manifest.json");
   assert.ok(existsSync(manifestPath), "prerender-manifest.json must exist (run build first)");
   const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
@@ -63,7 +65,7 @@ test("generated sitemap uses trailing-slash canonical URLs", () => {
   const sitemap = readFileSync(sitemapPath, "utf8");
   const urls = [...sitemap.matchAll(/(?:<loc>|href=")([^<"]+)/g)].map((match) => match[1]);
 
-  assert.equal(sitemap.match(/<loc>/g)?.length, 10, "sitemap must contain ten pages");
+  assert.equal(sitemap.match(/<loc>/g)?.length, 12, "sitemap must contain twelve pages");
   for (const value of urls) {
     assert.ok(new URL(value).pathname.endsWith("/"), `sitemap URL must be canonical: ${value}`);
   }

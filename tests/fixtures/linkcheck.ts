@@ -6,11 +6,13 @@ import { ROUTES } from "../../src/lib/routes.ts";
 export const LINK_CHECK_PAGES: string[] = [
   ROUTES.fi.home,
   ROUTES.fi.cabin,
+  ROUTES.fi.teams,
   ROUTES.fi.gallery,
   ROUTES.fi.rates,
   ROUTES.fi.contact,
   ROUTES.en.home,
   ROUTES.en.cabin,
+  ROUTES.en.teams,
   ROUTES.en.gallery,
   ROUTES.en.rates,
   ROUTES.en.contact,

@@ -4,6 +4,7 @@ import { EXTERNAL_LINKS } from "./shared.ts";
 export const EN_NAV: NavItem[] = [
   { key: "home", label: "Home", href: "/en/home/" },
   { key: "cabin", label: "Cabin", href: "/en/cabin/" },
+  { key: "teams", label: "For Teams", href: "/en/teams/" },
   { key: "gallery", label: "Photo Gallery", href: "/en/photo-gallery/" },
   { key: "rates", label: "Rates", href: "/en/rates/" },
   { key: "contact", label: "Contact", href: "/en/contact-information/" },
@@ -133,6 +134,121 @@ export const enCabinSections = {
     "Storage building with firewood and an unheated garage (ask about garage rental separately). The garage has 1- and 3-phase sockets for charging a car.",
     "Car-heating sockets (3/apartment). Charging a car from the sockets is prohibited.",
   ],
+} as const;
+
+export const enTeams: PageContent = {
+  lang: "en",
+  slug: "/en/teams/",
+  title: "For Teams - Hiihtogreeni",
+  description:
+    "A Levi cabin built for ski teams and sports groups: sleeps 14 or 28, a private bathroom in every bedroom, a 24-seat briefing room and a 50+ m² warm ski maintenance room, steps from the slopes. Ask about availability.",
+  h1: "Large semi-detached cabin for sports clubs and teams in Levi",
+  nav: EN_NAV,
+  external: EXTERNAL_LINKS,
+};
+
+export const enTeamsSections = {
+  heroLead:
+    "Space for groups of 14 or up to 28 people, private warm maintenance facilities for skis and sports equipment, and slopes and ski tracks just steps away.",
+  introLead: "A track record with teams",
+  intro:
+    "Hiihtogreeni regularly hosts alpine and cross-country ski teams, clubs and national squads. The well-equipped duplex gives the whole team calm, high-quality surroundings for preparation, recovery and time together – all right next to the Levi slopes and tracks.",
+  introParagraphs: [
+    "Everything is built so your team can focus on what matters – training and team spirit. That is why accommodation, equipment care and short transfers all come together in one place. Whether it is a weekend race trip or a multi-week training camp, the setup is made for the day-to-day of elite sport.",
+    "In Levi, alpine and cross-country ski training gets underway with guaranteed snow as early as the beginning of October, and the season lasts all the way until May.",
+    "Book top-tier facilities for your entire team for the Levi World Cup, which takes place on November 13–15, 2026.",
+    "In summer, the accommodation is perfect for golf groups or cycling teams. The first tee is only a couple of hundred meters away, and mountain biking trails run right next to the cabin.",
+  ],
+  useCasesLead: "Who Hiihtogreeni is for",
+  useCasesTitle: "Hiihtogreeni is built for teams",
+  useCases: [
+    {
+      title: "Alpine ski teams",
+      text: "The warm, spacious ski maintenance room is right where you stay – waxing benches are ready and the whole team's gear stays indoors. The slopes are just a few minutes' walk away.",
+    },
+    {
+      title: "Cross-country and biathlon teams",
+      text: "Ski tracks start straight from the yard, and the open maintenance room suits glide waxing and drying equipment. A quiet setting supports recovery and good sleep.",
+    },
+    {
+      title: "Clubs and national squads",
+      text: "Two 14-guest apartments and a shared briefing room form a practical base for training camps, junior national squads and club coaching. The whole house can be booked exclusively for one group.",
+    },
+    {
+      title: "Training camps and school groups",
+      text: "The briefing room for video review, a private kitchen and a calm location also make Hiihtogreeni a fit for school sport, educational and corporate group camps.",
+    },
+    {
+      title: "Mountain biking teams & cyclists",
+      text: "Mountain biking trails run right next to the cabin. The warm and spacious equipment maintenance room is ideal for servicing, washing, and storing bikes between rides.",
+    },
+    {
+      title: "Golf groups",
+      text: "Located right by Levi Golf, the cabin is ideal for golf groups: the first tee is only about 200 meters away. After your rounds, there is plenty of space for socializing, sauna, and relaxation.",
+    },
+  ],
+  whyLead: "Why Hiihtogreeni",
+  whyTitle: "The whole team under one roof",
+  why: [
+    "7 bedrooms and 7 bathrooms per apartment.",
+    "Your own 50+ m² warm ski and sports equipment maintenance room inside the cabin – not an outdoor shed or shared basement.",
+    "Sleeps 14 or 28 in one place.",
+    "A 24-seat briefing room with a projector – team talks, video review and sponsor meetings with no outside venue to book.",
+    "Slopes about 200 m and tracks from the yard: training, maintenance and rest all in one spot.",
+    "The whole house for one team – privacy and quiet, free of other guests.",
+    "Only 16 km (about 20 min) from Kittilä airport; easy arrivals and departures.",
+  ],
+  faqLead: "Frequently asked by teams",
+  faqTitle: "Questions about team accommodation",
+  faq: [
+    {
+      q: "How many people can Hiihtogreeni accommodate as a team?",
+      a: "Hiihtogreeni sleeps 14 in one apartment and 28 across the whole house, which is two apartments. Each apartment has 7 bedrooms, and every bedroom has its own bathroom.",
+    },
+    {
+      q: "What is the ski maintenance room like?",
+      a: "You get a 50+ m² warm, open maintenance room inside the cabin. It suits waxing and tuning benches and a full team's equipment at once – excellent for both alpine and cross-country preparation.",
+    },
+    {
+      q: "How close are the slopes and tracks?",
+      a: "It is about 200 m to the Koillisrinteet pistes, and ski tracks are reachable directly from the yard. Kittilä airport is roughly 16 km, or 20 minutes, by car.",
+    },
+    {
+      q: "Can the whole house be booked exclusively for my team?",
+      a: "Yes. The whole duplex can be rented for one team or group, in which case the conference and meeting room connecting the apartments is at your disposal free of charge.",
+    },
+    {
+      q: "What should a team bring?",
+      a: "You should bring your own tuning tables and waxing/maintenance supplies. The accommodation provides bed linen, a fully equipped kitchen, a sauna, and a heated maintenance space. The exact equipment details are confirmed when booking.",
+    },
+  ],
+  capacityLead: "Team capacity",
+  capacityTitle: "Space for the whole team",
+  splitRoomsLead: "Bedrooms & bathrooms",
+  splitRoomsTitle: "Space for the whole team",
+  splitRooms:
+    "Every bedroom has its own private bathroom – practical for athletes who need their own space and recovery routine, with no shared hallway showers. The two 14-person apartments rent separately or together, so you can house 14 or a full 28-person team with ease.",
+  splitMeetingLead: "A briefing room built in",
+  splitMeetingTitle: "Team talks happen on site",
+  splitMeeting:
+    "Between the apartments there is a 24-seat conference room for team talks, video review, sponsor meetings or coaches' briefings – no need to book an outside venue. The room has a video projector, screen and mini-kitchen, and it is included when the whole house is booked by one team.",
+  maintenanceLead: "The best ski maintenance facilities in Levi",
+  maintenanceTitle: "50+ m² of warm ski maintenance space",
+  maintenance:
+    "Hiihtogreeni's headline advantage for teams is a warm, open, 50+ m² ski maintenance room located inside the cabin – not an outdoor shed or a shared basement. It suits waxing and tuning benches and a full team's equipment at once, ideal for both alpine and cross-country preparation.",
+  maintenanceGridTitle: "A closer look at the maintenance room",
+  locationLead: "Location",
+  locationTitle: "Steps from the slopes",
+  location:
+    "It is about 200 m to the Koillisrinteet pistes, and ski tracks are reachable directly from the yard. The Kittilä airport is roughly 16 km, or 20 minutes, away by car. Logistics are simple for a team: training, maintenance and accommodation in one place. Spacious illuminated yard for parking with spaces for 7 passenger cars and easy parking for larger vehicles as well. Car heating outlets for 4 cars.",
+  privacyLead: "Privacy for your team",
+  privacyTitle: "The whole house, exclusively yours",
+  privacy:
+    "The whole duplex can be rented exclusively by one team or group – no shared common areas with strangers, a private plot and quiet surroundings. The perfect environment for focus and recovery, away from the resort crowds.",
+  exteriorLead: "The cabin from outside",
+  exteriorTitle: "A large rental cabin for groups",
+  ctaEyebrow: "Book accommodation for your team",
+  ctaTitle: "Get in touch and ask about availability",
 } as const;
 
 export const enRates: PageContent = {

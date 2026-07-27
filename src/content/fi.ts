@@ -4,6 +4,7 @@ import { EXTERNAL_LINKS } from "./shared.ts";
 export const FI_NAV: NavItem[] = [
   { key: "home", label: "Etusivu", href: "/" },
   { key: "cabin", label: "Mökki", href: "/mokki/" },
+  { key: "teams", label: "Joukkueille", href: "/joukkueille/" },
   { key: "gallery", label: "Kuvagalleria", href: "/kuvagalleria/" },
   { key: "rates", label: "Hinnoittelu", href: "/hinnoittelu/" },
   { key: "contact", label: "Yhteystiedot", href: "/yhteystiedot/" },
@@ -132,6 +133,121 @@ export const fiCabinSections = {
     "Varastorakennus, jossa takkapuut ja kylmä autotalli (kysy autotallin vuokrausta erikseen). Autotallissa 1- ja 3-vaihepistorasiat auton latausta varten.",
     "Autolämmityspistokkeet (3 kpl/huoneisto). Auton lataaminen pistorasioista kielletty.",
   ],
+} as const;
+
+export const fiTeams: PageContent = {
+  lang: "fi",
+  slug: "/joukkueille/",
+  title: "Joukkueille - Hiihtogreeni",
+  description:
+    "Mökki joukkueille ja hiihtojoukkueille Levillä: majoitus 14–28 hengelle, oma kylpyhuone jokaisessa huoneessa, 24 hengen neuvottelutila ja yli 50 m² lämmin suksien huoltotila aivan rinteiden vieressä. Kysy saatavuutta.",
+  h1: "Iso parimökki urheiluseuroille ja joukkueille Levillä",
+  nav: FI_NAV,
+  external: EXTERNAL_LINKS,
+};
+
+export const fiTeamsSections = {
+  heroLead:
+    "Tilaa 14 tai jopa 28 hengen seurueille, oma lämmin suksien ja muiden urheiluvälineiden huoltotila sekä rinteet ja hiihtolatu askelten päässä.",
+  introLead: "Kokemusta joukkueiden majoittamisesta",
+  intro:
+    "Hiihtogreeni majoittaa säännöllisesti alppihiihto- ja maastohiihtojoukkueita, seuroja ja maajoukkueita. Hyvin varusteltu paritalo tarjoaa koko joukkueelle rauhalliset ja tasokkaat puitteet valmistautumiseen, palautumiseen ja yhteiseen aikaan – kaikki aivan Levin rinteiden ja latujen vieressä.",
+  introParagraphs: [
+    "Haluamme, että joukkueenne voi keskistyä olennaiseen – harjoitteluun ja hyvään mieleen. Siksi kokoamme majoituksen, välinehuollon ja lyhyet siirtymät saman katon alle. Olipa kyse viikonlopun kilpailumatkasta tai useamman viikon valmennusleiristä, puitteet on tehty huippu-urheilun arkeen.",
+    "Levillä alppi- ja murtomaahiihtoharjoitukset pääsevät lumivarmasti käyntiin jo lokakuun alussa ja kausi kestää aina toukokuulle saakka.",
+    "Varaa huippuolosuhteet Levin maailmancupia varten koko joukkueelle, joka tänä vuonna kisataan 13.11.–15.11.2026.",
+    "Kesäisin majoitus on kuin tehty golfporukoille tai pyöräilytiimeille. Ykköstiille on matkaa vain parisataa metriä ja maastopyöräreitit kulkevat aivan mökin vieressä.",
+  ],
+  useCasesLead: "Kenelle Hiihtogreeni sopii",
+  useCasesTitle: "Hiihtogreeni on tehty joukkueille",
+  useCases: [
+    {
+      title: "Alppihiihtojoukkueet",
+      text: "Lämmitetty, tilava suksien huoltotila on suoraan majoituksen yhteydessä – voitelupöydät ovat valmiina ja koko joukkueen välineet pysyvät sisällä. Rinteelle on vain muutaman minuutin kävelymatka.",
+    },
+    {
+      title: "Maastohiihto- ja ampumahiihtojoukkueet",
+      text: "Ladulle pääset suoraan pihasta, ja avara huoltotila soveltuu pitovoiteluun ja välineiden kuivaamiseen. Rauhallinen ympäristö tukee palautumista ja laadukasta unta.",
+    },
+    {
+      title: "Seurat ja maajoukkueet",
+      text: "Kaksi 14 hengen huoneistoa ja yhteinen neuvottelutila muodostavat toimivan kokonaisuuden harjoitusleireille, nuorten maajoukkueille ja seuravalmennukselle. Koko talo vuokrataan tarvittaessa yksinomaan yhdelle ryhmälle.",
+    },
+    {
+      title: "Valmennusleirit ja kouluryhmät",
+      text: "Neuvottelutila videoanalyysiin, oma keittiö ja rauhallinen sijainti tekevät Hiihtogreenistä sopivan myös koululiikunnan, oppilaitosten ja yritysryhmien leireille.",
+    },
+    {
+      title: "Maastopyöräilytiimit ja pyöräilijät",
+      text: "Maastopyöräreitit kulkevat aivan mökin vieressä. Lämmin ja tilava välinehuoltotila sopii erinomaisesti pyörien huoltoon, pesuun ja säilytykseen ajopäivien välillä.",
+    },
+    {
+      title: "Golfporukat",
+      text: "Sijainti Levi Golfin kupeessa on ihanteellinen golfryhmille: ykköstiille on matkaa vain noin 200 metriä. Kierrosten jälkeen tilaa riittää seurusteluun, saunomiseen ja rentoutumiseen.",
+    },
+  ],
+  whyLead: "Miksi juuri Hiihtogreeni",
+  whyTitle: "Koko joukkue yhden katon alla",
+  why: [
+    "7 makuuhuonetta ja 7 kylpyhuonetta per asunto.",
+    "Oma, yli 50 m² lämmin suksien ja urheiluvälineiden huoltotila mökin sisällä – ei ulkovajaa tai jaettua kellaria.",
+    "14 tai 28 hengen majoitus samassa paikassa.",
+    "24 hengen neuvottelutila videotykillä – palaverit, videoanalyysi ja sponsoritapaamiset ilman ulkopuolista tilavarausta.",
+    "Rinteet noin 200 m ja ladut pihasta: harjoitus, huolto ja lepo samassa pisteessä.",
+    "Koko talo yhdelle joukkueelle – yksityisyyttä ja oma rauha ilman vieraita.",
+    "Kittilän lentoasemalle vain 16 km (n. 20 min); helpot saapumiset ja lähdöt.",
+  ],
+  faqLead: "Usein kysyttyä joukkueilta",
+  faqTitle: "Kysymyksiä joukkueen majoituksesta",
+  faq: [
+    {
+      q: "Kuinka monta henkeä Hiihtogreeniin mahtuu joukkueena?",
+      a: "Hiihtogreeni majoittaa 14 henkeä yhdessä huoneistossa ja 28 henkeä koko talon eli kahden huoneiston kokonaisuudessa. Jokaisessa huoneistossa on 7 makuuhuonetta, joissa kussakin on oma kylpyhuone.",
+    },
+    {
+      q: "Millainen suksien huoltotila on?",
+      a: "Käytössänne on yli 50 m² lämmin ja avara huoltotila mökin sisällä. Tila soveltuu voitelu- ja huoltopöydille sekä koko joukkueen välineille yhtä aikaa – erinomainen niin alppi- kuin maastohiihtoon.",
+    },
+    {
+      q: "Kuinka lähellä rinteet ja ladut ovat?",
+      a: "Koillisrinteille on matkaa noin 200 metriä ja hiihtoladulle pääsee suoraan mökin pihasta. Kittilän lentoasemalle on autolla noin 16 km eli noin 20 minuuttia.",
+    },
+    {
+      q: "Voiko koko talon vuokrata yksinomaan omalle joukkueelle?",
+      a: "Kyllä. Koko paritalo voidaan vuokrata yhdelle joukkueelle tai ryhmälle, jolloin myös asunnot yhdistävä neuvottelu- ja kokoustila on käytössänne veloituksetta.",
+    },
+    {
+      q: "Mitä joukkueen kannattaa ottaa mukaan?",
+      a: "Mukaan kannattaa ottaa omat huoltopöydät ja voitelu-/huoltotarvikkeet. Majoituksessa on vuodevaatteet, keittiövarustus, sauna ja lämmitetty huoltotila. Tarkka varustelutaso vahvistetaan varauksen yhteydessä.",
+    },
+  ],
+  capacityLead: "Joukkueen kapasiteetti",
+  capacityTitle: "Tilaa koko joukkueelle",
+  splitRoomsLead: "Makuuhuoneet ja kylpyhuoneet",
+  splitRoomsTitle: "Tilaa koko joukkueelle",
+  splitRooms:
+    "Jokaisessa makuuhuoneessa on oma kylpyhuone – käytännöllistä urheilijoille, jotka tarvitsevat omaa rauhaa ja palautumisrutiininsa. Ei jaettuja käytäväsuihkuja, vaan jokaiselle oma tila. Kaksi 14 hengen huoneistoa vuokrataan erikseen tai yhdessä, joten majoitat joustavasti 14 tai koko 28 hengen joukkueen.",
+  splitMeetingLead: "Oma neuvottelutila",
+  splitMeetingTitle: "Palaverit hoituvat paikan päällä",
+  splitMeeting:
+    "Huoneistojen välissä on 24 hengen neuvottelutila joukkuepalavereihin, videoanalyysiin, sponsoritapaamisiin ja valmentajien briiffeihin. Ei tarvetta varata erillistä tilaa muualta – tilassa on videotykki, valkokangas ja minikeittiö. Kun koko talo on varattu samalle joukkueelle, neuvottelutila sisältyy hintaan.",
+  maintenanceLead: "Levin parhaat suksien huoltotilat",
+  maintenanceTitle: "Yli 50 m² lämmintä suksien huoltotilaa",
+  maintenance:
+    "Hiihtogreenin ehdoton valtti joukkueille on tilava, lämmin ja avara suksien huoltotila – yli 50 m² ja sijaitsee mökin sisällä, ei ulkovajassa tai jaetussa kellarissa. Tila sopii voitelu- ja huoltopöydille sekä koko joukkueen välineille yhtä aikaa. Alppihiihtoon ja maastohiihtoon soveltuvat puitteet tekevät valmistautumisesta vaivatonta.",
+  maintenanceGridTitle: "Katso huoltotila lähemmin",
+  locationLead: "Sijainti",
+  locationTitle: "Askelten päässä rinteistä",
+  location:
+    "Koillisrinteille on matkaa vain noin 200 m, ja ladulle pääsee suoraan mökin pihasta. Kittilän lentoasemalta on autolla noin 16 km eli 20 minuuttia. Logistiikka on joukkueelle helppoa: harjoitukset, huolto ja majoitus samassa pisteessä. Tilava valaistu piha pysäköinnille. Pihalla pysäköintitilat 7 henkilöautolle ja myös isommalla kalustolla mahtuu pysäköimään helposti. Lämmitystolpat 4 autolle.",
+  privacyLead: "Yksityisyyttä joukkueelle",
+  privacyTitle: "Koko talo vain teidän käyttöönne",
+  privacy:
+    "Koko paritalon voi vuokrata yhdelle joukkueelle tai ryhmälle – ei jaettuja yleisiä tiloja vieraiden kanssa, oma piha ja rauhalliset maisemat. Täydellinen ympäristö keskittymiseen ja palautumiseen ilman hiihtokeskuksen ruuhkaa.",
+  exteriorLead: "Mökki ulkoa",
+  exteriorTitle: "Iso vuokramökki ryhmille",
+  ctaEyebrow: "Varaa majoitus joukkueellesi",
+  ctaTitle: "Ota yhteyttä ja kysy saatavuutta",
 } as const;
 
 export const fiRates: PageContent = {

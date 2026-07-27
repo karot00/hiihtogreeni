@@ -11,6 +11,7 @@ import { SITE_CONFIG } from "../src/lib/config.ts";
 import {
   fiHome,
   fiCabin,
+  fiTeams,
   fiGallery,
   fiRates,
   fiContact,
@@ -20,6 +21,7 @@ import {
 import {
   enHome,
   enCabin,
+  enTeams,
   enGallery,
   enRates,
   enContact,
@@ -27,13 +29,13 @@ import {
   EN_NAV,
 } from "../src/content/en.ts";
 
-test("route map covers all five page pairs in both languages", () => {
+test("route map covers all six page pairs in both languages", () => {
   const langs = Object.keys(ROUTES) as Array<keyof typeof ROUTES>;
   assert.deepEqual(langs.sort(), ["en", "fi"]);
   for (const lang of langs) {
     assert.deepEqual(
       Object.keys(ROUTES[lang]).sort(),
-      ["cabin", "contact", "gallery", "home", "rates"],
+      ["cabin", "contact", "gallery", "home", "rates", "teams"],
       `route keys for ${lang}`,
     );
   }
@@ -63,8 +65,8 @@ test("owner-approved contacts and capacity are present in site config", () => {
 });
 
 test("every canonical page has a title and an h1, unique within its language", () => {
-  const fiPages = [fiHome, fiCabin, fiGallery, fiRates, fiContact];
-  const enPages = [enHome, enCabin, enGallery, enRates, enContact];
+  const fiPages = [fiHome, fiCabin, fiTeams, fiGallery, fiRates, fiContact];
+  const enPages = [enHome, enCabin, enTeams, enGallery, enRates, enContact];
   const allPages = [...fiPages, ...enPages];
   for (const p of allPages) {
     assert.ok(p.title.length > 0, `${p.slug} title`);
@@ -92,9 +94,9 @@ test("every canonical page has a title and an h1, unique within its language", (
   );
 });
 
-test("navigation matches the five canonical pages and language", () => {
-  assert.equal(FI_NAV.length, 5);
-  assert.equal(EN_NAV.length, 5);
+test("navigation matches the six canonical pages and language", () => {
+  assert.equal(FI_NAV.length, 6);
+  assert.equal(EN_NAV.length, 6);
   for (const item of FI_NAV) assert.ok(item.href.startsWith("/"));
   for (const item of EN_NAV) assert.ok(item.href.startsWith("/en/"));
 });

@@ -1,7 +1,7 @@
 export type Lang = "fi" | "en";
 
 /** Stable key identifying each page across languages. */
-export type NavKey = "home" | "cabin" | "gallery" | "rates" | "contact";
+export type NavKey = "home" | "cabin" | "teams" | "gallery" | "rates" | "contact";
 
 export interface NavItem {
   key: NavKey;

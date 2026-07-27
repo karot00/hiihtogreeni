@@ -51,7 +51,7 @@ export default function EnglishHomePage() {
       </Hero>
 
       <Section>
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <ImageCard
             href={getHref("en", "cabin")}
             image={{
@@ -62,6 +62,17 @@ export default function EnglishHomePage() {
             }}
             title="Cabin"
             description="Two 14-person apartments, private bathroom in every bedroom."
+          />
+          <ImageCard
+            href={getHref("en", "teams")}
+            image={{
+              src: "/wp-content/uploads/2026/07/large_warm_ski_maintenance_facilities_for_alpine_skiing_teams.jpg",
+              width: 1613,
+              height: 907,
+              alt: "Warm ski maintenance facilities for alpine skiing teams",
+            }}
+            title="For Teams"
+            description="For ski teams: sleeps 28, own ski maintenance room and a briefing room."
           />
           <ImageCard
             href={getHref("en", "rates")}

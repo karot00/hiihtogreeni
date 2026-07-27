@@ -64,3 +64,26 @@ export function JsonLd({ lang }: { lang: Lang }) {
     />
   );
 }
+
+/**
+ * FAQPage structured data. Mirrors the visible FAQ on the Teams page so search
+ * engines can surface the questions as rich results. Content is the same
+ * crawlable text rendered in the page body.
+ */
+export function FaqJsonLd({ items }: { items: readonly { q: string; a: string }[] }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((it) => ({
+      "@type": "Question",
+      name: it.q,
+      acceptedAnswer: { "@type": "Answer", text: it.a },
+    })),
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}

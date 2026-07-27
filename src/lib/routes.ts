@@ -2,6 +2,7 @@ export const ROUTES = {
   fi: {
     home: "/",
     cabin: "/mokki/",
+    teams: "/joukkueille/",
     gallery: "/kuvagalleria/",
     rates: "/hinnoittelu/",
     contact: "/yhteystiedot/",
@@ -9,6 +10,7 @@ export const ROUTES = {
   en: {
     home: "/en/home/",
     cabin: "/en/cabin/",
+    teams: "/en/teams/",
     gallery: "/en/photo-gallery/",
     rates: "/en/rates/",
     contact: "/en/contact-information/",
