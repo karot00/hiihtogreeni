@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 
@@ -28,47 +28,53 @@ interface GoogleAnalyticsProps {
 }
 
 /**
- * GA4 integration (Phase 14), gated by the Phase 13 cookie-consent category and
- * implemented with Google Consent Mode v2:
- * - the gtag.js loader is mounted only once analytics consent has been granted
- *   (and stays mounted afterwards so revocation is honored via an update);
- * - Consent Mode defaults to denied, and `analytics_storage` follows the
- *   visitor's choice through `gtag('consent','update', ...)`;
- * - the first page_view comes from the `config` call; subsequent client-side
- *   navigations fire a manual page_view (initial render is skipped).
+ * GA4 integration (Phase 14), implemented with Google Consent Mode v2.
+ *
+ * The gtag.js loader is mounted whenever a measurement ID is configured, so GA4
+ * verification always finds the tag. Collection itself is gated by consent, not
+ * by whether the script is present: the inline init script sets every Consent
+ * Mode v2 signal to DENIED before any config call, and the visitor's choice is
+ * applied through `gtag('consent','update', ...)` (and a `config` call only when
+ * analytics is granted). This is Google's recommended Consent Mode v2 pattern —
+ * the tag is present, but no request or cookie leaves the browser until the
+ * analytics category is explicitly allowed; revocation is honored immediately.
+ *
+ * The first page_view comes from the `config` call on grant; subsequent
+ * client-side navigations fire a manual page_view (initial render is skipped).
  */
 export function GoogleAnalytics({ lang }: GoogleAnalyticsProps) {
   const { consent } = useCookieConsent();
   const analyticsAllowed = isCategoryAllowed(consent, "analytics");
   const pathname = usePathname();
 
-  // Once gtag.js has loaded we keep the loader mounted so later consent changes
-  // (including a later revocation) can be honored via gtag('consent','update')
-  // without remounting the script. Adjusted during render (not in an effect) to
-  // satisfy the no-setState-in-effect lint rule.
-  const [hasLoaded, setHasLoaded] = useState(false);
-  if (analyticsAllowed && !hasLoaded) {
-    setHasLoaded(true);
-  }
+  // The gtag.js loader is always injected when a measurement ID is configured
+  // (so GA4 verification sees the tag). Consent Mode v2 defaults every signal to
+  // denied in INIT_SCRIPT, so no request or cookie is sent until the visitor
+  // grants the analytics category. Revocation is honored by the consent update
+  // pushed from the consent handlers — the script simply stays mounted.
+  const showLoader = Boolean(GA4_MEASUREMENT_ID);
 
-  const showLoader =
-    Boolean(GA4_MEASUREMENT_ID) && (analyticsAllowed || hasLoaded);
-
-  // Re-apply Consent Mode whenever the choice changes. Commands are pushed onto
-  // the dataLayer so they queue correctly even if the library has not loaded
-  // yet; when analytics is granted we also (re)configure the stream.
+  // Bind the tag to the property on every load by always (re)configuring the
+  // stream. Because INIT_SCRIPT sets Consent Mode v2 to denied by default, the
+  // config call sends nothing until the visitor grants analytics. When consent
+  // is granted we push the consent UPDATE first and then config again, so the
+  // first page_view is actually dispatched for the current page; revocation
+  // pushes the update with analytics denied. Commands are pushed onto the
+  // dataLayer so they queue correctly even if the library has not loaded yet.
   useEffect(() => {
     if (!GA4_MEASUREMENT_ID) {
       return;
     }
-    pushToDataLayer(["consent", "update", buildConsentUpdate(analyticsAllowed)]);
     if (analyticsAllowed) {
-      pushToDataLayer([
-        "config",
-        GA4_MEASUREMENT_ID,
-        { page_title: document.title, page_location: window.location.href },
-      ]);
+      pushToDataLayer(["consent", "update", buildConsentUpdate(true)]);
+    } else {
+      pushToDataLayer(["consent", "update", buildConsentUpdate(false)]);
     }
+    pushToDataLayer([
+      "config",
+      GA4_MEASUREMENT_ID,
+      { page_title: document.title, page_location: window.location.href },
+    ]);
   }, [analyticsAllowed]);
 
   // Single-fire page views: the config call above already sends the first

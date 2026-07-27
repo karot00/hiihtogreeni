@@ -5,9 +5,9 @@ the GA4 property configured for `https://www.hiihtogreeni.fi` before go-live).
 
 ## Consent model
 
-GA4 is **not** a migration launch blocker. The tag is gated behind the Phase 13
-cookie-consent `analytics` category and implemented with **Google Consent Mode
-v2**:
+GA4 is **not** a migration launch blocker. The tag is present whenever the
+measurement ID is configured, but **collection** is gated behind the Phase 13
+cookie-consent `analytics` category via **Google Consent Mode v2**:
 
 - `gtag('consent','default', …)` sets `ad_storage`, `ad_user_data`,
   `ad_personalization`, and `analytics_storage` to **denied** before any config
@@ -16,8 +16,10 @@ v2**:
   from the consent handlers (accept all / reject non-essential / save
   preferences), so a later revocation is honored immediately even though the
   script tag stays mounted.
-- The gtag.js loader is mounted only after the visitor grants analytics consent,
-  and remains mounted so revocation works without remounting.
+- The gtag.js loader is injected **whenever `NEXT_PUBLIC_GA4_MEASUREMENT_ID` is
+  set** (so GA4 verification finds the tag). Collection is gated by consent, not
+  by the script's presence: with Consent Mode default denied, no request or
+  cookie leaves the browser until the analytics category is granted.
 
 ## Where the code lives
 
