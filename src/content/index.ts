@@ -3,9 +3,9 @@ export * from "./shared.ts";
 export * from "./fi.ts";
 export * from "./en.ts";
 
-import type { Lang, NavItem, UILabels, FormStrings } from "./types.ts";
-import { FI_NAV, FI_UI, FI_FORM_STRINGS } from "./fi.ts";
-import { EN_NAV, EN_UI, EN_FORM_STRINGS } from "./en.ts";
+import type { Lang, NavItem, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
+import { FI_NAV, FI_UI, FI_FORM_STRINGS, FI_COOKIE_CONSENT } from "./fi.ts";
+import { EN_NAV, EN_UI, EN_FORM_STRINGS, EN_COOKIE_CONSENT } from "./en.ts";
 
 /** Resolve the navigation items for a language. */
 export function getNav(lang: Lang): NavItem[] {
@@ -20,4 +20,9 @@ export function getUI(lang: Lang): UILabels {
 /** Resolve the localized contact-form runtime strings for a language. */
 export function getFormStrings(lang: Lang): FormStrings {
   return lang === "fi" ? FI_FORM_STRINGS : EN_FORM_STRINGS;
+}
+
+/** Resolve the localized cookie-consent copy for a language. */
+export function getCookieConsentCopy(lang: Lang): CookieConsentCopy {
+  return lang === "fi" ? FI_COOKIE_CONSENT : EN_COOKIE_CONSENT;
 }

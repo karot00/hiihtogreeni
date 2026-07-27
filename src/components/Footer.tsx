@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Lang } from "../content/types.ts";
 import { getNav, getUI, COMPANY, RENTAL_CONTACT, LANGUAGE_OPTIONS } from "../content/index.ts";
 import { getHref } from "../lib/routes.ts";
+import { CookieConsentSettingsTrigger } from "./CookieConsentSettingsTrigger.tsx";
 
 interface FooterProps {
   lang: Lang;
@@ -87,7 +88,7 @@ export function Footer({ lang }: FooterProps) {
           </ul>
         </nav>
 
-        {/* Languages + reserved cookie boundary */}
+        {/* Languages + cookie settings */}
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-white/70">
             {ui.footerLanguageHeading}
@@ -105,6 +106,9 @@ export function Footer({ lang }: FooterProps) {
               </li>
             ))}
           </ul>
+          <div className="mt-4">
+            <CookieConsentSettingsTrigger lang={lang} />
+          </div>
         </div>
       </div>
 

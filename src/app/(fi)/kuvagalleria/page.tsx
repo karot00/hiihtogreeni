@@ -44,6 +44,7 @@ export default function GalleryPage() {
         <h2 className="mt-3 text-h2 font-display text-ink">Mökki, huoneistot ja ympäristö</h2>
         <div className="mt-8">
           <GalleryGrid
+            lang="fi"
             label="Hiihtogreenin kuvagalleria"
             images={fiGalleryImages}
             strings={{

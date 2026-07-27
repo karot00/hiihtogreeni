@@ -297,3 +297,23 @@ The new Next.js website is now live at `https://www.hiihtogreeni.fi`. The new si
 
 After this is done, I will monitor the site's performance and search visibility, confirm that the email delivery works consistently, and begin decommissioning the old WordPress infrastructure while keeping the WordPress backup as a safety net. I will also setup GA4, add cookie consent banner that I have created for two other projects and do a final refiniment of the website. 
 
+## Where the Project Is Now - Cookie consent and a truthful privacy inventory (Phase 13)
+
+With the site live and stable, the first deferred enhancement was the cookie consent system. Rather than install a generic third-party consent widget or treat a "separately supplied" black box as unknown, I ported the in-house consent implementation I had already built for the related `levifinland2026` project. The same ported code now runs on Hiihtogreeni.
+
+The visitor sees a banner on their first visit with three choices: accept all, essential only, or open detailed settings. The settings panel lists exactly the cookie categories the site actually uses, and each category shows a plain-language table of the real technologies. That table is deliberately truthful. I scraped the live production site and confirmed it sets no cookies at all anymore — the old WordPress-era CookieYes plugin is gone. So the inventory shows only one essential cookie, `hg_consent`, which simply remembers the visitor's own choice. The old advertising and marketing categories are listed as empty rather than padded with invented entries, because adding fake cookies would itself be a compliance problem.
+
+This matters for the business because cookie consent is now a genuine, auditable control instead of a decorative banner. It also prepares the ground for analytics: the consent system already understands an "analytics" category, so any measurement tool can be switched on only after explicit permission.
+
+## Where the Project Is Now - Privacy-first Google Analytics (Phase 14)
+
+The next deferred piece was website analytics with Google Analytics 4. The key requirement was that analytics must never run before the visitor agrees, and must stop immediately if they change their mind.
+
+The implementation uses Google's Consent Mode v2. Before any tracking happens, the site tells Google that every tracking signal is denied by default. The Google tag only loads after the visitor grants the analytics category in the consent banner, and it stays ready so that a later "reject" choice is honored right away. The first page view is recorded automatically once consent is given; moving between pages records one view per visit without double-counting.
+
+We also defined a focused measurement plan instead of tracking everything. It covers the actions that actually matter for this business: a successful contact-form message, taps on the phone and email links, clicks to the two approved external partners (the Levi presentation pages and the green-fee booking), and opens of the photo-gallery lightbox. None of these events contain personal information — a phone or email click is recorded only as "someone tapped the contact link," never with the actual number or address. In the analytics configuration there are still a few owner-side choices to make in the Google interface: confirming the measurement ID points at the correct property for hiihtogreeni.fi, filtering internal office traffic, setting data retention, and linking Search Console. Those are account settings rather than code.
+
+The result is that the business finally gets real visitor insight, but only with permission and in a way that respects the privacy rules the site already promised. Lint, type checking, the full automated test suite, and the static production build all pass, and all ten pages remain static HTML.
+
+This cookie-consent and GA4 phase took about 20 minutes and cost approximately 0,35 € in AI usage, using GPT-5.6 Sol in Kilo Code.
+

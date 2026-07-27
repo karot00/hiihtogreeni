@@ -2,6 +2,7 @@
 
 import { useId, useRef, useState } from "react";
 import type { Lang, FormStrings } from "../content/types.ts";
+import { GA4_EVENTS, trackEvent } from "../lib/analytics.ts";
 
 export interface ContactField {
   id: string;
@@ -37,6 +38,7 @@ const AUTOCOMPLETE: Record<string, string> = {
  * status without relying on browser-only validation.
  */
 export function ContactForm({
+  lang,
   fields,
   consentLabel,
   contactMethodLabel,
@@ -85,9 +87,10 @@ export function ContactForm({
         method: "POST",
         body: data,
       });
-      if (res.ok) {
+       if (res.ok) {
         setStatus("success");
         formRef.current?.reset();
+        trackEvent(GA4_EVENTS.contactSubmit, { language: lang });
       } else if (res.status === 429) {
         setStatus("error");
         setServerMessage(strings.tooMany);

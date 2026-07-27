@@ -44,6 +44,7 @@ export default function GalleryPage() {
         <h2 className="mt-3 text-h2 font-display text-ink">Cabin, apartments, and surroundings</h2>
         <div className="mt-8">
           <GalleryGrid
+            lang="en"
             label="Hiihtogreeni photo gallery"
             images={enGalleryImages}
             strings={{

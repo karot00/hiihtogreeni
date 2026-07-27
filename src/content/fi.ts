@@ -1,4 +1,4 @@
-import type { NavItem, PageContent, GalleryImage, UILabels, FormStrings } from "./types.ts";
+import type { NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
 import { EXTERNAL_LINKS } from "./shared.ts";
 
 export const FI_NAV: NavItem[] = [
@@ -24,13 +24,87 @@ export const FI_UI: UILabels = {
   footerNavHeading: "Sivut",
   footerLanguageHeading: "Kieli",
   contactCta: "Ota yhteyttä",
-  cookieSettings: "Evästeasetukset",
   rightsReserved: "Kaikki oikeudet pidätetään.",
   galleryClose: "Sulje",
   galleryPrevious: "Edellinen kuva",
   galleryNext: "Seuraava kuva",
   carouselLabel: "Kuvia Hiihtogreenistä ja Levistä",
   carouselSlide: "Kuva",
+};
+
+export const FI_COOKIE_CONSENT: CookieConsentCopy = {
+  banner: {
+    ariaLabel: "Evästeilmoitus",
+    eyebrow: "Evästeet",
+    title: "Evästeet tällä sivustolla",
+    description:
+      "Käytämme yhtä välttämätöntä evästettä evästevalintasi tallentamiseen. Valinnaisia analytiikkaevästeitä käytetään vain suostumuksellasi.",
+    acceptAll: "Hyväksy kaikki",
+    rejectNonEssential: "Vain välttämättömät",
+    manageSettings: "Evästeasetukset",
+  },
+  preferences: {
+    eyebrow: "Evästeet",
+    title: "Evästeasetukset",
+    description:
+      "Valitse, mitä evästeluokkia sivusto saa käyttää. Välttämättömät evästeet ovat aina käytössä.",
+  },
+  categories: {
+    essential: {
+      title: "Välttämättömät",
+      description:
+        "Tarvitaan sivuston perustoimintoihin, kuten evästevalintasi tallentamiseen. Näitä ei voi poistaa käytöstä.",
+    },
+    functional: {
+      title: "Toiminnalliset",
+      description:
+        "Muistaisivat valintojasi, kuten kieliasetuksia. Sivusto ei tällä hetkellä käytä toiminnallisia evästeitä.",
+    },
+    analytics: {
+      title: "Analytiikka",
+      description:
+        "Auttavat ymmärtämään sivuston käyttöä (Google Analytics). Käytetään vain suostumuksellasi.",
+    },
+    marketing: {
+      title: "Markkinointi",
+      description:
+        "Käytettäisiin mainonnan kohdentamiseen. Sivusto ei tällä hetkellä käytä markkinointievästeitä.",
+    },
+    alwaysActive: "Aina käytössä",
+    optional: "Valinnainen",
+  },
+  inventory: {
+    detailsLabel: "Näytä evästeet",
+    name: "Nimi",
+    provider: "Palveluntarjoaja",
+    purpose: "Käyttötarkoitus",
+    duration: "Voimassaolo",
+    emptyCategory:
+      "Tässä luokassa ei ole käytössä evästeitä tai muita tekniikoita.",
+    deferredNote: "(ei vielä käytössä)",
+    items: {
+      hg_consent: {
+        purpose: "Tallentaa evästevalintasi tälle sivustolle",
+        duration: "180 päivää",
+      },
+      ga: {
+        purpose: "Google Analytics: erottaa kävijät toisistaan",
+        duration: "2 vuotta",
+      },
+      ga_session: {
+        purpose: "Google Analytics: säilyttää istunnon tilan",
+        duration: "2 vuotta",
+      },
+    },
+  },
+  actions: {
+    cancel: "Peruuta",
+    rejectNonEssential: "Vain välttämättömät",
+    acceptAll: "Hyväksy kaikki",
+    savePreferences: "Tallenna valinnat",
+  },
+  settingsTrigger: "Evästeasetukset",
+  settingsTriggerAriaLabel: "Avaa evästeasetukset",
 };
 
 export const fiHome: PageContent = {

@@ -68,8 +68,6 @@ export interface UILabels {
   footerLanguageHeading: string;
   /** Primary contact call-to-action label used in footer. */
   contactCta: string;
-  /** Cookie-settings control label (reserved boundary for future consent UI). */
-  cookieSettings: string;
   /** Copyright/legal line prefix, rendered before the year and company name. */
   rightsReserved: string;
   /** Gallery lightbox control labels. */
@@ -102,6 +100,67 @@ export interface FormStrings {
   success: string;
   /** Marker shown next to optional fields. */
   optional: string;
+}
+
+/** Localized copy for one consent category card in the preferences panel. */
+export interface ConsentCategoryCopy {
+  title: string;
+  description: string;
+}
+
+/** Localized purpose/duration copy for one consent inventory row. */
+export interface ConsentInventoryItemCopy {
+  purpose: string;
+  duration: string;
+}
+
+/** Structured copy for the cookie consent banner, preferences, and trigger. */
+export interface CookieConsentCopy {
+  banner: {
+    ariaLabel: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    acceptAll: string;
+    rejectNonEssential: string;
+    manageSettings: string;
+  };
+  preferences: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
+  categories: {
+    essential: ConsentCategoryCopy;
+    functional: ConsentCategoryCopy;
+    analytics: ConsentCategoryCopy;
+    marketing: ConsentCategoryCopy;
+    alwaysActive: string;
+    optional: string;
+  };
+  inventory: {
+    detailsLabel: string;
+    name: string;
+    provider: string;
+    purpose: string;
+    duration: string;
+    emptyCategory: string;
+    /** Suffix shown for registered-but-not-yet-active technologies (GA4 before Phase 14). */
+    deferredNote: string;
+    items: {
+      hg_consent: ConsentInventoryItemCopy;
+      ga: ConsentInventoryItemCopy;
+      ga_session: ConsentInventoryItemCopy;
+    };
+  };
+  actions: {
+    cancel: string;
+    rejectNonEssential: string;
+    acceptAll: string;
+    savePreferences: string;
+  };
+  settingsTrigger: string;
+  settingsTriggerAriaLabel: string;
 }
 
 /** Metadata for one selectable language in the switcher. */

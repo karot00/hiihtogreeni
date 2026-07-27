@@ -3,7 +3,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { GalleryImage } from "../content/types.ts";
+import type { GalleryImage, Lang } from "../content/types.ts";
+import { GA4_EVENTS, trackEvent } from "../lib/analytics.ts";
 
 export interface GalleryStrings {
   regionLabel: string;
@@ -18,6 +19,8 @@ interface GalleryGridProps {
   label: string;
   /** Localized lightbox control labels. */
   strings: GalleryStrings;
+  /** Page language, used for analytics event context. */
+  lang: Lang;
 }
 
 /**
@@ -26,7 +29,12 @@ interface GalleryGridProps {
  * button click. Supports keyboard navigation, Escape, focus restoration, and an
  * image counter with visible previous/next/close labels.
  */
-export function GalleryGrid({ images, label, strings }: GalleryGridProps) {
+export function GalleryGrid({
+  images,
+  label,
+  strings,
+  lang,
+}: GalleryGridProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -82,7 +90,13 @@ export function GalleryGrid({ images, label, strings }: GalleryGridProps) {
           <li key={image.src}>
             <button
               type="button"
-              onClick={() => setOpenIndex(index)}
+              onClick={() => {
+                setOpenIndex(index);
+                trackEvent(GA4_EVENTS.galleryLightboxOpen, {
+                  slide_index: index + 1,
+                  language: lang,
+                });
+              }}
               className="group block w-full overflow-hidden rounded-[var(--radius-card)] border border-frost bg-white text-left transition-colors hover:border-fjord/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fjord"
               aria-haspopup="dialog"
             >

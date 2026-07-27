@@ -1,7 +1,10 @@
 import type { Lang, NavKey } from "../content/types.ts";
 import { Header } from "./Header.tsx";
 import { Footer } from "./Footer.tsx";
-import { CookieConsent } from "./CookieConsent.tsx";
+import { CookieConsentProvider } from "../lib/cookie-consent/context.tsx";
+import { CookieConsentBanner } from "./CookieConsentBanner.tsx";
+import { CookieConsentPreferences } from "./CookieConsentPreferences.tsx";
+import { GoogleAnalytics } from "./GoogleAnalytics.tsx";
 import { JsonLd } from "./JsonLd.tsx";
 
 interface SiteShellProps {
@@ -22,23 +25,26 @@ const HERO_KEY: Record<Lang, Partial<Record<NavKey, string>>> = {
 
 /**
  * Shared site shell: skip link, semantic header, main landmark, footer, and
- * the reserved cookie-consent boundary. Pages pass their `activeKey` so active
- * states render correctly. Server component — the only client islands are the
- * mobile nav disclosure and the cookie-consent boundary.
+ * the cookie-consent boundary (provider + banner + preferences dialog ported
+ * from levifinland2026). Pages pass their `activeKey` so active states render
+ * correctly. Server component — the only client islands are the mobile nav
+ * disclosure and the cookie-consent components.
  */
 export function SiteShell({ lang, activeKey, children }: SiteShellProps) {
   const heroKey = activeKey ? HERO_KEY[lang]?.[activeKey] : undefined;
   const heroAvif = heroKey ? `/hero/${heroKey}.avif` : undefined;
   return (
-    <>
+    <CookieConsentProvider>
       {heroAvif ? (
         <link rel="preload" as="image" href={heroAvif} type="image/avif" fetchPriority="high" />
       ) : null}
       <Header lang={lang} activeKey={activeKey} />
       <main id="main">{children}</main>
       <Footer lang={lang} />
-      <CookieConsent lang={lang} />
+      <CookieConsentBanner lang={lang} />
+      <CookieConsentPreferences lang={lang} />
+      <GoogleAnalytics lang={lang} />
       <JsonLd lang={lang} />
-    </>
+    </CookieConsentProvider>
   );
 }

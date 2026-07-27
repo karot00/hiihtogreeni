@@ -1,4 +1,4 @@
-import type { NavItem, PageContent, GalleryImage, UILabels, FormStrings } from "./types.ts";
+import type { NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
 import { EXTERNAL_LINKS } from "./shared.ts";
 
 export const EN_NAV: NavItem[] = [
@@ -24,13 +24,87 @@ export const EN_UI: UILabels = {
   footerNavHeading: "Pages",
   footerLanguageHeading: "Language",
   contactCta: "Get in touch",
-  cookieSettings: "Cookie settings",
   rightsReserved: "All rights reserved.",
   galleryClose: "Close",
   galleryPrevious: "Previous image",
   galleryNext: "Next image",
   carouselLabel: "Photos of Hiihtogreeni and Levi",
   carouselSlide: "Slide",
+};
+
+export const EN_COOKIE_CONSENT: CookieConsentCopy = {
+  banner: {
+    ariaLabel: "Cookie notice",
+    eyebrow: "Cookies",
+    title: "Cookies on this site",
+    description:
+      "We use one essential cookie to store your cookie choice. Optional analytics cookies are used only with your consent.",
+    acceptAll: "Accept all",
+    rejectNonEssential: "Essential only",
+    manageSettings: "Cookie settings",
+  },
+  preferences: {
+    eyebrow: "Cookies",
+    title: "Cookie settings",
+    description:
+      "Choose which cookie categories this site may use. Essential cookies are always active.",
+  },
+  categories: {
+    essential: {
+      title: "Essential",
+      description:
+        "Required for basic site functions, such as storing your cookie choice. These cannot be turned off.",
+    },
+    functional: {
+      title: "Functional",
+      description:
+        "Would remember choices such as language preferences. This site currently uses no functional cookies.",
+    },
+    analytics: {
+      title: "Analytics",
+      description:
+        "Help us understand how the site is used (Google Analytics). Used only with your consent.",
+    },
+    marketing: {
+      title: "Marketing",
+      description:
+        "Would be used for advertising. This site currently uses no marketing cookies.",
+    },
+    alwaysActive: "Always active",
+    optional: "Optional",
+  },
+  inventory: {
+    detailsLabel: "Show cookies",
+    name: "Name",
+    provider: "Provider",
+    purpose: "Purpose",
+    duration: "Duration",
+    emptyCategory:
+      "No cookies or other technologies are in use in this category.",
+    deferredNote: "(not yet in use)",
+    items: {
+      hg_consent: {
+        purpose: "Stores your cookie consent choice for this site",
+        duration: "180 days",
+      },
+      ga: {
+        purpose: "Google Analytics: distinguishes visitors",
+        duration: "2 years",
+      },
+      ga_session: {
+        purpose: "Google Analytics: keeps session state",
+        duration: "2 years",
+      },
+    },
+  },
+  actions: {
+    cancel: "Cancel",
+    rejectNonEssential: "Essential only",
+    acceptAll: "Accept all",
+    savePreferences: "Save preferences",
+  },
+  settingsTrigger: "Cookie settings",
+  settingsTriggerAriaLabel: "Open cookie settings",
 };
 
 export const enHome: PageContent = {
