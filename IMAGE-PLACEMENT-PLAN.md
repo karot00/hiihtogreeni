@@ -1,7 +1,16 @@
 # New Image Placement Plan
 
 Source images: `images/hiihtogreeni_final/` (16 files, added by client).
-Status: **planned, not yet implemented**. Awaiting green light or edits.
+Status: **implemented** (2026-07-27), including client addendum:
+
+- Rates page hero replaced with `levi_winter_hiihtogreeni.jpg` (regenerated
+  `public/hero/rates.{avif,webp,jpg}`) — a cabin shot not used in any other hero.
+- Cabin page capacity table split into Apartment A / Apartment B rows
+  (14 beds // 7 bedrooms // 7 bathrooms // sauna, kitchen and living room).
+- Bedrooms list: "4 double/twin rooms" replaced with "2 rooms with bunk beds"
+  (fi: "Kerrossänkyhuoneita 2 kpl").
+- Removed "The downstairs rooms are also wheelchair accessible" (list + en meta
+  description).
 
 ## Current bugs found
 

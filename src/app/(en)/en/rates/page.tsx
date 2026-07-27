@@ -1,5 +1,5 @@
 import { SiteShell } from "../../../../components/SiteShell.tsx";
-import { Hero, Section, Eyebrow, ButtonLink, CallToAction } from "../../../../components/ui/Primitives.tsx";
+import { Hero, Section, Eyebrow, ButtonLink, SplitSection, CallToAction } from "../../../../components/ui/Primitives.tsx";
 import { enRates, enRatesSections } from "../../../../content/en.ts";
 import { EXTERNAL_LINKS, CAPACITY, RENTAL_CONTACT } from "../../../../content/shared.ts";
 import { getHref } from "../../../../lib/routes.ts";
@@ -25,7 +25,7 @@ export default function RatesPage() {
           jpg: "/hero/rates.jpg",
           width: 1600,
           height: 1067,
-          alt: "Hiihtogreeni rates",
+          alt: "Hiihtogreeni cabin in winter in Levi",
         }}
         eyebrow="Levi, Lapland"
         title={enRates.h1}
@@ -87,14 +87,24 @@ export default function RatesPage() {
       </Section>
 
       <Section tone="mist">
-        <Eyebrow>{s.greenFeeLead}</Eyebrow>
-        <h2 className="mt-3 text-h2 font-display text-ink">Levi Golf green fees</h2>
-        <p className="mt-4 max-w-[68ch] text-body">{s.greenFee}</p>
-        <div className="mt-6">
-          <ButtonLink href={EXTERNAL_LINKS.greenFee} external>
-            {s.greenFeeCta}
-          </ButtonLink>
-        </div>
+        <SplitSection
+          imageSide="right"
+          image={{
+            src: "/wp-content/uploads/2026/07/osta_green_fee_levi_golfiin.jpg",
+            width: 1632,
+            height: 1229,
+            alt: "Buy green fees for Levi Golf",
+          }}
+        >
+          <Eyebrow>{s.greenFeeLead}</Eyebrow>
+          <h2 className="mt-3 text-h2 font-display text-ink">Levi Golf green fees</h2>
+          <p className="mt-4 max-w-[68ch] text-body">{s.greenFee}</p>
+          <div className="mt-6">
+            <ButtonLink href={EXTERNAL_LINKS.greenFee} external>
+              {s.greenFeeCta}
+            </ButtonLink>
+          </div>
+        </SplitSection>
       </Section>
 
       <CallToAction

@@ -1,8 +1,11 @@
 import { SiteShell } from "../../components/SiteShell.tsx";
+import { HomeCarousel } from "../../components/HomeCarousel.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, ImageCard, CallToAction } from "../../components/ui/Primitives.tsx";
 import {
   fiHome,
   fiHomeSections,
+  fiHomeCarousel,
+  FI_UI,
 } from "../../content/fi.ts";
 import { COMPANY, CAPACITY, EXTERNAL_LINKS, RENTAL_CONTACT } from "../../content/shared.ts";
 import { getHref } from "../../lib/routes.ts";
@@ -102,6 +105,22 @@ export default function HomePage() {
         </div>
       </Section>
 
+      <Section tone="white">
+        <Eyebrow>Kuvia</Eyebrow>
+        <h2 className="mt-3 text-h2 font-display text-ink">Hiihtogreeni kuvina</h2>
+        <div className="mt-8">
+          <HomeCarousel
+            images={fiHomeCarousel}
+            label={FI_UI.carouselLabel}
+            strings={{
+              previous: FI_UI.galleryPrevious,
+              next: FI_UI.galleryNext,
+              slide: FI_UI.carouselSlide,
+            }}
+          />
+        </div>
+      </Section>
+
       <Section tone="mist">
         <SplitSection
           imageSide="right"
@@ -140,10 +159,10 @@ export default function HomePage() {
         <SplitSection
           imageSide="left"
           image={{
-            src: "/wp-content/uploads/2022/10/banner_mokki-levilla.jpg",
-            width: 450,
-            height: 1900,
-            alt: "Hiihtogreeni ulkopuolelta talvella",
+            src: "/wp-content/uploads/2026/07/Hiihgreeni-levi-rental-cabin-for-large-groups.jpg",
+            width: 1600,
+            height: 900,
+            alt: "Hiihtogreeni – iso vuokramökki ryhmille Levillä",
           }}
         >
           <Eyebrow>{s.groupsLead}</Eyebrow>
@@ -168,10 +187,10 @@ export default function HomePage() {
         <SplitSection
           imageSide="right"
           image={{
-            src: "/wp-content/uploads/2024/07/Large-and-warm-space-for-ski-maintenance.jpg",
-            width: 1215,
-            height: 2160,
-            alt: "Suksien huoltotila kellarissa",
+            src: "/wp-content/uploads/2026/07/levi_golf_green_fee.jpg",
+            width: 1767,
+            height: 1330,
+            alt: "Levi Golfin kenttä kesällä",
           }}
         >
           <Eyebrow>{s.golfLead}</Eyebrow>
@@ -188,10 +207,10 @@ export default function HomePage() {
         <SplitSection
           imageSide="left"
           image={{
-            src: "/wp-content/uploads/2024/07/Lahella-mokkia-on-Levijarven-uimaranta.jpg",
-            width: 1216,
-            height: 2160,
-            alt: "Levijärven ranta kesällä",
+            src: "/wp-content/uploads/2026/07/golf_course_views_from_hiihtogreeni_terrace.jpg",
+            width: 1632,
+            height: 1229,
+            alt: "Golfkenttänäkymä Hiihtogreenin terassilta",
           }}
         >
           <Eyebrow>{s.viewsLead}</Eyebrow>

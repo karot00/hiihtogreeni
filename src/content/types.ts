@@ -76,6 +76,10 @@ export interface UILabels {
   galleryClose: string;
   galleryPrevious: string;
   galleryNext: string;
+  /** Accessible name for the homepage image carousel region. */
+  carouselLabel: string;
+  /** Prefix for carousel slide indicators, e.g. "Kuva" -> "Kuva 2 / 6". */
+  carouselSlide: string;
 }
 
 /** Localized runtime strings for the contact form client island. */

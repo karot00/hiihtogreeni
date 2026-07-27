@@ -29,6 +29,8 @@ export const EN_UI: UILabels = {
   galleryClose: "Close",
   galleryPrevious: "Previous image",
   galleryNext: "Next image",
+  carouselLabel: "Photos of Hiihtogreeni and Levi",
+  carouselSlide: "Slide",
 };
 
 export const enHome: PageContent = {
@@ -68,12 +70,23 @@ export const enHomeSections = {
     "Renting a cabin in Levi is safe and reliable through us. We welcome you and your party to enjoy high-quality surroundings in Levi all year round!",
 } as const;
 
+export const enHomeCarousel: GalleryImage[] = [
+  { src: "/wp-content/uploads/2026/07/northern_lights_levi_hiihtogreeni.jpg", alt: "Northern lights over Hiihtogreeni in Levi", width: 1814, height: 1021, caption: "Northern lights over Hiihtogreeni" },
+  { src: "/wp-content/uploads/2026/07/rental_cabin_for_large_groups_levi_golf_course.jpg", alt: "Large rental cabin for groups by the golf course", width: 1440, height: 810, caption: "Large rental cabin for groups by the golf course" },
+  { src: "/wp-content/uploads/2026/07/excellent_ski_maintenance_room_levi_hiihtogreeni.jpg", alt: "Excellent ski maintenance room at Hiihtogreeni", width: 1613, height: 907, caption: "Excellent ski maintenance room" },
+  { src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg", alt: "Large conference room for up to 20 people", width: 2160, height: 1216, caption: "Large conference room for up to 20 people" },
+  { src: "/wp-content/uploads/2022/10/Hiihtogreeni-29-of-32.jpg", alt: "Plenty of parking space", width: 1024, height: 682, caption: "Plenty of parking space" },
+  { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-1.jpg", alt: "Dining table for 12", width: 800, height: 533, caption: "Dining table for 12" },
+  { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-4.jpg", alt: "Well equipped kitchen", width: 800, height: 533, caption: "7 bedrooms with ensuite on both apartments" },
+  { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-6.jpg", alt: "Sauna", width: 800, height: 533, caption: "Sauna" },
+];
+
 export const enCabin: PageContent = {
   lang: "en",
   slug: "/en/cabin/",
   title: "Cabin - Hiihtogreeni",
   description:
-    "Hiihtogreeni is a log duplex cabin in Levi with two 14-person apartments. All amenities, private bathroom in every bedroom, wheelchair access downstairs, and a top location by the pistes.",
+    "Hiihtogreeni is a log duplex cabin in Levi with two 14-person apartments. All amenities, private bathroom in every bedroom, and a top location by the pistes.",
   h1: "Rental cabin, Levi",
   nav: EN_NAV,
   external: EXTERNAL_LINKS,
@@ -103,13 +116,19 @@ export const enCabinSections = {
     "Surface area about 150 m² / apartment",
     "On two levels",
   ],
+  apartmentNames: ["Apartment A", "Apartment B"],
+  apartmentFacts: [
+    { value: "14", label: "Beds" },
+    { value: "7", label: "Bedrooms" },
+    { value: "7", label: "Bathrooms" },
+    { label: "Sauna, kitchen and living room" },
+  ],
   bedrooms: [
     "Six bedrooms on the upper floor:",
-    "4 double/twin rooms",
+    "2 rooms with bunk beds",
     "2 single rooms",
     "All with private bathrooms",
     "One double/twin bedroom downstairs",
-    "The downstairs rooms are also wheelchair accessible",
     "Luxurious 90 x 200 cm beds with spring mattresses",
   ],
   livingKitchen: [
@@ -339,14 +358,16 @@ export const enGalleryImages: GalleryImage[] = [
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-9.jpg", alt: "Rooms", width: 800, height: 533, caption: "Rooms" },
   { src: "/wp-content/uploads/2022/10/Hgr3dalakerta.jpg", alt: "Ground floor plan", width: 1024, height: 594, caption: "Ground floor plan" },
   { src: "/wp-content/uploads/2022/10/Hgr3dylakerta.jpg", alt: "First floor plan", width: 1024, height: 499, caption: "First floor plan" },
-  { src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg", alt: "Large conference room for 24 people", width: 2160, height: 1216, caption: "Large conference room for 24 people" },
+  { src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg", alt: "Large conference room for up to 20 people", width: 2160, height: 1216, caption: "Large conference room for up to 20 people" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-29-of-32.jpg", alt: "Plenty of parking space", width: 1024, height: 682, caption: "Plenty of parking space" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-1.jpg", alt: "Exterior view", width: 1024, height: 681 },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-4Text.jpg", alt: "Location text", width: 1024, height: 681 },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-8.jpg", alt: "Exterior view 2", width: 1024, height: 570 },
+  { src: "/wp-content/uploads/2026/07/view_from_hiihtogreeni_levi_rental_cabin_golf_course.jpg", alt: "View from Hiihtogreeni over the golf course", width: 1398, height: 719, caption: "View from Hiihtogreeni over the golf course" },
   { src: "/wp-content/uploads/2024/07/Hiihtogreeni-sopii-alppihiihto-ja-maastohiihtojoukkueille.jpg", alt: "Warm ski maintenance facilities for teams and large groups", width: 2160, height: 1216, caption: "Warm ski maintenance facilities for teams and large groups" },
   { src: "/wp-content/uploads/2024/07/Isot-tilat-suksien-huoltoon-maajoukkueille-ja-seuroille-Levilla.jpg", alt: "Maintenance space in warm basement for teams", width: 2160, height: 1216, caption: "Maintenance space in warm basement for teams" },
   { src: "/wp-content/uploads/2024/07/Large-and-warm-space-for-ski-maintenance.jpg", alt: "Large and warm space for ski maintenance", width: 2160, height: 1215, caption: "Large and warm space for ski maintenance" },
+  { src: "/wp-content/uploads/2026/07/sport_equipment_maintenance_room_levi_hiihtogreeni.jpg", alt: "Sports equipment maintenance room", width: 1613, height: 907, caption: "Sports equipment maintenance room" },
   { src: "/wp-content/uploads/2024/07/Lahella-mokkia-on-Levijarven-uimaranta.jpg", alt: "Levijärvi beach during summertime is great for relaxing", width: 2160, height: 1216, caption: "Levijärvi beach during summertime is great for relaxing" },
   { src: "/wp-content/uploads/2024/07/Levijarven-hiekkaranta-lahella-mokkia.jpg", alt: "Beach at Levijärvi near the cabin", width: 2160, height: 1216, caption: "Beach at Levijärvi near the cabin" },
 ];

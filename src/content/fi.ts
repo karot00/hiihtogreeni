@@ -29,6 +29,8 @@ export const FI_UI: UILabels = {
   galleryClose: "Sulje",
   galleryPrevious: "Edellinen kuva",
   galleryNext: "Seuraava kuva",
+  carouselLabel: "Kuvia Hiihtogreenistä ja Levistä",
+  carouselSlide: "Kuva",
 };
 
 export const fiHome: PageContent = {
@@ -68,6 +70,17 @@ export const fiHomeSections = {
     "Mökin vuokraus Leviltä käy kauttamme turvallisesti ja luotettavasti. Toivotamme sinut ja seurueesi tervetulleeksi nauttimaan Levin ympäri vuoden laadukkaisiin puitteisiin!",
 } as const;
 
+export const fiHomeCarousel: GalleryImage[] = [
+  { src: "/wp-content/uploads/2026/07/northern_lights_levi_hiihtogreeni.jpg", alt: "Revontulet Hiihtogreenin yllä Levillä", width: 1814, height: 1021, caption: "Revontulet Hiihtogreenin yllä" },
+  { src: "/wp-content/uploads/2026/07/rental_cabin_for_large_groups_levi_golf_course.jpg", alt: "Iso vuokramökki ryhmille golfkentän laidalla", width: 1440, height: 810, caption: "Iso vuokramökki ryhmille golfkentän laidalla" },
+  { src: "/wp-content/uploads/2026/07/excellent_ski_maintenance_room_levi_hiihtogreeni.jpg", alt: "Erinomainen suksien huoltotila Hiihtogreenissä", width: 1613, height: 907, caption: "Erinomainen suksien huoltotila" },
+  { src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg", alt: "Iso neuvottelutila jopa 20 hengelle", width: 2160, height: 1216, caption: "Iso neuvottelutila jopa 20 hengelle" },
+  { src: "/wp-content/uploads/2022/10/Hiihtogreeni-29-of-32.jpg", alt: "Runsaasti pysäköintitilaa", width: 1024, height: 682, caption: "Runsaasti pysäköintitilaa" },
+  { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-1.jpg", alt: "12 hengen ruokapöytä", width: 800, height: 533, caption: "12 hengen ruokapöytä" },
+  { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-4.jpg", alt: "Hyvin varusteltu keittiö", width: 800, height: 533, caption: "7 makuuhuonetta omalla kylpyhuoneella, molemmissa huoneistoissa" },
+  { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-6.jpg", alt: "Sauna", width: 800, height: 533, caption: "Sauna" },
+];
+
 export const fiCabin: PageContent = {
   lang: "fi",
   slug: "/mokki/",
@@ -103,9 +116,16 @@ export const fiCabinSections = {
     "Pinta-ala noin 150 m² / huoneisto",
     "Kahdessa tasossa",
   ],
+  apartmentNames: ["Huoneisto A", "Huoneisto B"],
+  apartmentFacts: [
+    { value: "14", label: "Vuodepaikkaa" },
+    { value: "7", label: "Makuuhuonetta" },
+    { value: "7", label: "Kylpyhuonetta" },
+    { label: "Sauna, keittiö ja olohuone" },
+  ],
   bedrooms: [
     "Kuusi makuuhuonetta yläkerrassa:",
-    "Kahden hengen huoneita 4 kpl",
+    "Kerrossänkyhuoneita 2 kpl",
     "Yhden hengen huoneita 2 kpl",
     "Kaikilla on oma kylpyhuone",
     "Yksi makuuhuone alakerrassa (kahdelle hengelle)",
@@ -341,12 +361,14 @@ export const fiGalleryImages: GalleryImage[] = [
   { src: "/wp-content/uploads/2025/07/Points-of-interest-Hiihtogreeni-summer.jpg", alt: "Kiinnostavat kohteet – kesäkartta", width: 1024, height: 681, caption: "Kiinnostavat kohteet – kesäkartta" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-1.jpg", alt: "Ulkonäkymä", width: 1024, height: 681 },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-8.jpg", alt: "Ulkonäkymä 2", width: 1024, height: 570 },
+  { src: "/wp-content/uploads/2026/07/view_from_hiihtogreeni_levi_rental_cabin_golf_course.jpg", alt: "Näkymä Hiihtogreenistä golfkentälle", width: 1398, height: 719, caption: "Näkymä Hiihtogreenistä golfkentälle" },
   { src: "/wp-content/uploads/2025/07/Points-of-interest-Hiihtogreeni-winter.jpg", alt: "Kiinnostavat kohteet – talvikartta", width: 1024, height: 681, caption: "Kiinnostavat kohteet – talvikartta" },
-  { src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg", alt: "Suuri neuvottelutila 24 hengelle", width: 2160, height: 1216, caption: "Suuri neuvottelutila 24 hengelle" },
+  { src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg", alt: "Iso neuvottelutila jopa 20 hengelle", width: 2160, height: 1216, caption: "Iso neuvottelutila jopa 20 hengelle" },
   { src: "/wp-content/uploads/2024/07/Large-and-warm-space-for-ski-maintenance.jpg", alt: "Suksien huoltotila kellarissa varattavissa erikseen", width: 2160, height: 1215, caption: "Suksien huoltotila kellarissa varattavissa erikseen" },
   { src: "/wp-content/uploads/2024/07/Isot-tilat-suksien-huoltoon-maajoukkueille-ja-seuroille-Levilla.jpg", alt: "Isot tilat suksien huoltoon maajoukkueille ja seuroille Levillä", width: 2160, height: 1216, caption: "Isot tilat suksien huoltoon maajoukkueille ja seuroille Levillä" },
   { src: "/wp-content/uploads/2024/07/Majoitus-Levilla-isolla-suksien-huoltotilalla.jpg", alt: "Suksien voitelutelineet kuuluvat huoltotilan varustukseen", width: 2160, height: 1216, caption: "Suksien voitelutelineet kuuluvat huoltotilan varustukseen" },
   { src: "/wp-content/uploads/2024/07/Hiihtogreeni-sopii-alppihiihto-ja-maastohiihtojoukkueille.jpg", alt: "Lämpimät suksien huoltotilat joukkueille ja isoille ryhmille", width: 2160, height: 1216, caption: "Lämpimät suksien huoltotilat joukkueille ja isoille ryhmille" },
+  { src: "/wp-content/uploads/2026/07/sport_equipment_maintenance_room_levi_hiihtogreeni.jpg", alt: "Urheiluvälineiden huoltotila", width: 1613, height: 907, caption: "Urheiluvälineiden huoltotila" },
   { src: "/wp-content/uploads/2024/07/Lahella-mokkia-on-Levijarven-uimaranta.jpg", alt: "Levijärven ranta kesällä virkistää", width: 2160, height: 1216, caption: "Levijärven ranta kesällä virkistää" },
   { src: "/wp-content/uploads/2024/07/Levijarven-hiekkaranta-lahella-mokkia.jpg", alt: "Levijärven hiekkaranta lähellä mökkiä", width: 2160, height: 1216, caption: "Levijärven hiekkaranta lähellä mökkiä" },
 ];

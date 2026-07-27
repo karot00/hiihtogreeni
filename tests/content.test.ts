@@ -116,6 +116,6 @@ test("galleries reference retained legacy media URLs under wp-content/uploads", 
 });
 
 test("Finnish and English gallery counts preserved from the approved source", () => {
-  assert.equal(fiGalleryImages.length, 25, "Finnish gallery is 25 images");
-  assert.equal(enGalleryImages.length, 23, "English gallery is 23 images (source listed 24, but Hiihtogreeni-tekstit.jpg has no valid source and was dropped, matching the Phase 5 media-availability correction)");
+  assert.equal(fiGalleryImages.length, 27, "Finnish gallery is 27 images (25 approved + 2 client additions from July 2026)");
+  assert.equal(enGalleryImages.length, 25, "English gallery is 25 images (23 approved + 2 client additions from July 2026; source listed 24, but Hiihtogreeni-tekstit.jpg has no valid source and was dropped, matching the Phase 5 media-availability correction)");
 });

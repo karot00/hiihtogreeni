@@ -1,7 +1,7 @@
 import { SiteShell } from "../../../components/SiteShell.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, FactList, ImageCard, CallToAction } from "../../../components/ui/Primitives.tsx";
 import { fiCabin, fiCabinSections } from "../../../content/fi.ts";
-import { COMPANY, CAPACITY, EXTERNAL_LINKS } from "../../../content/shared.ts";
+import { COMPANY, EXTERNAL_LINKS } from "../../../content/shared.ts";
 import { getHref } from "../../../lib/routes.ts";
 import { buildPageMetadata, OG_IMAGES } from "../../../lib/seo.ts";
 
@@ -50,16 +50,15 @@ export default function CabinPage() {
       <Section tone="mist">
         <Eyebrow>Kohteen tiedot</Eyebrow>
         <h2 className="mt-3 text-h2 font-display text-ink">Kapasiteetti ja huoneet</h2>
-        <div className="mt-8">
-          <FactStrip
-            facts={[
-              { value: String(CAPACITY.apartments), label: "14 hengen huoneistoa" },
-              { value: `${CAPACITY.guestsPerApartment}`, label: "Vierasta / huoneisto" },
-              { value: String(CAPACITY.bedrooms), label: "Makuuhuonetta" },
-              { value: String(CAPACITY.bathrooms), label: "Kylpyhuonetta" },
-              { value: CAPACITY.area, label: "Pinta-ala / huoneisto" },
-            ]}
-          />
+        <div className="mt-8 space-y-8">
+          {s.apartmentNames.map((name) => (
+            <div key={name}>
+              <h3 className="font-display text-h3 font-bold text-fjord-dark">{name}</h3>
+              <div className="mt-4">
+                <FactStrip columns={4} facts={s.apartmentFacts} />
+              </div>
+            </div>
+          ))}
         </div>
         <div className="mt-12 grid gap-10 md:grid-cols-3">
           <FactList title="Huoneistot" items={s.apartments} />
@@ -102,10 +101,10 @@ export default function CabinPage() {
           <ImageCard
             href={EXTERNAL_LINKS.leviFi}
             image={{
-              src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg",
-              width: 1216,
-              height: 2160,
-              alt: "Suuri neuvottelutila 24 hengelle",
+              src: "/wp-content/uploads/2026/07/view_from_hiihtogreeni_levi_rental_cabin_golf_course.jpg",
+              width: 1398,
+              height: 719,
+              alt: "Näkymä Hiihtogreenistä golfkentälle",
             }}
             title="Mökin esittely"
             description="Tutustu Hiihtogreeniin myös levifinland.fi -sivustolla."

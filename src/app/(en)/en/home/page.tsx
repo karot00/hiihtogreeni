@@ -1,6 +1,7 @@
 import { SiteShell } from "../../../../components/SiteShell.tsx";
+import { HomeCarousel } from "../../../../components/HomeCarousel.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, ImageCard, CallToAction } from "../../../../components/ui/Primitives.tsx";
-import { enHome, enHomeSections } from "../../../../content/en.ts";
+import { enHome, enHomeSections, enHomeCarousel, EN_UI } from "../../../../content/en.ts";
 import { CAPACITY, EXTERNAL_LINKS, RENTAL_CONTACT } from "../../../../content/shared.ts";
 import { getHref } from "../../../../lib/routes.ts";
 import { buildPageMetadata, OG_IMAGES } from "../../../../lib/seo.ts";
@@ -99,6 +100,22 @@ export default function EnglishHomePage() {
         </div>
       </Section>
 
+      <Section tone="white">
+        <Eyebrow>Photos</Eyebrow>
+        <h2 className="mt-3 text-h2 font-display text-ink">Hiihtogreeni in pictures</h2>
+        <div className="mt-8">
+          <HomeCarousel
+            images={enHomeCarousel}
+            label={EN_UI.carouselLabel}
+            strings={{
+              previous: EN_UI.galleryPrevious,
+              next: EN_UI.galleryNext,
+              slide: EN_UI.carouselSlide,
+            }}
+          />
+        </div>
+      </Section>
+
       <Section tone="mist">
         <SplitSection
           imageSide="right"
@@ -137,10 +154,10 @@ export default function EnglishHomePage() {
         <SplitSection
           imageSide="left"
           image={{
-            src: "/wp-content/uploads/2022/10/banner_mokki-levilla.jpg",
-            width: 450,
-            height: 1900,
-            alt: "Hiihtogreeni cabin exterior in winter",
+            src: "/wp-content/uploads/2026/07/Hiihgreeni-levi-rental-cabin-for-large-groups.jpg",
+            width: 1600,
+            height: 900,
+            alt: "Hiihtogreeni – a large rental cabin for groups in Levi",
           }}
         >
           <Eyebrow>{s.groupsLead}</Eyebrow>
@@ -165,10 +182,10 @@ export default function EnglishHomePage() {
         <SplitSection
           imageSide="right"
           image={{
-            src: "/wp-content/uploads/2024/07/Large-and-warm-space-for-ski-maintenance.jpg",
-            width: 1215,
-            height: 2160,
-            alt: "Ski maintenance space in the basement",
+            src: "/wp-content/uploads/2026/07/levi_golf_green_fee.jpg",
+            width: 1767,
+            height: 1330,
+            alt: "Levi Golf course in summer",
           }}
         >
           <Eyebrow>{s.golfLead}</Eyebrow>
@@ -185,10 +202,10 @@ export default function EnglishHomePage() {
         <SplitSection
           imageSide="left"
           image={{
-            src: "/wp-content/uploads/2024/07/Lahella-mokkia-on-Levijarven-uimaranta.jpg",
-            width: 1216,
-            height: 2160,
-            alt: "Levijärvi beach in summer",
+            src: "/wp-content/uploads/2026/07/golf_course_views_from_hiihtogreeni_terrace.jpg",
+            width: 1632,
+            height: 1229,
+            alt: "Golf course view from the Hiihtogreeni terrace",
           }}
         >
           <Eyebrow>{s.viewsLead}</Eyebrow>

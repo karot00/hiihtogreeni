@@ -138,12 +138,15 @@ export function ButtonLink({
 
 interface FactStripProps {
   facts: readonly { value?: string; label: string }[];
+  /** Column count at md+; defaults to the 5-column layout. */
+  columns?: 4 | 5;
 }
 
 /** High-value accommodation facts as real, crawlable text. */
-export function FactStrip({ facts }: FactStripProps) {
+export function FactStrip({ facts, columns = 5 }: FactStripProps) {
+  const colsClass = columns === 4 ? "md:grid-cols-4" : "md:grid-cols-3 lg:grid-cols-5";
   return (
-    <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-card)] border border-frost bg-frost md:grid-cols-3 lg:grid-cols-5">
+    <dl className={`grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-card)] border border-frost bg-frost ${colsClass}`}>
       {facts.map((fact, index) => (
         <div key={index} className="bg-white p-6">
           {fact.value ? (
