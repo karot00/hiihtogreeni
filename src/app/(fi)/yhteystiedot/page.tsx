@@ -4,7 +4,7 @@ import { ContactForm } from "../../../components/ContactForm.tsx";
 import { ContactDetails } from "../../../components/ContactDetails.tsx";
 import { fiContact, fiContactSections } from "../../../content/fi.ts";
 import { getFormStrings } from "../../../content/index.ts";
-import { COMPANY, OBFUSCATED_CONTACTS, EXTERNAL_LINKS } from "../../../content/shared.ts";
+import { COMPANY, EXTERNAL_LINKS } from "../../../content/shared.ts";
 import { buildPageMetadata, OG_IMAGES } from "../../../lib/seo.ts";
 
 export const metadata = buildPageMetadata({
@@ -51,13 +51,13 @@ export default function ContactPage() {
                 {COMPANY.address.country}
               </p>
               <ContactDetails
-                contact={OBFUSCATED_CONTACTS.rental}
+                contact={{ name: "Karo Tammela", key: "rental" }}
                 label="Vuokraus"
                 revealLabel="Näytä puhelin ja sähköposti"
                 className="mt-3"
               />
               <ContactDetails
-                contact={OBFUSCATED_CONTACTS.maintenance}
+                contact={{ name: "Jens Pitkänen", key: "maintenance" }}
                 label="Huolto"
                 revealLabel="Näytä puhelin ja sähköposti"
                 className="mt-3"

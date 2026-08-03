@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Lang } from "../content/types.ts";
 import { getNav, getUI, COMPANY, LANGUAGE_OPTIONS } from "../content/index.ts";
-import { OBFUSCATED_CONTACTS } from "../content/shared.ts";
 import { getHref } from "../lib/routes.ts";
 import { CookieConsentSettingsTrigger } from "./CookieConsentSettingsTrigger.tsx";
 import { ContactDetails } from "./ContactDetails.tsx";
@@ -20,7 +19,7 @@ export function Footer({ lang }: FooterProps) {
   const nav = getNav(lang);
   const year = new Date().getFullYear();
   const company = COMPANY;
-  const contact = OBFUSCATED_CONTACTS.rental;
+  const contact = { name: "Karo Tammela", key: "rental" as const };
 
   return (
     <footer className="mt-16 bg-pine text-white">

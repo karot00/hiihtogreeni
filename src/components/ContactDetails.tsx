@@ -4,9 +4,7 @@ import { useState } from "react";
 
 interface ObfuscatedContact {
   name: string;
-  phone: string;
-  phoneDisplay: string;
-  email: string;
+  key: "rental" | "maintenance";
 }
 
 interface ContactDetailsProps {
@@ -23,9 +21,16 @@ interface ContactDetailsProps {
  */
 export function ContactDetails({ contact, label, revealLabel, className }: ContactDetailsProps) {
   const [revealed, setRevealed] = useState(false);
-  const decodedPhone = revealed ? decode(contact.phone) : "";
-  const decodedPhoneDisplay = revealed ? decode(contact.phoneDisplay) : "";
-  const decodedEmail = revealed ? decode(contact.email) : "";
+  const [details, setDetails] = useState<ContactValues | null>(null);
+
+  async function reveal() {
+    const response = await fetch(`/api/contact-details?contact=${contact.key}`, {
+      credentials: "same-origin",
+    });
+    if (!response.ok) return;
+    setDetails((await response.json()) as ContactValues);
+    setRevealed(true);
+  }
 
   if (!revealed) {
     return (
@@ -34,7 +39,7 @@ export function ContactDetails({ contact, label, revealLabel, className }: Conta
         <br />
         <button
           type="button"
-          onClick={() => setRevealed(true)}
+          onClick={reveal}
           className="font-semibold text-fjord-dark underline underline-offset-2 hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fjord"
         >
           {revealLabel}
@@ -43,27 +48,31 @@ export function ContactDetails({ contact, label, revealLabel, className }: Conta
     );
   }
 
+  if (!details) return null;
+
   return (
     <p className={className}>
       <span className="font-semibold">{label}:</span> {contact.name}
       <br />
       <a
-        href={`tel:${decodedPhone}`}
+        href={`tel:${details.phone}`}
         className="font-semibold text-fjord-dark underline-offset-2 hover:underline"
       >
-        {decodedPhoneDisplay}
+        {details.phoneDisplay}
       </a>
       <br />
       <a
-        href={`mailto:${decodedEmail}`}
+        href={`mailto:${details.email}`}
         className="font-semibold text-fjord-dark underline-offset-2 hover:underline"
       >
-        {decodedEmail}
+        {details.email}
       </a>
     </p>
   );
 }
 
-function decode(value: string) {
-  return atob(value);
+interface ContactValues {
+  phone: string;
+  phoneDisplay: string;
+  email: string;
 }

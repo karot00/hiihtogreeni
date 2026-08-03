@@ -1,5 +1,5 @@
 import type { Lang } from "../content/types.ts";
-import { COMPANY, RENTAL_CONTACT, CAPACITY, EXTERNAL_LINKS } from "../content/shared.ts";
+import { COMPANY, CAPACITY, EXTERNAL_LINKS } from "../content/shared.ts";
 import { SITE_CONFIG } from "../lib/config.ts";
 
 const ENTITY_ID = `${SITE_CONFIG.url}/#organization`;
@@ -15,8 +15,6 @@ function buildJsonLd(lang: Lang) {
         "@id": ENTITY_ID,
         name: COMPANY.name,
         url: SITE_CONFIG.url,
-        email: RENTAL_CONTACT.email,
-        telephone: RENTAL_CONTACT.phone,
         address: {
           "@type": "PostalAddress",
           streetAddress: COMPANY.address.street,
