@@ -187,8 +187,15 @@ export function SplitSection({ image, imageSide = "right", children }: SplitSect
 
 interface FactListProps {
   title: string;
-  items: readonly string[];
+  items: readonly FactListItem[];
 }
+
+type FactListItem =
+  | string
+  | {
+      text: string;
+      children: readonly string[];
+    };
 
 /** A titled list of factual bullet points (rooms, kitchen, facilities). */
 export function FactList({ title, items }: FactListProps) {
@@ -199,7 +206,18 @@ export function FactList({ title, items }: FactListProps) {
         {items.map((item, index) => (
           <li key={index} className="flex gap-3">
             <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-ember" />
-            <span>{item}</span>
+            <div>
+              <span>{typeof item === "string" ? item : item.text}</span>
+              {typeof item === "string" ? null : (
+                <ul className="mt-2 space-y-1 pl-5">
+                  {item.children.map((child) => (
+                    <li key={child} className="list-disc marker:text-ember">
+                      {child}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </li>
         ))}
       </ul>

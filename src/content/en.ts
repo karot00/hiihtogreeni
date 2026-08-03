@@ -198,9 +198,10 @@ export const enCabinSections = {
     { label: "Sauna, kitchen and living room" },
   ],
   bedrooms: [
-    "Six bedrooms on the upper floor:",
-    "2 rooms with bunk beds",
-     "4 double/twin bedrooms",
+    {
+      text: "Six bedrooms on the upper floor:",
+      children: ["2 bedrooms with bunk beds", "4 double/twin bedrooms"],
+    },
     "All with private bathrooms",
     "One double/twin bedroom downstairs",
     "Luxurious 90 x 200 cm beds with spring mattresses",

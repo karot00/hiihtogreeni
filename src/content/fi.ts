@@ -198,9 +198,10 @@ export const fiCabinSections = {
     { label: "Sauna, keittiö ja olohuone" },
   ],
   bedrooms: [
-    "Kuusi makuuhuonetta yläkerrassa:",
-    "Kerrossänkyhuoneita 2 kpl",
-    "Kahden hengen vuodepaikkoja 4 makuuhuoneessa",
+    {
+      text: "Kuusi makuuhuonetta yläkerrassa:",
+      children: ["2 kerrossänkyhuonetta", "4 kahden hengen makuuhuonetta"],
+    },
     "Kaikilla on oma kylpyhuone",
     "Yksi makuuhuone alakerrassa (kahdelle hengelle)",
     "Ylelliset 90 x 200 cm joustinsängyt",
