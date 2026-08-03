@@ -1,5 +1,21 @@
 import type { ContactPerson, ExternalLinks, LanguageOption } from "./types.ts";
 
+/** Contact values encoded before they cross into the client component. */
+export const OBFUSCATED_CONTACTS = {
+  rental: {
+    name: "Karo Tammela",
+    phone: "KzM1ODUwMDYzMzc0NA==",
+    phoneDisplay: "KzM1OCA1MDAgNjMzIDc0NA==",
+    email: "aGlpaHRvZ3JlZW5pQGhpaWh0b2dyZWVuaS5maQ==",
+  },
+  maintenance: {
+    name: "Jens Pitkänen",
+    phone: "KzM1ODQ0MzQ1NjAwMQ==",
+    phoneDisplay: "KzM1OCA0NCAzNDUgNjAwMQ==",
+    email: "amVucy5waXRrYW5lbkBhYXZhbGV2aS5maQ==",
+  },
+} as const;
+
 export const COMPANY = {
   name: "Levin Hiihtogreeni Oy",
   vatId: "FI19085526",

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import type { Lang } from "../content/types.ts";
-import { getNav, getUI, COMPANY, RENTAL_CONTACT, LANGUAGE_OPTIONS } from "../content/index.ts";
+import { getNav, getUI, COMPANY, LANGUAGE_OPTIONS } from "../content/index.ts";
+import { OBFUSCATED_CONTACTS } from "../content/shared.ts";
 import { getHref } from "../lib/routes.ts";
 import { CookieConsentSettingsTrigger } from "./CookieConsentSettingsTrigger.tsx";
+import { ContactDetails } from "./ContactDetails.tsx";
 
 interface FooterProps {
   lang: Lang;
@@ -18,7 +20,7 @@ export function Footer({ lang }: FooterProps) {
   const nav = getNav(lang);
   const year = new Date().getFullYear();
   const company = COMPANY;
-  const contact = RENTAL_CONTACT;
+  const contact = OBFUSCATED_CONTACTS.rental;
 
   return (
     <footer className="mt-16 bg-pine text-white">
@@ -43,24 +45,12 @@ export function Footer({ lang }: FooterProps) {
           <h2 className="text-sm font-semibold uppercase tracking-wide text-white/70">
             {ui.footerContactHeading}
           </h2>
-          <ul className="mt-3 space-y-2 text-sm">
-            <li>
-              <a
-                href={`tel:${contact.phone}`}
-                className="rounded-[var(--radius-control)] underline-offset-2 hover:underline focus-visible:underline"
-              >
-                {contact.phoneDisplay}
-              </a>
-            </li>
-            <li>
-              <a
-                href={`mailto:${contact.email}`}
-                className="rounded-[var(--radius-control)] underline-offset-2 hover:underline focus-visible:underline"
-              >
-                {contact.email}
-              </a>
-            </li>
-          </ul>
+          <ContactDetails
+            contact={contact}
+            label={lang === "fi" ? "Yhteys" : "Contact"}
+            revealLabel={lang === "fi" ? "Näytä puhelin ja sähköposti" : "Show phone and email"}
+            className="mt-3 text-sm"
+          />
           <Link
             href={getHref(lang, "contact")}
             className="mt-4 inline-flex min-h-11 items-center rounded-[var(--radius-control)] bg-ember px-4 font-display text-sm font-semibold text-ink transition-colors hover:bg-ember-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"

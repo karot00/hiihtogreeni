@@ -1,9 +1,10 @@
 import { SiteShell } from "../../../components/SiteShell.tsx";
 import { Hero, Section, Eyebrow } from "../../../components/ui/Primitives.tsx";
 import { ContactForm } from "../../../components/ContactForm.tsx";
+import { ContactDetails } from "../../../components/ContactDetails.tsx";
 import { fiContact, fiContactSections } from "../../../content/fi.ts";
 import { getFormStrings } from "../../../content/index.ts";
-import { COMPANY, RENTAL_CONTACT, MAINTENANCE_CONTACT, EXTERNAL_LINKS } from "../../../content/shared.ts";
+import { COMPANY, OBFUSCATED_CONTACTS, EXTERNAL_LINKS } from "../../../content/shared.ts";
 import { buildPageMetadata, OG_IMAGES } from "../../../lib/seo.ts";
 
 export const metadata = buildPageMetadata({
@@ -49,40 +50,18 @@ export default function ContactPage() {
                 <br />
                 {COMPANY.address.country}
               </p>
-              <p className="mt-3">
-                <span className="font-semibold">Vuokraus:</span> {RENTAL_CONTACT.name}
-                <br />
-                <a
-                  href={`tel:${RENTAL_CONTACT.phone}`}
-                  className="font-semibold text-fjord-dark underline-offset-2 hover:underline"
-                >
-                  {RENTAL_CONTACT.phoneDisplay}
-                </a>
-                <br />
-                <a
-                  href={`mailto:${RENTAL_CONTACT.email}`}
-                  className="font-semibold text-fjord-dark underline-offset-2 hover:underline"
-                >
-                  {RENTAL_CONTACT.email}
-                </a>
-              </p>
-              <p className="mt-3">
-                <span className="font-semibold">Huolto:</span> {MAINTENANCE_CONTACT.name}
-                <br />
-                <a
-                  href={`tel:${MAINTENANCE_CONTACT.phone}`}
-                  className="font-semibold text-fjord-dark underline-offset-2 hover:underline"
-                >
-                  {MAINTENANCE_CONTACT.phoneDisplay}
-                </a>
-                <br />
-                <a
-                  href={`mailto:${MAINTENANCE_CONTACT.email}`}
-                  className="font-semibold text-fjord-dark underline-offset-2 hover:underline"
-                >
-                  {MAINTENANCE_CONTACT.email}
-                </a>
-              </p>
+              <ContactDetails
+                contact={OBFUSCATED_CONTACTS.rental}
+                label="Vuokraus"
+                revealLabel="Näytä puhelin ja sähköposti"
+                className="mt-3"
+              />
+              <ContactDetails
+                contact={OBFUSCATED_CONTACTS.maintenance}
+                label="Huolto"
+                revealLabel="Näytä puhelin ja sähköposti"
+                className="mt-3"
+              />
             </address>
             <div className="mt-6">
               <a
