@@ -127,7 +127,7 @@ export const enHomeSections = {
     "In addition to its facilities, our modern cabin's trump card is its location – here, from the edge of the northeast pistes and the golf course, you can go downhill and cross-country skiing, and to the golf course in the golf season, almost from your own yard. The Kittilä airport is approximately 16 km or 20 minutes away by car.",
   groupsLead: "For groups, from corporate parties to bunches of friends",
   groups:
-    "A rental cabin is an ideal accommodation option for groups, such as corporate groups or skiing parties. Between the apartments there is a convenient 24-person conference room for meetings and other events. Naturally, families and groups of friends are also warmly welcome!",
+    "A rental cabin is an ideal accommodation option for groups, such as corporate groups or skiing parties. Between the apartments there is a convenient 20-person conference room for meetings and other events. Naturally, families and groups of friends are also warmly welcome!",
   groupsCta:
     "See all the cabin features and take a peek at our photo gallery. You can see our rates here. Please contact us if you are interested in renting a cabin! You can rent the whole building or just one half of it, according to your needs.",
   leviLink: "Cabin presentation also at: levifinland.fi",
@@ -182,7 +182,7 @@ export const enCabinSections = {
   lead:
     "Hiihtogreeni has all the amenities you'll need for a perfect, luxurious stay in Lapland in a top location.",
   intro:
-    "Hiihtogreeni is a log-framed duplex rental cabin in Levi consisting of two 14-person apartments. The house was built in 2006 and it is located next to the golf course and the northeast pistes near beautiful lake and fell landscapes. You can reach beautiful tracks and slopes just 200 m away, and in summer you have a view of the Levi Golf course and its clubhouse. You can ride a snowmobile right out of the yard of the cabin. The Kittilä airport is approximately 16 km or 20 minutes away by car. The SkiBussi bus can take you to the Levi ski center, 4 km away, in a few minutes. In summer, free city bikes are available in the yard of Levi Golf, just a couple of hundred meters away.",
+    "Hiihtogreeni is a log-framed duplex rental cabin in Levi consisting of two 14-person apartments. The house was built in 2006 and it is located next to the golf course and the northeast pistes near beautiful lake and fell landscapes. You can reach beautiful tracks and slopes just 200 m away, and in summer you have a view of the Levi Golf course and its clubhouse. You can ride a snowmobile right out of the yard of the cabin. The Kittilä airport is approximately 16 km or 20 minutes away by car. The SkiBussi bus can take you to the Levi ski center, 4 km away, in a few minutes.",
   introAfter:
     "Our rental cabin in Levi contains all the amenities you'll need, from dishes to a washing machine. The building also contains a convenient conference room/dining room, for example for club meetings or other events. Beautiful and unique details have been used in the interiors. Check out the features of the cabin in more detail and book the best accommodation for your group. Contact us!",
   apartments: [
@@ -200,7 +200,7 @@ export const enCabinSections = {
   bedrooms: [
     "Six bedrooms on the upper floor:",
     "2 rooms with bunk beds",
-    "2 single rooms",
+     "4 double/twin bedrooms",
     "All with private bathrooms",
     "One double/twin bedroom downstairs",
     "Luxurious 90 x 200 cm beds with spring mattresses",
@@ -222,10 +222,10 @@ export const enCabinSections = {
   ],
   special: [
     "Heat-storing fireplace of fell stone designed by Eero Mattanen",
-    "Conference/dining room for 24 people – If the whole building is booked by the same group, this room is provided free. The room has a video projector, screen and mini-kitchen. If necessary, we can arrange special events with local service providers.",
-    "Basement: separate approx. 60 m² room and two rooms for group work, etc. (please ask about a special lease for the rental of these spaces).",
+    "Conference/dining room for 20 people – If the whole building is booked by the same group, this room is provided free. The room has a video projector, screen and mini-kitchen. If necessary, we can arrange special events with local service providers.",
+    "Basement: separate approx. 50 m² warm ski/sports equipment maintenance room (please ask about a special lease for the rental of this space).",
     "Storage building with firewood and an unheated garage (ask about garage rental separately). The garage has 1- and 3-phase sockets for charging a car.",
-    "Car-heating sockets (3/apartment). Charging a car from the sockets is prohibited.",
+    "Car-heating sockets (2/apartment). Charging an EV from the socket is prohibited.",
   ],
 } as const;
 
@@ -234,7 +234,7 @@ export const enTeams: PageContent = {
   slug: "/en/teams/",
   title: "For Teams - Hiihtogreeni",
   description:
-    "A Levi cabin built for ski teams and sports groups: sleeps 14 or 28, a private bathroom in every bedroom, a 24-seat briefing room and a 50+ m² warm ski maintenance room, steps from the slopes. Ask about availability.",
+    "A Levi cabin built for ski teams and sports groups: sleeps 14 or 28, a private bathroom in every bedroom, a 20-seat briefing room and a 50+ m² warm ski maintenance room, steps from the slopes. Ask about availability.",
   h1: "Large semi-detached cabin for sports clubs and teams in Levi",
   nav: EN_NAV,
   external: EXTERNAL_LINKS,
@@ -286,7 +286,7 @@ export const enTeamsSections = {
     "7 bedrooms and 7 bathrooms per apartment.",
     "Your own 50+ m² warm ski and sports equipment maintenance room inside the cabin – not an outdoor shed or shared basement.",
     "Sleeps 14 or 28 in one place.",
-    "A 24-seat briefing room with a projector – team talks, video review and sponsor meetings with no outside venue to book.",
+    "A 20-seat briefing room with a projector – team talks, video review and sponsor meetings with no outside venue to book.",
     "Slopes about 200 m and tracks from the yard: training, maintenance and rest all in one spot.",
     "The whole house for one team – privacy and quiet, free of other guests.",
     "Only 16 km (about 20 min) from Kittilä airport; easy arrivals and departures.",
@@ -324,7 +324,7 @@ export const enTeamsSections = {
   splitMeetingLead: "A briefing room built in",
   splitMeetingTitle: "Team talks happen on site",
   splitMeeting:
-    "Between the apartments there is a 24-seat conference room for team talks, video review, sponsor meetings or coaches' briefings – no need to book an outside venue. The room has a video projector, screen and mini-kitchen, and it is included when the whole house is booked by one team.",
+    "Between the apartments there is a 20-seat conference room for team talks, video review, sponsor meetings or coaches' briefings – no need to book an outside venue. The room has a video projector, screen and mini-kitchen, and it is included when the whole house is booked by one team.",
   maintenanceLead: "The best ski maintenance facilities in Levi",
   maintenanceTitle: "50+ m² of warm ski maintenance space",
   maintenance:
@@ -362,7 +362,7 @@ export const enRatesSections = {
   capacityNote:
     "Prices are for one apartment for 14 (max 14) people. The house has 2 similar apartments.",
   meetingNote:
-    "Between the apartments there is a 24-person conference/dining room. It can be booked separately with one apartment. If both apartments are booked, the room is included in the price.",
+    "Between the apartments there is a 20-person conference/dining room. It can be booked separately with one apartment. If both apartments are booked, the room is included in the price.",
   seasons: [
     {
       title: "A - High Season",
@@ -388,16 +388,16 @@ export const enRatesSections = {
   ],
   terms: [
     "Prices always include cleaning at the end of the stay",
-    "Bed linen: 10 € / set",
+    "Bed linen and towels: 16 € / set",
     "Beds made: 25 € / set",
-    "If renting the whole house (both apartments) the price also includes meeting/dining room for 24 people with end-of-stay cleaning",
+    "If renting the whole house (both apartments) the price also includes meeting/dining room for 20 people with end-of-stay cleaning",
     "All prices include 13.5% VAT on accommodation services",
     "Terms of payment: 30% when reserving, rest 60 days before accommodation",
   ],
   termsNote: "Ask for general accommodation conditions by e-mail.",
   greenFeeLead: "Levi Golf Green Fees",
   greenFee:
-    "Hiihtogreeni offers competitively priced green fees for Levi Golf, starting from just €26 per green fee. Purchase your green fees conveniently through our booking form. After your purchase, you'll receive an order confirmation and details about your green fees directly via email. You can buy up to 7 green fees for the same day.",
+    "Hiihtogreeni offers competitively priced green fees for Levi Golf, starting from just €27 per green fee. Purchase your green fees conveniently through our booking form. After your purchase, you'll receive an order confirmation and details about your green fees directly via email. You can buy up to 7 green fees for the same day.",
   greenFeeCta: "Buy your Levi Golf green fees here",
 } as const;
 

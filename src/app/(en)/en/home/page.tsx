@@ -142,8 +142,8 @@ export default function EnglishHomePage() {
             facts={[
               { value: String(CAPACITY.apartments), label: "Apartments" },
               { value: `${CAPACITY.guestsPerApartment}`, label: "Guests / apartment" },
-              { value: String(CAPACITY.bedrooms), label: "Bedrooms" },
-              { value: String(CAPACITY.bathrooms), label: "Bathrooms" },
+              { value: String(CAPACITY.bedrooms), label: "Bedrooms / Apartment" },
+              { value: String(CAPACITY.bathrooms), label: "Bathrooms / Apartment" },
               { value: CAPACITY.area, label: "Area / apartment" },
             ]}
           />

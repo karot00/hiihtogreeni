@@ -146,7 +146,7 @@ export default function TeamsPage() {
               { value: "28", label: "Guests in the whole cabin" },
               { value: "7", label: "Bedrooms / apartment" },
               { value: "7", label: "Ensuite bathrooms / apartment" },
-              { value: "24", label: "Seats in the conference room" },
+              { value: "20", label: "Seats in the conference room" },
             ]}
           />
         </div>
@@ -175,7 +175,7 @@ export default function TeamsPage() {
             src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg",
             width: 2160,
             height: 1216,
-            alt: "Conference room for 24 people",
+            alt: "Conference room for 20 people",
           }}
         >
           <Eyebrow>{s.splitMeetingLead}</Eyebrow>

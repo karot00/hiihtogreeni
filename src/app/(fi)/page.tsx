@@ -147,8 +147,8 @@ export default function HomePage() {
             facts={[
               { value: String(CAPACITY.apartments), label: "Huoneistoa" },
               { value: `${CAPACITY.guestsPerApartment}`, label: "Vierasta / huoneisto" },
-              { value: String(CAPACITY.bedrooms), label: "Makuuhuonetta" },
-              { value: String(CAPACITY.bathrooms), label: "Kylpyhuonetta" },
+              { value: String(CAPACITY.bedrooms), label: "Makuuhuonetta / huoneisto" },
+              { value: String(CAPACITY.bathrooms), label: "Kylpyhuonetta / huoneisto" },
               { value: CAPACITY.area, label: "Pinta-ala / huoneisto" },
             ]}
           />

@@ -146,7 +146,7 @@ export default function TeamsPage() {
               { value: "28", label: "Vierasta koko talossa" },
               { value: "7", label: "Makuuhuonetta / huoneisto" },
               { value: "7", label: "Omaa kylpyhuonetta / huoneisto" },
-              { value: "24", label: "Paikkaa neuvottelutilassa" },
+              { value: "20", label: "Paikkaa neuvottelutilassa" },
             ]}
           />
         </div>
@@ -175,7 +175,7 @@ export default function TeamsPage() {
             src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg",
             width: 2160,
             height: 1216,
-            alt: "Neuvottelutila 24 hengelle",
+            alt: "Neuvottelutila 20 hengelle",
           }}
         >
           <Eyebrow>{s.splitMeetingLead}</Eyebrow>

@@ -127,7 +127,7 @@ export const fiHomeSections = {
     "Varustelun lisäksi modernin mökkimme sijainti on sen ehdotonta valttia – Koillisrinteiden ja golfkentän kupeesta pääsee laskettelemaan, ladulle ja golfsesonkina kentälle lähes suoraan omasta pihasta. Kittilän lentoasemalta on matkaa autolla noin 16 km eli 20 minuuttia.",
   groupsLead: "Ryhmille yrityksistä ystäviin",
   groups:
-    "Vuokramökki on ihanteellinen majoitusvaihtoehto isoille ryhmille, kuten yrityksille ja hiihtoseuroille, huoneistojen välistä löytyy mm. kätevä 24 hengen neuvottelutila kokoustamiseen ja muihin tilaisuuksiin. Toki myös perheet ja ystäväporukat ovat mitä lämpimin toivotuksin tervetulleita!",
+    "Vuokramökki on ihanteellinen majoitusvaihtoehto isoille ryhmille, kuten yrityksille ja hiihtoseuroille, huoneistojen välistä löytyy mm. kätevä 20 hengen neuvottelutila kokoustamiseen ja muihin tilaisuuksiin. Toki myös perheet ja ystäväporukat ovat mitä lämpimin toivotuksin tervetulleita!",
   groupsCta:
     "Katso kaikki mökin ominaisuudet (/mokki), ja kurkkaa myös kuvagallerian puolelle. Ota yhteyttä ja kysy saatavuutta! Voitte vuokrata käyttöönne koko talon tai vain toisen puolen tarpeidenne mukaan.",
   leviLink: "Mökin esittely myös: levifinland.fi",
@@ -182,7 +182,7 @@ export const fiCabinSections = {
   lead:
     "Hiihtogreenissä on kaikki mukavuudet täydelliseen ja tasokkaaseen loma-asumiseen Lapissa, huippusijaintia unohtamatta",
   intro:
-    "Hiihtogreeni on hirsirakenteinen paritalo-vuokramökki Levillä, jossa on kaksi 14 hengen huoneistoa. Talo on rakennettu vuonna 2006, ja se sijaitsee golfkentän ja Koillisrinteiden vieressä, kauniiden järvi- ja tunturimaisemien äärellä. Tavoitat upeat ladut ja rinteet vain 200 m päästä, ja kesällä eteesi avautuu Taalojärvi ja golfkenttä klubirakennuksineen. Vain muutaman kilometrin päästä löytyy Levijärven yleinen uimaranta. Kittilän lentoasemalta on matkaa autolla noin 16 km eli 20 minuuttia. Levikeskukseen, 4 km päähän, kuljettaa SkiBussi muutamassa minuutissa. Kesällä ilmaiset kaupunkipyörät ovat tarjolla Levi Golfin pihassa parin sadan metrin päässä.",
+    "Hiihtogreeni on hirsirakenteinen paritalo-vuokramökki Levillä, jossa on kaksi 14 hengen huoneistoa. Talo on rakennettu vuonna 2006, ja se sijaitsee golfkentän ja Koillisrinteiden vieressä, kauniiden järvi- ja tunturimaisemien äärellä. Tavoitat upeat ladut ja rinteet vain 200 m päästä, ja kesällä eteesi avautuu Taalojärvi ja golfkenttä klubirakennuksineen. Vain muutaman kilometrin päästä löytyy Levijärven yleinen uimaranta. Kittilän lentoasemalta on matkaa autolla noin 16 km eli 20 minuuttia. Levikeskukseen, 4 km päähän, kuljettaa SkiBussi muutamassa minuutissa.",
   introAfter:
     "Vuokramökki Levillä sisältää kaikki tarvittavat varusteet astioista pyykinpesukoneeseen, talossa on myös kätevä neuvottelu-/ruokailutila esimerkiksi yritysten tai seurojen kokouksiin ja muihin tilaisuuksiin. Sisustusratkaisuissa on käytetty kauniita, uniikkeja yksityiskohtia. Katso mökin tarkemmat ominaisuudet ja varaa ryhmällesi paras majoitus – ota yhteyttä!",
   apartments: [
@@ -200,7 +200,7 @@ export const fiCabinSections = {
   bedrooms: [
     "Kuusi makuuhuonetta yläkerrassa:",
     "Kerrossänkyhuoneita 2 kpl",
-    "Yhden hengen huoneita 2 kpl",
+    "Kahden hengen vuodepaikkoja 4 makuuhuoneessa",
     "Kaikilla on oma kylpyhuone",
     "Yksi makuuhuone alakerrassa (kahdelle hengelle)",
     "Ylelliset 90 x 200 cm joustinsängyt",
@@ -222,10 +222,10 @@ export const fiCabinSections = {
   ],
   special: [
     "Varaava, tunturikivitakka (suunnittelija Eero Mattanen)",
-    "Neuvottelu-/ruokailutila 24 hengelle – mikäli koko talo on varattu samalle ryhmälle, tila veloituksetta käyttöön. Tilassa on videotykki, valkokangas ja minikeittiö. Järjestämme tarvittaessa erilaiset tilaisuudet paikallisten palveluntarjoajien kanssa.",
-    "Kellarikerroksessa erillinen n. 60 m² tila ja kaksi huonetta ryhmätyö- tms. käyttöön (kysy näiden tilojen vuokrausta erillisen sopimuksen mukaan).",
+    "Neuvottelu-/ruokailutila 20 hengelle – mikäli koko talo on varattu samalle ryhmälle, tila veloituksetta käyttöön. Tilassa on videotykki, valkokangas ja minikeittiö. Järjestämme tarvittaessa erilaiset tilaisuudet paikallisten palveluntarjoajien kanssa.",
+    "Kellarikerroksessa erillinen noin 50 m² lämmin suksien ja urheiluvälineiden huoltotila (kysy tämän tilan vuokrausta erillisen sopimuksen mukaan).",
     "Varastorakennus, jossa takkapuut ja kylmä autotalli (kysy autotallin vuokrausta erikseen). Autotallissa 1- ja 3-vaihepistorasiat auton latausta varten.",
-    "Autolämmityspistokkeet (3 kpl/huoneisto). Auton lataaminen pistorasioista kielletty.",
+    "Autolämmityspistokkeet (2 kpl/huoneisto). Sähköauton lataaminen pistorasiasta on kielletty.",
   ],
 } as const;
 
@@ -234,7 +234,7 @@ export const fiTeams: PageContent = {
   slug: "/joukkueille/",
   title: "Joukkueille - Hiihtogreeni",
   description:
-    "Mökki joukkueille ja hiihtojoukkueille Levillä: majoitus 14–28 hengelle, oma kylpyhuone jokaisessa huoneessa, 24 hengen neuvottelutila ja yli 50 m² lämmin suksien huoltotila aivan rinteiden vieressä. Kysy saatavuutta.",
+    "Mökki joukkueille ja hiihtojoukkueille Levillä: majoitus 14–28 hengelle, oma kylpyhuone jokaisessa huoneessa, 20 hengen neuvottelutila ja yli 50 m² lämmin suksien huoltotila aivan rinteiden vieressä. Kysy saatavuutta.",
   h1: "Iso parimökki urheiluseuroille ja joukkueille Levillä",
   nav: FI_NAV,
   external: EXTERNAL_LINKS,
@@ -286,7 +286,7 @@ export const fiTeamsSections = {
     "7 makuuhuonetta ja 7 kylpyhuonetta per asunto.",
     "Oma, yli 50 m² lämmin suksien ja urheiluvälineiden huoltotila mökin sisällä – ei ulkovajaa tai jaettua kellaria.",
     "14 tai 28 hengen majoitus samassa paikassa.",
-    "24 hengen neuvottelutila videotykillä – palaverit, videoanalyysi ja sponsoritapaamiset ilman ulkopuolista tilavarausta.",
+    "20 hengen neuvottelutila videotykillä – palaverit, videoanalyysi ja sponsoritapaamiset ilman ulkopuolista tilavarausta.",
     "Rinteet noin 200 m ja ladut pihasta: harjoitus, huolto ja lepo samassa pisteessä.",
     "Koko talo yhdelle joukkueelle – yksityisyyttä ja oma rauha ilman vieraita.",
     "Kittilän lentoasemalle vain 16 km (n. 20 min); helpot saapumiset ja lähdöt.",
@@ -324,7 +324,7 @@ export const fiTeamsSections = {
   splitMeetingLead: "Oma neuvottelutila",
   splitMeetingTitle: "Palaverit hoituvat paikan päällä",
   splitMeeting:
-    "Huoneistojen välissä on 24 hengen neuvottelutila joukkuepalavereihin, videoanalyysiin, sponsoritapaamisiin ja valmentajien briiffeihin. Ei tarvetta varata erillistä tilaa muualta – tilassa on videotykki, valkokangas ja minikeittiö. Kun koko talo on varattu samalle joukkueelle, neuvottelutila sisältyy hintaan.",
+    "Huoneistojen välissä on 20 hengen neuvottelutila joukkuepalavereihin, videoanalyysiin, sponsoritapaamisiin ja valmentajien briiffeihin. Ei tarvetta varata erillistä tilaa muualta – tilassa on videotykki, valkokangas ja minikeittiö. Kun koko talo on varattu samalle joukkueelle, neuvottelutila sisältyy hintaan.",
   maintenanceLead: "Levin parhaat suksien huoltotilat",
   maintenanceTitle: "Yli 50 m² lämmintä suksien huoltotilaa",
   maintenance:
@@ -362,7 +362,7 @@ export const fiRatesSections = {
   capacityNote:
     "Hiihtogreenissä on kaksi 14 hengen huoneistoa. Vuokrataan erikseen tai yhdessä.",
   meetingNote:
-    "Lisäksi huoneistojen välissä on 24 hengen neuvottelu/ruokailutila. Tilan voi varata yhden huoneiston varauksen yhteydessä erikseen. Mikäli varataan molemmat huoneistot, tila sisältyy hintaan.",
+    "Lisäksi huoneistojen välissä on 20 hengen neuvottelu/ruokailutila. Tilan voi varata yhden huoneiston varauksen yhteydessä erikseen. Mikäli varataan molemmat huoneistot, tila sisältyy hintaan.",
   seasons: [
     {
       title: "A - Korkeasesonki",
@@ -388,8 +388,8 @@ export const fiRatesSections = {
   ],
   terms: [
     "Kaikki hinnat sisältävät aina loppusiivouksen",
-    "Voit varata myös liinavaatteet (sisältää kylpypyyhe ja vuodevaatteet) huoneisiin tuotuina, tai vuoteet pedattuina",
-    "Mikäli vuokrataan koko talo (molemmat huoneistot), hintaan sisältyy myös 24 henkilön neuvottelu/ruokailutilan käyttö loppusiivouksineen",
+    "Liinavaatteet ja pyyhkeet: 16 € / setti",
+    "Mikäli vuokrataan koko talo (molemmat huoneistot), hintaan sisältyy myös 20 henkilön neuvottelu/ruokailutilan käyttö loppusiivouksineen",
     "Kaikki hinnat sisältävät majoituspalveluiden arvonlisäveron 13,5%",
     "Maksuehdot: 30% varattaessa, loput 60 pv ennen majoitusta",
   ],
