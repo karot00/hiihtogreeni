@@ -102,10 +102,10 @@ export default function CabinPage() {
           <ImageCard
             href={EXTERNAL_LINKS.leviEn}
             image={{
-              src: "/wp-content/uploads/2026/07/view_from_hiihtogreeni_levi_rental_cabin_golf_course.jpg",
-              width: 1398,
-              height: 719,
-              alt: "View from Hiihtogreeni over the golf course",
+              src: "/wp-content/uploads/2022/10/Hiihtogreeni-1.jpg",
+              width: 1024,
+              height: 681,
+              alt: "Exterior view of Hiihtogreeni",
             }}
             title="Cabin presentation"
             description="Meet Hiihtogreeni also on levifinland.fi."
@@ -113,10 +113,10 @@ export default function CabinPage() {
           <ImageCard
             href={getHref("en", "gallery")}
             image={{
-              src: "/wp-content/uploads/2024/07/Isot-tilat-suksien-huoltoon-maajoukkueille-ja-seuroille-Levilla.jpg",
-              width: 1216,
-              height: 2160,
-              alt: "Large spaces for ski maintenance",
+              src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-3.jpg",
+              width: 800,
+              height: 534,
+              alt: "Bedroom at Hiihtogreeni",
             }}
             title="Photo gallery"
             description="See more photos of the cabin, apartments, and surroundings."
