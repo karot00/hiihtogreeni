@@ -146,13 +146,13 @@ export const fiHomeSections = {
 
 export const fiHomeCarousel: GalleryImage[] = [
   { src: "/wp-content/uploads/2026/07/northern_lights_levi_hiihtogreeni.jpg", alt: "Revontulet Hiihtogreenin yllä Levillä", width: 1814, height: 1021, caption: "Revontulet Hiihtogreenin yllä" },
-  { src: "/wp-content/uploads/2026/07/rental_cabin_for_large_groups_levi_golf_course.jpg", alt: "Iso vuokramökki ryhmille golfkentän laidalla", width: 1440, height: 810, caption: "Iso vuokramökki ryhmille golfkentän laidalla" },
-  { src: "/wp-content/uploads/2026/07/excellent_ski_maintenance_room_levi_hiihtogreeni.jpg", alt: "Erinomainen suksien huoltotila Hiihtogreenissä", width: 1613, height: 907, caption: "Erinomainen suksien huoltotila" },
-  { src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg", alt: "Iso neuvottelutila jopa 20 hengelle", width: 2160, height: 1216, caption: "Iso neuvottelutila jopa 20 hengelle" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-29-of-32.jpg", alt: "Runsaasti pysäköintitilaa", width: 1024, height: 682, caption: "Runsaasti pysäköintitilaa" },
+  { src: "/wp-content/uploads/2026/07/rental_cabin_for_large_groups_levi_golf_course.jpg", alt: "Iso vuokramökki ryhmille golfkentän laidalla", width: 1440, height: 810, caption: "Iso vuokramökki ryhmille golfkentän laidalla" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-1.jpg", alt: "12 hengen ruokapöytä", width: 800, height: 533, caption: "12 hengen ruokapöytä" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-4.jpg", alt: "Hyvin varusteltu keittiö", width: 800, height: 533, caption: "7 makuuhuonetta omalla kylpyhuoneella, molemmissa huoneistoissa" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-6.jpg", alt: "Sauna", width: 800, height: 533, caption: "Sauna" },
+  { src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg", alt: "Iso neuvottelutila jopa 20 hengelle", width: 2160, height: 1216, caption: "Iso neuvottelutila jopa 20 hengelle" },
+  { src: "/wp-content/uploads/2026/07/excellent_ski_maintenance_room_levi_hiihtogreeni.jpg", alt: "Erinomainen suksien huoltotila Hiihtogreenissä", width: 1613, height: 907, caption: "Erinomainen suksien huoltotila" },
 ];
 
 export const fiCabin: PageContent = {

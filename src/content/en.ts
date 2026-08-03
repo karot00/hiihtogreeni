@@ -146,13 +146,13 @@ export const enHomeSections = {
 
 export const enHomeCarousel: GalleryImage[] = [
   { src: "/wp-content/uploads/2026/07/northern_lights_levi_hiihtogreeni.jpg", alt: "Northern lights over Hiihtogreeni in Levi", width: 1814, height: 1021, caption: "Northern lights over Hiihtogreeni" },
-  { src: "/wp-content/uploads/2026/07/rental_cabin_for_large_groups_levi_golf_course.jpg", alt: "Large rental cabin for groups by the golf course", width: 1440, height: 810, caption: "Large rental cabin for groups by the golf course" },
-  { src: "/wp-content/uploads/2026/07/excellent_ski_maintenance_room_levi_hiihtogreeni.jpg", alt: "Excellent ski maintenance room at Hiihtogreeni", width: 1613, height: 907, caption: "Excellent ski maintenance room" },
-  { src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg", alt: "Large conference room for up to 20 people", width: 2160, height: 1216, caption: "Large conference room for up to 20 people" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-29-of-32.jpg", alt: "Plenty of parking space", width: 1024, height: 682, caption: "Plenty of parking space" },
+  { src: "/wp-content/uploads/2026/07/rental_cabin_for_large_groups_levi_golf_course.jpg", alt: "Large rental cabin for groups by the golf course", width: 1440, height: 810, caption: "Large rental cabin for groups by the golf course" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-1.jpg", alt: "Dining table for 12", width: 800, height: 533, caption: "Dining table for 12" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-4.jpg", alt: "Well equipped kitchen", width: 800, height: 533, caption: "7 bedrooms with ensuite on both apartments" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-6.jpg", alt: "Sauna", width: 800, height: 533, caption: "Sauna" },
+  { src: "/wp-content/uploads/2024/07/Mokki-Levi-Hiihtogreeni-neuvottelutila.jpg", alt: "Large conference room for up to 20 people", width: 2160, height: 1216, caption: "Large conference room for up to 20 people" },
+  { src: "/wp-content/uploads/2026/07/excellent_ski_maintenance_room_levi_hiihtogreeni.jpg", alt: "Excellent ski maintenance room at Hiihtogreeni", width: 1613, height: 907, caption: "Excellent ski maintenance room" },
 ];
 
 export const enCabin: PageContent = {
