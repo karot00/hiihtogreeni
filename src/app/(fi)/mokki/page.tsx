@@ -78,7 +78,7 @@ export default function CabinPage() {
           }}
         >
           <Eyebrow>Erityispiirteet</Eyebrow>
-          <h2 className="mt-3 text-h2 font-display text-ink">Takka, sauna ja neuvottelutila</h2>
+          <h2 className="mt-3 text-h2 font-display text-ink">Sauna, takka ja neuvottelutila</h2>
           <ul className="mt-4 space-y-3 text-body">
             {s.special.map((item, index) => (
               <li key={index} className="flex gap-3">

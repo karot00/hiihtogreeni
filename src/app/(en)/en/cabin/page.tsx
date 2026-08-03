@@ -78,7 +78,7 @@ export default function CabinPage() {
           }}
         >
           <Eyebrow>Special features</Eyebrow>
-          <h2 className="mt-3 text-h2 font-display text-ink">Fireplace, sauna and conference room</h2>
+          <h2 className="mt-3 text-h2 font-display text-ink">Sauna, fireplace and conference room</h2>
           <ul className="mt-4 space-y-3 text-body">
             {s.special.map((item, index) => (
               <li key={index} className="flex gap-3">
