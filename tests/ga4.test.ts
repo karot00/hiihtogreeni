@@ -6,6 +6,7 @@ import {
   GA4_EVENTS,
   GA4_MEASUREMENT_ID,
   buildConsentUpdate,
+  pushToDataLayer,
   safeOutboundHostname,
   trackEvent,
 } from "../src/lib/analytics.ts";
@@ -78,4 +79,27 @@ test("safeOutboundHostname returns null for invalid hrefs", () => {
 test("trackEvent is a no-op and does not throw when gtag is absent", () => {
   // No window in node:test; behavior is guarded by the typeof check.
   assert.doesNotThrow(() => trackEvent(GA4_EVENTS.contactSubmit, { language: "fi" }));
+});
+
+test("queued gtag commands are array-like objects for gtag.js", () => {
+  const originalWindow = globalThis.window;
+  const dataLayer: unknown[] = [];
+  Object.assign(globalThis, { window: { dataLayer } });
+
+  try {
+    pushToDataLayer(["config", "G-TEST123", { page_title: "Test" }]);
+    const command = dataLayer[0] as Record<string, unknown>;
+
+    assert.equal(Array.isArray(command), false);
+    assert.equal(command[0], "config");
+    assert.equal(command[1], "G-TEST123");
+    assert.deepEqual(command[2], { page_title: "Test" });
+    assert.equal(command.length, 3);
+  } finally {
+    if (originalWindow === undefined) {
+      delete (globalThis as { window?: unknown }).window;
+    } else {
+      Object.assign(globalThis, { window: originalWindow });
+    }
+  }
 });

@@ -51,6 +51,15 @@ export function pushToDataLayer(command: unknown): void {
   }
   const w = window as unknown as { dataLayer?: unknown[] };
   const dataLayer = (w.dataLayer ??= []);
+  // gtag.js reads queued commands as array-like objects, not arrays. Calling
+  // window.gtag is not reliable here because the loader may still be pending.
+  if (Array.isArray(command)) {
+    const queuedCommand = Object.assign(Object.create(null), command, {
+      length: command.length,
+    });
+    dataLayer.push(queuedCommand);
+    return;
+  }
   dataLayer.push(command);
 }
 
