@@ -45,9 +45,16 @@ Stable, bilingual-neutral event names (one taxonomy for Finnish and English):
 | `outbound_click`         | Click to an external origin (approved destinations)  | `outbound_host` (hostname only, no path/query) |
 | `gallery_lightbox_open`  | Gallery image opened in lightbox                     | `slide_index`, `language`                 |
 
-The two approved external destinations are `levifinland.fi` (presentation pages)
-and `greenfee.levifinland.fi` (green-fee booking), both opened with
+The approved external destinations are `levifinland.fi` (presentation pages),
+`greenfee.levifinland.fi` (green-fee booking) and `cabins.levifinland.fi` (the
+accommodation booking calendar, added 2026-10-11), all opened with
 `rel="noopener noreferrer"` per Phase 5.
+
+The booking calendar on the rates pages is an iframe from `cabins.levifinland.fi`
+(`src/components/BookingCalendar.tsx`). Clicks and inquiries inside it are not
+measured by this site's GA4: the frame is another origin, loads no analytics and
+sets no cookies. Only the "open the calendar in a new tab" link is an ordinary
+`outbound_click`.
 
 ## Privacy guardrails
 

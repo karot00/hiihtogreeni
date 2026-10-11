@@ -1,4 +1,4 @@
-import type { ContactPerson, ExternalLinks, LanguageOption } from "./types.ts";
+import type { ContactPerson, ExternalLinks, Lang, LanguageOption } from "./types.ts";
 
 export const COMPANY = {
   name: "Levin Hiihtogreeni Oy",
@@ -40,6 +40,17 @@ export const EXTERNAL_LINKS: ExternalLinks = {
   leviFi: "https://www.levifinland.fi/fi/blog/levin-hiihtogreeni",
   leviEn: "https://www.levifinland.fi/en/blog/levin-hiihtogreeni",
 } as const;
+
+/**
+ * The booking calendar and inquiry form are the cabins.levifinland.fi booking
+ * system (levifinland2026 repo); this site shows its widget in an iframe, so
+ * the calendar and booking flow are maintained in one place.
+ * NEXT_PUBLIC_BOOKING_ORIGIN points it at another deployment for testing.
+ */
+export const BOOKING_ORIGIN =
+  process.env.NEXT_PUBLIC_BOOKING_ORIGIN || "https://cabins.levifinland.fi";
+export const bookingEmbedUrl = (lang: Lang) => `${BOOKING_ORIGIN}/embed/${lang}/hiihtogreeni`;
+export const bookingPageUrl = (lang: Lang) => `${BOOKING_ORIGIN}/${lang}/hiihtogreeni`;
 
 export const RATES_PDF = {
   href: "/wp-content/uploads/2022/10/Varausehdot2020.pdf",
