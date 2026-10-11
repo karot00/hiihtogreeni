@@ -1,4 +1,4 @@
-import type { NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
+import type { LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
 import { EXTERNAL_LINKS } from "./shared.ts";
 
 export const FI_NAV: NavItem[] = [
@@ -482,3 +482,26 @@ export const fiContactSections = {
   contactMethodLabel: "Tyyppi",
   contactMethods: ["Sähköpostitse", "Tekstiviestillä"],
 } as const;
+
+/** Front-page last-minute banner (shown only while the owner's offer is on). */
+export const fiLastMinute: LastMinuteStrings = {
+  eyebrow: "Äkkilähtö · {dates}",
+  title: "Nyt äkkilähtö Leville isollakin porukalla −{percent}\u00a0% normaalihinnasta",
+  wholeHouseFree: "Koko talo vapaana – jopa 28 hengelle.",
+  apartmentFree: "Huoneisto {apartment} vapaana – jopa 14 hengelle.",
+  priceNote: "/ huoneisto · {nights} yötä · sis. loppusiivouksen",
+  normally: "Normaalisti {price}",
+  cta: "Katso vapaat päivät ja varaa",
+  metaDescription: "Äkkilähtö {dates}: huoneisto {price}, −{percent}\u00a0% normaalihinnasta.",
+  seasons: {
+    firstSnow: { name: "Ensilumen ladut ja ensimmäiset laskut", text: "Tule ensilumen ladulle ja nauti syksyn ensimmäisistä laskuista." },
+    earlyWinter: { name: "Alkutalvi", text: "Rinteet ja ladut aukeavat, ja kaamoksen sininen hetki tekee illoista taianomaisia." },
+    christmas: { name: "Joulu ja uusi vuosi", text: "Vietä joulu tai uusi vuosi Levillä koko porukan kanssa." },
+    midwinter: { name: "Upea ja luminen keskitalvi", text: "Pakkaspäivät, revontulet ja hiljaiset ladut – Lapin talvi parhaimmillaan." },
+    peak: { name: "Huippusesonki", text: "Parhaat laskut ja aurinko: Levin rinteet ovat nyt parhaimmillaan." },
+    spring: { name: "Kevään aurinkoisin laskettelukausi", text: "Pitkät valoisat päivät, hyvä lumi ja aurinkoiset rinteet." },
+    quiet: { name: "Edullinen Lapin-reissu", text: "Hiljaisuutta ja rauhaa etsivälle: Lappi on nyt rauhallisimmillaan." },
+    summer: { name: "Kesä Levillä", text: "Kesän golf, retkeily ja maastopyöräily yöttömän yön valossa." },
+    ruska: { name: "Ruska", text: "Ruska ja syksyn upeat värit tuntureilla." },
+  },
+};

@@ -1,20 +1,36 @@
 import { SiteShell } from "../../../../components/SiteShell.tsx";
 import { HomeCarousel } from "../../../../components/HomeCarousel.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, ImageCard, CallToAction } from "../../../../components/ui/Primitives.tsx";
-import { enHome, enHomeSections, enHomeCarousel, EN_UI } from "../../../../content/en.ts";
+import { enHome, enHomeSections, enHomeCarousel, enLastMinute, EN_UI } from "../../../../content/en.ts";
 import { CAPACITY, EXTERNAL_LINKS, RENTAL_CONTACT } from "../../../../content/shared.ts";
 import { getHref } from "../../../../lib/routes.ts";
 import { buildPageMetadata, OG_IMAGES } from "../../../../lib/seo.ts";
+import { LastMinuteBanner } from "../../../../components/LastMinuteBanner.tsx";
+import { fill, formatEuros, formatShortDates, getLastMinuteDeal } from "../../../../lib/last-minute.ts";
 
-export const metadata = buildPageMetadata({
-  lang: "en",
-  key: "home",
-  title: enHome.title,
-  description: enHome.description,
-  ogImage: OG_IMAGES.homeEn,
-});
+// Rebuilt daily for the last-minute banner (owner 2026-10-11: daily is enough).
+export const revalidate = 86400;
 
-export default function EnglishHomePage() {
+export async function generateMetadata() {
+  const deal = await getLastMinuteDeal();
+  const offer = deal
+    ? `${fill(enLastMinute.metaDescription, {
+        dates: formatShortDates("en", deal),
+        price: formatEuros("en", deal.priceCents),
+        percent: deal.discountPercent,
+      })} `
+    : "";
+  return buildPageMetadata({
+    lang: "en",
+    key: "home",
+    title: enHome.title,
+    description: `${offer}${enHome.description}`,
+    ogImage: OG_IMAGES.homeEn,
+  });
+}
+
+export default async function EnglishHomePage() {
+  const deal = await getLastMinuteDeal();
   const s = enHomeSections;
   const cta = (
     <>
@@ -50,6 +66,8 @@ export default function EnglishHomePage() {
       >
         {heroCta}
       </Hero>
+
+      {deal ? <LastMinuteBanner lang="en" deal={deal} strings={enLastMinute} /> : null}
 
       <Section>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">

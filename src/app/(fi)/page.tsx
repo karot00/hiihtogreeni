@@ -5,21 +5,38 @@ import {
   fiHome,
   fiHomeSections,
   fiHomeCarousel,
+  fiLastMinute,
   FI_UI,
 } from "../../content/fi.ts";
 import { COMPANY, CAPACITY, EXTERNAL_LINKS, RENTAL_CONTACT } from "../../content/shared.ts";
 import { getHref } from "../../lib/routes.ts";
 import { buildPageMetadata, OG_IMAGES } from "../../lib/seo.ts";
+import { LastMinuteBanner } from "../../components/LastMinuteBanner.tsx";
+import { fill, formatEuros, formatShortDates, getLastMinuteDeal } from "../../lib/last-minute.ts";
 
-export const metadata = buildPageMetadata({
-  lang: "fi",
-  key: "home",
-  title: fiHome.title,
-  description: fiHome.description,
-  ogImage: OG_IMAGES.homeFi,
-});
+// Rebuilt daily for the last-minute banner (owner 2026-10-11: daily is enough).
+export const revalidate = 86400;
 
-export default function HomePage() {
+export async function generateMetadata() {
+  const deal = await getLastMinuteDeal();
+  const offer = deal
+    ? `${fill(fiLastMinute.metaDescription, {
+        dates: formatShortDates("fi", deal),
+        price: formatEuros("fi", deal.priceCents),
+        percent: deal.discountPercent,
+      })} `
+    : "";
+  return buildPageMetadata({
+    lang: "fi",
+    key: "home",
+    title: fiHome.title,
+    description: `${offer}${fiHome.description}`,
+    ogImage: OG_IMAGES.homeFi,
+  });
+}
+
+export default async function HomePage() {
+  const deal = await getLastMinuteDeal();
   const s = fiHomeSections;
   const ctaButtons = (
     <>
@@ -55,6 +72,8 @@ export default function HomePage() {
       >
         {heroButtons}
       </Hero>
+
+      {deal ? <LastMinuteBanner lang="fi" deal={deal} strings={fiLastMinute} /> : null}
 
       <Section>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
