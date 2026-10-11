@@ -174,3 +174,32 @@ export interface LanguageOption {
   /** BCP 47 language tag for the hreflang attribute. */
   hrefLang: string;
 }
+
+/** Seasons of the last-minute banner, chosen by the arrival date. */
+export type SeasonKey =
+  | "firstSnow"
+  | "earlyWinter"
+  | "christmas"
+  | "midwinter"
+  | "peak"
+  | "spring"
+  | "quiet"
+  | "summer"
+  | "ruska";
+
+/**
+ * Texts of the front-page last-minute banner. `{percent}`, `{price}`,
+ * `{nights}`, `{dates}` and `{apartment}` are filled in from the deal.
+ */
+export interface LastMinuteStrings {
+  eyebrow: string;
+  title: string;
+  wholeHouseFree: string;
+  apartmentFree: string;
+  priceNote: string;
+  normally: string;
+  cta: string;
+  /** Prefix for the page's meta description while a deal is shown. */
+  metaDescription: string;
+  seasons: Record<SeasonKey, { name: string; text: string }>;
+}

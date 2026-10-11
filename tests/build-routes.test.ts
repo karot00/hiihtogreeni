@@ -36,6 +36,8 @@ const EXPECTED_DYNAMIC = [
   "/wp-json/[...path]",
 ];
 
+const DAILY = new Set(["/", "/en/home/"]);
+
 test("production build marks all twelve canonical pages as static", () => {
   const manifestPath = resolve(".next/prerender-manifest.json");
   assert.ok(existsSync(manifestPath), "prerender-manifest.json must exist (run build first)");
@@ -47,10 +49,12 @@ test("production build marks all twelve canonical pages as static", () => {
       routes.includes(manifestRoute),
       `canonical page must be prerendered static: ${page}`,
     );
+    // The front pages are rebuilt daily for the last-minute banner (owner
+    // 2026-10-11); every other page stays fully static.
     assert.equal(
       manifest.routes[manifestRoute].initialRevalidateSeconds,
-      false,
-      `static page must not be revalidated: ${page}`,
+      DAILY.has(page) ? 86400 : false,
+      `unexpected revalidation for ${page}`,
     );
   }
   // No unexpected dynamic routes beyond the approved whitelist.
