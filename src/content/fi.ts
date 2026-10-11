@@ -350,7 +350,7 @@ export const fiRates: PageContent = {
   slug: "/hinnoittelu/",
   title: "Hinnoittelu - Hiihtogreeni",
   description:
-    "Levin Hiihtogreeni Oy:n majoitushinnoittelu kausittain. Kysy saatavuus ja tarjous. Hinnat sisältävät loppusiivouksen ja 13,5 % ALV:n.",
+    "Hiihtogreenin majoitushinnat Levillä: varauskalenteri, yö- ja viikkohinnat sekä varausehdot. Hinnat sisältävät 13,5 % ALV:n.",
   h1: "Hinnoittelu",
   nav: FI_NAV,
   external: EXTERNAL_LINKS,
@@ -359,7 +359,7 @@ export const fiRates: PageContent = {
 export const fiRatesSections = {
   lead: "Levin Hiihtogreeni Oy:n hinnoittelu",
   askLead: "Kysy saatavuus ja tarjous",
-  askNote: "Kysy myös vuorokausi- ja viikonloppuhintoja!",
+  askNote: "Yö- ja viikkohinnat näet alla olevasta varauskalenterista.",
   capacityNote:
     "Hiihtogreenissä on kaksi 14 hengen huoneistoa. Vuokrataan erikseen tai yhdessä.",
   meetingNote:
@@ -373,37 +373,16 @@ export const fiRatesSections = {
     loading: "Ladataan kalenteria…",
     openInNewTab: "Avaa kalenteri uudessa välilehdessä",
   },
-  seasons: [
-    {
-      title: "A - Korkeasesonki",
-      note: "Hinnat sisältävät loppusiivouksen.",
-      weeks: "Yleensä viikot 51-53, 01, 8-16",
-      changeover: "Vaihtopäivä: lauantai, viikot 11-16 sunnuntai",
-      holiday: "Juhlapyhinä saattavat vaihdella",
-    },
-    {
-      title: "B - Lumiaika ja ruska",
-      note: "Hinnat sisältävät loppusiivouksen.",
-      weeks: "Viikot 17-18, 35-39, 44-50, 03-06",
-      changeover: "Vaihtopäivä: lauantai",
-      holiday: "Kysy myös yksittäisiä päiviä",
-    },
-    {
-      title: "C - Alennettu hintakausi (myös golf-aika viikot 25-34)",
-      note: "Hinnat sisältävät loppusiivouksen.",
-      weeks: "Muu osa vuodesta",
-      changeover: "Vaihtopäivä: sopimuksen mukaan",
-      holiday: "",
-    },
-  ],
   terms: [
-    "Kaikki hinnat sisältävät aina loppusiivouksen",
-    "Liinavaatteet ja pyyhkeet: 16 € / setti",
-    "Mikäli vuokrataan koko talo (molemmat huoneistot), hintaan sisältyy myös 20 henkilön neuvottelu/ruokailutilan käyttö loppusiivouksineen",
-    "Kaikki hinnat sisältävät majoituspalveluiden arvonlisäveron 13,5%",
-    "Maksuehdot: 30% varattaessa, loput 60 pv ennen majoitusta",
+    "Hinnat ovat huoneistokohtaisia. Lauantaista lauantaihin viikko on edullisin, muuten hinta lasketaan öiden mukaan.",
+    "Loppusiivous lisätään jokaiseen varattuun huoneistoon.",
+    "Liinavaatteet ja pyyhkeet sekä valmiiksi pedatut vuoteet voi lisätä varaukseen henkilöä kohden, tai voitte tuoda omat.",
+    "Kun vuokraatte koko talon (molemmat huoneistot), 20 hengen neuvottelu- ja ruokailutila sisältyy hintaan. Yhden huoneiston kanssa tilan voi varata lisähintaan.",
+    "Kaikki hinnat sisältävät majoituspalveluiden arvonlisäveron 13,5 %.",
+    "Maksuehdot: 30 % varattaessa, loput 60 päivää ennen saapumista.",
   ],
-  termsNote: "Kysy lisätietoja puhelimella tai s-postilla",
+  termsNote: "Lisäpalveluiden hinnat näet varauskalenterin laskelmasta. Varausehdot hyväksytään varauspyynnön yhteydessä.",
+  termsLink: "Lue varausehdot",
   greenFeeLead: "Levi Golf Green fee",
   greenFee:
     "Levin Hiihtogreeni myy pelilippuja edullisesti Levi golfiin. Alkaen 27 € / green fee. Osta peliliput kätevästi varauslomakkeella. Saat tilausvahvistuksen ja tiedot pelilipuista suoraan sähköpostiisi oston jälkeen. Voit ostaa samalle päivälle jopa 7 pelilippua.",

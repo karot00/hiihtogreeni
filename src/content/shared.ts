@@ -51,11 +51,7 @@ export const BOOKING_ORIGIN =
   process.env.NEXT_PUBLIC_BOOKING_ORIGIN || "https://cabins.levifinland.fi";
 export const bookingEmbedUrl = (lang: Lang) => `${BOOKING_ORIGIN}/embed/${lang}/hiihtogreeni`;
 export const bookingPageUrl = (lang: Lang) => `${BOOKING_ORIGIN}/${lang}/hiihtogreeni`;
-
-export const RATES_PDF = {
-  href: "/wp-content/uploads/2022/10/Varausehdot2020.pdf",
-  label: "Varausehdot2020.pdf",
-} as const;
+export const bookingTermsUrl = (lang: Lang) => `${BOOKING_ORIGIN}/${lang}/hiihtogreeni/terms`;
 
 /**
  * Language options for the page-aware switcher. Order is stable across the site.
