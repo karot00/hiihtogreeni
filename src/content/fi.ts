@@ -364,6 +364,15 @@ export const fiRatesSections = {
     "Hiihtogreenissä on kaksi 14 hengen huoneistoa. Vuokrataan erikseen tai yhdessä.",
   meetingNote:
     "Lisäksi huoneistojen välissä on 20 hengen neuvottelu/ruokailutila. Tilan voi varata yhden huoneiston varauksen yhteydessä erikseen. Mikäli varataan molemmat huoneistot, tila sisältyy hintaan.",
+  calendarLead: "Saatavuus ja hinnat",
+  calendarTitle: "Varauskalenteri",
+  calendarBody:
+    "Valitse tulo- ja lähtöpäivä, niin näet vapaat huoneistot ja hinnan heti. Edullisin on lauantaista lauantaihin viikko. Varauspyyntö tulee suoraan meille, ja vastaamme siihen sähköpostilla.",
+  calendar: {
+    frameTitle: "Hiihtogreenin varauskalenteri",
+    loading: "Ladataan kalenteria…",
+    openInNewTab: "Avaa kalenteri uudessa välilehdessä",
+  },
   seasons: [
     {
       title: "A - Korkeasesonki",

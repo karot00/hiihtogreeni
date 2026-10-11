@@ -364,6 +364,15 @@ export const enRatesSections = {
     "Prices are for one apartment for 14 (max 14) people. The house has 2 similar apartments.",
   meetingNote:
     "Between the apartments there is a 20-person conference/dining room. It can be booked separately with one apartment. If both apartments are booked, the room is included in the price.",
+  calendarLead: "Availability and prices",
+  calendarTitle: "Booking calendar",
+  calendarBody:
+    "Choose your arrival and departure dates to see the free apartments and the price straight away. A Saturday-to-Saturday week is the best value. Your booking request comes straight to us, and we reply by email.",
+  calendar: {
+    frameTitle: "Hiihtogreeni booking calendar",
+    loading: "Loading the calendar…",
+    openInNewTab: "Open the calendar in a new tab",
+  },
   seasons: [
     {
       title: "A - High Season",

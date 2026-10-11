@@ -1,4 +1,5 @@
 import { SiteShell } from "../../../components/SiteShell.tsx";
+import { BookingCalendar } from "../../../components/BookingCalendar.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, SplitSection, CallToAction } from "../../../components/ui/Primitives.tsx";
 import { fiRates, fiRatesSections } from "../../../content/fi.ts";
 import { RATES_PDF, EXTERNAL_LINKS, CAPACITY, RENTAL_CONTACT } from "../../../content/shared.ts";
@@ -40,6 +41,17 @@ export default function RatesPage() {
         <div className="mt-6 flex flex-wrap gap-4">
           <ButtonLink href={getHref("fi", "contact")}>{s.askLead}</ButtonLink>
           <span className="inline-flex min-h-11 items-center text-sm text-slate">{s.askNote}</span>
+        </div>
+      </Section>
+
+      <Section tone="white" id="booking-calendar" className="scroll-mt-20">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] lg:items-start">
+          <div>
+            <Eyebrow>{s.calendarLead}</Eyebrow>
+            <h2 className="mt-3 text-h2 font-display text-ink">{s.calendarTitle}</h2>
+            <p className="mt-4 max-w-[60ch] text-body">{s.calendarBody}</p>
+          </div>
+          <BookingCalendar lang="fi" strings={s.calendar} />
         </div>
       </Section>
 
