@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { UMAMI_DOMAINS, UMAMI_EVENTS, UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID, classifyClick } from "../src/lib/umami.ts";
+import { UMAMI_DOMAINS, UMAMI_EVENTS, UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID, classifyClick, inquiryEvent } from "../src/lib/umami.ts";
 import { BOOKING_ORIGIN, RENTAL_CONTACT, bookingPageUrl } from "../src/content/shared.ts";
 import { FI_COOKIE_CONSENT } from "../src/content/fi.ts";
 import { EN_COOKIE_CONSENT } from "../src/content/en.ts";
@@ -55,5 +55,24 @@ test("the cookie settings describe the cookieless statistics in both languages",
     assert.match(copy.preferences.cookielessStats, /Umami/);
     assert.match(copy.preferences.cookielessStats, /stats\.experiencelevi\.fi/);
     assert.match(copy.preferences.cookielessStats, /Do Not Track/);
+  }
+});
+
+test("the widget's inquiry message becomes inquiry_submitted with counts only", () => {
+  const message = { type: "hiihtogreeni-embed:inquiry", nights: 7, units: "AB", guests: 20, leadDays: 45 };
+  assert.deepEqual(inquiryEvent(message), {
+    name: UMAMI_EVENTS.inquirySubmitted,
+    data: { channel: "web", nights: 7, units: "AB", guests: 20, lead_days: 45 },
+  });
+  for (const bad of [
+    null,
+    "hiihtogreeni-embed:inquiry",
+    { type: "hiihtogreeni-embed:height", height: 900 },
+    { ...message, units: "C" },
+    { ...message, nights: -1 },
+    { ...message, guests: 2.5 },
+    { ...message, email: "guest@example.com", guests: "20" },
+  ]) {
+    assert.equal(inquiryEvent(bad), null, JSON.stringify(bad));
   }
 });

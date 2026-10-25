@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { BOOKING_ORIGIN, bookingEmbedUrl, bookingPageUrl } from "../content/shared.ts";
 import type { Lang } from "../content/types.ts";
+import { inquiryEvent, umamiTrack } from "../lib/umami.ts";
 
 /** A stay in this page's link that is passed on to the calendar. */
 const STAY_PARAMS = ["checkIn", "checkOut", "units"] as const;
@@ -19,7 +20,8 @@ export interface BookingCalendarStrings {
 /**
  * The cabins.levifinland.fi booking widget in an iframe. The iframe reports
  * its content height (message "hiihtogreeni-embed:height"), so it grows with
- * the widget instead of scrolling inside itself. A stay in this page's link
+ * the widget instead of scrolling inside itself, and a sent booking request
+ * ("hiihtogreeni-embed:inquiry"), which becomes the Umami event inquiry_submitted. A stay in this page's link
  * (?checkIn=…&checkOut=…&units=…, e.g. from the offer banner) is passed on and
  * preselected. Read after mount, so the page itself stays static.
  */
@@ -40,6 +42,12 @@ export function BookingCalendar({ lang, strings }: { lang: Lang; strings: Bookin
 
     const onMessage = (event: MessageEvent) => {
       if (event.origin !== BOOKING_ORIGIN || event.source !== frameRef.current?.contentWindow) return;
+      // A booking request was sent in the widget: count it (no personal data).
+      const inquiry = inquiryEvent(event.data);
+      if (inquiry) {
+        umamiTrack(inquiry);
+        return;
+      }
       const data = event.data as { type?: unknown; height?: unknown } | null;
       if (data?.type !== "hiihtogreeni-embed:height" || typeof data.height !== "number") return;
       setHeight(Math.min(MAX_HEIGHT, Math.max(MIN_HEIGHT, Math.ceil(data.height))));
