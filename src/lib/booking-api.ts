@@ -14,6 +14,8 @@ export const AVAILABILITY_URL = `${API_BASE}/availability`;
 /** The property document and the API contract, linked for agents (step 6). */
 export const PROPERTY_URL = `${API_BASE}/property`;
 export const OPENAPI_URL = `${API_BASE}/openapi.json`;
+/** The booking system's MCP server (Streamable HTTP) with the same operations as tools. */
+export const MCP_URL = `${BOOKING_ORIGIN}/mcp`;
 /** Same freshness as the API's CDN cache, so a price change shows within 15 minutes. */
 export const REVALIDATE_SECONDS = 900;
 const TIMEOUT_MS = 8000;
