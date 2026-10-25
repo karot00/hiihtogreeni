@@ -1,5 +1,5 @@
 import type { LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
-import { EXTERNAL_LINKS } from "./shared.ts";
+import { EXTERNAL_LINKS, STAY_TIMES } from "./shared.ts";
 
 export const EN_NAV: NavItem[] = [
   { key: "home", label: "Home", href: "/en/home/" },
@@ -380,6 +380,7 @@ export const enRatesSections = {
     "If you rent the whole house (both apartments), the 20-person meeting and dining room is included. With one apartment it can be booked at an extra cost.",
     "All prices include 13.5% VAT on accommodation services.",
     "Terms of payment: 30% when booking, the rest 60 days before arrival.",
+    `Check-in from ${STAY_TIMES.checkIn} on the day of arrival, check-out by ${STAY_TIMES.checkOut} on the day of departure. Early check-in can be requested but cannot be guaranteed. Late check-out is not possible.`,
   ],
   termsNote: "The booking calendar's price breakdown shows the prices of the extras. You accept the booking terms when you send a booking request.",
   termsLink: "Read the booking terms",

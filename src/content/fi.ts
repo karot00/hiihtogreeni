@@ -1,5 +1,7 @@
 import type { LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
-import { EXTERNAL_LINKS } from "./shared.ts";
+import { EXTERNAL_LINKS, STAY_TIMES } from "./shared.ts";
+
+const fiTime = (time: string) => time.replace(":", ".");
 
 export const FI_NAV: NavItem[] = [
   { key: "home", label: "Etusivu", href: "/" },
@@ -380,6 +382,7 @@ export const fiRatesSections = {
     "Kun vuokraatte koko talon (molemmat huoneistot), 20 hengen neuvottelu- ja ruokailutila sisältyy hintaan. Yhden huoneiston kanssa tilan voi varata lisähintaan.",
     "Kaikki hinnat sisältävät majoituspalveluiden arvonlisäveron 13,5 %.",
     "Maksuehdot: 30 % varattaessa, loput 60 päivää ennen saapumista.",
+    `Huoneisto on käytettävissä saapumispäivänä klo ${fiTime(STAY_TIMES.checkIn)} alkaen ja luovutetaan lähtöpäivänä viimeistään klo ${fiTime(STAY_TIMES.checkOut)}. Aikaisempaa saapumista voi pyytää, mutta sitä ei voida taata. Myöhäisempi lähtö ei ole mahdollinen.`,
   ],
   termsNote: "Lisäpalveluiden hinnat näet varauskalenterin laskelmasta. Varausehdot hyväksytään varauspyynnön yhteydessä.",
   termsLink: "Lue varausehdot",

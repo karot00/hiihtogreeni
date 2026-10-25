@@ -37,6 +37,12 @@ export const CAPACITY = {
   area: "150 m²",
 } as const;
 
+/** Booking terms v1.3 §8 (cabins.levifinland.fi): no late check-out, early check-in on request. */
+export const STAY_TIMES = {
+  checkIn: "17:00",
+  checkOut: "11:00",
+} as const;
+
 export const EXTERNAL_LINKS: ExternalLinks = {
   greenFee: "https://greenfee.levifinland.fi",
   leviFi: "https://www.levifinland.fi/fi/blog/levin-hiihtogreeni",
