@@ -36,7 +36,15 @@ const EXPECTED_DYNAMIC = [
   "/wp-json/[...path]",
 ];
 
-const DAILY = new Set(["/", "/en/home/"]);
+// Pages rebuilt on a schedule (seconds); every other canonical page stays fully static.
+const REVALIDATE: Record<string, number> = {
+  // The front pages, for the last-minute banner (owner 2026-10-11).
+  [ROUTES.fi.home]: 86400,
+  [ROUTES.en.home]: 86400,
+  // The rates pages, for live prices and free dates (AGENT-VISIBILITY-PLAN.md step 4).
+  [ROUTES.fi.rates]: 900,
+  [ROUTES.en.rates]: 900,
+};
 
 test("production build marks all twelve canonical pages as static", () => {
   const manifestPath = resolve(".next/prerender-manifest.json");
@@ -49,11 +57,9 @@ test("production build marks all twelve canonical pages as static", () => {
       routes.includes(manifestRoute),
       `canonical page must be prerendered static: ${page}`,
     );
-    // The front pages are rebuilt daily for the last-minute banner (owner
-    // 2026-10-11); every other page stays fully static.
     assert.equal(
       manifest.routes[manifestRoute].initialRevalidateSeconds,
-      DAILY.has(page) ? 86400 : false,
+      REVALIDATE[page] ?? false,
       `unexpected revalidation for ${page}`,
     );
   }
