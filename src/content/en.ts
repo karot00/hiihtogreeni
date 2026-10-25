@@ -25,6 +25,8 @@ export const EN_UI: UILabels = {
   footerLanguageHeading: "Language",
   contactCta: "Get in touch",
   rightsReserved: "All rights reserved.",
+  agentsLabel: "For AI assistants",
+  agentsApi: "Booking API (OpenAPI)",
   galleryClose: "Close",
   galleryPrevious: "Previous image",
   galleryNext: "Next image",

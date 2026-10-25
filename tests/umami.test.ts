@@ -37,7 +37,15 @@ test("links to the rates page or the booking site are booking CTA clicks", () =>
 });
 
 test("other links send no event", () => {
-  for (const href of ["/mokki/", "/en/contact-information/", "https://greenfee.levifinland.fi", `${BOOKING_ORIGIN}/fi/nulkkachalet`, "#main"]) {
+  for (const href of [
+    "/mokki/",
+    "/en/contact-information/",
+    "https://greenfee.levifinland.fi",
+    `${BOOKING_ORIGIN}/fi/nulkkachalet`,
+    `${BOOKING_ORIGIN}/api/v1/hiihtogreeni/openapi.json`,
+    "/llms.txt",
+    "#main",
+  ]) {
     assert.equal(classifyClick(href, ORIGIN, "content"), null, href);
   }
 });

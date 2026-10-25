@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Lang } from "../content/types.ts";
 import { getNav, getUI, COMPANY, LANGUAGE_OPTIONS } from "../content/index.ts";
 import { getHref } from "../lib/routes.ts";
+import { OPENAPI_URL } from "../lib/booking-api.ts";
 import { CookieConsentSettingsTrigger } from "./CookieConsentSettingsTrigger.tsx";
 import { ContactDetails } from "./ContactDetails.tsx";
 
@@ -102,8 +103,20 @@ export function Footer({ lang }: FooterProps) {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-page py-4 text-xs text-white/60">
-          {ui.rightsReserved} {year} {company.name}
+        <div className="container-page flex flex-wrap justify-between gap-x-6 gap-y-2 py-4 text-xs text-white/60">
+          <span>
+            {ui.rightsReserved} {year} {company.name}
+          </span>
+          <span>
+            {ui.agentsLabel}:{" "}
+            <a href="/llms.txt" className="underline-offset-2 hover:underline focus-visible:underline">
+              llms.txt
+            </a>
+            {" · "}
+            <a href={OPENAPI_URL} className="underline-offset-2 hover:underline focus-visible:underline">
+              {ui.agentsApi}
+            </a>
+          </span>
         </div>
       </div>
     </footer>

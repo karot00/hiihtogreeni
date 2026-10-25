@@ -37,7 +37,8 @@ export function classifyClick(href: string, origin: string, where: string): Clic
   } catch {
     return null;
   }
-  if (url.origin === BOOKING_ORIGIN && url.pathname.includes("/hiihtogreeni")) {
+  // The booking pages, not the agent API linked in the footer.
+  if (url.origin === BOOKING_ORIGIN && url.pathname.includes("/hiihtogreeni") && !url.pathname.startsWith("/api/")) {
     return { name: UMAMI_EVENTS.bookCtaClick, data: { to: "booking-site", where } };
   }
   if (url.origin === origin && RATES_PATHS.has(url.pathname)) {

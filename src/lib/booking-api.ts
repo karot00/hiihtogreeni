@@ -11,6 +11,9 @@ import type { Lang } from "../content/types.ts";
 export const API_BASE = `${BOOKING_ORIGIN}/api/v1/hiihtogreeni`;
 export const PRICING_URL = `${API_BASE}/pricing`;
 export const AVAILABILITY_URL = `${API_BASE}/availability`;
+/** The property document and the API contract, linked for agents (step 6). */
+export const PROPERTY_URL = `${API_BASE}/property`;
+export const OPENAPI_URL = `${API_BASE}/openapi.json`;
 /** Same freshness as the API's CDN cache, so a price change shows within 15 minutes. */
 export const REVALIDATE_SECONDS = 900;
 const TIMEOUT_MS = 8000;

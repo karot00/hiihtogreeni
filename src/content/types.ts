@@ -70,6 +70,9 @@ export interface UILabels {
   contactCta: string;
   /** Copyright/legal line prefix, rendered before the year and company name. */
   rightsReserved: string;
+  /** Footer line pointing AI assistants to llms.txt and the booking API. */
+  agentsLabel: string;
+  agentsApi: string;
   /** Gallery lightbox control labels. */
   galleryClose: string;
   galleryPrevious: string;

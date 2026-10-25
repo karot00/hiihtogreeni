@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_CONFIG } from "./config.ts";
 import { ROUTES } from "./routes.ts";
+import { PROPERTY_URL } from "./booking-api.ts";
 import type { Lang, NavKey } from "../content/types.ts";
 
 /** Absolute URL for a social-sharing (Open Graph / Twitter) image in /public/og. */
@@ -79,6 +80,11 @@ export function buildPageMetadata({
     alternates: {
       canonical: url,
       languages: languageAlternates(key),
+      // Machine-readable versions for AI agents (AGENT-VISIBILITY-PLAN.md step 6).
+      types: {
+        "application/json": `${PROPERTY_URL}?lang=${lang}`,
+        "text/plain": `${SITE_CONFIG.url}/llms.txt`,
+      },
     },
     openGraph: {
       type: "website",

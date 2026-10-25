@@ -3,7 +3,7 @@ import type { PageContent } from "../content/types.ts";
 import { enCabin, enCabinSections, enContact, enGallery, enHome, enRates, enRatesSections, enTeams, enTeamsSections } from "../content/en.ts";
 import { fiCabin, fiContact, fiGallery, fiHome, fiRates, fiTeams } from "../content/fi.ts";
 import { SITE_CONFIG } from "./config.ts";
-import { formatDate, formatDateRange, freeRanges, type ApartmentPrices, type Availability, type FreeRange, type Pricing } from "./booking-api.ts";
+import { API_BASE, OPENAPI_URL, formatDate, formatDateRange, freeRanges, type ApartmentPrices, type Availability, type FreeRange, type Pricing } from "./booking-api.ts";
 import { formatEuros } from "./last-minute.ts";
 
 /**
@@ -136,6 +136,24 @@ function booking(live?: LiveData): string {
   ].join("\n");
 }
 
+function agents(): string {
+  return [
+    "## For AI agents",
+    "",
+    `The booking system has a public JSON API, live from the same data as the calendar. Contract: ${OPENAPI_URL}`,
+    "",
+    list([
+      `GET ${API_BASE}/property: facts, apartments, rooms, rules, FAQ, how booking works`,
+      `GET ${API_BASE}/pricing: seasons, extras, stay and payment rules, the last-minute offer`,
+      `GET ${API_BASE}/availability?from=YYYY-MM-DD&to=YYYY-MM-DD: each night per apartment`,
+      `GET ${API_BASE}/quote?check_in=YYYY-MM-DD&check_out=YYYY-MM-DD&units=A|B|AB&guests=N: the exact price of a stay`,
+      `POST ${API_BASE}/inquiries: a booking request for a guest who has agreed to it and to the booking terms; the owner confirms by email and nothing is charged`,
+    ]),
+    "",
+    "Never quote a total for given dates that /quote has not returned.",
+  ].join("\n");
+}
+
 function pages(): string {
   return [
     "## Pages",
@@ -153,6 +171,7 @@ export function buildLlmsTxt(live?: LiveData): string {
     header(),
     facts(),
     booking(live),
+    agents(),
     pages(),
     [
       "## Optional",
@@ -179,6 +198,7 @@ export function buildLlmsFullTxt(live?: LiveData): string {
     ["## For teams and groups", "", t.intro, "", ...t.introParagraphs.flatMap((p) => [p, ""]), t.maintenance, "", t.location].join("\n"),
     ["### Questions from teams", "", t.faq.map((item) => `**${item.q}**\n${item.a}`).join("\n\n")].join("\n"),
     ["## Levi Golf green fees", "", enRatesSections.greenFee, "", EXTERNAL_LINKS.greenFee].join("\n"),
+    agents(),
     pages(),
   ].join("\n\n") + "\n";
 }

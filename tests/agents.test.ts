@@ -84,3 +84,23 @@ test("without live data, llms.txt points to the booking calendar instead of quot
   assert.ok(!text.includes("### Seasonal prices"));
   assert.ok(!text.includes("### Free periods"));
 });
+
+test("llms.txt and llms-full.txt point agents to the booking API and its contract", async () => {
+  const { API_BASE, OPENAPI_URL } = await import("../src/lib/booking-api.ts");
+  for (const text of [buildLlmsTxt(), buildLlmsFullTxt()]) {
+    assert.ok(text.includes("## For AI agents"));
+    assert.ok(text.includes(OPENAPI_URL));
+    for (const route of ["property", "pricing", "availability", "quote", "inquiries"]) {
+      assert.ok(text.includes(`${API_BASE}/${route}`), route);
+    }
+  }
+});
+
+test("every page's head links the property JSON and llms.txt as alternates", async () => {
+  const { buildPageMetadata } = await import("../src/lib/seo.ts");
+  const { PROPERTY_URL } = await import("../src/lib/booking-api.ts");
+  for (const lang of ["fi", "en"] as const) {
+    const types = buildPageMetadata({ lang, key: "rates", title: "t", description: "d" }).alternates?.types;
+    assert.deepEqual(types, { "application/json": `${PROPERTY_URL}?lang=${lang}`, "text/plain": `${SITE_CONFIG.url}/llms.txt` });
+  }
+});
