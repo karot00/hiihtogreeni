@@ -53,8 +53,8 @@ for (const [name, build] of [["llms.txt", buildLlmsTxt], ["llms-full.txt", build
     const text = build();
     assert.ok(!text.includes(RENTAL_CONTACT.email));
     assert.ok(!text.includes(MAINTENANCE_CONTACT.email));
-    // The only euro amount on the site is the green fee in llms-full.txt.
+    // llms-full.txt has only the linen delivery fee (booking FAQ) and the green fee.
     const euros = (text.match(/€\s?\d[\d\s,.]*/g) ?? []).map((amount) => amount.trim());
-    assert.deepEqual(euros, name === "llms-full.txt" ? ["€27"] : []);
+    assert.deepEqual(euros.sort(), name === "llms-full.txt" ? ["€27", "€50"] : []);
   });
 }

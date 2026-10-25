@@ -103,6 +103,7 @@ export function buildLlmsFullTxt(): string {
     header(),
     facts(),
     booking(),
+    ["### Questions about booking", "", enRatesSections.faq.map((item) => `**${item.q}**\n${item.a}`).join("\n\n")].join("\n"),
     ["## The cabin", "", s.lead, "", s.intro, "", s.introAfter].join("\n"),
     ["### Bedrooms (per apartment)", "", s.bedrooms.map(bedroomLine).join("\n")].join("\n"),
     ["### Living room, kitchen and sauna (per apartment)", "", list(s.livingKitchen)].join("\n"),
