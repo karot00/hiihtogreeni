@@ -16,6 +16,7 @@ export const UMAMI_DOMAINS = "www.hiihtogreeni.fi";
 export const UMAMI_EVENTS = {
   bookCtaClick: "book_cta_click",
   contactClick: "contact_click",
+  inquirySubmitted: "inquiry_submitted",
 } as const;
 
 export type UmamiEventData = Record<string, string | number>;
@@ -52,4 +53,22 @@ export function umamiTrack(event: ClickEvent): void {
   if (typeof window === "undefined") return;
   const umami = (window as unknown as { umami?: { track?: (name: string, data?: UmamiEventData) => void } }).umami;
   umami?.track?.(event.name, event.data);
+}
+
+const count = (value: unknown, max: number) => Number.isInteger(value) && (value as number) >= 0 && (value as number) <= max;
+
+/**
+ * The event for the booking widget's "hiihtogreeni-embed:inquiry" message (a
+ * request was sent in the iframe), or null for anything else. Counts only:
+ * nights, apartments, guests and days until arrival.
+ */
+export function inquiryEvent(data: unknown): ClickEvent | null {
+  if (!data || typeof data !== "object") return null;
+  const { type, nights, units, guests, leadDays } = data as Record<string, unknown>;
+  if (type !== "hiihtogreeni-embed:inquiry") return null;
+  if (!count(nights, 400) || !count(guests, 28) || !count(leadDays, 800) || (units !== "A" && units !== "B" && units !== "AB")) return null;
+  return {
+    name: UMAMI_EVENTS.inquirySubmitted,
+    data: { channel: "web", nights: nights as number, units, guests: guests as number, lead_days: leadDays as number },
+  };
 }
