@@ -27,6 +27,8 @@ export const FI_UI: UILabels = {
   footerLanguageHeading: "Kieli",
   contactCta: "Ota yhteyttä",
   rightsReserved: "Kaikki oikeudet pidätetään.",
+  agentsLabel: "Tekoälyavustajille",
+  agentsApi: "Varausrajapinta (OpenAPI)",
   galleryClose: "Sulje",
   galleryPrevious: "Edellinen kuva",
   galleryNext: "Seuraava kuva",
