@@ -50,6 +50,8 @@ export const FI_COOKIE_CONSENT: CookieConsentCopy = {
     title: "Evästeasetukset",
     description:
       "Valitse, mitä evästeluokkia sivusto saa käyttää. Välttämättömät evästeet ovat aina käytössä.",
+    cookielessStats:
+      "Lisäksi laskemme käyntejä evästeettömällä Umami-tilastoinnilla. Se ei tallenna evästeitä eikä IP-osoitteita, ei tarvitse suostumusta ja noudattaa selaimen Do Not Track -asetusta. Tilastopalvelinta (stats.experiencelevi.fi) ylläpitää sama omistaja EU:ssa.",
   },
   categories: {
     essential: {

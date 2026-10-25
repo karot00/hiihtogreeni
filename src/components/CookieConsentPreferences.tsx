@@ -167,6 +167,9 @@ export function CookieConsentPreferences({
           <p className="mt-1 text-sm text-slate">
             {copy.preferences.description}
           </p>
+          <p className="mt-1 text-sm text-slate">
+            {copy.preferences.cookielessStats}
+          </p>
         </header>
 
         <div className="min-h-0 flex-1 space-y-5 overflow-y-auto px-5 py-4 pb-5 sm:px-6 sm:pb-6">
