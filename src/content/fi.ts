@@ -388,6 +388,39 @@ export const fiRatesSections = {
   ],
   termsNote: "Lisäpalveluiden hinnat näet varauskalenterin laskelmasta. Varausehdot hyväksytään varauspyynnön yhteydessä.",
   termsLink: "Lue varausehdot",
+  // Answers follow the booking terms v1.3 (cabins.levifinland.fi).
+  faqLead: "Usein kysyttyä",
+  faqTitle: "Kysymyksiä varaamisesta",
+  faq: [
+    {
+      q: "Pitääkö varata kokonainen viikko?",
+      a: "Ei tarvitse. Lauantaista lauantaihin viikko on edullisin, muuten hinta lasketaan öiden mukaan. Varauskalenteri näyttää valitsemiesi päivien hinnan ja kertoo, jos ajanjaksoa ei voi varata.",
+    },
+    {
+      q: "Mitä hintaan sisältyy?",
+      a: "Vesi, sähkö, lämmitys, sauna, tyynyt ja peitot, astiat ja keittiövarustus, wc-paperi, siivousvälineet sekä loppusiivous. Koko talon varauksessa myös 20 hengen neuvottelu- ja ruokailutila. Hinnat sisältävät arvonlisäveron.",
+    },
+    {
+      q: "Sisältyvätkö liinavaatteet ja pyyhkeet?",
+      a: "Eivät automaattisesti. Liinavaatteet ja pyyhkeet sekä pedatut vuoteet voi lisätä varaukseen henkilöä kohden, tai voitte tuoda omat. Saapumispäivänä tilatuista liinavaatteista veloitetaan lisäksi 50 € toimitusmaksu. Makuupussien käyttö vuoteissa ei ole sallittu.",
+    },
+    {
+      q: "Miten maksu tapahtuu?",
+      a: "Laskulla tilisiirtona: ennakkomaksu 30 % varattaessa ja loput viimeistään 60 päivää ennen saapumista. Jos varaat alle 60 päivää ennen saapumista, koko hinta laskutetaan kerralla.",
+    },
+    {
+      q: "Mitä jos joudun perumaan?",
+      a: "Peruutus tehdään kirjallisesti sähköpostilla. Yli 60 päivää ennen saapumista peruutusmaksu on ennakkomaksu (30 %), ja muu maksettu osuus palautetaan. Myöhemmin peruttaessa veloitetaan koko hinta. Suosittelemme matkavakuutusta.",
+    },
+    {
+      q: "Milloin pääsee sisään ja milloin pitää lähteä?",
+      a: `Huoneisto on käytettävissä klo ${fiTime(STAY_TIMES.checkIn)} alkaen ja luovutetaan viimeistään klo ${fiTime(STAY_TIMES.checkOut)}. Sovi saapumisaika ja avainten luovutus kanssamme viimeistään kaksi arkipäivää ennen saapumista. Avaimet luovutetaan, kun koko hinta on maksettu.`,
+    },
+    {
+      q: "Saako lemmikin tuoda?",
+      a: "Lemmikit ovat tervetulleita huoneistoon A. Huoneisto B pyritään pitämään lemmikeistä vapaana. Tupakointi sisätiloissa on kielletty.",
+    },
+  ],
   greenFeeLead: "Levi Golf Green fee",
   greenFee:
     "Levin Hiihtogreeni myy pelilippuja edullisesti Levi golfiin. Alkaen 27 € / green fee. Osta peliliput kätevästi varauslomakkeella. Saat tilausvahvistuksen ja tiedot pelilipuista suoraan sähköpostiisi oston jälkeen. Voit ostaa samalle päivälle jopa 7 pelilippua.",

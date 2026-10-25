@@ -1,4 +1,5 @@
 import { SiteShell } from "../../../../components/SiteShell.tsx";
+import { FaqJsonLd } from "../../../../components/JsonLd.tsx";
 import { BookingCalendar } from "../../../../components/BookingCalendar.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, SplitSection, CallToAction } from "../../../../components/ui/Primitives.tsx";
 import { enRates, enRatesSections } from "../../../../content/en.ts";
@@ -19,6 +20,7 @@ export default function RatesPage() {
 
   return (
     <SiteShell lang="en" activeKey="rates">
+      <FaqJsonLd items={s.faq} />
       <Hero
         image={{
           avif: "/hero/rates.avif",
@@ -77,6 +79,19 @@ export default function RatesPage() {
             {s.termsLink}
           </a>
         </p>
+      </Section>
+
+      <Section tone="white">
+        <Eyebrow>{s.faqLead}</Eyebrow>
+        <h2 className="mt-3 text-h2 font-display text-ink">{s.faqTitle}</h2>
+        <dl className="mt-8 space-y-6">
+          {s.faq.map((item) => (
+            <div key={item.q}>
+              <dt className="font-display text-h3 font-bold text-fjord-dark">{item.q}</dt>
+              <dd className="mt-2 max-w-[68ch] text-body">{item.a}</dd>
+            </div>
+          ))}
+        </dl>
       </Section>
 
       <Section tone="mist">

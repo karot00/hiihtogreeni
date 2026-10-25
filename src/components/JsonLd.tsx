@@ -1,67 +1,5 @@
 import type { Lang } from "../content/types.ts";
-import { COMPANY, CAPACITY, EXTERNAL_LINKS, RENTAL_CONTACT } from "../content/shared.ts";
-import { SITE_CONFIG } from "../lib/config.ts";
-
-const ENTITY_ID = `${SITE_CONFIG.url}/#organization`;
-
-/**
- * Truthful business + lodging structured data. No ratings, offers, or prices.
- * The phone is the one already shown in the page CTAs; email stays click-to-load.
- */
-function buildJsonLd(lang: Lang) {
-  const isFi = lang === "fi";
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": ENTITY_ID,
-        name: COMPANY.name,
-        url: SITE_CONFIG.url,
-        telephone: RENTAL_CONTACT.phone,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: COMPANY.address.street,
-          postalCode: COMPANY.address.postalCode,
-          addressLocality: COMPANY.address.city,
-          addressCountry: "FI",
-        },
-        sameAs: [EXTERNAL_LINKS.leviFi, EXTERNAL_LINKS.leviEn],
-        image: `${SITE_CONFIG.url}/og/default.jpg`,
-      },
-      {
-        "@type": "TouristAccommodation",
-        "@id": `${SITE_CONFIG.url}/#accommodation`,
-        name: "Hiihtogreeni",
-        description: isFi
-          ? "Korkeatasoinen vuokramökki Levin rinteiden ja golfkentän vieressä, kaksi 14 hengen huoneistoa."
-          : "A high-quality rental cabin by the Levi slopes and golf course, with two 14-guest apartments.",
-        url: SITE_CONFIG.url,
-        telephone: RENTAL_CONTACT.phone,
-        numberOfRooms: CAPACITY.bedrooms,
-        occupancy: {
-          "@type": "QuantitativeValue",
-          value: CAPACITY.guestsPerApartment,
-          unitText: isFi ? "vierasta / huoneisto" : "guests per apartment",
-        },
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: COMPANY.address.street,
-          postalCode: COMPANY.address.postalCode,
-          addressLocality: COMPANY.address.city,
-          addressCountry: "FI",
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: COMPANY.geo.latitude,
-          longitude: COMPANY.geo.longitude,
-        },
-        image: `${SITE_CONFIG.url}/og/default.jpg`,
-        inLanguage: isFi ? "fi-FI" : "en-GB",
-      },
-    ],
-  };
-}
+import { buildFaqJsonLd, buildJsonLd } from "../lib/structured-data.ts";
 
 /** Renders schema.org JSON-LD for the real business and accommodation facts. */
 export function JsonLd({ lang }: { lang: Lang }) {
@@ -74,24 +12,14 @@ export function JsonLd({ lang }: { lang: Lang }) {
 }
 
 /**
- * FAQPage structured data. Mirrors the visible FAQ on the Teams page so search
- * engines can surface the questions as rich results. Content is the same
- * crawlable text rendered in the page body.
+ * FAQPage structured data. Mirrors a visible FAQ (Teams and Rates pages) so
+ * search engines and AI assistants read the same questions as the page body.
  */
 export function FaqJsonLd({ items }: { items: readonly { q: string; a: string }[] }) {
-  const data = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: items.map((it) => ({
-      "@type": "Question",
-      name: it.q,
-      acceptedAnswer: { "@type": "Answer", text: it.a },
-    })),
-  };
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqJsonLd(items)) }}
     />
   );
 }

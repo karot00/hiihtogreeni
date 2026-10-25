@@ -386,6 +386,39 @@ export const enRatesSections = {
   ],
   termsNote: "The booking calendar's price breakdown shows the prices of the extras. You accept the booking terms when you send a booking request.",
   termsLink: "Read the booking terms",
+  // Answers follow the booking terms v1.3 (cabins.levifinland.fi).
+  faqLead: "Frequently asked",
+  faqTitle: "Questions about booking",
+  faq: [
+    {
+      q: "Do I have to book a full week?",
+      a: "No. A Saturday-to-Saturday week is the best value; otherwise the price is per night. The booking calendar shows the price for your dates and tells you if a stay cannot be booked.",
+    },
+    {
+      q: "What is included in the price?",
+      a: "Water, electricity, heating, the sauna, pillows and duvets, tableware and kitchen equipment, toilet paper, cleaning supplies and the final cleaning. When you book the whole house, the 20-person meeting and dining room is included too. Prices include VAT.",
+    },
+    {
+      q: "Are bed linen and towels included?",
+      a: "Not automatically. Bed linen and towels, and made-up beds, can be added per guest, or you can bring your own. Linen ordered on the day of arrival has a €50 delivery fee on top. Sleeping bags may not be used in the beds.",
+    },
+    {
+      q: "How do I pay?",
+      a: "By bank transfer against an invoice: a 30% advance payment when booking and the rest at the latest 60 days before arrival. If you book less than 60 days before arrival, the full price is invoiced at once.",
+    },
+    {
+      q: "What if I have to cancel?",
+      a: "Cancel in writing by email. More than 60 days before arrival the cancellation fee is the advance payment (30%), and anything paid above that is refunded. Later, the full price is charged. We recommend travel insurance.",
+    },
+    {
+      q: "When can we check in and when do we leave?",
+      a: `The apartment is available from ${STAY_TIMES.checkIn} and must be vacated by ${STAY_TIMES.checkOut}. Please agree your arrival time and the key handover with us at least two working days before arrival. The keys are handed over once the full price has been paid.`,
+    },
+    {
+      q: "Can we bring a pet?",
+      a: "Pets are welcome in apartment A. We try to keep apartment B pet-free. Smoking is not allowed indoors.",
+    },
+  ],
   greenFeeLead: "Levi Golf Green Fees",
   greenFee:
     "Hiihtogreeni offers competitively priced green fees for Levi Golf, starting from just €27 per green fee. Purchase your green fees conveniently through our booking form. After your purchase, you'll receive an order confirmation and details about your green fees directly via email. You can buy up to 7 green fees for the same day.",
