@@ -1,6 +1,6 @@
 # Agent visibility plan: hiihtogreeni.fi readable and bookable by AI
 
-**Status:** NEARLY DONE (steps 1–7 done; left: the `inquiry_submitted` event together with levifinland2026's Umami PR #32, and the 60-day review in §6)
+**Status:** DONE on hiihtogreeni.fi (steps 1–7 and the `inquiry_submitted` event, 2026-10-25). Left: the review in §6, scheduled for 2026-12-10; levifinland2026 7.8.2, 7.8.6 and 7.8.7 are on hold (owner, 2026-10-25).
 **Created:** 2026-10-25 (reviewed and corrected the same day)
 **Reference implementation:** experiencelevi.fi (repo `chaletnulkka`, `docs/agent-first.md`, `docs/analytics.md`). In its first 36 hours of analytics that site had 51 sessions, 32 of them from ChatGPT (`utm_source=chatgpt.com`), 16 of those reached the booking page, and one sent a booking request. ChatGPT recommends it first for "cabin in Levi" questions because it can read prices and availability from the HTML.
 
