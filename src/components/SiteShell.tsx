@@ -5,6 +5,7 @@ import { CookieConsentProvider } from "../lib/cookie-consent/context.tsx";
 import { CookieConsentBanner } from "./CookieConsentBanner.tsx";
 import { CookieConsentPreferences } from "./CookieConsentPreferences.tsx";
 import { GoogleAnalytics } from "./GoogleAnalytics.tsx";
+import { UmamiAnalytics } from "./UmamiAnalytics.tsx";
 import { JsonLd } from "./JsonLd.tsx";
 
 interface SiteShellProps {
@@ -44,6 +45,7 @@ export function SiteShell({ lang, activeKey, children }: SiteShellProps) {
       <CookieConsentBanner lang={lang} />
       <CookieConsentPreferences lang={lang} />
       <GoogleAnalytics lang={lang} />
+      <UmamiAnalytics />
       <JsonLd lang={lang} />
     </CookieConsentProvider>
   );

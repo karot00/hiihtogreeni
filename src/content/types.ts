@@ -129,6 +129,8 @@ export interface CookieConsentCopy {
     eyebrow: string;
     title: string;
     description: string;
+    /** The cookieless Umami statistics, which run without consent. */
+    cookielessStats: string;
   };
   categories: {
     essential: ConsentCategoryCopy;

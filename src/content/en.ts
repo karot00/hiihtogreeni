@@ -48,6 +48,8 @@ export const EN_COOKIE_CONSENT: CookieConsentCopy = {
     title: "Cookie settings",
     description:
       "Choose which cookie categories this site may use. Essential cookies are always active.",
+    cookielessStats:
+      "We also count visits with cookieless Umami statistics. It stores no cookies or IP addresses, needs no consent and respects your browser's Do Not Track setting. The statistics server (stats.experiencelevi.fi) is run by the same owner within the EU.",
   },
   categories: {
     essential: {
