@@ -3,7 +3,7 @@ import type { PageContent } from "../content/types.ts";
 import { enCabin, enCabinSections, enContact, enGallery, enHome, enRates, enRatesSections, enTeams, enTeamsSections } from "../content/en.ts";
 import { fiCabin, fiContact, fiGallery, fiHome, fiRates, fiTeams } from "../content/fi.ts";
 import { SITE_CONFIG } from "./config.ts";
-import { API_BASE, OPENAPI_URL, formatDate, formatDateRange, freeRanges, type ApartmentPrices, type Availability, type FreeRange, type Pricing } from "./booking-api.ts";
+import { API_BASE, MCP_URL, OPENAPI_URL, formatDate, formatDateRange, freeRanges, type ApartmentPrices, type Availability, type FreeRange, type Pricing } from "./booking-api.ts";
 import { formatEuros } from "./last-minute.ts";
 
 /**
@@ -149,6 +149,8 @@ function agents(): string {
       `GET ${API_BASE}/quote?check_in=YYYY-MM-DD&check_out=YYYY-MM-DD&units=A|B|AB&guests=N: the exact price of a stay`,
       `POST ${API_BASE}/inquiries: a booking request for a guest who has agreed to it and to the booking terms; the owner confirms by email and nothing is charged`,
     ]),
+    "",
+    `MCP server (Streamable HTTP) with the same operations as tools: ${MCP_URL} (get_property, get_pricing, get_availability, get_quote, submit_booking_request, get_faq).`,
     "",
     "Never quote a total for given dates that /quote has not returned.",
   ].join("\n");

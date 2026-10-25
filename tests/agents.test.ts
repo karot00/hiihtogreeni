@@ -86,10 +86,11 @@ test("without live data, llms.txt points to the booking calendar instead of quot
 });
 
 test("llms.txt and llms-full.txt point agents to the booking API and its contract", async () => {
-  const { API_BASE, OPENAPI_URL } = await import("../src/lib/booking-api.ts");
+  const { API_BASE, MCP_URL, OPENAPI_URL } = await import("../src/lib/booking-api.ts");
   for (const text of [buildLlmsTxt(), buildLlmsFullTxt()]) {
     assert.ok(text.includes("## For AI agents"));
     assert.ok(text.includes(OPENAPI_URL));
+    assert.ok(text.includes(`MCP server (Streamable HTTP) with the same operations as tools: ${MCP_URL}`));
     for (const route of ["property", "pricing", "availability", "quote", "inquiries"]) {
       assert.ok(text.includes(`${API_BASE}/${route}`), route);
     }
