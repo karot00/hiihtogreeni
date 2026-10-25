@@ -7,11 +7,14 @@ import { CookieConsentPreferences } from "./CookieConsentPreferences.tsx";
 import { GoogleAnalytics } from "./GoogleAnalytics.tsx";
 import { UmamiAnalytics } from "./UmamiAnalytics.tsx";
 import { JsonLd } from "./JsonLd.tsx";
+import type { LodgingOffer } from "../lib/structured-data.ts";
 
 interface SiteShellProps {
   lang: Lang;
   /** The nav key of the current page, used to mark active nav/switcher state. */
   activeKey?: NavKey;
+  /** Live price range for the JSON-LD, on pages that show the prices. */
+  offer?: LodgingOffer;
   children: React.ReactNode;
 }
 
@@ -31,7 +34,7 @@ const HERO_KEY: Record<Lang, Partial<Record<NavKey, string>>> = {
  * correctly. Server component — the only client islands are the mobile nav
  * disclosure and the cookie-consent components.
  */
-export function SiteShell({ lang, activeKey, children }: SiteShellProps) {
+export function SiteShell({ lang, activeKey, offer, children }: SiteShellProps) {
   const heroKey = activeKey ? HERO_KEY[lang]?.[activeKey] : undefined;
   const heroAvif = heroKey ? `/hero/${heroKey}.avif` : undefined;
   return (
@@ -46,7 +49,7 @@ export function SiteShell({ lang, activeKey, children }: SiteShellProps) {
       <CookieConsentPreferences lang={lang} />
       <GoogleAnalytics lang={lang} />
       <UmamiAnalytics />
-      <JsonLd lang={lang} />
+      <JsonLd lang={lang} offer={offer} />
     </CookieConsentProvider>
   );
 }

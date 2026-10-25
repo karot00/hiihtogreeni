@@ -58,3 +58,29 @@ for (const [name, build] of [["llms.txt", buildLlmsTxt], ["llms-full.txt", build
     assert.deepEqual(euros.sort(), name === "llms-full.txt" ? ["€27", "€50"] : []);
   });
 }
+
+test("with live data, llms.txt lists the seasonal prices, extras, offer and free periods from the API", async () => {
+  const { parseAvailability, parsePricing } = await import("../src/lib/booking-api.ts");
+  const { AVAILABILITY_JSON, PRICING_JSON } = await import("./fixtures/booking-api.ts");
+  const live = { pricing: parsePricing(PRICING_JSON), availability: parseAvailability(AVAILABILITY_JSON) };
+  for (const text of [buildLlmsTxt(live), buildLlmsFullTxt(live)]) {
+    assert.ok(text.includes("live from the booking system"));
+    assert.ok(text.includes("| Alkutalvi | 1 – 30 Nov 2026 | €3,070 | €570 |"));
+    assert.ok(text.includes("| Joulu ja uusivuosi | 17 Dec 2026 – 6 Jan 2027 | A €4,940 / B €5,040 | €990 |"));
+    assert.ok(text.includes("| Other times | | €3,500 | €575 |"));
+    assert.ok(text.includes("Final cleaning €290 per apartment"));
+    assert.ok(text.includes("Minimum stay 3 nights"));
+    assert.ok(text.includes("Last minute: 20% off the accommodation for arrivals until 24 Nov 2026"));
+    assert.ok(text.includes("- Whole house (28 guests): from 27 Nov 2026"));
+    assert.ok(text.includes("- Apartment B (14 guests): 21 – 26 Nov 2026 (5 nights); from 27 Nov 2026"));
+    assert.ok(!text.includes("Unpriced"));
+    assert.ok(!text.includes(RENTAL_CONTACT.email));
+  }
+});
+
+test("without live data, llms.txt points to the booking calendar instead of quoting prices", () => {
+  const text = buildLlmsTxt({ pricing: null, availability: null });
+  assert.ok(text.includes("could not be read from the booking system"));
+  assert.ok(!text.includes("### Seasonal prices"));
+  assert.ok(!text.includes("### Free periods"));
+});

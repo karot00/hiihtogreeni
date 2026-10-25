@@ -1,10 +1,13 @@
+import { getAvailability, getPricing } from "../../lib/booking-api.ts";
 import { buildLlmsFullTxt } from "../../lib/llms.ts";
 
-// Built from the content files, so it is rendered once at build time.
-export const dynamic = "force-static";
+// Content files plus live prices and free dates from the booking API, rebuilt
+// every 15 minutes like the rates pages.
+export const revalidate = 900;
 
-export function GET() {
-  return new Response(buildLlmsFullTxt(), {
+export async function GET() {
+  const [pricing, availability] = await Promise.all([getPricing(), getAvailability()]);
+  return new Response(buildLlmsFullTxt({ pricing, availability }), {
     headers: { "content-type": "text/plain; charset=utf-8" },
   });
 }

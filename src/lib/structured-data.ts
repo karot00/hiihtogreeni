@@ -15,8 +15,47 @@ const address = {
   addressCountry: "FI",
 };
 
-/** The cabin itself: both apartments, stay times, amenities and the booking action. */
-export function buildLodging(lang: Lang) {
+/** Price range of one apartment from the booking API, as shown in the rates table. */
+export interface LodgingOffer {
+  nightly: [number, number];
+  weekly: [number, number];
+  /** The page that shows the prices. */
+  url: string;
+}
+
+function offerFields(isFi: boolean, offer: LodgingOffer) {
+  const [low, high] = offer.nightly;
+  const unit = (unitCode: "DAY" | "WEE", [minPrice, maxPrice]: [number, number], fi: string, en: string) => ({
+    "@type": "UnitPriceSpecification",
+    priceCurrency: "EUR",
+    minPrice,
+    maxPrice,
+    unitCode,
+    unitText: isFi ? fi : en,
+    valueAddedTaxIncluded: true,
+  });
+  return {
+    priceRange: isFi ? `${low}–${high} € / yö / huoneisto` : `€${low}–€${high} per night per apartment`,
+    makesOffer: {
+      "@type": "AggregateOffer",
+      priceCurrency: "EUR",
+      lowPrice: low,
+      highPrice: high,
+      url: offer.url,
+      priceSpecification: [
+        unit("DAY", offer.nightly, "yö, yksi huoneisto", "night, one apartment"),
+        unit("WEE", offer.weekly, "viikko la–la, yksi huoneisto", "Saturday-to-Saturday week, one apartment"),
+      ],
+    },
+  };
+}
+
+/**
+ * The cabin itself: both apartments, stay times, amenities and the booking
+ * action; with `offer`, also the live price range (rates pages only, where the
+ * same numbers are visible).
+ */
+export function buildLodging(lang: Lang, offer?: LodgingOffer) {
   const isFi = lang === "fi";
   const cabin = isFi ? fiCabinSections : enCabinSections;
   const apartment = (name: string, petsAllowed?: boolean) => ({
@@ -67,16 +106,16 @@ export function buildLodging(lang: Lang) {
       },
       result: { "@type": "LodgingReservation", name: isFi ? "Varauspyyntö" : "Booking request" },
     },
+    ...(offer ? offerFields(isFi, offer) : {}),
   };
 }
 
 /**
  * Truthful business + lodging structured data, built from the same content
- * the pages render. No ratings yet; prices (priceRange, AggregateOffer) are
- * added from the booking API in AGENT-VISIBILITY-PLAN.md step 4, never typed.
+ * the pages render. No ratings yet; prices come only from the booking API.
  * The phone is the one already shown in the page CTAs; email stays click-to-load.
  */
-export function buildJsonLd(lang: Lang) {
+export function buildJsonLd(lang: Lang, offer?: LodgingOffer) {
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -90,7 +129,7 @@ export function buildJsonLd(lang: Lang) {
         sameAs: [EXTERNAL_LINKS.leviFi, EXTERNAL_LINKS.leviEn],
         image: `${SITE_CONFIG.url}/og/default.jpg`,
       },
-      buildLodging(lang),
+      buildLodging(lang, offer),
     ],
   };
 }
