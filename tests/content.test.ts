@@ -7,7 +7,7 @@ import {
   getTranslation,
   getHref,
 } from "../src/lib/routes.ts";
-import { SITE_CONFIG } from "../src/lib/config.ts";
+import { CAPACITY, COMPANY, MAINTENANCE_CONTACT, RENTAL_CONTACT } from "../src/content/shared.ts";
 import {
   fiHome,
   fiCabin,
@@ -55,13 +55,14 @@ test("language switcher maps each page to its translation pair", () => {
   assert.equal(getTranslation("fi", "rates", "en"), ROUTES.en.rates);
 });
 
-test("owner-approved contacts and capacity are present in site config", () => {
-  assert.equal(SITE_CONFIG.contact.phone, "+358500633744");
-  assert.equal(SITE_CONFIG.contact.email, "hiihtogreeni@hiihtogreeni.fi");
-  assert.equal(SITE_CONFIG.maintenance.phone, "+358443456001");
-  assert.equal(SITE_CONFIG.maintenance.email, "jens.pitkanen@aavalevi.fi");
-  assert.equal(SITE_CONFIG.capacity.guestsPerApartment, 14);
-  assert.equal(SITE_CONFIG.capacity.apartments, 2);
+test("owner-approved contacts, capacity and location are present in shared facts", () => {
+  assert.equal(RENTAL_CONTACT.phone, "+358500633744");
+  assert.equal(RENTAL_CONTACT.email, "hiihtogreeni@hiihtogreeni.fi");
+  assert.equal(MAINTENANCE_CONTACT.phone, "+358443456001");
+  assert.equal(MAINTENANCE_CONTACT.email, "jens.pitkanen@aavalevi.fi");
+  assert.equal(CAPACITY.guestsPerApartment, 14);
+  assert.equal(CAPACITY.apartments, 2);
+  assert.deepEqual(COMPANY.geo, { latitude: 67.801561, longitude: 24.900871 });
 });
 
 test("every canonical page has a title and an h1, unique within its language", () => {

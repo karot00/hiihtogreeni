@@ -1,10 +1,13 @@
 import type { Lang } from "../content/types.ts";
-import { COMPANY, CAPACITY, EXTERNAL_LINKS } from "../content/shared.ts";
+import { COMPANY, CAPACITY, EXTERNAL_LINKS, RENTAL_CONTACT } from "../content/shared.ts";
 import { SITE_CONFIG } from "../lib/config.ts";
 
 const ENTITY_ID = `${SITE_CONFIG.url}/#organization`;
 
-/** Truthful business + lodging structured data. No ratings, offers, or prices. */
+/**
+ * Truthful business + lodging structured data. No ratings, offers, or prices.
+ * The phone is the one already shown in the page CTAs; email stays click-to-load.
+ */
 function buildJsonLd(lang: Lang) {
   const isFi = lang === "fi";
   return {
@@ -15,6 +18,7 @@ function buildJsonLd(lang: Lang) {
         "@id": ENTITY_ID,
         name: COMPANY.name,
         url: SITE_CONFIG.url,
+        telephone: RENTAL_CONTACT.phone,
         address: {
           "@type": "PostalAddress",
           streetAddress: COMPANY.address.street,
@@ -33,6 +37,7 @@ function buildJsonLd(lang: Lang) {
           ? "Korkeatasoinen vuokramökki Levin rinteiden ja golfkentän vieressä, kaksi 14 hengen huoneistoa."
           : "A high-quality rental cabin by the Levi slopes and golf course, with two 14-guest apartments.",
         url: SITE_CONFIG.url,
+        telephone: RENTAL_CONTACT.phone,
         numberOfRooms: CAPACITY.bedrooms,
         occupancy: {
           "@type": "QuantitativeValue",
@@ -45,6 +50,11 @@ function buildJsonLd(lang: Lang) {
           postalCode: COMPANY.address.postalCode,
           addressLocality: COMPANY.address.city,
           addressCountry: "FI",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: COMPANY.geo.latitude,
+          longitude: COMPANY.geo.longitude,
         },
         image: `${SITE_CONFIG.url}/og/default.jpg`,
         inLanguage: isFi ? "fi-FI" : "en-GB",
