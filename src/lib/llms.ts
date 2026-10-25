@@ -3,14 +3,22 @@ import type { PageContent } from "../content/types.ts";
 import { enCabin, enCabinSections, enContact, enGallery, enHome, enRates, enRatesSections, enTeams, enTeamsSections } from "../content/en.ts";
 import { fiCabin, fiContact, fiGallery, fiHome, fiRates, fiTeams } from "../content/fi.ts";
 import { SITE_CONFIG } from "./config.ts";
+import { formatDate, formatDateRange, freeRanges, type ApartmentPrices, type Availability, type FreeRange, type Pricing } from "./booking-api.ts";
+import { formatEuros } from "./last-minute.ts";
 
 /**
  * /llms.txt and /llms-full.txt (https://llmstxt.org), built from the same
  * content the pages render, so an AI assistant reads the facts a guest sees.
- * Prices and free dates are not written here: they live in the booking
- * calendar (AGENT-VISIBILITY-PLAN.md step 4 adds them from the booking API).
+ * Prices and free dates come live from the booking API, exactly as on the
+ * rates pages; without them the files point to the booking calendar instead.
  * The email stays out because the site shows it only on click.
  */
+
+/** Live data from the booking API; either part may be missing. */
+export interface LiveData {
+  pricing: Pricing | null;
+  availability: Availability | null;
+}
 
 const EN_PAGES = [enHome, enCabin, enTeams, enRates, enGallery, enContact];
 const FI_PAGES = [fiHome, fiCabin, fiTeams, fiRates, fiGallery, fiContact];
@@ -51,15 +59,75 @@ function facts(): string {
   ].join("\n");
 }
 
-function booking(): string {
+const eur = (amount: number) => formatEuros("en", Math.round(amount * 100));
+const cell = (a: ApartmentPrices, b: ApartmentPrices, key: keyof ApartmentPrices) =>
+  a[key] === b[key] ? eur(a[key]) : `A ${eur(a[key])} / B ${eur(b[key])}`;
+
+function livePrices(pricing: Pricing): string {
+  const rows = pricing.seasons.map(
+    (season) => `| ${season.name} | ${formatDateRange("en", season.firstNight, season.lastNight)} | ${cell(season.a, season.b, "weekly")} | ${cell(season.a, season.b, "nightly")} |`,
+  );
+  if (pricing.base) rows.push(`| Other times | | ${cell(pricing.base.a, pricing.base.b, "weekly")} | ${cell(pricing.base.a, pricing.base.b, "nightly")} |`);
+  const e = pricing.extras;
+  const extras = [
+    e.cleaningPerApartment && `Final cleaning ${eur(e.cleaningPerApartment)} per apartment (always added)`,
+    e.linenPerGuest && `Bed linen and towels ${eur(e.linenPerGuest)} per guest (optional)`,
+    e.bedsMadePerGuest && `Made-up beds ${eur(e.bedsMadePerGuest)} per guest on top of linen (optional)`,
+    e.conferenceRoomPerStay && `Conference room ${eur(e.conferenceRoomPerStay)} per stay, free with the whole house`,
+    e.maintenanceRoomPerStay && `Ski and equipment maintenance room ${eur(e.maintenanceRoomPerStay)} per stay`,
+  ].filter((line): line is string => Boolean(line));
+  return [
+    "### Seasonal prices (live from the booking system)",
+    "",
+    `Per apartment, VAT included. A full Saturday-to-Saturday week costs the weekly price; every other night costs the nightly price. The whole house is both apartments. Minimum stay ${pricing.minNights} nights.`,
+    "",
+    "| Season | Nights | Week (Sat–Sat) | Night |",
+    "|---|---|---|---|",
+    ...rows,
+    "",
+    list(extras),
+    ...(pricing.lastMinute
+      ? ["", `Last minute: ${pricing.lastMinute.percent}% off the accommodation for arrivals until ${formatDate("en", pricing.lastMinute.arrivalsUntil)} (not cleaning or extras).`]
+      : []),
+  ].join("\n");
+}
+
+const stay = (range: FreeRange) =>
+  range.openEnded ? `from ${formatDate("en", range.checkIn)}` : `${formatDateRange("en", range.checkIn, range.checkOut)} (${range.nights} nights)`;
+
+function liveFreeDates(availability: Availability, minNights: number): string {
+  const group = (title: string, unit: "a" | "b" | "ab") => {
+    const ranges = freeRanges(availability.nights, unit, minNights);
+    return `- ${title}: ${ranges.length ? ranges.map(stay).join("; ") : "no free periods"}`;
+  };
+  return [
+    `### Free periods (live, next six months from ${formatDate("en", availability.today)})`,
+    "",
+    "Check-in to check-out dates of continuous free periods that fit the minimum stay.",
+    "",
+    group(`Whole house (${whole} guests)`, "ab"),
+    group(`Apartment A (${CAPACITY.guestsPerApartment} guests)`, "a"),
+    group(`Apartment B (${CAPACITY.guestsPerApartment} guests)`, "b"),
+  ].join("\n");
+}
+
+function booking(live?: LiveData): string {
+  const pricing = live?.pricing && (live.pricing.seasons.length > 0 || live.pricing.base) ? live.pricing : null;
+  const intro = pricing
+    ? `The prices and free periods below come live from the booking system and are refreshed every 15 minutes. The exact total for given dates (weeks, nights, cleaning and extras) is shown by the booking calendar: ${bookingPageUrl("en")} (Finnish: ${bookingPageUrl("fi")}).`
+    : `Prices and free dates could not be read from the booking system just now. The booking calendar shows the free apartments and the exact price for any dates: ${bookingPageUrl("en")} (Finnish: ${bookingPageUrl("fi")}). Do not quote a price you have not read there.`;
   return [
     "## Prices, availability and booking",
     "",
-    `Prices and free dates are not listed in this file. The booking calendar shows the free apartments and the exact price for any dates: ${bookingPageUrl("en")} (Finnish: ${bookingPageUrl("fi")}). Do not quote a price you have not read there.`,
+    intro,
+    ...(pricing ? ["", livePrices(pricing)] : []),
+    ...(live?.availability ? ["", liveFreeDates(live.availability, pricing?.minNights ?? 1)] : []),
+    "",
+    "### Terms",
     "",
     list(enRatesSections.terms),
     "",
-    "How to book:",
+    "### How to book",
     "",
     `1. Pick the dates and apartments in the booking calendar and send a booking request. The owner replies by email; sending a request does not charge anything.`,
     `2. Or call ${RENTAL_CONTACT.name}, ${RENTAL_CONTACT.phoneDisplay}, or use the contact form at ${url(enContact.slug)}.`,
@@ -80,29 +148,29 @@ function pages(): string {
   ].join("\n");
 }
 
-export function buildLlmsTxt(): string {
+export function buildLlmsTxt(live?: LiveData): string {
   return [
     header(),
     facts(),
-    booking(),
+    booking(live),
     pages(),
     [
       "## Optional",
       "",
-      `- [Full description](${url("/llms-full.txt")}): the cabin, team accommodation and booking terms in one file`,
+      `- [Full description](${url("/llms-full.txt")}): the cabin, team accommodation, booking FAQ and terms in one file`,
       `- [Hiihtogreeni on levifinland.fi](${EXTERNAL_LINKS.leviEn}): presentation by the sister site`,
       `- [Levi Golf green fees](${EXTERNAL_LINKS.greenFee}): sold by Hiihtogreeni`,
     ].join("\n"),
   ].join("\n\n") + "\n";
 }
 
-export function buildLlmsFullTxt(): string {
+export function buildLlmsFullTxt(live?: LiveData): string {
   const s = enCabinSections;
   const t = enTeamsSections;
   return [
     header(),
     facts(),
-    booking(),
+    booking(live),
     ["### Questions about booking", "", enRatesSections.faq.map((item) => `**${item.q}**\n${item.a}`).join("\n\n")].join("\n"),
     ["## The cabin", "", s.lead, "", s.intro, "", s.introAfter].join("\n"),
     ["### Bedrooms (per apartment)", "", s.bedrooms.map(bedroomLine).join("\n")].join("\n"),

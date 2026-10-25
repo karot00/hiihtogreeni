@@ -1,12 +1,12 @@
 import type { Lang } from "../content/types.ts";
-import { buildFaqJsonLd, buildJsonLd } from "../lib/structured-data.ts";
+import { buildFaqJsonLd, buildJsonLd, type LodgingOffer } from "../lib/structured-data.ts";
 
 /** Renders schema.org JSON-LD for the real business and accommodation facts. */
-export function JsonLd({ lang }: { lang: Lang }) {
+export function JsonLd({ lang, offer }: { lang: Lang; offer?: LodgingOffer }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(lang)) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(lang, offer)) }}
     />
   );
 }

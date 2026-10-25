@@ -70,3 +70,22 @@ test("the rates FAQ JSON-LD is the visible FAQ, with the stay times, in both lan
   assert.ok(fiRatesSections.faq.some((it) => it.a.includes("klo 17.00") && it.a.includes("klo 11.00")));
   assert.ok(enRatesSections.faq.some((it) => it.a.includes(STAY_TIMES.checkIn) && it.a.includes(STAY_TIMES.checkOut)));
 });
+
+test("on the rates pages the lodging carries the live price range, nightly and weekly", () => {
+  const offer = { nightly: [570, 990] as [number, number], weekly: [3070, 5040] as [number, number], url: "https://www.hiihtogreeni.fi/hinnoittelu/" };
+  const fi = buildLodging("fi", offer);
+  assert.equal(fi.priceRange, "570–990 € / yö / huoneisto");
+  assert.equal(buildLodging("en", offer).priceRange, "€570–€990 per night per apartment");
+  const made = fi.makesOffer;
+  assert.ok(made);
+  assert.deepEqual(
+    { type: made["@type"], low: made.lowPrice, high: made.highPrice, url: made.url },
+    { type: "AggregateOffer", low: 570, high: 990, url: offer.url },
+  );
+  assert.deepEqual(
+    made.priceSpecification.map((p) => [p.unitCode, p.minPrice, p.maxPrice, p.valueAddedTaxIncluded]),
+    [["DAY", 570, 990, true], ["WEE", 3070, 5040, true]],
+  );
+  const graph = buildJsonLd("en", offer)["@graph"];
+  assert.ok(JSON.stringify(graph).includes('"AggregateOffer"'));
+});

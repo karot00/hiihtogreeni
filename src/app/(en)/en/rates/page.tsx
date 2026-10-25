@@ -1,6 +1,9 @@
 import { SiteShell } from "../../../../components/SiteShell.tsx";
 import { FaqJsonLd } from "../../../../components/JsonLd.tsx";
 import { BookingCalendar } from "../../../../components/BookingCalendar.tsx";
+import { FreePeriods, SeasonPrices } from "../../../../components/LiveRates.tsx";
+import { getAvailability, getPricing, priceRange } from "../../../../lib/booking-api.ts";
+import { SITE_CONFIG } from "../../../../lib/config.ts";
 import { Hero, Section, Eyebrow, ButtonLink, SplitSection, CallToAction } from "../../../../components/ui/Primitives.tsx";
 import { enRates, enRatesSections } from "../../../../content/en.ts";
 import { EXTERNAL_LINKS, CAPACITY, RENTAL_CONTACT, bookingTermsUrl } from "../../../../content/shared.ts";
@@ -15,11 +18,18 @@ export const metadata = buildPageMetadata({
   ogImage: OG_IMAGES.default,
 });
 
-export default function RatesPage() {
+// Prices and free dates come from the booking API (src/lib/booking-api.ts),
+// so the page is rebuilt every 15 minutes like the API's CDN cache.
+export const revalidate = 900;
+
+export default async function RatesPage() {
   const s = enRatesSections;
+  const [pricing, availability] = await Promise.all([getPricing(), getAvailability()]);
+  const range = pricing ? priceRange(pricing) : null;
+  const offer = range ? { ...range, url: `${SITE_CONFIG.url}${getHref("en", "rates")}` } : undefined;
 
   return (
-    <SiteShell lang="en" activeKey="rates">
+    <SiteShell lang="en" activeKey="rates" offer={offer}>
       <FaqJsonLd items={s.faq} />
       <Hero
         image={{
@@ -46,6 +56,8 @@ export default function RatesPage() {
         </div>
       </Section>
 
+      <SeasonPrices lang="en" s={s.live} pricing={pricing} />
+
       <Section tone="white" id="booking-calendar" className="scroll-mt-20">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] lg:items-start">
           <div>
@@ -56,6 +68,8 @@ export default function RatesPage() {
           <BookingCalendar lang="en" strings={s.calendar} />
         </div>
       </Section>
+
+      <FreePeriods lang="en" s={s.live} availability={availability} minNights={pricing?.minNights ?? 1} />
 
       <Section>
         <Eyebrow>Booking terms</Eyebrow>
