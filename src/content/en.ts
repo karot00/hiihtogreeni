@@ -350,7 +350,7 @@ export const enRates: PageContent = {
   slug: "/en/rates/",
   title: "Rates - Hiihtogreeni",
   description:
-    "Levin Hiihtogreeni Oy's accommodation rates by season. Ask for availability and prices. Rates include end-of-stay cleaning and 13.5% VAT.",
+    "Hiihtogreeni accommodation rates in Levi: booking calendar, nightly and weekly prices, and booking terms. Prices include 13.5% VAT.",
   h1: "Rates",
   nav: EN_NAV,
   external: EXTERNAL_LINKS,
@@ -359,7 +359,7 @@ export const enRates: PageContent = {
 export const enRatesSections = {
   lead: "Levin Hiihtogreeni Oy's accommodation pricing",
   askLead: "Ask for availability and prices",
-  askNote: "Please ask daily and weekend rates.",
+  askNote: "You can see the nightly and weekly prices in the booking calendar below.",
   capacityNote:
     "Prices are for one apartment for 14 (max 14) people. The house has 2 similar apartments.",
   meetingNote:
@@ -373,38 +373,16 @@ export const enRatesSections = {
     loading: "Loading the calendar…",
     openInNewTab: "Open the calendar in a new tab",
   },
-  seasons: [
-    {
-      title: "A - High Season",
-      note: "Prices include cleaning at the end of the stay.",
-      weeks: "Weeks 51-53, 01, 8-16 (varies slightly year to year)",
-      changeover: "Changeover day: Saturday; weeks 11-16 Sunday",
-      holiday: "May vary on public holidays",
-    },
-    {
-      title: "B - Snow time and autumn",
-      note: "Prices include cleaning at the end of the stay.",
-      weeks: "Weeks 17-18, 35-39, 44-50, 3-6",
-      changeover: "Changeover day: Saturday",
-      holiday: "Please also ask about individual days",
-    },
-    {
-      title: "C - Reduced price period",
-      note: "Prices include cleaning at the end of the stay.",
-      weeks: "Rest of the Year (including golfing season weeks 25-34)",
-      changeover: "Changeover day: by agreement",
-      holiday: "",
-    },
-  ],
   terms: [
-    "Prices always include cleaning at the end of the stay",
-    "Bed linen and towels: 16 € / set",
-    "Beds made: 25 € / set",
-    "If renting the whole house (both apartments) the price also includes meeting/dining room for 20 people with end-of-stay cleaning",
-    "All prices include 13.5% VAT on accommodation services",
-    "Terms of payment: 30% when reserving, rest 60 days before accommodation",
+    "Prices are per apartment. A Saturday-to-Saturday week is the best value; otherwise the price is per night.",
+    "Final cleaning is added for each apartment booked.",
+    "Bed linen and towels, and made-up beds, can be added per guest, or you can bring your own.",
+    "If you rent the whole house (both apartments), the 20-person meeting and dining room is included. With one apartment it can be booked at an extra cost.",
+    "All prices include 13.5% VAT on accommodation services.",
+    "Terms of payment: 30% when booking, the rest 60 days before arrival.",
   ],
-  termsNote: "Ask for general accommodation conditions by e-mail.",
+  termsNote: "The booking calendar's price breakdown shows the prices of the extras. You accept the booking terms when you send a booking request.",
+  termsLink: "Read the booking terms",
   greenFeeLead: "Levi Golf Green Fees",
   greenFee:
     "Hiihtogreeni offers competitively priced green fees for Levi Golf, starting from just €27 per green fee. Purchase your green fees conveniently through our booking form. After your purchase, you'll receive an order confirmation and details about your green fees directly via email. You can buy up to 7 green fees for the same day.",

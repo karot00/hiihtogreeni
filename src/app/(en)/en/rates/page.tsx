@@ -2,7 +2,7 @@ import { SiteShell } from "../../../../components/SiteShell.tsx";
 import { BookingCalendar } from "../../../../components/BookingCalendar.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, SplitSection, CallToAction } from "../../../../components/ui/Primitives.tsx";
 import { enRates, enRatesSections } from "../../../../content/en.ts";
-import { EXTERNAL_LINKS, CAPACITY, RENTAL_CONTACT } from "../../../../content/shared.ts";
+import { EXTERNAL_LINKS, CAPACITY, RENTAL_CONTACT, bookingTermsUrl } from "../../../../content/shared.ts";
 import { getHref } from "../../../../lib/routes.ts";
 import { buildPageMetadata, OG_IMAGES } from "../../../../lib/seo.ts";
 
@@ -55,35 +55,6 @@ export default function RatesPage() {
         </div>
       </Section>
 
-      <Section tone="mist">
-        <Eyebrow>Seasons</Eyebrow>
-        <h2 className="mt-3 text-h2 font-display text-ink">Seasonal rates</h2>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {s.seasons.map((season, index) => (
-            <div key={index} className="rounded-[var(--radius-card)] border border-frost bg-white p-6">
-              <h3 className="font-display text-h3 font-bold text-fjord-dark">{season.title}</h3>
-              <p className="mt-1 text-sm text-slate">{season.note}</p>
-              <dl className="mt-4 space-y-2 text-body">
-                <div>
-                  <dt className="text-sm font-semibold text-ink">Weeks</dt>
-                  <dd className="text-slate">{season.weeks}</dd>
-                </div>
-                <div>
-                  <dt className="text-sm font-semibold text-ink">Changeover</dt>
-                  <dd className="text-slate">{season.changeover}</dd>
-                </div>
-                {season.holiday ? (
-                  <div>
-                    <dt className="text-sm font-semibold text-ink">Public holidays</dt>
-                    <dd className="text-slate">{season.holiday}</dd>
-                  </div>
-                ) : null}
-              </dl>
-            </div>
-          ))}
-        </div>
-      </Section>
-
       <Section>
         <Eyebrow>Booking terms</Eyebrow>
         <h2 className="mt-3 text-h2 font-display text-ink">What is included and payment terms</h2>
@@ -96,6 +67,16 @@ export default function RatesPage() {
           ))}
         </ul>
         <p className="mt-6 text-sm text-slate">{s.termsNote}</p>
+        <p className="mt-4">
+          <a
+            href={bookingTermsUrl("en")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center rounded-[var(--radius-control)] border border-fjord px-4 font-display text-sm font-semibold text-fjord-dark transition-colors hover:bg-fjord/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fjord"
+          >
+            {s.termsLink}
+          </a>
+        </p>
       </Section>
 
       <Section tone="mist">
