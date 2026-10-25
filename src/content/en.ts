@@ -1,4 +1,4 @@
-import type { NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
+import type { LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
 import { EXTERNAL_LINKS } from "./shared.ts";
 
 export const EN_NAV: NavItem[] = [
@@ -481,3 +481,26 @@ export const enContactSections = {
   contactMethodLabel: "Type",
   contactMethods: ["By e-mail", "By text message"],
 } as const;
+
+/** Front-page last-minute banner (shown only while the owner's offer is on). */
+export const enLastMinute: LastMinuteStrings = {
+  eyebrow: "Last minute · {dates}",
+  title: "Last-minute escape to Levi, even for a big group: {percent}% off the normal price",
+  wholeHouseFree: "The whole house is free – up to 28 guests.",
+  apartmentFree: "Apartment {apartment} is free – up to 14 guests.",
+  priceNote: "per apartment · {nights} nights · final cleaning included",
+  normally: "Normally {price}",
+  cta: "See the dates and book",
+  metaDescription: "Last minute {dates}: an apartment for {price}, {percent}% off the normal price.",
+  seasons: {
+    firstSnow: { name: "First snow and the first runs", text: "Ski the first tracks of the season and enjoy the autumn's first runs on the slopes." },
+    earlyWinter: { name: "Early winter", text: "The slopes and tracks open, and the blue light of the polar night makes the evenings magical." },
+    christmas: { name: "Christmas and New Year", text: "Spend Christmas or New Year in Levi with your whole group." },
+    midwinter: { name: "Snowy midwinter", text: "Crisp frosty days, northern lights and quiet ski tracks – Lapland's winter at its best." },
+    peak: { name: "Peak season", text: "The best skiing and the sun: Levi's slopes are at their best." },
+    spring: { name: "Sunny spring skiing", text: "Long bright days, good snow and sunny slopes." },
+    quiet: { name: "Lapland on a budget", text: "For those looking for peace and quiet: Lapland at its calmest." },
+    summer: { name: "Summer in Levi", text: "Golf, hiking and mountain biking under the midnight sun." },
+    ruska: { name: "Autumn colours", text: "The ruska season paints the fells in stunning autumn colours." },
+  },
+};
