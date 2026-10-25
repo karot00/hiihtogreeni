@@ -9,6 +9,8 @@ export const COMPANY = {
     city: "LEVI",
     country: "Finland",
   },
+  // The Google Business Profile pin, same as cabins.levifinland.fi (owner, 2026-09-29).
+  geo: { latitude: 67.801561, longitude: 24.900871 },
   airportDistance: "16 km (n. 20 min) Kittilän lentoasemalta",
   builtYear: 2006,
 } as const;
