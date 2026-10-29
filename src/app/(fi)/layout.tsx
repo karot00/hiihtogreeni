@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fi" className={fontVariables}>
+    <html lang="fi" className={fontVariables} data-scroll-behavior="smooth">
       <body>
         {children}
       </body>

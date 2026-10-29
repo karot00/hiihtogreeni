@@ -38,7 +38,7 @@ export default function EnglishLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-GB" className={fontVariables}>
+    <html lang="en-GB" className={fontVariables} data-scroll-behavior="smooth">
       <body>
         {children}
       </body>

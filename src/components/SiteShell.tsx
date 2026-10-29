@@ -1,3 +1,4 @@
+import { preload } from "react-dom";
 import type { Lang, NavKey } from "../content/types.ts";
 import { Header } from "./Header.tsx";
 import { Footer } from "./Footer.tsx";
@@ -36,12 +37,14 @@ const HERO_KEY: Record<Lang, Partial<Record<NavKey, string>>> = {
  */
 export function SiteShell({ lang, activeKey, offer, children }: SiteShellProps) {
   const heroKey = activeKey ? HERO_KEY[lang]?.[activeKey] : undefined;
-  const heroAvif = heroKey ? `/hero/${heroKey}.avif` : undefined;
+  // Preload via the API, not a rendered <link>: React hoists a <link> into
+  // <head>, and as the page's first node it stops Next.js from scrolling to
+  // the top on client-side navigation.
+  if (heroKey) {
+    preload(`/hero/${heroKey}.avif`, { as: "image", type: "image/avif", fetchPriority: "high" });
+  }
   return (
     <CookieConsentProvider>
-      {heroAvif ? (
-        <link rel="preload" as="image" href={heroAvif} type="image/avif" fetchPriority="high" />
-      ) : null}
       <Header lang={lang} activeKey={activeKey} />
       <main id="main">{children}</main>
       <Footer lang={lang} />
