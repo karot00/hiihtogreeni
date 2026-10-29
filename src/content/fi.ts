@@ -25,6 +25,7 @@ export const FI_UI: UILabels = {
   footerContactHeading: "Yhteystiedot",
   footerNavHeading: "Sivut",
   footerLanguageHeading: "Kieli",
+  footerBookingTerms: "Varausehdot",
   contactCta: "Ota yhteyttä",
   rightsReserved: "Kaikki oikeudet pidätetään.",
   agentsLabel: "Tekoälyavustajille",

@@ -66,6 +66,8 @@ export interface UILabels {
   footerNavHeading: string;
   /** Footer section heading for language links. */
   footerLanguageHeading: string;
+  /** Footer link to the booking terms on the booking system. */
+  footerBookingTerms: string;
   /** Primary contact call-to-action label used in footer. */
   contactCta: string;
   /** Copyright/legal line prefix, rendered before the year and company name. */

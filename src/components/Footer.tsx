@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Lang } from "../content/types.ts";
 import { getNav, getUI, COMPANY, LANGUAGE_OPTIONS } from "../content/index.ts";
+import { bookingTermsUrl } from "../content/shared.ts";
 import { getHref } from "../lib/routes.ts";
 import { OPENAPI_URL } from "../lib/booking-api.ts";
 import { CookieConsentSettingsTrigger } from "./CookieConsentSettingsTrigger.tsx";
@@ -78,7 +79,7 @@ export function Footer({ lang }: FooterProps) {
           </ul>
         </nav>
 
-        {/* Languages + cookie settings */}
+        {/* Languages, cookie settings + booking terms */}
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-white/70">
             {ui.footerLanguageHeading}
@@ -96,9 +97,22 @@ export function Footer({ lang }: FooterProps) {
               </li>
             ))}
           </ul>
-          <div className="mt-4">
-            <CookieConsentSettingsTrigger lang={lang} />
-          </div>
+          <ul className="mt-4 space-y-2 text-sm">
+            <li>
+              <CookieConsentSettingsTrigger lang={lang} />
+            </li>
+            <li>
+              <a
+                href={bookingTermsUrl(lang)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-[var(--radius-control)] underline-offset-2 hover:underline focus-visible:underline"
+              >
+                {ui.footerBookingTerms}
+                <span className="sr-only"> {ui.opensInNewTab}</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
 

@@ -23,6 +23,7 @@ export const EN_UI: UILabels = {
   footerContactHeading: "Contact",
   footerNavHeading: "Pages",
   footerLanguageHeading: "Language",
+  footerBookingTerms: "Booking terms",
   contactCta: "Get in touch",
   rightsReserved: "All rights reserved.",
   agentsLabel: "For AI assistants",
