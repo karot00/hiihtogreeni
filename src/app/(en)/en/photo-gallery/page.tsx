@@ -27,8 +27,8 @@ export default function GalleryPage() {
           webp: "/hero/gallery.webp",
           jpg: "/hero/gallery.jpg",
           width: 1600,
-          height: 1067,
-          alt: "Hiihtogreeni photo gallery",
+          height: 900,
+          alt: "Living room and fireplace at Hiihtogreeni cabin",
         }}
         eyebrow="Levi, Lapland"
         title={enGallery.h1}

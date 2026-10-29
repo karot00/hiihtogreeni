@@ -27,8 +27,8 @@ export default function GalleryPage() {
           webp: "/hero/gallery.webp",
           jpg: "/hero/gallery.jpg",
           width: 1600,
-          height: 1067,
-          alt: "Hiihtogreeni-kuvagalleria",
+          height: 900,
+          alt: "Hiihtogreeni-mökin olohuone ja takka",
         }}
         eyebrow="Levi, Lappi"
         title={fiGallery.h1}
