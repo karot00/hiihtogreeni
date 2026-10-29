@@ -45,19 +45,6 @@ export default async function RatesPage() {
         lead="Seasonal accommodation and green-fee pricing, plus booking terms."
       />
 
-      <Section>
-        <Eyebrow>{s.lead}</Eyebrow>
-        <h2 className="mt-3 text-h2 font-display text-ink">Accommodation with two apartments</h2>
-        <p className="mt-4 max-w-[68ch] text-body">{s.capacityNote}</p>
-        <p className="mt-4 max-w-[68ch] text-body">{s.meetingNote}</p>
-        <div className="mt-6 flex flex-wrap gap-4">
-          <ButtonLink href={getHref("en", "contact")}>{s.askLead}</ButtonLink>
-          <span className="inline-flex min-h-11 items-center text-sm text-slate">{s.askNote}</span>
-        </div>
-      </Section>
-
-      <SeasonPrices lang="en" s={s.live} pricing={pricing} />
-
       <Section tone="white" id="booking-calendar" className="scroll-mt-20">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,36rem)] lg:items-start">
           <div>
@@ -70,6 +57,15 @@ export default async function RatesPage() {
       </Section>
 
       <FreePeriods lang="en" s={s.live} availability={availability} minNights={pricing?.minNights ?? 1} />
+
+      <Section>
+        <Eyebrow>{s.lead}</Eyebrow>
+        <h2 className="mt-3 text-h2 font-display text-ink">Accommodation with two apartments</h2>
+        <p className="mt-4 max-w-[68ch] text-body">{s.capacityNote}</p>
+        <p className="mt-4 max-w-[68ch] text-body">{s.meetingNote}</p>
+      </Section>
+
+      <SeasonPrices lang="en" s={s.live} pricing={pricing} />
 
       <Section>
         <Eyebrow>Booking terms</Eyebrow>

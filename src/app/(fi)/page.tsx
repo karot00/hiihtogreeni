@@ -49,8 +49,8 @@ export default async function HomePage() {
   const heroButtons = (
     <>
       <ButtonLink href={getHref("fi", "cabin")}>Tutustu mökkiin</ButtonLink>
-      <ButtonLink href={getHref("fi", "contact")} variant="light">
-        Ota yhteyttä
+      <ButtonLink href={getHref("fi", "rates")} variant="light">
+        Katso hinnat ja varaa
       </ButtonLink>
     </>
   );

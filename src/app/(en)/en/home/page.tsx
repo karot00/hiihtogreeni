@@ -43,8 +43,8 @@ export default async function EnglishHomePage() {
   const heroCta = (
     <>
       <ButtonLink href={getHref("en", "cabin")}>Explore the cabin</ButtonLink>
-      <ButtonLink href={getHref("en", "contact")} variant="light">
-        Get in touch
+      <ButtonLink href={getHref("en", "rates")} variant="light">
+        See rates and book
       </ButtonLink>
     </>
   );

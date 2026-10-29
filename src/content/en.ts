@@ -6,7 +6,7 @@ export const EN_NAV: NavItem[] = [
   { key: "cabin", label: "Cabin", href: "/en/cabin/" },
   { key: "teams", label: "For Teams", href: "/en/teams/" },
   { key: "gallery", label: "Photo Gallery", href: "/en/photo-gallery/" },
-  { key: "rates", label: "Rates", href: "/en/rates/" },
+  { key: "rates", label: "Book", href: "/en/rates/" },
   { key: "contact", label: "Contact", href: "/en/contact-information/" },
 ];
 
@@ -363,8 +363,6 @@ export const enRates: PageContent = {
 
 export const enRatesSections = {
   lead: "Levin Hiihtogreeni Oy's accommodation pricing",
-  askLead: "Ask for availability and prices",
-  askNote: "You can see the nightly and weekly prices in the booking calendar below.",
   capacityNote:
     "Prices are for one apartment for 14 (max 14) people. The house has 2 similar apartments.",
   meetingNote:

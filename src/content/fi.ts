@@ -8,7 +8,7 @@ export const FI_NAV: NavItem[] = [
   { key: "cabin", label: "Mökki", href: "/mokki/" },
   { key: "teams", label: "Joukkueille", href: "/joukkueille/" },
   { key: "gallery", label: "Kuvagalleria", href: "/kuvagalleria/" },
-  { key: "rates", label: "Hinnoittelu", href: "/hinnoittelu/" },
+  { key: "rates", label: "Varaa", href: "/hinnoittelu/" },
   { key: "contact", label: "Yhteystiedot", href: "/yhteystiedot/" },
 ];
 
@@ -365,8 +365,6 @@ export const fiRates: PageContent = {
 
 export const fiRatesSections = {
   lead: "Levin Hiihtogreeni Oy:n hinnoittelu",
-  askLead: "Kysy saatavuus ja tarjous",
-  askNote: "Yö- ja viikkohinnat näet alla olevasta varauskalenterista.",
   capacityNote:
     "Hiihtogreenissä on kaksi 14 hengen huoneistoa. Vuokrataan erikseen tai yhdessä.",
   meetingNote:
