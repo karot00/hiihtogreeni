@@ -478,7 +478,7 @@ export const fiGallerySections = {
 
 export const fiGalleryImages: GalleryImage[] = [
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-1.jpg", alt: "12 hengen ruokapöytä", width: 800, height: 533, caption: "12 hengen ruokapöytä" },
-  { src: "/wp-content/uploads/2024/07/Levi-Majoitus-suuri-olohuone-Hiihtogreeni.jpg", alt: "Iso olohuone tunturinäkymin", width: 2160, height: 1250, caption: "Iso olohuone tunturinäkymin" },
+  { src: "/wp-content/uploads/2026/10/hiihtogreeni-levi-cabin-large-groups-livingroom.jpg", alt: "Iso olohuone tunturinäkymin", width: 1920, height: 1080, caption: "Iso olohuone tunturinäkymin" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-10.jpg", alt: "Jokaisella huoneella oma kylpyhuone", width: 800, height: 534, caption: "Jokaisella huoneella oma kylpyhuone" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-2.jpg", alt: "Hyvin varusteltu keittiö", width: 800, height: 533, caption: "Hyvin varusteltu keittiö" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-3.jpg", alt: "Makuuhuone", width: 800, height: 534 },

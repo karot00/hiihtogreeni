@@ -476,7 +476,7 @@ export const enGallerySections = {
 
 export const enGalleryImages: GalleryImage[] = [
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-1.jpg", alt: "Dining table for 12", width: 800, height: 533, caption: "Dining table for 12" },
-  { src: "/wp-content/uploads/2024/07/Levi-Majoitus-suuri-olohuone-Hiihtogreeni.jpg", alt: "Large living room with fell views", width: 2160, height: 1250, caption: "Large living room with fell views" },
+  { src: "/wp-content/uploads/2026/10/hiihtogreeni-levi-cabin-large-groups-livingroom.jpg", alt: "Large living room with fell views", width: 1920, height: 1080, caption: "Large living room with fell views" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-10.jpg", alt: "Bathroom in every room", width: 800, height: 534, caption: "Bathroom in every room" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-2.jpg", alt: "Well equipped kitchen", width: 800, height: 533, caption: "Well equipped kitchen" },
   { src: "/wp-content/uploads/2022/10/Hiihtogreeni-mokki-3.jpg", alt: "Bedroom", width: 800, height: 534 },
