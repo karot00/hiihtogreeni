@@ -96,8 +96,8 @@ test("every canonical page has a title and an h1, unique within its language", (
 });
 
 test("navigation matches the six canonical pages and language", () => {
-  assert.equal(FI_NAV.length, 6);
-  assert.equal(EN_NAV.length, 6);
+  assert.equal(FI_NAV.length, 7);
+  assert.equal(EN_NAV.length, 7);
   for (const item of FI_NAV) assert.ok(item.href.startsWith("/"));
   for (const item of EN_NAV) assert.ok(item.href.startsWith("/en/"));
 });

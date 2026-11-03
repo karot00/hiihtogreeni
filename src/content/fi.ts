@@ -7,6 +7,7 @@ export const FI_NAV: NavItem[] = [
   { key: "home", label: "Etusivu", href: "/" },
   { key: "cabin", label: "Mökki", href: "/mokki/" },
   { key: "teams", label: "Joukkueille", href: "/joukkueille/" },
+  { key: "companies", label: "Yrityksille", href: "/yrityksille/" },
   { key: "gallery", label: "Kuvagalleria", href: "/kuvagalleria/" },
   { key: "rates", label: "Varaa", href: "/hinnoittelu/" },
   { key: "contact", label: "Yhteystiedot", href: "/yhteystiedot/" },

@@ -5,6 +5,7 @@ export const EN_NAV: NavItem[] = [
   { key: "home", label: "Home", href: "/en/home/" },
   { key: "cabin", label: "Cabin", href: "/en/cabin/" },
   { key: "teams", label: "For Teams", href: "/en/teams/" },
+  { key: "companies", label: "For Companies", href: "/en/companies/" },
   { key: "gallery", label: "Photo Gallery", href: "/en/photo-gallery/" },
   { key: "rates", label: "Book", href: "/en/rates/" },
   { key: "contact", label: "Contact", href: "/en/contact-information/" },
