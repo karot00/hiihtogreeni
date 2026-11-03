@@ -381,7 +381,7 @@ export const enRatesSections = {
     "Final cleaning is added for each apartment booked.",
     "Bed linen and towels, and made-up beds, can be added per guest, or you can bring your own.",
     "If you rent the whole house (both apartments), the 20-person meeting and dining room is included. With one apartment it can be booked at an extra cost.",
-    "Prices include VAT: 13.5% on accommodation, final cleaning and bed linen, and 25.5% on the conference room when it is charged separately. With the whole house the conference room is free.",
+    "Prices include VAT: 13.5% on accommodation, final cleaning and bed linen, and 25.5% on the ski maintenance room and on the conference room when it is charged separately. With the whole house the conference room is free.",
     "Terms of payment: 30% when booking, the rest 60 days before arrival.",
     `Check-in from ${STAY_TIMES.checkIn} on the day of arrival, check-out by ${STAY_TIMES.checkOut} on the day of departure. Early check-in can be requested but cannot be guaranteed. Late check-out is not possible.`,
   ],

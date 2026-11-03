@@ -383,7 +383,7 @@ export const fiRatesSections = {
     "Loppusiivous lisätään jokaiseen varattuun huoneistoon.",
     "Liinavaatteet ja pyyhkeet sekä valmiiksi pedatut vuoteet voi lisätä varaukseen henkilöä kohden, tai voitte tuoda omat.",
     "Kun vuokraatte koko talon (molemmat huoneistot), 20 hengen neuvottelu- ja ruokailutila sisältyy hintaan. Yhden huoneiston kanssa tilan voi varata lisähintaan.",
-    "Hinnat sisältävät arvonlisäveron. Majoituksen, loppusiivouksen ja liinavaatteiden arvonlisävero on 13,5 %. Erikseen veloitettavan kokoustilan arvonlisävero on 25,5 %. Koko talon varauksessa kokoustila on maksuton.",
+    "Hinnat sisältävät arvonlisäveron. Majoituksen, loppusiivouksen ja liinavaatteiden arvonlisävero on 13,5 %. Erikseen veloitettavan kokoustilan ja suksihuoltotilan arvonlisävero on 25,5 %. Koko talon varauksessa kokoustila on maksuton.",
     "Maksuehdot: 30 % varattaessa, loput 60 päivää ennen saapumista.",
     `Huoneisto on käytettävissä saapumispäivänä klo ${fiTime(STAY_TIMES.checkIn)} alkaen ja luovutetaan lähtöpäivänä viimeistään klo ${fiTime(STAY_TIMES.checkOut)}. Aikaisempaa saapumista voi pyytää, mutta sitä ei voida taata. Myöhäisempi lähtö ei ole mahdollinen.`,
   ],
