@@ -1,7 +1,7 @@
 import type { CompanyExampleKey, Lang } from "../content/types.ts";
 import { enCompaniesSections } from "../content/en.ts";
 import { fiCompaniesSections } from "../content/fi.ts";
-import type { Pricing, StayRequest } from "./booking-api.ts";
+import { formatNights, type Pricing, type StayRequest } from "./booking-api.ts";
 import { fill } from "./last-minute.ts";
 
 const SECTIONS = { fi: fiCompaniesSections, en: enCompaniesSections } as const;
@@ -70,7 +70,7 @@ export function shortStayAnswer(lang: Lang, pricing: Pricing | null): string {
   const s = SECTIONS[lang].shortStay;
   if (!pricing) return s.unknown;
   const n = pricing.minNights;
-  const min = lang === "fi" ? (n === 1 ? "1 yö" : `${n} yötä`) : n === 1 ? "1 night" : `${n} nights`;
+  const min = formatNights(lang, n);
   return pricing.minChargedNights > n
     ? fill(s.withMinimumCharge, { min, charged: pricing.minChargedNights })
     : fill(s.minimumOnly, { min });

@@ -3,7 +3,7 @@ import type { PageContent } from "../content/types.ts";
 import { enCabin, enCabinSections, enCompanies, enCompaniesSections, enContact, enGallery, enHome, enRates, enRatesSections, enTeams, enTeamsSections } from "../content/en.ts";
 import { fiCabin, fiCompanies, fiContact, fiGallery, fiHome, fiRates, fiTeams } from "../content/fi.ts";
 import { SITE_CONFIG } from "./config.ts";
-import { API_BASE, MCP_URL, OPENAPI_URL, formatDate, formatDateRange, freeRanges, type ApartmentPrices, type Availability, type FreeRange, type Pricing } from "./booking-api.ts";
+import { API_BASE, MCP_URL, OPENAPI_URL, formatDate, formatDateRange, formatNights, freeRanges, type ApartmentPrices, type Availability, type FreeRange, type Pricing } from "./booking-api.ts";
 import { formatEuros } from "./last-minute.ts";
 
 /**
@@ -79,7 +79,7 @@ function livePrices(pricing: Pricing): string {
   return [
     "### Seasonal prices (live from the booking system)",
     "",
-    `Per apartment, VAT included. A full Saturday-to-Saturday week costs the weekly price; every other night costs the nightly price. The whole house is both apartments. Minimum stay ${pricing.minNights} nights.`,
+    `Per apartment, VAT included. A full Saturday-to-Saturday week costs the weekly price; every other night costs the nightly price. The whole house is both apartments. Minimum stay ${formatNights("en", pricing.minNights)}.${pricing.minChargedNights ? ` Stays shorter than ${pricing.minChargedNights} nights are charged as ${pricing.minChargedNights} nights.` : ""}`,
     "",
     "| Season | Nights | Week (Sat–Sat) | Night |",
     "|---|---|---|---|",
@@ -177,8 +177,8 @@ function companiesFull(live?: LiveData): string {
   const c = enCompaniesSections;
   const shortStay = live?.pricing
     ? live.pricing.minChargedNights > live.pricing.minNights
-      ? `Shortest stay ${live.pricing.minNights} night(s); stays under ${live.pricing.minChargedNights} nights are charged as ${live.pricing.minChargedNights} nights.`
-      : `Shortest stay ${live.pricing.minNights} nights.`
+      ? `Shortest stay ${formatNights("en", live.pricing.minNights)}; stays under ${live.pricing.minChargedNights} nights are charged as ${live.pricing.minChargedNights} nights.`
+      : `Shortest stay ${formatNights("en", live.pricing.minNights)}.`
     : null;
   return [
     "## For companies and leadership offsites",

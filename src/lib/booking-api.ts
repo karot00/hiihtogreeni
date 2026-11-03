@@ -268,6 +268,12 @@ export function formatDateRange(lang: Lang, from: string, to: string): string {
   );
 }
 
+/** "1 yö" / "3 yötä", "1 night" / "3 nights" */
+export function formatNights(lang: Lang, nights: number): string {
+  if (lang === "fi") return nights === 1 ? "1 yö" : `${nights} yötä`;
+  return nights === 1 ? "1 night" : `${nights} nights`;
+}
+
 /** "24.11.2026" / "24 Nov 2026" */
 export function formatDate(lang: Lang, date: string): string {
   return plainSpaces(
