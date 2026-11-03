@@ -3,6 +3,7 @@ import { COMPANY, CAPACITY, EXTERNAL_LINKS, RENTAL_CONTACT, STAY_TIMES, bookingP
 import { enCabinSections } from "../content/en.ts";
 import { fiCabinSections } from "../content/fi.ts";
 import { SITE_CONFIG } from "./config.ts";
+import { ROUTES } from "./routes.ts";
 
 export const ORGANIZATION_ID = `${SITE_CONFIG.url}/#organization`;
 export const ACCOMMODATION_ID = `${SITE_CONFIG.url}/#accommodation`;
@@ -47,6 +48,20 @@ function offerFields(isFi: boolean, offer: LodgingOffer) {
         unit("WEE", offer.weekly, "viikko la–la, yksi huoneisto", "Saturday-to-Saturday week, one apartment"),
       ],
     },
+  };
+}
+
+/** The private meeting room (owner answers C2–C6), free with the whole house. */
+function meetingRoom(isFi: boolean) {
+  const features = isFi
+    ? ["Videotykki", "Valkokangas", "Pöytäfläppitaulu", "Minikeittiö", "Oma sisäänkäynti myös ulkoa"]
+    : ["Video projector", "Screen", "Tabletop flip chart", "Mini-kitchen", "Own entrance, also from outside"];
+  return {
+    "@type": "MeetingRoom",
+    name: isFi ? "Kokoustila" : "Meeting room",
+    url: `${SITE_CONFIG.url}${ROUTES[isFi ? "fi" : "en"].companies}`,
+    maximumAttendeeCapacity: CAPACITY.meetingRoomSeats,
+    amenityFeature: features.map((name) => ({ "@type": "LocationFeatureSpecification", name, value: true })),
   };
 }
 
@@ -95,7 +110,7 @@ export function buildLodging(lang: Lang, offer?: LodgingOffer) {
       value: true,
     })),
     // Booking terms v1.3 §9: pets welcome in apartment A; B is kept pet-free where possible.
-    containsPlace: [apartment(cabin.apartmentNames[0], true), apartment(cabin.apartmentNames[1])],
+    containsPlace: [apartment(cabin.apartmentNames[0], true), apartment(cabin.apartmentNames[1]), meetingRoom(isFi)] as const,
     potentialAction: {
       "@type": "ReserveAction",
       target: {

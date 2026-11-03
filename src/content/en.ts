@@ -1,4 +1,4 @@
-import type { LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
+import type { CompaniesSections, LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
 import { EXTERNAL_LINKS, STAY_TIMES } from "./shared.ts";
 
 export const EN_NAV: NavItem[] = [
@@ -548,5 +548,151 @@ export const enLastMinute: LastMinuteStrings = {
     quiet: { name: "Lapland on a budget", text: "For those looking for peace and quiet: Lapland at its calmest." },
     summer: { name: "Summer in Levi", text: "Golf, hiking and mountain biking under the midnight sun." },
     ruska: { name: "Autumn colours", text: "The ruska season paints the fells in stunning autumn colours." },
+  },
+};
+
+export const enCompanies: PageContent = {
+  lang: "en",
+  slug: "/en/companies/",
+  title: "For Companies - Hiihtogreeni",
+  description:
+    "Leadership offsites, strategy days and kick-offs in Levi, Finnish Lapland: the whole house for your group, a private 20-person meeting room under the same roof, a private bathroom in every bedroom and 20 minutes from Kittilä airport.",
+  h1: "Leadership offsites and company groups in Levi",
+  nav: EN_NAV,
+  external: EXTERNAL_LINKS,
+};
+
+export const enCompaniesSections: CompaniesSections = {
+  heroEyebrow: "Levi, Lapland — for companies",
+  heroLead:
+    "The whole house for your group: a private 20-person meeting room under the same roof, a private bathroom in every bedroom, your own saunas in the evening and 20 minutes to Kittilä airport.",
+  heroCalendar: "See the free dates",
+  heroContact: "Ask about your group",
+  factsLead: "Key facts",
+  factsTitle: "Spaces and equipment",
+  facts: [
+    { label: "Accommodation", value: "28 beds in the whole house, two apartments of 14. Book one apartment or both." },
+    { label: "Bedrooms", value: "7 bedrooms per apartment, 14 in the whole house. Every bedroom has its own bathroom (toilet and shower)." },
+    { label: "Meeting room", value: "A 20-person meeting and dining room between the apartments. It is used by your group only and has its own entrance, also directly from outside." },
+    { label: "Meeting room equipment", value: "Video projector, screen, tabletop flip chart and a mini-kitchen. No video conferencing camera or speaker." },
+    { label: "Meeting room price", value: "Included when you book the whole house. It can be added to a one-apartment booking." },
+    { label: "Saunas and kitchens", value: "Each apartment has an electric sauna with a covered terrace, a kitchen and a dining table for 12." },
+    { label: "Internet", value: "Wireless broadband." },
+    { label: "Location", value: "About 16 km (20 min by car) from Kittilä airport, 4 km from Levi centre (ski bus), about 200 m from the Koillisrinteet slopes. Ski tracks start from the yard, and the golf course is next door." },
+    { label: "Parking", value: "Lit yard with parking for 6 cars and car-heating posts for 4." },
+  ],
+  useCasesLead: "Use cases",
+  useCasesTitle: "What Hiihtogreeni suits",
+  useCases: [
+    { title: "Strategy days", text: "The leadership team works in the meeting room by day and carries on over the sauna and a shared dinner in the same house." },
+    { title: "Team offsite or kick-off", text: "The whole team under one roof: 28 beds and a 20-person meeting room, with no transfers between a hotel and a venue." },
+    { title: "Board meeting", text: "A quiet, private space with no outside guests." },
+    { title: "Client or partner event", text: "Fell views, saunas and privacy for a small group." },
+    { title: "Facilitated workshop", text: "Video projector, screen and a tabletop flip chart, and in the breaks you step straight out to the ski track or the edge of the golf course." },
+  ],
+  configsLead: "Set-ups",
+  configsTitle: "Three ways to book",
+  configs: [
+    { title: "Whole house, up to 14 people", text: "Everyone gets a bedroom and a bathroom of their own. The meeting room is included. Recommended for a leadership team." },
+    { title: "Whole house, 15–28 people", text: "The meeting room is included. Some bedrooms are shared: each has two beds, two of them bunk beds." },
+    { title: "One apartment and the meeting room, up to 14 people", text: "The lowest price. The apartment has 7 bedrooms, so up to 7 people get a room of their own. The meeting room is yours alone even if other guests stay in the other apartment." },
+  ],
+  pricesLead: "Price examples",
+  pricesTitle: "What the days cost",
+  pricesIntro:
+    "The examples were priced by the booking system on {date}. The price covers accommodation, made-up beds with linen and towels, the final cleaning and the meeting room, VAT included. Meals, transport and activities are not included. Check the price for your own dates in the booking calendar.",
+  pricesUnavailable:
+    "The price examples could not be loaded from the booking system just now. The booking calendar shows the exact price for your dates.",
+  examples: {
+    mayApartment: "May, Mon–Thu: one apartment and the meeting room, 12 people",
+    mayHouse: "May, Mon–Thu: whole house, 14 people, a room each",
+    autumnHouse: "September and autumn colours, Tue–Fri: whole house, 18 people",
+  },
+  perPerson: "about {price} per person per night",
+  total: "Total {price}",
+  breakdown: "Breakdown",
+  lineLabels: {
+    apartment_a: "Apartment A",
+    apartment_b: "Apartment B",
+    conference_room: "Meeting room",
+    maintenance_room: "Ski maintenance room",
+    linen_delivered: "Bed linen and towels",
+    beds_made: "Made-up beds",
+    cleaning: "Final cleaning",
+    last_minute_discount: "Last-minute discount",
+  },
+  minimumCharge: "minimum charge",
+  openCalendar: "Open the dates in the booking calendar",
+  programLead: "Sample programme",
+  programTitle: "Two working days in Levi",
+  programIntro:
+    "How the days can run in each season. You arrange meals and activities yourselves: both apartments have a fully equipped kitchen, and the restaurants in Levi centre are 4 km away.",
+  programs: [
+    {
+      season: "Winter",
+      days: [
+        { when: "Arrival evening", text: "Check-in from 17:00. Sauna and a shared dinner." },
+        { when: "Day 1", text: "Workshop in the morning. In the afternoon, cross-country skiing from the yard or downhill on the Koillisrinteet slopes 200 m away. A second work session in the evening." },
+        { when: "Day 2", text: "Decisions and next steps in the morning. Outdoors in the afternoon, sauna in the evening." },
+        { when: "Departure morning", text: "Check-out by 11:00, 20 minutes to the airport." },
+      ],
+    },
+    {
+      season: "Summer and golf",
+      days: [
+        { when: "Arrival evening", text: "Check-in from 17:00. Dinner on the terrace in the light summer night." },
+        { when: "Day 1", text: "Workshop in the morning. In the afternoon, a round at Levi Golf, whose first tee is about 150 m away. Green fees can be bought through Hiihtogreeni." },
+        { when: "Day 2", text: "Decisions and next steps in the morning. In the afternoon, a trip to the Levijärvi beach or the mountain bike trails." },
+        { when: "Departure morning", text: "Check-out by 11:00, 20 minutes to the airport." },
+      ],
+    },
+    {
+      season: "Autumn colours",
+      days: [
+        { when: "Arrival evening", text: "Check-in from 17:00. Sauna and a shared dinner." },
+        { when: "Day 1", text: "Workshop in the morning. In the afternoon, a hike on the fells in the autumn colours." },
+        { when: "Day 2", text: "Decisions and next steps in the morning. A round of golf or a walk along the golf course in the afternoon, sauna in the evening." },
+        { when: "Departure morning", text: "Check-out by 11:00, 20 minutes to the airport." },
+      ],
+    },
+  ],
+  practicalLead: "Practical matters",
+  practicalTitle: "Before you book",
+  practical: [
+    { title: "Transport", text: "Kittilä airport is 16 km away, about 20 minutes. Take a taxi or a rental car; the yard has room for six cars." },
+    { title: "Meals", text: "Both apartments have a kitchen and a dining table for 12, and the meeting room has a mini-kitchen. You cook yourselves or eat at the restaurants in Levi." },
+    { title: "Invoice to your company", text: "Yes: Levin Hiihtogreeni Oy invoices your company. The deposit is invoiced once the booking is confirmed and the final payment before arrival, as the booking terms set out." },
+    { title: "VAT", text: "13.5% on accommodation, final cleaning and bed linen; 25.5% on the meeting room when it is charged separately." },
+    { title: "Cancellation", text: "The same terms as for any other booking." },
+    { title: "Arrival and departure", text: `Check-in from ${STAY_TIMES.checkIn}, check-out by ${STAY_TIMES.checkOut}.` },
+  ],
+  termsLink: "Read the booking terms",
+  faqLead: "FAQ",
+  faqTitle: "Questions from company groups",
+  faq: [
+    { q: "Does everyone get a room of their own?", a: "The whole house has 14 bedrooms, so in a group of up to 14 everyone has a bedroom and a bathroom of their own. One apartment has 7 bedrooms. Larger groups, up to 28 people, share rooms." },
+    { q: "What is in the meeting room?", a: "It is a 20-person meeting and dining room between the apartments, with a video projector, a screen, a tabletop flip chart and a mini-kitchen." },
+    { q: "Is the meeting room private?", a: "Yes. The meeting room is used by your group only and is not shared with other guests, even if other guests stay in the other apartment. It has its own entrance, also directly from outside." },
+    { q: "Can we hold video calls in the meeting room?", a: "The house has wireless broadband. There is no video conferencing camera or speaker, so bring your own if you need one." },
+    { q: "What does the meeting room cost?", a: "It is included when you book the whole house. With one apartment it can be added separately, and the booking calendar shows its price." },
+    { q: "Does the house suit weekdays?", a: "Yes. Single nights are priced at the nightly rate, so Monday to Thursday works as well as a weekend. A Saturday-to-Saturday week is the best value." },
+    { q: "Do you arrange meals or activities?", a: "No. Both apartments have a fully equipped kitchen and the meeting room a mini-kitchen, and the restaurants in Levi centre are 4 km away. The ski tracks, slopes and golf course are next to the house." },
+    { q: "How do we get here from the airport?", a: "Kittilä airport is 16 km away, about 20 minutes by taxi or rental car." },
+    { q: "Can we get an invoice to our company?", a: "Yes. Levin Hiihtogreeni Oy invoices your company, with the VAT itemised by rate." },
+    { q: "Are the cancellation terms different for companies?", a: "No. Company bookings follow the same booking terms as any other booking." },
+  ],
+  shortStay: {
+    q: "What is the shortest stay?",
+    withMinimumCharge: "The shortest stay is {min}. A stay of fewer than {charged} nights is charged as {charged} nights, so short strategy days work too.",
+    minimumOnly: "The shortest stay is {min}.",
+    unknown: "The booking calendar shows the shortest stay and the price for your dates.",
+  },
+  ctaEyebrow: "The whole house for your group",
+  ctaTitle: "Ask about dates for your group",
+  ctaBody: "Pick the dates in the booking calendar or tell us about your group, and we will reply.",
+  images: {
+    hero: "Hiihtogreeni's 20-person meeting room in Levi",
+    living: "Large living room with fell views",
+    bedroom: "Bedroom with a private bathroom",
   },
 };

@@ -1,4 +1,4 @@
-import type { LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
+import type { CompaniesSections, LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
 import { EXTERNAL_LINKS, STAY_TIMES } from "./shared.ts";
 
 const fiTime = (time: string) => time.replace(":", ".");
@@ -552,5 +552,151 @@ export const fiLastMinute: LastMinuteStrings = {
     quiet: { name: "Edullinen Lapin-reissu", text: "Hiljaisuutta ja rauhaa etsivälle: Lappi on nyt rauhallisimmillaan." },
     summer: { name: "Kesä Levillä", text: "Kesän golf, retkeily ja maastopyöräily yöttömän yön valossa." },
     ruska: { name: "Ruska", text: "Ruska ja syksyn upeat värit tuntureilla." },
+  },
+};
+
+export const fiCompanies: PageContent = {
+  lang: "fi",
+  slug: "/yrityksille/",
+  title: "Yrityksille - Hiihtogreeni",
+  description:
+    "Strategiapäivät, offsitet ja kick-offit Levillä: koko talo omalle ryhmälle, yksityinen 20 hengen kokoustila saman katon alla, oma kylpyhuone jokaisessa makuuhuoneessa ja 20 minuuttia Kittilän lentoasemalle.",
+  h1: "Strategiapäivät ja yritysryhmät Levillä",
+  nav: FI_NAV,
+  external: EXTERNAL_LINKS,
+};
+
+export const fiCompaniesSections: CompaniesSections = {
+  heroEyebrow: "Levi, Lappi — yrityksille",
+  heroLead:
+    "Koko talo omalle ryhmälle: yksityinen 20 hengen kokoustila saman katon alla, jokaisessa makuuhuoneessa oma kylpyhuone, illaksi omat saunat ja Kittilän lentoasemalle 20 minuuttia.",
+  heroCalendar: "Katso vapaat päivät",
+  heroContact: "Kysy ryhmällenne",
+  factsLead: "Faktat lyhyesti",
+  factsTitle: "Tilat ja varustus",
+  facts: [
+    { label: "Majoitus", value: "Koko talossa 28 vuodepaikkaa, kaksi 14 hengen huoneistoa. Huoneistot voi varata erikseen tai yhdessä." },
+    { label: "Makuuhuoneet", value: "7 makuuhuonetta / huoneisto, koko talossa 14. Jokaisessa makuuhuoneessa oma kylpyhuone (wc ja suihku)." },
+    { label: "Kokoustila", value: "20 hengen neuvottelu- ja ruokailutila huoneistojen välissä. Tila on vain teidän käytössänne, ja siihen on oma sisäänkäynti, myös suoraan ulkoa." },
+    { label: "Kokoustilan varustus", value: "Videotykki, valkokangas, pöytäfläppitaulu ja minikeittiö. Videoneuvottelukameraa tai -kaiutinta ei ole." },
+    { label: "Kokoustilan hinta", value: "Sisältyy koko talon varaukseen. Yhden huoneiston varaukseen tilan voi lisätä erikseen." },
+    { label: "Saunat ja keittiöt", value: "Kummassakin huoneistossa sähkösauna katetulla vilvoitteluterassilla, tupakeittiö ja ruokapöytä 12 hengelle." },
+    { label: "Netti", value: "Langaton laajakaista." },
+    { label: "Sijainti", value: "Kittilän lentoasemalle noin 16 km (20 min autolla), Levin keskustaan 4 km (SkiBussi), Koillisrinteille noin 200 m. Latu alkaa pihasta, golfkenttä on vieressä." },
+    { label: "Pysäköinti", value: "Valaistu piha, pysäköintitilaa 6 henkilöautolle, lämmitystolpat 4 autolle." },
+  ],
+  useCasesLead: "Käyttötarpeet",
+  useCasesTitle: "Mihin Hiihtogreeni sopii",
+  useCases: [
+    { title: "Strategiapäivät", text: "Johtoryhmä työskentelee päivällä kokoustilassa ja jatkaa illalla saunan ja yhteisen illallisen äärellä samassa talossa." },
+    { title: "Tiimin offsite tai kick-off", text: "Koko tiimi saman katon alle: 28 vuodepaikkaa ja 20 hengen kokoustila, eikä siirtymiä hotellin ja kokouspaikan välillä." },
+    { title: "Hallituksen kokous", text: "Rauhallinen ja yksityinen tila, jossa ei ole ulkopuolisia vieraita." },
+    { title: "Asiakas- tai kumppanitilaisuus", text: "Pienelle ryhmälle tunturimaisemat, saunat ja oma rauha." },
+    { title: "Fasilitoitu työpaja", text: "Videotykki, valkokangas ja pöytäfläppitaulu, ja tauolla pääsee suoraan ulos ladulle tai golfkentän laidalle." },
+  ],
+  configsLead: "Kokoonpanot",
+  configsTitle: "Kolme tapaa varata",
+  configs: [
+    { title: "Koko talo, enintään 14 henkeä", text: "Jokaiselle oma makuuhuone ja kylpyhuone. Kokoustila sisältyy hintaan. Suositus johtoryhmälle." },
+    { title: "Koko talo, 15–28 henkeä", text: "Kokoustila sisältyy hintaan. Osa makuuhuoneista jaetaan: huoneissa on kaksi vuodetta, kahdessa niistä kerrossänky." },
+    { title: "Yksi huoneisto ja kokoustila, enintään 14 henkeä", text: "Edullisin vaihtoehto. Huoneistossa on 7 makuuhuonetta, joten oma huone riittää enintään 7 hengelle. Kokoustila on vain teidän käytössänne, vaikka toisessa huoneistossa olisi muita vieraita." },
+  ],
+  pricesLead: "Hintaesimerkit",
+  pricesTitle: "Mitä päivät maksavat",
+  pricesIntro:
+    "Esimerkit on laskettu varausjärjestelmässä {date}. Hinta kattaa majoituksen, pedatut vuoteet liinavaatteineen, loppusiivouksen ja kokoustilan käytön, ja se sisältää arvonlisäveron. Ruokailu, kuljetukset ja ohjelma eivät sisälly. Tarkista hinta omille päivillenne varauskalenterista.",
+  pricesUnavailable:
+    "Hintaesimerkit eivät juuri nyt latautuneet varausjärjestelmästä. Varauskalenteri näyttää tarkan hinnan omille päivillenne.",
+  examples: {
+    mayApartment: "Toukokuu, ma–to: yksi huoneisto ja kokoustila, 12 henkeä",
+    mayHouse: "Toukokuu, ma–to: koko talo, 14 henkeä, jokaiselle oma huone",
+    autumnHouse: "Syyskuu ja ruska, ti–pe: koko talo, 18 henkeä",
+  },
+  perPerson: "noin {price} / henkilö / yö",
+  total: "Yhteensä {price}",
+  breakdown: "Erittely",
+  lineLabels: {
+    apartment_a: "Huoneisto A",
+    apartment_b: "Huoneisto B",
+    conference_room: "Kokoustila",
+    maintenance_room: "Suksihuoltotila",
+    linen_delivered: "Liinavaatteet ja pyyhkeet",
+    beds_made: "Pedatut vuoteet",
+    cleaning: "Loppusiivous",
+    last_minute_discount: "Äkkilähtöalennus",
+  },
+  minimumCharge: "vähimmäisveloitus",
+  openCalendar: "Avaa päivät varauskalenterissa",
+  programLead: "Esimerkkiohjelma",
+  programTitle: "Kaksi työpäivää Levillä",
+  programIntro:
+    "Näin päivät voivat rakentua eri vuodenaikoina. Ruokailun ja ohjelman järjestätte itse: molemmissa huoneistoissa on täysin varusteltu keittiö, ja Levin keskustan ravintolat ovat 4 km päässä.",
+  programs: [
+    {
+      season: "Talvi",
+      days: [
+        { when: "Saapumisilta", text: "Sisään klo 17 alkaen. Sauna ja yhteinen illallinen." },
+        { when: "Päivä 1", text: "Aamupäivä työpajassa. Iltapäivällä hiihtolenkki pihasta alkavalla ladulla tai laskettelua Koillisrinteillä 200 metrin päässä. Illalla toinen työskentelyjakso." },
+        { when: "Päivä 2", text: "Aamupäivällä päätökset ja jatkotoimet. Iltapäivällä ulkoilua, illalla sauna." },
+        { when: "Lähtöaamu", text: "Ulos klo 11 mennessä, lentoasemalle 20 minuuttia." },
+      ],
+    },
+    {
+      season: "Kesä ja golf",
+      days: [
+        { when: "Saapumisilta", text: "Sisään klo 17 alkaen. Illallinen terassilla yöttömän yön valossa." },
+        { when: "Päivä 1", text: "Aamupäivä työpajassa. Iltapäivällä kierros Levi Golfissa, jonka ykköstiille on noin 150 metriä. Green feet voi ostaa Hiihtogreenin kautta." },
+        { when: "Päivä 2", text: "Aamupäivällä päätökset ja jatkotoimet. Iltapäivällä retki Levijärven rannalle tai maastopyöräreiteille." },
+        { when: "Lähtöaamu", text: "Ulos klo 11 mennessä, lentoasemalle 20 minuuttia." },
+      ],
+    },
+    {
+      season: "Ruska",
+      days: [
+        { when: "Saapumisilta", text: "Sisään klo 17 alkaen. Sauna ja yhteinen illallinen." },
+        { when: "Päivä 1", text: "Aamupäivä työpajassa. Iltapäivällä ruskaretki tunturiin." },
+        { when: "Päivä 2", text: "Aamupäivällä päätökset ja jatkotoimet. Iltapäivällä golfkierros tai kävely golfkentän laidalla, illalla sauna." },
+        { when: "Lähtöaamu", text: "Ulos klo 11 mennessä, lentoasemalle 20 minuuttia." },
+      ],
+    },
+  ],
+  practicalLead: "Käytännön asiat",
+  practicalTitle: "Ennen varausta",
+  practical: [
+    { title: "Kuljetus", text: "Kittilän lentoasemalta on 16 km eli noin 20 minuuttia. Asemalta pääsee taksilla tai vuokra-autolla, ja pihassa on tilaa kuudelle autolle." },
+    { title: "Ruokailu", text: "Molemmissa huoneistoissa on tupakeittiö ja ruokapöytä 12 hengelle, kokoustilassa minikeittiö. Ruokailun järjestätte itse tai syötte Levin ravintoloissa." },
+    { title: "Lasku yritykselle", text: "Onnistuu: Levin Hiihtogreeni Oy laskuttaa yritystä. Ennakkomaksu laskutetaan, kun varaus on vahvistettu, ja loppumaksu ennen saapumista varausehtojen mukaisesti." },
+    { title: "Arvonlisävero", text: "Majoituksen, loppusiivouksen ja liinavaatteiden arvonlisävero on 13,5 %. Erikseen veloitettavan kokoustilan arvonlisävero on 25,5 %." },
+    { title: "Peruutusehdot", text: "Samat kuin muissakin varauksissa." },
+    { title: "Saapuminen ja lähtö", text: `Sisään klo ${fiTime(STAY_TIMES.checkIn)} alkaen, ulos klo ${fiTime(STAY_TIMES.checkOut)} mennessä.` },
+  ],
+  termsLink: "Lue varausehdot",
+  faqLead: "Usein kysyttyä",
+  faqTitle: "Kysymyksiä yritysryhmiltä",
+  faq: [
+    { q: "Saako jokainen oman huoneen?", a: "Koko talossa on 14 makuuhuonetta, joten enintään 14 hengen ryhmässä jokaisella on oma huone ja kylpyhuone. Yhdessä huoneistossa on 7 makuuhuonetta. Suuremmat ryhmät, enintään 28 henkeä, jakavat huoneita." },
+    { q: "Mitä kokoustilassa on?", a: "Tila on 20 hengen neuvottelu- ja ruokailutila huoneistojen välissä. Siellä on videotykki, valkokangas, pöytäfläppitaulu ja minikeittiö." },
+    { q: "Onko kokoustila yksityinen?", a: "Kyllä. Kokoustila on vain teidän ryhmänne käytössä, eikä sitä jaeta muiden vieraiden kanssa, vaikka toisessa huoneistossa olisi muita vieraita. Tilaan on oma sisäänkäynti, myös suoraan ulkoa." },
+    { q: "Voiko kokoustilassa pitää videopalavereja?", a: "Talossa on langaton laajakaista. Videoneuvottelukameraa tai -kaiutinta ei ole, joten ottakaa tarvittaessa omat mukaan." },
+    { q: "Paljonko kokoustila maksaa?", a: "Koko talon varauksessa kokoustila sisältyy hintaan. Yhden huoneiston varaukseen tilan voi lisätä erikseen, ja hinta näkyy varauskalenterin laskelmassa." },
+    { q: "Sopiiko talo arkipäiville?", a: "Kyllä. Yksittäiset yöt hinnoitellaan yöhinnalla, joten esimerkiksi maanantaista torstaihin onnistuu siinä missä viikonloppukin. Lauantaista lauantaihin viikko on edullisin." },
+    { q: "Järjestättekö ruokailun tai ohjelman?", a: "Emme. Molemmissa huoneistoissa on täysin varusteltu keittiö ja kokoustilassa minikeittiö, ja Levin keskustan ravintolat ovat 4 km päässä. Ladut, rinteet ja golfkenttä ovat talon vieressä." },
+    { q: "Miten lentoasemalta pääsee perille?", a: "Kittilän lentoasemalta on 16 km eli noin 20 minuuttia taksilla tai vuokra-autolla." },
+    { q: "Saako laskun yritykselle?", a: "Kyllä. Levin Hiihtogreeni Oy laskuttaa yritystä, ja laskulla arvonlisävero eritellään verokannoittain." },
+    { q: "Poikkeavatko yritysvarausten peruutusehdot tavallisista?", a: "Eivät. Yritysvarauksiin pätevät samat varausehdot kuin muihinkin varauksiin." },
+  ],
+  shortStay: {
+    q: "Mikä on lyhin varaus?",
+    withMinimumCharge: "Lyhin varaus on {min}. Alle {charged} yön varaus veloitetaan {charged} yön hinnalla, joten lyhyetkin strategiapäivät onnistuvat.",
+    minimumOnly: "Lyhin varaus on {min}.",
+    unknown: "Varauskalenteri kertoo lyhimmän varauksen ja hinnan omille päivillenne.",
+  },
+  ctaEyebrow: "Koko talo omalle ryhmälle",
+  ctaTitle: "Kysy päiviä ryhmällenne",
+  ctaBody: "Valitse päivät varauskalenterista tai kerro ryhmästänne, niin vastaamme.",
+  images: {
+    hero: "Hiihtogreenin 20 hengen kokoustila Levillä",
+    living: "Iso olohuone tunturinäkymin",
+    bedroom: "Makuuhuone omalla kylpyhuoneella",
   },
 };
