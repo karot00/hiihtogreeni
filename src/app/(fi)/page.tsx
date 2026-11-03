@@ -144,9 +144,9 @@ export default async function HomePage() {
         <SplitSection
           imageSide="right"
           image={{
-            src: "/wp-content/uploads/2024/07/Levi-Majoitus-suuri-olohuone-Hiihtogreeni.jpg",
-            width: 1250,
-            height: 2160,
+            src: "/wp-content/uploads/2026/10/hiihtogreeni-levi-cabin-large-groups-livingroom.jpg",
+            width: 1920,
+            height: 1080,
             alt: "Iso olohuone tunturinäkymin",
           }}
         >
