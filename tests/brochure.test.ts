@@ -24,7 +24,7 @@ const IMAGES = {
 const [example] = companyExamples("2026-11-03");
 const quote = { checkIn: example.checkIn, checkOut: example.checkOut, nights: 3, lines: [], totalEur: 2010 };
 const html = (lang: "fi" | "en", examples = [{ example, quote }]) =>
-  buildBrochureHtml({ lang, today: "2026-11-03", examples, images: IMAGES, fontCss: "", qrSvg: "<svg></svg>" });
+  buildBrochureHtml({ lang, today: "2026-11-03", examples, images: IMAGES, fontCss: "", qrSvg: "<svg></svg>", shortStay: "SHORT-STAY-RULE" });
 
 test("the brochure has nine slides in both languages, with the price date and a from price", () => {
   for (const lang of ["fi", "en"] as const) {
@@ -35,6 +35,7 @@ test("the brochure has nine slides in both languages, with the price date and a 
   }
   assert.equal(perPersonNight(example, quote), 56);
   assert.match(html("fi"), /alkaen 56\s€ \/ henkilö \/ yö/);
+  assert.ok(html("fi").includes("SHORT-STAY-RULE"));
   // Without prices the brochure points to the booking calendar instead.
   assert.ok(html("en", []).includes(BROCHURE_STRINGS.en.pricesUnavailable));
 });

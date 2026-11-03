@@ -46,6 +46,8 @@ export interface BrochureInput {
   fontCss: string;
   /** Inline SVG of the QR code to the booking calendar. */
   qrSvg: string;
+  /** The shortest-stay rule from the live /pricing (companies page FAQ answer). */
+  shortStay: string;
 }
 
 const esc = (text: string) =>
@@ -111,7 +113,7 @@ function footer(b: (typeof BROCHURE_STRINGS)[Lang], date: string, page: number) 
 }
 
 /** The brochure as one HTML document, ready to print to PDF. */
-export function buildBrochureHtml({ lang, today, examples, images, fontCss, qrSvg }: BrochureInput): string {
+export function buildBrochureHtml({ lang, today, examples, images, fontCss, qrSvg, shortStay }: BrochureInput): string {
   const b = BROCHURE_STRINGS[lang];
   const s = SECTIONS[lang];
   const date = formatDate(lang, today);
@@ -173,8 +175,9 @@ export function buildBrochureHtml({ lang, today, examples, images, fontCss, qrSv
       <p>${esc(fill(s.perPerson, { price: euros(lang, perPersonNight(example, quote)) }))}</p></div>`,
         )
         .join("")}</div>
-    <p class="muted" style="margin-top:12px">${esc(fill(b.pricesNote, { date }))}</p>`
-    : `<p style="margin-top:16px">${esc(b.pricesUnavailable)}</p>`;
+    <p class="muted" style="margin-top:12px">${esc(fill(b.pricesNote, { date }))}</p>
+    <p style="margin-top:8px;font-size:15px;font-weight:600">${esc(shortStay)}</p>`
+    : `<p style="margin-top:16px">${esc(b.pricesUnavailable)}</p><p style="margin-top:8px;font-size:15px;font-weight:600">${esc(shortStay)}</p>`;
   slides.push(`<section class="slide"><div class="pad"><p class="eyebrow">${esc(s.pricesLead)}</p><h2>${esc(b.pricesTitle)}</h2>
   ${lowest ? `<span class="from">${esc(fill(b.fromPrice, { price: euros(lang, lowest) }))}</span>` : ""}
   <div class="cards" style="grid-template-columns: repeat(3, 1fr); margin-top:18px">${s.configs
