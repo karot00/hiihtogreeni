@@ -3,6 +3,8 @@
 import { useId, useRef, useState } from "react";
 import type { Lang, FormStrings } from "../content/types.ts";
 import { GA4_EVENTS, trackEvent } from "../lib/analytics.ts";
+import { FOUND_VIA, parseFoundVia, type FoundVia } from "../lib/found-via.ts";
+import { UMAMI_EVENTS, umamiTrack } from "../lib/umami.ts";
 
 export interface ContactField {
   id: string;
@@ -16,6 +18,8 @@ interface ContactFormProps {
   consentLabel: string;
   contactMethodLabel: string;
   contactMethods: readonly string[];
+  /** Optional "How did you find us?" select; the codes are fixed in lib/contact.ts. */
+  foundVia: { label: string; placeholder: string; options: Record<FoundVia, string> };
   sourcePage: string;
   /** Localized validation, button, and status strings. */
   strings: FormStrings;
@@ -43,6 +47,7 @@ export function ContactForm({
   consentLabel,
   contactMethodLabel,
   contactMethods,
+  foundVia,
   sourcePage,
   strings,
 }: ContactFormProps) {
@@ -90,7 +95,10 @@ export function ContactForm({
        if (res.ok) {
         setStatus("success");
         formRef.current?.reset();
-        trackEvent(GA4_EVENTS.contactSubmit, { language: lang });
+        // The answer code only, never the person's details.
+        const found = parseFoundVia(data.get("foundVia")) || "none";
+        trackEvent(GA4_EVENTS.contactSubmit, { language: lang, found_via: found });
+        umamiTrack({ name: UMAMI_EVENTS.contactSubmitted, data: { language: lang, found_via: found } });
       } else if (res.status === 429) {
         setStatus("error");
         setServerMessage(strings.tooMany);
@@ -182,6 +190,26 @@ export function ContactForm({
           ))}
         </div>
       </fieldset>
+
+      <div>
+        <label htmlFor={fieldId("foundVia")} className="block text-sm font-semibold text-ink">
+          {foundVia.label}
+          <span className="ml-1 font-normal text-slate">{strings.optional}</span>
+        </label>
+        <select
+          id={fieldId("foundVia")}
+          name="foundVia"
+          defaultValue=""
+          className="mt-2 min-h-12 w-full rounded-[var(--radius-control)] border border-slate/60 bg-white px-3 py-2 text-body hover:border-slate focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fjord"
+        >
+          <option value="">{foundVia.placeholder}</option>
+          {FOUND_VIA.map((code) => (
+            <option key={code} value={code}>
+              {foundVia.options[code]}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <label className="flex items-start gap-3 text-body">
         <input type="checkbox" name="consent" className="mt-1 h-5 w-5 accent-fjord" />

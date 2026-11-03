@@ -83,6 +83,7 @@ export default function ContactPage() {
               consentLabel={s.consentLabel}
               contactMethodLabel={s.contactMethodLabel}
               contactMethods={s.contactMethods}
+              foundVia={s.foundVia}
               sourcePage={fiContact.slug}
               strings={formStrings}
             />

@@ -529,6 +529,18 @@ export const fiContactSections = {
   consentLabel: "Minulle saa lähettää tarjouksia ja informaatiota tulevaisuudessa",
   contactMethodLabel: "Tyyppi",
   contactMethods: ["Sähköpostitse", "Tekstiviestillä"],
+  foundVia: {
+    label: "Mistä löysit meidät?",
+    placeholder: "Valitse",
+    options: {
+      search: "Hakukoneesta (esim. Google)",
+      ai: "Tekoälyavustajalta (esim. ChatGPT, Claude, Perplexity)",
+      social: "Sosiaalisesta mediasta",
+      referral: "Tuttavan suosittelemana",
+      returning: "Olen majoittunut täällä aiemmin",
+      other: "Muualta",
+    },
+  },
 } as const;
 
 /** Front-page last-minute banner (shown only while the owner's offer is on). */
