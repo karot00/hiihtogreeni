@@ -106,8 +106,9 @@ export async function CompaniesPage({ lang }: { lang: Lang }) {
       >
         <div className="flex flex-wrap gap-4">
           <ButtonLink href={calendar}>{s.heroCalendar}</ButtonLink>
-          <ButtonLink href={getHref(lang, "contact")} variant="light">
-            {s.heroContact}
+          {/* A plain link to the PDF (no form, plan 7.1), opened in a new tab. */}
+          <ButtonLink href={BROCHURE_PATHS[lang]} variant="light" external>
+            {BROCHURES[lang].downloadLink}
           </ButtonLink>
         </div>
       </Hero>
@@ -195,6 +196,19 @@ export async function CompaniesPage({ lang }: { lang: Lang }) {
                   </div>
                 ))}
               </dl>
+              {program.note ? (
+                <p className="mt-4 border-t border-frost pt-3 text-body">
+                  {program.note.text}{" "}
+                  <a
+                    href={program.note.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-fjord-dark underline underline-offset-2"
+                  >
+                    {program.note.linkText}
+                  </a>
+                </p>
+              ) : null}
             </div>
           ))}
         </div>
