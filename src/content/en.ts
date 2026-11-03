@@ -525,6 +525,18 @@ export const enContactSections = {
   consentLabel: "I agree to be sent offers and information in the future",
   contactMethodLabel: "Type",
   contactMethods: ["By e-mail", "By text message"],
+  foundVia: {
+    label: "How did you find us?",
+    placeholder: "Choose",
+    options: {
+      search: "Search engine (e.g. Google)",
+      ai: "AI assistant (e.g. ChatGPT, Claude, Perplexity)",
+      social: "Social media",
+      referral: "Recommended by someone",
+      returning: "I have stayed here before",
+      other: "Somewhere else",
+    },
+  },
 } as const;
 
 /** Front-page last-minute banner (shown only while the owner's offer is on). */

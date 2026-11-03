@@ -1,5 +1,6 @@
 import { RENTAL_CONTACT } from "../content/shared.ts";
 import { SITE_CONFIG } from "./config.ts";
+import { FOUND_VIA_LABELS, parseFoundVia, type FoundVia } from "./found-via.ts";
 
 export const CONTACT_RECIPIENT =
   process.env.CONTACT_RECIPIENT || RENTAL_CONTACT.email;
@@ -12,12 +13,15 @@ export const MAX_FIELD_LENGTH = 2000;
 export const MAX_MESSAGE_LENGTH = 5000;
 export const MAX_PAYLOAD_BYTES = 32 * 1024;
 
+const foundViaLabel = (code: FoundVia | "") => (code ? FOUND_VIA_LABELS[code] : "-");
+
 export interface ContactPayload {
   name: string;
   email: string;
   phone: string;
   message: string;
   contactMethod: string;
+  foundVia: FoundVia | "";
   consent: boolean;
   honeypot: string;
   sourcePage: string;
@@ -43,6 +47,7 @@ export function validateContact(data: FormData): ValidationResult {
   const phone = String(data.get("phone") ?? "").trim();
   const message = String(data.get("message") ?? "").trim();
   const contactMethod = String(data.get("contactMethod") ?? "").trim();
+  const foundVia = parseFoundVia(data.get("foundVia"));
   const consent = data.get("consent") === "on" || data.get("consent") === "true";
   const honeypot = String(data.get("company") ?? "").trim();
   const sourcePage = String(data.get("sourcePage") ?? "").trim() || "unknown";
@@ -72,6 +77,7 @@ export function validateContact(data: FormData): ValidationResult {
       phone,
       message,
       contactMethod,
+      foundVia,
       consent,
       honeypot,
       sourcePage,
@@ -99,6 +105,7 @@ export function buildPlainText(p: ContactPayload): string {
     `Email: ${esc(p.email)}`,
     `Phone: ${esc(p.phone || "-")}`,
     `Preferred contact: ${esc(p.contactMethod || "-")}`,
+    `Found us via: ${foundViaLabel(p.foundVia)}`,
     `Marketing consent: ${p.consent ? "yes" : "no"}`,
     "",
     "Message:",
@@ -110,7 +117,7 @@ export function buildPlainText(p: ContactPayload): string {
 export function buildHtml(p: ContactPayload): string {
   const row = (label: string, value: string) =>
     `<tr><th scope="row" style="text-align:left;padding:4px 12px 4px 0;color:#475569;font-weight:600">${label}</th><td style="padding:4px 0">${escapeHtml(value)}</td></tr>`;
-  return `<!doctype html><html lang="en"><body style="font-family:sans-serif;color:#0f172a"><h2 style="font-size:16px">New contact message — Hiihtogreeni</h2><table style="border-collapse:collapse;font-size:14px">${row("Language", p.sourcePage.startsWith("/en") ? "en-GB" : "fi")}${row("Source", p.sourcePage)}${row("Name", p.name)}${row("Email", p.email)}${row("Phone", p.phone || "-")}${row("Preferred contact", p.contactMethod || "-")}${row("Marketing consent", p.consent ? "yes" : "no")}</table><p style="white-space:pre-wrap;font-size:14px;line-height:1.5">${escapeHtml(p.message)}</p></body></html>`;
+  return `<!doctype html><html lang="en"><body style="font-family:sans-serif;color:#0f172a"><h2 style="font-size:16px">New contact message — Hiihtogreeni</h2><table style="border-collapse:collapse;font-size:14px">${row("Language", p.sourcePage.startsWith("/en") ? "en-GB" : "fi")}${row("Source", p.sourcePage)}${row("Name", p.name)}${row("Email", p.email)}${row("Phone", p.phone || "-")}${row("Preferred contact", p.contactMethod || "-")}${row("Found us via", foundViaLabel(p.foundVia))}${row("Marketing consent", p.consent ? "yes" : "no")}</table><p style="white-space:pre-wrap;font-size:14px;line-height:1.5">${escapeHtml(p.message)}</p></body></html>`;
 }
 
 /** Confirmation copy sent to the visitor after a successful submission. */
