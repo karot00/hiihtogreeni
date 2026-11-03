@@ -233,7 +233,8 @@ export interface CompaniesSections {
   useCases: readonly { title: string; text: string }[];
   configsLead: string;
   configsTitle: string;
-  configs: readonly { title: string; text: string }[];
+  /** Each set-up names the price example that shows it. */
+  configs: readonly { title: string; text: string; example: CompanyExampleKey }[];
   pricesLead: string;
   pricesTitle: string;
   /** {date}: the day the examples were priced. */
@@ -300,8 +301,10 @@ export interface BrochureStrings {
   useCasesTitle: string;
   programTitle: string;
   pricesTitle: string;
-  /** {price}: the lowest per-person price among the examples. */
+  /** {price}: the lowest per-person price among the examples; {n}: its set-up number. */
   fromPrice: string;
+  /** {dates} {guests} */
+  exampleLabel: string;
   /** {date} */
   pricesNote: string;
   pricesUnavailable: string;

@@ -23,6 +23,15 @@ test("example stays fall on the template weekday, at least three weeks ahead", (
   }
 });
 
+test("each set-up has its own price example, in the same order", () => {
+  for (const sections of [fiCompaniesSections, enCompaniesSections]) {
+    assert.deepEqual(
+      sections.configs.map((c) => c.example),
+      companyExamples("2026-11-03").map((e) => e.key),
+    );
+  }
+});
+
 test("the shortest-stay answer follows the live rules", () => {
   assert.equal(shortStayAnswer("fi", pricing(3, 0)), "Lyhin varaus on 3 yötä.");
   assert.match(shortStayAnswer("fi", pricing(1, 3)), /^Lyhin varaus on 1 yö\. Alle 3 yön varaus veloitetaan 3 yön hinnalla/);

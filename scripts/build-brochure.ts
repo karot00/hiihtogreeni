@@ -17,9 +17,9 @@ import sharp from "sharp";
 import QRCode from "qrcode";
 import { PDFDocument } from "pdf-lib";
 import type { Lang } from "../src/content/types.ts";
-import { getQuote } from "../src/lib/booking-api.ts";
+import { getPricing, getQuote } from "../src/lib/booking-api.ts";
 import { BROCHURE_PATHS, BROCHURE_STRINGS, brochureLink, buildBrochureHtml, type BrochureImages } from "../src/lib/brochure.ts";
-import { companyExamples, todayInFinland } from "../src/lib/company-examples.ts";
+import { companyExamples, shortStayAnswer, todayInFinland } from "../src/lib/company-examples.ts";
 import { COMPANY } from "../src/content/shared.ts";
 
 const ROOT = resolve(import.meta.dirname, "..");
@@ -87,12 +87,12 @@ async function prepareImages(dir: string): Promise<BrochureImages> {
 async function build(lang: Lang, chrome: string, work: string, images: BrochureImages, fonts: string) {
   const today = todayInFinland();
   const examples = companyExamples(today);
-  const quotes = await Promise.all(examples.map((stay) => getQuote(lang, stay)));
+  const [pricing, ...quotes] = await Promise.all([getPricing(), ...examples.map((stay) => getQuote(lang, stay))]);
   const priced = examples.flatMap((example, i) => (quotes[i] ? [{ example, quote: quotes[i] }] : []));
   if (priced.length < examples.length) console.warn(`${lang}: ${examples.length - priced.length} price example(s) left out (not priced by /quote)`);
 
   const qrSvg = await QRCode.toString(brochureLink(lang, "rates", "#booking-calendar"), { type: "svg", margin: 0, errorCorrectionLevel: "M" });
-  const html = buildBrochureHtml({ lang, today, examples: priced, images, fontCss: fonts, qrSvg });
+  const html = buildBrochureHtml({ lang, today, examples: priced, images, fontCss: fonts, qrSvg, shortStay: shortStayAnswer(lang, pricing) });
   const htmlFile = join(work, `brochure-${lang}.html`);
   const rawPdf = join(work, `brochure-${lang}.pdf`);
   writeFileSync(htmlFile, html);

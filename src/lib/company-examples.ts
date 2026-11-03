@@ -31,9 +31,10 @@ interface Template {
 }
 
 const TEMPLATES: Template[] = [
-  { key: "mayApartment", month: 5, day: 10, weekday: 1, nights: 3, units: "A", guests: 12, conferenceRoom: true },
+  // In the order of the set-ups (CompaniesSections.configs).
   { key: "mayHouse", month: 5, day: 10, weekday: 1, nights: 3, units: "AB", guests: 14, conferenceRoom: true },
   { key: "autumnHouse", month: 9, day: 7, weekday: 2, nights: 3, units: "AB", guests: 18, conferenceRoom: true },
+  { key: "mayApartment", month: 5, day: 10, weekday: 1, nights: 3, units: "A", guests: 12, conferenceRoom: true },
 ];
 
 /** Examples closer than this are skipped to next year, as they are likely booked. */

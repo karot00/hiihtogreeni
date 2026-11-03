@@ -46,6 +46,8 @@ export interface BrochureInput {
   fontCss: string;
   /** Inline SVG of the QR code to the booking calendar. */
   qrSvg: string;
+  /** The shortest-stay rule from the live /pricing (companies page FAQ answer). */
+  shortStay: string;
 }
 
 const esc = (text: string) =>
@@ -111,7 +113,7 @@ function footer(b: (typeof BROCHURE_STRINGS)[Lang], date: string, page: number) 
 }
 
 /** The brochure as one HTML document, ready to print to PDF. */
-export function buildBrochureHtml({ lang, today, examples, images, fontCss, qrSvg }: BrochureInput): string {
+export function buildBrochureHtml({ lang, today, examples, images, fontCss, qrSvg, shortStay }: BrochureInput): string {
   const b = BROCHURE_STRINGS[lang];
   const s = SECTIONS[lang];
   const date = formatDate(lang, today);
@@ -168,23 +170,31 @@ export function buildBrochureHtml({ lang, today, examples, images, fontCss, qrSv
     .join("")}</div>
 </div>${footer(b, date, ++page)}</section>`);
 
-  const priceCards = examples.length
-    ? `<div class="cards" style="grid-template-columns: repeat(3, 1fr); margin-top:16px">${examples
-        .map(
-          ({ example, quote }) => `<div class="card"><h3>${esc(s.examples[example.key])}</h3>
-      <p class="muted">${esc(formatDateRange(lang, quote.checkIn, quote.checkOut))}</p>
-      <p class="price">${esc(fill(s.total, { price: euros(lang, quote.totalEur) }))}</p>
-      <p>${esc(fill(s.perPerson, { price: euros(lang, perPersonNight(example, quote)) }))}</p></div>`,
-        )
-        .join("")}</div>
-    <p class="muted" style="margin-top:12px">${esc(fill(b.pricesNote, { date }))}</p>`
-    : `<p style="margin-top:16px">${esc(b.pricesUnavailable)}</p>`;
+  // One column per set-up, with the price example that shows it underneath.
+  const byKey = new Map(examples.map((e) => [e.example.key, e]));
+  const lowestIndex = s.configs.findIndex((c) => {
+    const e = byKey.get(c.example);
+    return e && perPersonNight(e.example, e.quote) === lowest;
+  });
+  const priceNotes = examples.length
+    ? `<p class="muted" style="margin-top:12px">${esc(fill(b.pricesNote, { date }))}</p>`
+    : `<p style="margin-top:12px">${esc(b.pricesUnavailable)}</p>`;
   slides.push(`<section class="slide"><div class="pad"><p class="eyebrow">${esc(s.pricesLead)}</p><h2>${esc(b.pricesTitle)}</h2>
-  ${lowest ? `<span class="from">${esc(fill(b.fromPrice, { price: euros(lang, lowest) }))}</span>` : ""}
+  ${lowest && lowestIndex >= 0 ? `<span class="from">${esc(fill(b.fromPrice, { price: euros(lang, lowest), n: lowestIndex + 1 }))}</span>` : ""}
   <div class="cards" style="grid-template-columns: repeat(3, 1fr); margin-top:18px">${s.configs
-    .map((c, i) => `<div class="card" style="background:#eef2f1"><h3>${i + 1}. ${esc(c.title)}</h3><p>${esc(c.text)}</p></div>`)
+    .map((c, i) => {
+      const e = byKey.get(c.example);
+      const price = e
+        ? `<div style="border-top:1px solid #dde5e7;margin-top:12px;padding-top:10px">
+      <p class="muted">${esc(fill(b.exampleLabel, { dates: formatDateRange(lang, e.quote.checkIn, e.quote.checkOut), guests: e.example.guests }))}</p>
+      <p class="price">${esc(fill(s.total, { price: euros(lang, e.quote.totalEur) }))}</p>
+      <p>${esc(fill(s.perPerson, { price: euros(lang, perPersonNight(e.example, e.quote)) }))}</p></div>`
+        : "";
+      return `<div class="card" style="display:flex;flex-direction:column"><h3>${i + 1}. ${esc(c.title)}</h3><p style="flex:1">${esc(c.text)}</p>${price}</div>`;
+    })
     .join("")}</div>
-  ${priceCards}
+  ${priceNotes}
+  <p style="margin-top:8px;font-size:15px;font-weight:600">${esc(shortStay)}</p>
 </div>${footer(b, date, ++page)}</section>`);
 
   slides.push(`<section class="slide"><div class="pad"><p class="eyebrow">Levi</p><h2>${esc(b.locationTitle)}</h2>
