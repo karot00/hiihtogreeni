@@ -17,6 +17,7 @@ export const UMAMI_EVENTS = {
   bookCtaClick: "book_cta_click",
   contactClick: "contact_click",
   inquirySubmitted: "inquiry_submitted",
+  contactSubmitted: "contact_submitted",
 } as const;
 
 export type UmamiEventData = Record<string, string | number>;

@@ -1,5 +1,4 @@
 import { SiteShell } from "../../../../components/SiteShell.tsx";
-import { LeviNowMap } from "../../../../components/LeviNowMap.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, FactList, ImageCard, CallToAction } from "../../../../components/ui/Primitives.tsx";
 import { enCabin, enCabinSections } from "../../../../content/en.ts";
 import { EXTERNAL_LINKS } from "../../../../content/shared.ts";
@@ -99,7 +98,11 @@ export default function CabinPage() {
           tracks just 200 m away, and in summer you have a view of the Levi Golf course and its
           clubhouse. Direct snowmobile access from the yard.
         </p>
-        <LeviNowMap lang="en" page="cabin-page" />
+        <p className="mt-6">
+          <ButtonLink href={`${getHref("en", "contact")}#location`} variant="secondary">
+            See the location on the map
+          </ButtonLink>
+        </p>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           <ImageCard
             href={EXTERNAL_LINKS.leviEn}

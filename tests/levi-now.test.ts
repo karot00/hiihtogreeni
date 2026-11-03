@@ -13,9 +13,17 @@ test("the Levi Now map: Hiihtogreeni as the stay, the page language, UTM tags", 
   assert.equal(GOOGLE_MAPS_URL, "https://www.google.com/maps/search/?api=1&query=67.801561,24.900871");
 });
 
-test("both cabin pages show the map in their location section", () => {
-  for (const [file, lang] of [["src/app/(fi)/mokki/page.tsx", "fi"], ["src/app/(en)/en/cabin/page.tsx", "en"]]) {
-    const src = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
-    assert.ok(src.includes(`<LeviNowMap lang="${lang}" page="cabin-page" />`), file);
+test("the contact pages show the map, and the location links lead to it, not off-site", () => {
+  const read = (file: string) => readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
+  for (const [file, lang, anchor] of [["src/app/(fi)/yhteystiedot/page.tsx", "fi", "sijainti"], ["src/app/(en)/en/contact-information/page.tsx", "en", "location"]]) {
+    const src = read(file);
+    assert.ok(src.includes(`<LeviNowMap lang="${lang}" page="contact-page" />`), `${file}: the map`);
+    assert.ok(src.includes(`id="${anchor}"`) && src.includes(`href="#${anchor}"`), `${file}: the location button leads to the map`);
+    assert.ok(!src.includes("EXTERNAL_LINKS.levi"), `${file}: no "see location" link to the levifinland.fi blog post`);
+  }
+  for (const [file, anchor] of [["src/app/(fi)/mokki/page.tsx", "#sijainti"], ["src/app/(en)/en/cabin/page.tsx", "#location"]]) {
+    const src = read(file);
+    assert.ok(!src.includes("<LeviNowMap"), `${file}: the map is on the contact page`);
+    assert.ok(src.includes(`"contact")}${anchor}`), `${file}: links to the map`);
   }
 });

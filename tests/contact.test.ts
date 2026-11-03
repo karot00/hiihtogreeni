@@ -31,6 +31,15 @@ test("accepts a well-formed Finnish submission", () => {
   assert.equal(r.payload?.consent, true);
 });
 
+test("keeps only a known found-via code", () => {
+  assert.equal(validateContact(formData({ ...valid, foundVia: "ai" })).payload?.foundVia, "ai");
+  assert.equal(validateContact(formData({ ...valid, foundVia: "<b>x</b>" })).payload?.foundVia, "");
+  assert.equal(validateContact(formData(valid)).payload?.foundVia, "");
+  const p = validateContact(formData({ ...valid, foundVia: "search" })).payload!;
+  assert.ok(buildPlainText(p).includes("Found us via: Search engine"));
+  assert.ok(buildHtml(p).includes("Search engine"));
+});
+
 test("rejects missing required fields with per-field errors", () => {
   const r = validateContact(formData({ ...valid, name: "", email: "", message: "" }));
   assert.equal(r.ok, false);
