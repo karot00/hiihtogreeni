@@ -47,8 +47,7 @@ export function LastMinuteBanner({
 
           <div className="flex flex-col items-start gap-3 lg:items-end lg:text-right">
             <span className="rounded-[var(--radius-tag)] bg-ember px-3 py-1 font-display text-sm font-bold text-ink">
-              −{deal.discountPercent}
-              {lang === "fi" ? "\u00a0%" : "%"}
+              {fill(strings.badge, { percent: deal.discountPercent })}
             </span>
             <p>
               <span className="font-display text-4xl font-bold">{formatEuros(lang, deal.priceCents)}</span>

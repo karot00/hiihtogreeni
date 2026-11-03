@@ -17,8 +17,8 @@ export const PAGES: Record<RouteKey, PageEntry> = {
   home: { lastModified: "2026-11-03", changeFrequency: "monthly", priority: 1.0 },
   cabin: { lastModified: "2026-11-03", changeFrequency: "yearly", priority: 0.8 },
   gallery: { lastModified: "2026-10-29", changeFrequency: "monthly", priority: 0.7 },
-  teams: { lastModified: "2026-10-25", changeFrequency: "yearly", priority: 0.8 },
-  rates: { lastModified: "2026-10-29", changeFrequency: "monthly", priority: 0.9 },
+  teams: { lastModified: "2026-11-03", changeFrequency: "yearly", priority: 0.8 },
+  rates: { lastModified: "2026-11-03", changeFrequency: "monthly", priority: 0.9 },
   contact: { lastModified: "2026-08-03", changeFrequency: "monthly", priority: 0.8 },
 };
 

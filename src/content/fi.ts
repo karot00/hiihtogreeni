@@ -231,9 +231,9 @@ export const fiCabinSections = {
   special: [
     "Varaava, tunturikivitakka (suunnittelija Eero Mattanen)",
     "Neuvottelu-/ruokailutila 20 hengelle – mikäli koko talo on varattu samalle ryhmälle, tila veloituksetta käyttöön. Tilassa on videotykki, valkokangas ja minikeittiö. Järjestämme tarvittaessa erilaiset tilaisuudet paikallisten palveluntarjoajien kanssa.",
-    "Kellarikerroksessa erillinen noin 50 m² lämmin suksien ja urheiluvälineiden huoltotila (kysy tämän tilan vuokrausta erillisen sopimuksen mukaan).",
-    "Varastorakennus, jossa takkapuut ja kylmä autotalli (kysy autotallin vuokrausta erikseen). Autotallissa 1- ja 3-vaihepistorasiat auton latausta varten.",
-    "Autolämmityspistokkeet (2 kpl/huoneisto). Sähköauton lataaminen pistorasiasta on kielletty.",
+    "Kellarikerroksessa erillinen noin 50 m² lämmin suksien ja urheiluvälineiden huoltotila. Tila on kerrallaan vain yhden ryhmän käytössä, ja sen voi varata huoneiston A tai B varauksen lisäpalveluna. Ilman majoitusta tilaa ei vuokrata.",
+    "Varastorakennus, jossa takkapuut.",
+    "Autolämmityspistokkeet (2 kpl/huoneisto). Sähköauton lataaminen lämmitystolpista ja ulkopistorasioista on kielletty.",
   ],
 } as const;
 
@@ -242,7 +242,7 @@ export const fiTeams: PageContent = {
   slug: "/joukkueille/",
   title: "Joukkueille - Hiihtogreeni",
   description:
-    "Mökki joukkueille ja hiihtojoukkueille Levillä: majoitus 14–28 hengelle, oma kylpyhuone jokaisessa huoneessa, 20 hengen neuvottelutila ja yli 50 m² lämmin suksien huoltotila aivan rinteiden vieressä. Kysy saatavuutta.",
+    "Mökki joukkueille ja hiihtojoukkueille Levillä: majoitus 14–28 hengelle, oma kylpyhuone jokaisessa huoneessa, 20 hengen neuvottelutila ja noin 50 m² lämmin suksien huoltotila aivan rinteiden vieressä. Kysy saatavuutta.",
   h1: "Iso parimökki urheiluseuroille ja joukkueille Levillä",
   nav: FI_NAV,
   external: EXTERNAL_LINKS,
@@ -292,7 +292,7 @@ export const fiTeamsSections = {
   whyTitle: "Koko joukkue yhden katon alla",
   why: [
     "7 makuuhuonetta ja 7 kylpyhuonetta per asunto.",
-    "Oma, yli 50 m² lämmin suksien ja urheiluvälineiden huoltotila mökin sisällä – ei ulkovajaa tai jaettua kellaria.",
+    "Oma, noin 50 m² lämmin suksien ja urheiluvälineiden huoltotila mökin kellarikerroksessa – vain teidän joukkueenne käytössä, ei ulkovajassa.",
     "14 tai 28 hengen majoitus samassa paikassa.",
     "20 hengen neuvottelutila videotykillä – palaverit, videoanalyysi ja sponsoritapaamiset ilman ulkopuolista tilavarausta.",
     "Rinteet noin 200 m ja ladut pihasta: harjoitus, huolto ja lepo samassa pisteessä.",
@@ -308,7 +308,7 @@ export const fiTeamsSections = {
     },
     {
       q: "Millainen suksien huoltotila on?",
-      a: "Käytössänne on yli 50 m² lämmin ja avara huoltotila mökin sisällä. Tila soveltuu voitelu- ja huoltopöydille sekä koko joukkueen välineille yhtä aikaa – erinomainen niin alppi- kuin maastohiihtoon.",
+      a: "Käytössänne on noin 50 m² lämmin ja avara huoltotila mökin kellarikerroksessa, vain teidän joukkueenne käytössä. Tila varataan majoituksen lisäpalveluna, ja hinta näkyy varauskalenterin laskelmassa. Tila soveltuu voitelu- ja huoltopöydille sekä koko joukkueen välineille yhtä aikaa – erinomainen niin alppi- kuin maastohiihtoon.",
     },
     {
       q: "Kuinka lähellä rinteet ja ladut ovat?",
@@ -334,9 +334,9 @@ export const fiTeamsSections = {
   splitMeeting:
     "Huoneistojen välissä on 20 hengen neuvottelutila joukkuepalavereihin, videoanalyysiin, sponsoritapaamisiin ja valmentajien briiffeihin. Ei tarvetta varata erillistä tilaa muualta – tilassa on videotykki, valkokangas ja minikeittiö. Kun koko talo on varattu samalle joukkueelle, neuvottelutila sisältyy hintaan.",
   maintenanceLead: "Levin parhaat suksien huoltotilat",
-  maintenanceTitle: "Yli 50 m² lämmintä suksien huoltotilaa",
+  maintenanceTitle: "Noin 50 m² lämmintä suksien huoltotilaa",
   maintenance:
-    "Hiihtogreenin ehdoton valtti joukkueille on tilava, lämmin ja avara suksien huoltotila – yli 50 m² ja sijaitsee mökin sisällä, ei ulkovajassa tai jaetussa kellarissa. Tila sopii voitelu- ja huoltopöydille sekä koko joukkueen välineille yhtä aikaa. Alppihiihtoon ja maastohiihtoon soveltuvat puitteet tekevät valmistautumisesta vaivatonta.",
+    "Hiihtogreenin ehdoton valtti joukkueille on tilava, lämmin ja avara suksien huoltotila – noin 50 m² mökin kellarikerroksessa, ei ulkovajassa, ja kerrallaan vain yhden joukkueen käytössä. Tila sopii voitelu- ja huoltopöydille sekä koko joukkueen välineille yhtä aikaa. Alppihiihtoon ja maastohiihtoon soveltuvat puitteet tekevät valmistautumisesta vaivatonta.",
   maintenanceGridTitle: "Katso huoltotila lähemmin",
   locationLead: "Sijainti",
   locationTitle: "Askelten päässä rinteistä",
@@ -357,7 +357,7 @@ export const fiRates: PageContent = {
   slug: "/hinnoittelu/",
   title: "Hinnoittelu - Hiihtogreeni",
   description:
-    "Hiihtogreenin majoitushinnat Levillä: varauskalenteri, yö- ja viikkohinnat sekä varausehdot. Hinnat sisältävät 13,5 % ALV:n.",
+    "Hiihtogreenin majoitushinnat Levillä: varauskalenteri, yö- ja viikkohinnat sekä varausehdot. Hinnat sisältävät arvonlisäveron.",
   h1: "Hinnoittelu",
   nav: FI_NAV,
   external: EXTERNAL_LINKS,
@@ -383,7 +383,7 @@ export const fiRatesSections = {
     "Loppusiivous lisätään jokaiseen varattuun huoneistoon.",
     "Liinavaatteet ja pyyhkeet sekä valmiiksi pedatut vuoteet voi lisätä varaukseen henkilöä kohden, tai voitte tuoda omat.",
     "Kun vuokraatte koko talon (molemmat huoneistot), 20 hengen neuvottelu- ja ruokailutila sisältyy hintaan. Yhden huoneiston kanssa tilan voi varata lisähintaan.",
-    "Kaikki hinnat sisältävät majoituspalveluiden arvonlisäveron 13,5 %.",
+    "Hinnat sisältävät arvonlisäveron. Majoituksen, loppusiivouksen ja liinavaatteiden arvonlisävero on 13,5 %. Erikseen veloitettavan kokoustilan arvonlisävero on 25,5 %. Koko talon varauksessa kokoustila on maksuton.",
     "Maksuehdot: 30 % varattaessa, loput 60 päivää ennen saapumista.",
     `Huoneisto on käytettävissä saapumispäivänä klo ${fiTime(STAY_TIMES.checkIn)} alkaen ja luovutetaan lähtöpäivänä viimeistään klo ${fiTime(STAY_TIMES.checkOut)}. Aikaisempaa saapumista voi pyytää, mutta sitä ei voida taata. Myöhäisempi lähtö ei ole mahdollinen.`,
   ],
@@ -534,13 +534,14 @@ export const fiContactSections = {
 /** Front-page last-minute banner (shown only while the owner's offer is on). */
 export const fiLastMinute: LastMinuteStrings = {
   eyebrow: "Äkkilähtö · {dates}",
-  title: "Nyt äkkilähtö Leville isollakin porukalla −{percent}\u00a0% normaalihinnasta",
+  title: "Nyt äkkilähtö Leville isollakin porukalla −{percent}\u00a0% majoitushinnasta",
   wholeHouseFree: "Koko talo vapaana – jopa 28 hengelle.",
   apartmentFree: "Huoneisto {apartment} vapaana – jopa 14 hengelle.",
   priceNote: "/ huoneisto · {nights} yötä · sis. loppusiivouksen",
   normally: "Normaalisti {price}",
+  badge: "−{percent}\u00a0% majoituksesta",
   cta: "Katso vapaat päivät ja varaa",
-  metaDescription: "Äkkilähtö {dates}: huoneisto {price}, −{percent}\u00a0% normaalihinnasta.",
+  metaDescription: "Äkkilähtö {dates}: huoneisto {price}, −{percent}\u00a0% majoitushinnasta.",
   seasons: {
     firstSnow: { name: "Ensilumen ladut ja ensimmäiset laskut", text: "Tule ensilumen ladulle ja nauti syksyn ensimmäisistä laskuista." },
     earlyWinter: { name: "Alkutalvi", text: "Rinteet ja ladut aukeavat, ja kaamoksen sininen hetki tekee illoista taianomaisia." },
