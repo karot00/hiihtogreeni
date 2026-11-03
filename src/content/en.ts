@@ -229,9 +229,9 @@ export const enCabinSections = {
   special: [
     "Heat-storing fireplace of fell stone designed by Eero Mattanen",
     "Conference/dining room for 20 people – If the whole building is booked by the same group, this room is provided free. The room has a video projector, screen and mini-kitchen. If necessary, we can arrange special events with local service providers.",
-    "Basement: separate approx. 50 m² warm ski/sports equipment maintenance room (please ask about a special lease for the rental of this space).",
-    "Storage building with firewood and an unheated garage (ask about garage rental separately). The garage has 1- and 3-phase sockets for charging a car.",
-    "Car-heating sockets (2/apartment). Charging an EV from the socket is prohibited.",
+    "Basement: separate approx. 50 m² warm ski/sports equipment maintenance room. It is used by one group at a time and can be added to a booking of apartment A or B; it is not rented without accommodation.",
+    "Storage building with firewood.",
+    "Car-heating sockets (2/apartment). Charging an EV from the car-heating posts or outdoor sockets is prohibited.",
   ],
 } as const;
 
@@ -240,7 +240,7 @@ export const enTeams: PageContent = {
   slug: "/en/teams/",
   title: "For Teams - Hiihtogreeni",
   description:
-    "A Levi cabin built for ski teams and sports groups: sleeps 14 or 28, a private bathroom in every bedroom, a 20-seat briefing room and a 50+ m² warm ski maintenance room, steps from the slopes. Ask about availability.",
+    "A Levi cabin built for ski teams and sports groups: sleeps 14 or 28, a private bathroom in every bedroom, a 20-seat briefing room and an approx. 50 m² warm ski maintenance room, steps from the slopes. Ask about availability.",
   h1: "Large semi-detached cabin for sports clubs and teams in Levi",
   nav: EN_NAV,
   external: EXTERNAL_LINKS,
@@ -290,7 +290,7 @@ export const enTeamsSections = {
   whyTitle: "The whole team under one roof",
   why: [
     "7 bedrooms and 7 bathrooms per apartment.",
-    "Your own 50+ m² warm ski and sports equipment maintenance room inside the cabin – not an outdoor shed or shared basement.",
+    "Your own approx. 50 m² warm ski and sports equipment maintenance room in the cabin's basement – used by your team only, not an outdoor shed.",
     "Sleeps 14 or 28 in one place.",
     "A 20-seat briefing room with a projector – team talks, video review and sponsor meetings with no outside venue to book.",
     "Slopes about 200 m and tracks from the yard: training, maintenance and rest all in one spot.",
@@ -306,7 +306,7 @@ export const enTeamsSections = {
     },
     {
       q: "What is the ski maintenance room like?",
-      a: "You get a 50+ m² warm, open maintenance room inside the cabin. It suits waxing and tuning benches and a full team's equipment at once – excellent for both alpine and cross-country preparation.",
+      a: "You get an approx. 50 m² warm, open maintenance room in the cabin's basement, used by your team only. It is booked as an extra with the accommodation, and the booking calendar shows its price. It suits waxing and tuning benches and a full team's equipment at once – excellent for both alpine and cross-country preparation.",
     },
     {
       q: "How close are the slopes and tracks?",
@@ -332,9 +332,9 @@ export const enTeamsSections = {
   splitMeeting:
     "Between the apartments there is a 20-seat conference room for team talks, video review, sponsor meetings or coaches' briefings – no need to book an outside venue. The room has a video projector, screen and mini-kitchen, and it is included when the whole house is booked by one team.",
   maintenanceLead: "The best ski maintenance facilities in Levi",
-  maintenanceTitle: "50+ m² of warm ski maintenance space",
+  maintenanceTitle: "Approx. 50 m² of warm ski maintenance space",
   maintenance:
-    "Hiihtogreeni's headline advantage for teams is a warm, open, 50+ m² ski maintenance room located inside the cabin – not an outdoor shed or a shared basement. It suits waxing and tuning benches and a full team's equipment at once, ideal for both alpine and cross-country preparation.",
+    "Hiihtogreeni's headline advantage for teams is a warm, open ski maintenance room of approx. 50 m² in the cabin's basement – not an outdoor shed, and used by one team at a time. It suits waxing and tuning benches and a full team's equipment at once, ideal for both alpine and cross-country preparation.",
   maintenanceGridTitle: "A closer look at the maintenance room",
   locationLead: "Location",
   locationTitle: "Steps from the slopes",
@@ -355,7 +355,7 @@ export const enRates: PageContent = {
   slug: "/en/rates/",
   title: "Rates - Hiihtogreeni",
   description:
-    "Hiihtogreeni accommodation rates in Levi: booking calendar, nightly and weekly prices, and booking terms. Prices include 13.5% VAT.",
+    "Hiihtogreeni accommodation rates in Levi: booking calendar, nightly and weekly prices, and booking terms. Prices include VAT.",
   h1: "Rates",
   nav: EN_NAV,
   external: EXTERNAL_LINKS,
@@ -381,7 +381,7 @@ export const enRatesSections = {
     "Final cleaning is added for each apartment booked.",
     "Bed linen and towels, and made-up beds, can be added per guest, or you can bring your own.",
     "If you rent the whole house (both apartments), the 20-person meeting and dining room is included. With one apartment it can be booked at an extra cost.",
-    "All prices include 13.5% VAT on accommodation services.",
+    "Prices include VAT: 13.5% on accommodation, final cleaning and bed linen, and 25.5% on the ski maintenance room and on the conference room when it is charged separately. With the whole house the conference room is free.",
     "Terms of payment: 30% when booking, the rest 60 days before arrival.",
     `Check-in from ${STAY_TIMES.checkIn} on the day of arrival, check-out by ${STAY_TIMES.checkOut} on the day of departure. Early check-in can be requested but cannot be guaranteed. Late check-out is not possible.`,
   ],
@@ -530,13 +530,14 @@ export const enContactSections = {
 /** Front-page last-minute banner (shown only while the owner's offer is on). */
 export const enLastMinute: LastMinuteStrings = {
   eyebrow: "Last minute · {dates}",
-  title: "Last-minute escape to Levi, even for a big group: {percent}% off the normal price",
+  title: "Last-minute escape to Levi, even for a big group: {percent}% off the accommodation price",
   wholeHouseFree: "The whole house is free – up to 28 guests.",
   apartmentFree: "Apartment {apartment} is free – up to 14 guests.",
   priceNote: "per apartment · {nights} nights · final cleaning included",
   normally: "Normally {price}",
+  badge: "−{percent}% on accommodation",
   cta: "See the dates and book",
-  metaDescription: "Last minute {dates}: an apartment for {price}, {percent}% off the normal price.",
+  metaDescription: "Last minute {dates}: an apartment for {price}, {percent}% off the accommodation price.",
   seasons: {
     firstSnow: { name: "First snow and the first runs", text: "Ski the first tracks of the season and enjoy the autumn's first runs on the slopes." },
     earlyWinter: { name: "Early winter", text: "The slopes and tracks open, and the blue light of the polar night makes the evenings magical." },

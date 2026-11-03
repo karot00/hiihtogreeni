@@ -74,7 +74,7 @@ function livePrices(pricing: Pricing): string {
     e.linenPerGuest && `Bed linen and towels ${eur(e.linenPerGuest)} per guest (optional)`,
     e.bedsMadePerGuest && `Made-up beds ${eur(e.bedsMadePerGuest)} per guest on top of linen (optional)`,
     e.conferenceRoomPerStay && `Conference room ${eur(e.conferenceRoomPerStay)} per stay, free with the whole house`,
-    e.maintenanceRoomPerStay && `Ski and equipment maintenance room ${eur(e.maintenanceRoomPerStay)} per stay`,
+    e.maintenanceRoomPerStay && `Ski and equipment maintenance room ${eur(e.maintenanceRoomPerStay)} per stay, one group at a time, only with an apartment booking`,
   ].filter((line): line is string => Boolean(line));
   return [
     "### Seasonal prices (live from the booking system)",

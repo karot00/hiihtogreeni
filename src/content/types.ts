@@ -205,6 +205,8 @@ export interface LastMinuteStrings {
   apartmentFree: string;
   priceNote: string;
   normally: string;
+  /** Discount tag next to the price; says what the percentage applies to. */
+  badge: string;
   cta: string;
   /** Prefix for the page's meta description while a deal is shown. */
   metaDescription: string;

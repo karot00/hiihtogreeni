@@ -99,7 +99,7 @@ test("dates, prices and texts are written for each language", () => {
   assert.equal(formatEuros("en", 274600), "€2,746");
   assert.equal(
     fill(fiLastMinute.title, { percent: 20 }),
-    "Nyt äkkilähtö Leville isollakin porukalla −20 % normaalihinnasta",
+    "Nyt äkkilähtö Leville isollakin porukalla −20 % majoitushinnasta",
   );
   assert.equal(fill("{a} {missing}", { a: 1 }), "1 {missing}");
 });

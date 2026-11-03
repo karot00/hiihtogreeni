@@ -3,7 +3,7 @@ import type { Lang } from "../content/types.ts";
 import { getNav, getUI, COMPANY, LANGUAGE_OPTIONS } from "../content/index.ts";
 import { bookingTermsUrl } from "../content/shared.ts";
 import { getHref } from "../lib/routes.ts";
-import { OPENAPI_URL } from "../lib/booking-api.ts";
+import { MCP_URL, OPENAPI_URL } from "../lib/booking-api.ts";
 import { CookieConsentSettingsTrigger } from "./CookieConsentSettingsTrigger.tsx";
 import { ContactDetails } from "./ContactDetails.tsx";
 
@@ -130,6 +130,8 @@ export function Footer({ lang }: FooterProps) {
             <a href={OPENAPI_URL} className="underline-offset-2 hover:underline focus-visible:underline">
               {ui.agentsApi}
             </a>
+            {/* Plain text, not a link: the MCP endpoint answers a browser GET with 406. */}
+            {" · "}MCP: <span className="break-all">{MCP_URL}</span>
           </span>
         </div>
       </div>
