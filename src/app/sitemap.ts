@@ -1,156 +1,43 @@
 import type { MetadataRoute } from "next";
-import { SITE_CONFIG } from "@/lib/config";
-import { ROUTES } from "@/lib/routes";
+import { SITE_CONFIG } from "../lib/config.ts";
+import { ROUTES, type RouteKey } from "../lib/routes.ts";
+
+type PageEntry = {
+  /**
+   * Date of the last change to the page's visible content, in both languages.
+   * Update it by hand in the same commit as the content change; layout,
+   * footer and analytics changes do not count. Never generate it per build.
+   */
+  lastModified: string;
+  changeFrequency: NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
+  priority: number;
+};
+
+export const PAGES: Record<RouteKey, PageEntry> = {
+  home: { lastModified: "2026-11-03", changeFrequency: "monthly", priority: 1.0 },
+  cabin: { lastModified: "2026-11-03", changeFrequency: "yearly", priority: 0.8 },
+  gallery: { lastModified: "2026-10-29", changeFrequency: "monthly", priority: 0.7 },
+  teams: { lastModified: "2026-10-25", changeFrequency: "yearly", priority: 0.8 },
+  rates: { lastModified: "2026-10-29", changeFrequency: "monthly", priority: 0.9 },
+  contact: { lastModified: "2026-08-03", changeFrequency: "monthly", priority: 0.8 },
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
+  const keys = Object.keys(PAGES) as RouteKey[];
 
-  const pages: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}${ROUTES.fi.home}`,
-      lastModified: new Date("2026-06-15"),
-      changeFrequency: "monthly",
-      priority: 1.0,
+  return (["fi", "en"] as const).flatMap((lang) =>
+    keys.map((key) => ({
+      url: `${baseUrl}${ROUTES[lang][key]}`,
+      lastModified: new Date(PAGES[key].lastModified),
+      changeFrequency: PAGES[key].changeFrequency,
+      priority: PAGES[key].priority,
       alternates: {
         languages: {
-          fi: `${baseUrl}${ROUTES.fi.home}`,
-          "en-GB": `${baseUrl}${ROUTES.en.home}`,
+          fi: `${baseUrl}${ROUTES.fi[key]}`,
+          "en-GB": `${baseUrl}${ROUTES.en[key]}`,
         },
       },
-    },
-    {
-      url: `${baseUrl}${ROUTES.fi.cabin}`,
-      lastModified: new Date("2023-06-13"),
-      changeFrequency: "yearly",
-      priority: 0.8,
-      alternates: {
-        languages: {
-          fi: `${baseUrl}${ROUTES.fi.cabin}`,
-          "en-GB": `${baseUrl}${ROUTES.en.cabin}`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}${ROUTES.fi.gallery}`,
-      lastModified: new Date("2025-07-29"),
-      changeFrequency: "monthly",
-      priority: 0.7,
-      alternates: {
-        languages: {
-          fi: `${baseUrl}${ROUTES.fi.gallery}`,
-          "en-GB": `${baseUrl}${ROUTES.en.gallery}`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}${ROUTES.fi.teams}`,
-      lastModified: new Date("2026-07-27"),
-      changeFrequency: "yearly",
-      priority: 0.8,
-      alternates: {
-        languages: {
-          fi: `${baseUrl}${ROUTES.fi.teams}`,
-          "en-GB": `${baseUrl}${ROUTES.en.teams}`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}${ROUTES.fi.rates}`,
-      lastModified: new Date("2026-04-29"),
-      changeFrequency: "monthly",
-      priority: 0.9,
-      alternates: {
-        languages: {
-          fi: `${baseUrl}${ROUTES.fi.rates}`,
-          "en-GB": `${baseUrl}${ROUTES.en.rates}`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}${ROUTES.fi.contact}`,
-      lastModified: new Date("2026-03-03"),
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: {
-        languages: {
-          fi: `${baseUrl}${ROUTES.fi.contact}`,
-          "en-GB": `${baseUrl}${ROUTES.en.contact}`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}${ROUTES.en.home}`,
-      lastModified: new Date("2026-06-15"),
-      changeFrequency: "monthly",
-      priority: 1.0,
-      alternates: {
-        languages: {
-          fi: `${baseUrl}${ROUTES.fi.home}`,
-          "en-GB": `${baseUrl}${ROUTES.en.home}`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}${ROUTES.en.cabin}`,
-      lastModified: new Date("2022-11-09"),
-      changeFrequency: "yearly",
-      priority: 0.8,
-      alternates: {
-        languages: {
-          fi: `${baseUrl}${ROUTES.fi.cabin}`,
-          "en-GB": `${baseUrl}${ROUTES.en.cabin}`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}${ROUTES.en.gallery}`,
-      lastModified: new Date("2024-07-30"),
-      changeFrequency: "monthly",
-      priority: 0.7,
-      alternates: {
-        languages: {
-          fi: `${baseUrl}${ROUTES.fi.gallery}`,
-          "en-GB": `${baseUrl}${ROUTES.en.gallery}`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}${ROUTES.en.teams}`,
-      lastModified: new Date("2026-07-27"),
-      changeFrequency: "yearly",
-      priority: 0.8,
-      alternates: {
-        languages: {
-          fi: `${baseUrl}${ROUTES.fi.teams}`,
-          "en-GB": `${baseUrl}${ROUTES.en.teams}`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}${ROUTES.en.rates}`,
-      lastModified: new Date("2026-04-29"),
-      changeFrequency: "monthly",
-      priority: 0.9,
-      alternates: {
-        languages: {
-          fi: `${baseUrl}${ROUTES.fi.rates}`,
-          "en-GB": `${baseUrl}${ROUTES.en.rates}`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}${ROUTES.en.contact}`,
-      lastModified: new Date("2026-03-03"),
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: {
-        languages: {
-          fi: `${baseUrl}${ROUTES.fi.contact}`,
-          "en-GB": `${baseUrl}${ROUTES.en.contact}`,
-        },
-      },
-    },
-  ];
-
-  return pages;
+    })),
+  );
 }

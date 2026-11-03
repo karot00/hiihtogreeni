@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import robots, { AI_CRAWLERS } from "../src/app/robots.ts";
+import sitemap, { PAGES } from "../src/app/sitemap.ts";
 import { buildLlmsFullTxt, buildLlmsTxt } from "../src/lib/llms.ts";
 import { CAPACITY, COMPANY, MAINTENANCE_CONTACT, RENTAL_CONTACT, STAY_TIMES, bookingPageUrl, bookingTermsUrl } from "../src/content/shared.ts";
 import { fiRatesSections } from "../src/content/fi.ts";
@@ -9,9 +10,7 @@ import { enRatesSections } from "../src/content/en.ts";
 import { ROUTES } from "../src/lib/routes.ts";
 import { SITE_CONFIG } from "../src/lib/config.ts";
 
-const WP_DISALLOW = ["/wp-admin/", "/wp-json/", "/feed/"];
-
-test("robots allows the AI crawlers by name and keeps the WordPress disallows in every group", () => {
+test("robots allows the AI crawlers by name and disallows nothing, so the 410 WordPress paths stay fetchable", () => {
   const { rules } = robots();
   assert.ok(Array.isArray(rules));
   const named = rules.flatMap((rule) => [rule.userAgent].flat());
@@ -22,7 +21,21 @@ test("robots allows the AI crawlers by name and keeps the WordPress disallows in
   }
   for (const rule of rules) {
     assert.equal(rule.allow, "/");
-    assert.deepEqual(rule.disallow, WP_DISALLOW);
+    assert.equal(rule.disallow, undefined);
+  }
+});
+
+test("sitemap lastmod is a fixed, real date shared by both languages", () => {
+  const entries = sitemap();
+  assert.equal(entries.length, 2 * Object.keys(PAGES).length);
+  const today = new Date();
+  for (const entry of entries) {
+    const date = entry.lastModified as Date;
+    assert.ok(!Number.isNaN(date.getTime()), entry.url);
+    assert.ok(date <= today, `${entry.url} lastmod must not be in the future`);
+  }
+  for (const page of Object.values(PAGES)) {
+    assert.match(page.lastModified, /^\d{4}-\d{2}-\d{2}$/);
   }
 });
 
