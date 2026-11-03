@@ -29,13 +29,13 @@ import {
   EN_NAV,
 } from "../src/content/en.ts";
 
-test("route map covers all six page pairs in both languages", () => {
+test("route map covers all seven page pairs in both languages", () => {
   const langs = Object.keys(ROUTES) as Array<keyof typeof ROUTES>;
   assert.deepEqual(langs.sort(), ["en", "fi"]);
   for (const lang of langs) {
     assert.deepEqual(
       Object.keys(ROUTES[lang]).sort(),
-      ["cabin", "contact", "gallery", "home", "rates", "teams"],
+      ["cabin", "companies", "contact", "gallery", "home", "rates", "teams"],
       `route keys for ${lang}`,
     );
   }
@@ -96,8 +96,8 @@ test("every canonical page has a title and an h1, unique within its language", (
 });
 
 test("navigation matches the six canonical pages and language", () => {
-  assert.equal(FI_NAV.length, 6);
-  assert.equal(EN_NAV.length, 6);
+  assert.equal(FI_NAV.length, 7);
+  assert.equal(EN_NAV.length, 7);
   for (const item of FI_NAV) assert.ok(item.href.startsWith("/"));
   for (const item of EN_NAV) assert.ok(item.href.startsWith("/en/"));
 });

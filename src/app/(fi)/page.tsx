@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteShell } from "../../components/SiteShell.tsx";
 import { HomeCarousel } from "../../components/HomeCarousel.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, ImageCard, CallToAction } from "../../components/ui/Primitives.tsx";
@@ -9,7 +10,7 @@ import {
   FI_UI,
 } from "../../content/fi.ts";
 import { COMPANY, CAPACITY, EXTERNAL_LINKS, RENTAL_CONTACT } from "../../content/shared.ts";
-import { getHref } from "../../lib/routes.ts";
+import { BROCHURE_PATHS, getHref } from "../../lib/routes.ts";
 import { buildPageMetadata, OG_IMAGES } from "../../lib/seo.ts";
 import { LastMinuteBanner } from "../../components/LastMinuteBanner.tsx";
 import { fill, formatEuros, formatShortDates, getLastMinuteDeal } from "../../lib/last-minute.ts";
@@ -188,6 +189,15 @@ export default async function HomePage() {
           <h2 className="mt-3 text-h2 font-display text-ink">Ryhmille yrityksistä ystäviin</h2>
           <p className="mt-4 text-body">{s.groups}</p>
           <p className="mt-4 text-body">{s.groupsCta}</p>
+          <p className="mt-4 text-body">
+            <Link href={getHref("fi", "companies")} className="font-semibold text-fjord-dark underline-offset-2 hover:underline">
+              Strategiapäivät ja yritysryhmät: tilat, hintaesimerkit ja ohjelma
+            </Link>
+          {" · "}
+            <a href={BROCHURE_PATHS.fi} className="font-semibold text-fjord-dark underline-offset-2 hover:underline">
+              Lataa yritysesite (PDF)
+            </a>
+          </p>
           <p className="mt-4 text-body">
             {s.leviLink}:{" "}
             <a

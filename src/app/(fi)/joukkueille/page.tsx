@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteShell } from "../../../components/SiteShell.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, CallToAction } from "../../../components/ui/Primitives.tsx";
 import { fiTeams, fiTeamsSections } from "../../../content/fi.ts";
@@ -121,6 +122,11 @@ export default function TeamsPage() {
             </div>
           ))}
         </div>
+          <p className="mt-6 text-body">
+            <Link href={getHref("fi", "companies")} className="font-semibold text-fjord-dark underline-offset-2 hover:underline">
+              Yritysryhmille ja strategiapäiville on oma sivunsa
+            </Link>
+          </p>
       </Section>
 
       <Section>

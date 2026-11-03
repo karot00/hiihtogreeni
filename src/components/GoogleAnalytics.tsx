@@ -5,6 +5,7 @@ import Script from "next/script";
 import { usePathname } from "next/navigation";
 
 import type { Lang } from "../content/types.ts";
+import { BROCHURE_PATHS, type Language } from "../lib/routes.ts";
 import { useCookieConsent } from "../lib/cookie-consent/context.tsx";
 import { isCategoryAllowed } from "../lib/cookie-consent/gate.ts";
 import {
@@ -121,6 +122,11 @@ export function GoogleAnalytics({ lang }: GoogleAnalyticsProps) {
       }
       if (href.startsWith("mailto:")) {
         trackEvent(GA4_EVENTS.contactClick, { method: "mailto" });
+        return;
+      }
+      const brochure = (Object.keys(BROCHURE_PATHS) as Language[]).find((lang) => href.split(/[?#]/)[0] === BROCHURE_PATHS[lang]);
+      if (brochure) {
+        trackEvent(GA4_EVENTS.brochureDownload, { language: brochure });
         return;
       }
       const host = safeOutboundHostname(href, window.location.origin);

@@ -3,6 +3,7 @@ import { fiRatesSections } from "../content/fi.ts";
 import {
   formatDate,
   formatDateRange,
+  formatNights,
   freeRanges,
   type ApartmentPrices,
   type Availability,
@@ -91,7 +92,10 @@ export function SeasonPrices({ lang, s, pricing }: { lang: Lang; s: LiveRatesStr
               </ul>
             </>
           ) : null}
-          <p className="mt-4 text-sm text-slate">{fill(s.minNights, { nights: pricing.minNights })}</p>
+          <p className="mt-4 text-sm text-slate">
+            {fill(s.minNights, { nights: formatNights(lang, pricing.minNights) })}
+            {pricing.minChargedNights ? ` ${fill(s.minCharge, { charged: pricing.minChargedNights })}` : ""}
+          </p>
         </>
       ) : (
         <p className="mt-4 max-w-[68ch] text-body">{s.pricesUnavailable}</p>

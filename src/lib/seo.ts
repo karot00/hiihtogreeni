@@ -24,6 +24,7 @@ const CANONICAL_PATHS: Record<NavKey, { fi: string; en: string }> = {
   home: { fi: ROUTES.fi.home, en: ROUTES.en.home },
   cabin: { fi: ROUTES.fi.cabin, en: ROUTES.en.cabin },
   teams: { fi: ROUTES.fi.teams, en: ROUTES.en.teams },
+  companies: { fi: ROUTES.fi.companies, en: ROUTES.en.companies },
   gallery: { fi: ROUTES.fi.gallery, en: ROUTES.en.gallery },
   rates: { fi: ROUTES.fi.rates, en: ROUTES.en.rates },
   contact: { fi: ROUTES.fi.contact, en: ROUTES.en.contact },

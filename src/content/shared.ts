@@ -35,6 +35,8 @@ export const CAPACITY = {
   bedrooms: 7,
   bathrooms: 7,
   area: "150 m²",
+  /** The meeting and dining room between the apartments. */
+  meetingRoomSeats: 20,
 } as const;
 
 /** Booking terms v1.3 §8 (cabins.levifinland.fi): no late check-out, early check-in on request. */

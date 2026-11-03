@@ -1,9 +1,10 @@
 import { CAPACITY, COMPANY, EXTERNAL_LINKS, RENTAL_CONTACT, bookingPageUrl, bookingTermsUrl } from "../content/shared.ts";
 import type { PageContent } from "../content/types.ts";
-import { enCabin, enCabinSections, enContact, enGallery, enHome, enRates, enRatesSections, enTeams, enTeamsSections } from "../content/en.ts";
-import { fiCabin, fiContact, fiGallery, fiHome, fiRates, fiTeams } from "../content/fi.ts";
+import { enCabin, enCabinSections, enCompanies, enCompaniesSections, enContact, enGallery, enHome, enRates, enRatesSections, enTeams, enTeamsSections } from "../content/en.ts";
+import { fiCabin, fiCompanies, fiContact, fiGallery, fiHome, fiRates, fiTeams } from "../content/fi.ts";
 import { SITE_CONFIG } from "./config.ts";
-import { API_BASE, MCP_URL, OPENAPI_URL, formatDate, formatDateRange, freeRanges, type ApartmentPrices, type Availability, type FreeRange, type Pricing } from "./booking-api.ts";
+import { BROCHURE_PATHS } from "./routes.ts";
+import { API_BASE, MCP_URL, OPENAPI_URL, formatDate, formatDateRange, formatNights, freeRanges, type ApartmentPrices, type Availability, type FreeRange, type Pricing } from "./booking-api.ts";
 import { formatEuros } from "./last-minute.ts";
 
 /**
@@ -20,8 +21,8 @@ export interface LiveData {
   availability: Availability | null;
 }
 
-const EN_PAGES = [enHome, enCabin, enTeams, enRates, enGallery, enContact];
-const FI_PAGES = [fiHome, fiCabin, fiTeams, fiRates, fiGallery, fiContact];
+const EN_PAGES = [enHome, enCabin, enTeams, enCompanies, enRates, enGallery, enContact];
+const FI_PAGES = [fiHome, fiCabin, fiTeams, fiCompanies, fiRates, fiGallery, fiContact];
 
 const url = (path: string) => `${SITE_CONFIG.url}${path}`;
 const list = (items: readonly string[]) => items.map((item) => `- ${item}`).join("\n");
@@ -79,7 +80,7 @@ function livePrices(pricing: Pricing): string {
   return [
     "### Seasonal prices (live from the booking system)",
     "",
-    `Per apartment, VAT included. A full Saturday-to-Saturday week costs the weekly price; every other night costs the nightly price. The whole house is both apartments. Minimum stay ${pricing.minNights} nights.`,
+    `Per apartment, VAT included. A full Saturday-to-Saturday week costs the weekly price; every other night costs the nightly price. The whole house is both apartments. Minimum stay ${formatNights("en", pricing.minNights)}.${pricing.minChargedNights ? ` Stays shorter than ${pricing.minChargedNights} nights are charged as ${pricing.minChargedNights} nights.` : ""}`,
     "",
     "| Season | Nights | Week (Sat–Sat) | Night |",
     "|---|---|---|---|",
@@ -156,6 +157,56 @@ function agents(): string {
   ].join("\n");
 }
 
+const COMPANY_AGENT_NOTE = `Check the meeting room's availability with ${API_BASE}/availability and the price with ${API_BASE}/quote and conference_room=true (it is free with units=AB). Do not state a total that /quote has not returned.`;
+
+/** Short section for llms.txt: who the house suits and where the details are. */
+function companiesShort(): string {
+  return [
+    "## For companies and leadership offsites",
+    "",
+    list([
+      `Strategy days, team offsites, kick-offs and board meetings for up to ${CAPACITY.meetingRoomSeats} people in the private meeting room, ${whole} beds in the whole house`,
+      "Whole house up to 14 people: a bedroom and a bathroom each, meeting room included",
+      `Details, set-ups, live price examples and FAQ: ${url(enCompanies.slug)} (Finnish: ${url(fiCompanies.slug)})`,
+      `Brochure (PDF, no sign-up): ${url(BROCHURE_PATHS.en)} (Finnish: ${url(BROCHURE_PATHS.fi)})`,
+      COMPANY_AGENT_NOTE,
+    ]),
+  ].join("\n");
+}
+
+/** Full section for llms-full.txt, from the companies page content. */
+function companiesFull(live?: LiveData): string {
+  const c = enCompaniesSections;
+  const shortStay = live?.pricing
+    ? live.pricing.minChargedNights > live.pricing.minNights
+      ? `Shortest stay ${formatNights("en", live.pricing.minNights)}; stays under ${live.pricing.minChargedNights} nights are charged as ${live.pricing.minChargedNights} nights.`
+      : `Shortest stay ${formatNights("en", live.pricing.minNights)}.`
+    : null;
+  return [
+    "## For companies and leadership offsites",
+    "",
+    enCompanies.description,
+    "",
+    list(c.facts.map((fact) => `${fact.label}: ${fact.value}`)),
+    "",
+    "### Set-ups",
+    "",
+    list(c.configs.map((config) => `${config.title}: ${config.text}`)),
+    "",
+    "### Practical matters",
+    "",
+    list([...c.practical.map((item) => `${item.title}: ${item.text}`), ...(shortStay ? [shortStay] : [])]),
+    "",
+    "### Questions from company groups",
+    "",
+    c.faq.map((item) => `**${item.q}**\n${item.a}`).join("\n\n"),
+    "",
+    `Page with live price examples: ${url(enCompanies.slug)}. Brochure (PDF): ${url(BROCHURE_PATHS.en)} (Finnish: ${url(BROCHURE_PATHS.fi)})`,
+    "",
+    COMPANY_AGENT_NOTE,
+  ].join("\n");
+}
+
 function pages(): string {
   return [
     "## Pages",
@@ -173,6 +224,7 @@ export function buildLlmsTxt(live?: LiveData): string {
     header(),
     facts(),
     booking(live),
+    companiesShort(),
     agents(),
     pages(),
     [
@@ -199,6 +251,7 @@ export function buildLlmsFullTxt(live?: LiveData): string {
     ["### Special features", "", list(s.special)].join("\n"),
     ["## For teams and groups", "", t.intro, "", ...t.introParagraphs.flatMap((p) => [p, ""]), t.maintenance, "", t.location].join("\n"),
     ["### Questions from teams", "", t.faq.map((item) => `**${item.q}**\n${item.a}`).join("\n\n")].join("\n"),
+    companiesFull(live),
     ["## Levi Golf green fees", "", enRatesSections.greenFee, "", EXTERNAL_LINKS.greenFee].join("\n"),
     agents(),
     pages(),

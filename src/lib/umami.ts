@@ -1,5 +1,5 @@
 import { BOOKING_ORIGIN } from "../content/shared.ts";
-import { getHref } from "./routes.ts";
+import { BROCHURE_PATHS, getHref } from "./routes.ts";
 
 /**
  * Cookieless Umami statistics on the self-hosted instance shared with
@@ -18,6 +18,7 @@ export const UMAMI_EVENTS = {
   contactClick: "contact_click",
   inquirySubmitted: "inquiry_submitted",
   contactSubmitted: "contact_submitted",
+  brochureDownload: "brochure_download",
 } as const;
 
 export type UmamiEventData = Record<string, string | number>;
@@ -43,6 +44,9 @@ export function classifyClick(href: string, origin: string, where: string): Clic
   if (url.origin === BOOKING_ORIGIN && url.pathname.includes("/hiihtogreeni") && !url.pathname.startsWith("/api/")) {
     return { name: UMAMI_EVENTS.bookCtaClick, data: { to: "booking-site", where } };
   }
+  // The brochure: its language only (plan 7.3).
+  if (url.origin === origin && url.pathname === BROCHURE_PATHS.fi) return { name: UMAMI_EVENTS.brochureDownload, data: { language: "fi", where } };
+  if (url.origin === origin && url.pathname === BROCHURE_PATHS.en) return { name: UMAMI_EVENTS.brochureDownload, data: { language: "en", where } };
   if (url.origin === origin && RATES_PATHS.has(url.pathname)) {
     return { name: UMAMI_EVENTS.bookCtaClick, data: { to: "rates", where } };
   }

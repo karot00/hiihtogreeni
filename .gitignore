@@ -43,3 +43,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# The owner's original photos (phone EXIF with GPS); resized copies live in assets/brochure.
+/assets/originals/

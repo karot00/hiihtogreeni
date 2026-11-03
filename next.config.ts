@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 import { buildNextRedirects } from "./src/lib/redirects.ts";
+import { BROCHURE_PATHS, ROUTES } from "./src/lib/routes.ts";
+import { SITE_CONFIG } from "./src/lib/config.ts";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
@@ -18,6 +20,14 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return buildNextRedirects();
+  },
+  // The brochure PDFs point search engines to the companies page, so the page
+  // ranks rather than the PDF (GEO plan 7.3).
+  async headers() {
+    return (["fi", "en"] as const).map((lang) => ({
+      source: BROCHURE_PATHS[lang],
+      headers: [{ key: "Link", value: `<${SITE_CONFIG.url}${ROUTES[lang].companies}>; rel="canonical"` }],
+    }));
   },
 };
 

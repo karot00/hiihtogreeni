@@ -14,6 +14,7 @@ export const AVAILABILITY_URL = `${API_BASE}/availability`;
 /** The property document and the API contract, linked for agents (step 6). */
 export const PROPERTY_URL = `${API_BASE}/property`;
 export const OPENAPI_URL = `${API_BASE}/openapi.json`;
+export const QUOTE_URL = `${API_BASE}/quote`;
 /** The booking system's MCP server (Streamable HTTP) with the same operations as tools. */
 export const MCP_URL = `${BOOKING_ORIGIN}/mcp`;
 /** Same freshness as the API's CDN cache, so a price change shows within 15 minutes. */
@@ -47,6 +48,8 @@ export interface Pricing {
     maintenanceRoomPerStay: number | null;
   };
   minNights: number;
+  /** Shorter stays are charged as this many nights; 0 when the rule is off. */
+  minChargedNights: number;
   lastMinute: { percent: number; arrivalsUntil: string } | null;
 }
 
@@ -77,6 +80,8 @@ export function parsePricing(json: unknown): Pricing | null {
   const baseB = isRecord(json.base_rate) ? apartment(json.base_rate.apartment_b) : null;
   const minNights = json.rules.min_nights;
   if (!Number.isInteger(minNights) || (minNights as number) < 1) return null;
+  const charged = json.rules.min_charged_nights;
+  const minChargedNights = Number.isInteger(charged) && (charged as number) > (minNights as number) ? (charged as number) : 0;
   const lm = json.last_minute;
   const lastMinute =
     isRecord(lm) && typeof lm.percent === "number" && lm.percent > 0 && typeof lm.arrivals_until === "string" && DATE.test(lm.arrivals_until)
@@ -94,6 +99,7 @@ export function parsePricing(json: unknown): Pricing | null {
       maintenanceRoomPerStay: price(e.maintenance_room_per_stay_eur),
     },
     minNights: minNights as number,
+    minChargedNights,
     lastMinute,
   };
 }
@@ -175,6 +181,67 @@ async function getJson(url: string): Promise<unknown> {
   }
 }
 
+/** A stay to price with /quote. */
+export interface StayRequest {
+  checkIn: string;
+  checkOut: string;
+  units: "A" | "B" | "AB";
+  guests: number;
+  conferenceRoom: boolean;
+  /** Made-up beds on top of linen and towels. */
+  bedsMade: boolean;
+}
+
+export interface QuoteLine {
+  item: string;
+  description: string;
+  quantity: number;
+  totalEur: number;
+}
+
+/** The booking system's price for a stay, VAT included. */
+export interface Quote {
+  checkIn: string;
+  checkOut: string;
+  nights: number;
+  lines: QuoteLine[];
+  totalEur: number;
+}
+
+export function quoteUrl(lang: Lang, stay: StayRequest): string {
+  const params = new URLSearchParams({
+    check_in: stay.checkIn,
+    check_out: stay.checkOut,
+    units: stay.units,
+    guests: String(stay.guests),
+    bed_linen_and_towels: "true",
+    beds_made: String(stay.bedsMade),
+    conference_room: String(stay.conferenceRoom),
+    lang,
+  });
+  return `${QUOTE_URL}?${params}`;
+}
+
+/** The quote document, or null when it is not in the expected shape. */
+export function parseQuote(json: unknown): Quote | null {
+  if (!isRecord(json) || !isRecord(json.quote)) return null;
+  const q = json.quote;
+  if (typeof q.check_in !== "string" || typeof q.check_out !== "string" || !Number.isInteger(q.nights) || !Array.isArray(q.lines)) return null;
+  const total = price(q.total_eur);
+  if (!total) return null;
+  const lines: QuoteLine[] = [];
+  for (const l of q.lines) {
+    if (!isRecord(l) || typeof l.item !== "string" || typeof l.description !== "string" || typeof l.total_eur !== "number") return null;
+    lines.push({ item: l.item, description: l.description, quantity: typeof l.quantity === "number" ? l.quantity : 1, totalEur: l.total_eur });
+  }
+  return { checkIn: q.check_in, checkOut: q.check_out, nights: q.nights as number, lines, totalEur: total };
+}
+
+/** The price of a stay, or null (booked, outside the booking window, API down); never throws. */
+export async function getQuote(lang: Lang, stay: StayRequest): Promise<Quote | null> {
+  return parseQuote(await getJson(quoteUrl(lang, stay)));
+}
+
 /** Live prices, or null; never throws, so an API problem only hides the numbers. */
 export async function getPricing(): Promise<Pricing | null> {
   return parsePricing(await getJson(PRICING_URL));
@@ -199,6 +266,12 @@ export function formatDateRange(lang: Lang, from: string, to: string): string {
       timeZone: "UTC",
     }).formatRange(utc(from), utc(to)),
   );
+}
+
+/** "1 yö" / "3 yötä", "1 night" / "3 nights" */
+export function formatNights(lang: Lang, nights: number): string {
+  if (lang === "fi") return nights === 1 ? "1 yö" : `${nights} yötä`;
+  return nights === 1 ? "1 night" : `${nights} nights`;
 }
 
 /** "24.11.2026" / "24 Nov 2026" */
