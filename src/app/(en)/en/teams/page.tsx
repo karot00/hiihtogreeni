@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteShell } from "../../../../components/SiteShell.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, CallToAction } from "../../../../components/ui/Primitives.tsx";
 import { enTeams, enTeamsSections } from "../../../../content/en.ts";
@@ -121,6 +122,11 @@ export default function TeamsPage() {
             </div>
           ))}
         </div>
+          <p className="mt-6 text-body">
+            <Link href={getHref("en", "companies")} className="font-semibold text-fjord-dark underline-offset-2 hover:underline">
+              Company groups and leadership offsites have their own page
+            </Link>
+          </p>
       </Section>
 
       <Section>

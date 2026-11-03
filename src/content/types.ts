@@ -1,7 +1,7 @@
 export type Lang = "fi" | "en";
 
 /** Stable key identifying each page across languages. */
-export type NavKey = "home" | "cabin" | "teams" | "gallery" | "rates" | "contact";
+export type NavKey = "home" | "cabin" | "teams" | "companies" | "gallery" | "rates" | "contact";
 
 export interface NavItem {
   key: NavKey;
@@ -211,4 +211,67 @@ export interface LastMinuteStrings {
   /** Prefix for the page's meta description while a deal is shown. */
   metaDescription: string;
   seasons: Record<SeasonKey, { name: string; text: string }>;
+}
+
+export type CompanyExampleKey = "mayApartment" | "mayHouse" | "autumnHouse";
+
+/**
+ * Companies page (docs/geo-ja-yritysnakyvyys-suunnitelma.md 6.3). Facts come
+ * from the cabin content and the owner's answers C1–C13; prices only from the
+ * booking API. `{…}` placeholders are filled at render time.
+ */
+export interface CompaniesSections {
+  heroEyebrow: string;
+  heroLead: string;
+  heroCalendar: string;
+  heroContact: string;
+  factsLead: string;
+  factsTitle: string;
+  facts: readonly { label: string; value: string }[];
+  useCasesLead: string;
+  useCasesTitle: string;
+  useCases: readonly { title: string; text: string }[];
+  configsLead: string;
+  configsTitle: string;
+  configs: readonly { title: string; text: string }[];
+  pricesLead: string;
+  pricesTitle: string;
+  /** {date}: the day the examples were priced. */
+  pricesIntro: string;
+  pricesUnavailable: string;
+  examples: Record<CompanyExampleKey, string>;
+  /** {price} */
+  perPerson: string;
+  /** {price} */
+  total: string;
+  breakdown: string;
+  /** Quote line labels by the booking system's item code; others keep the API's description. */
+  lineLabels: Record<string, string>;
+  /** Appended to an apartment line that is the short-stay minimum charge. */
+  minimumCharge: string;
+  openCalendar: string;
+  programLead: string;
+  programTitle: string;
+  programIntro: string;
+  programs: readonly { season: string; days: readonly { when: string; text: string }[] }[];
+  practicalLead: string;
+  practicalTitle: string;
+  practical: readonly { title: string; text: string }[];
+  termsLink: string;
+  faqLead: string;
+  faqTitle: string;
+  faq: readonly { q: string; a: string }[];
+  /** Answer from the live stay rules; inserted after the first FAQ items. */
+  shortStay: {
+    q: string;
+    /** {min}: "1 yö" / "2 nights"; {charged}: a number */
+    withMinimumCharge: string;
+    /** {min} */
+    minimumOnly: string;
+    unknown: string;
+  };
+  ctaEyebrow: string;
+  ctaTitle: string;
+  ctaBody: string;
+  images: { hero: string; living: string; bedroom: string };
 }

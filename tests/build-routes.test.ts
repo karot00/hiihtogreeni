@@ -6,7 +6,7 @@ import { ROUTES } from "../src/lib/routes.ts";
 
 /**
  * Offline CI gate on the production build output. Asserts the route
- * classification matches the migration contract: the ten canonical pages must
+ * classification matches the migration contract: the canonical pages must
  * be prerendered as static HTML, and the only expected dynamic routes are the
  * contact endpoint and the intentionally retired WordPress endpoints.
  */
@@ -14,12 +14,14 @@ const CANONICAL = [
   ROUTES.fi.home,
   ROUTES.fi.cabin,
   ROUTES.fi.teams,
+  ROUTES.fi.companies,
   ROUTES.fi.gallery,
   ROUTES.fi.rates,
   ROUTES.fi.contact,
   ROUTES.en.home,
   ROUTES.en.cabin,
   ROUTES.en.teams,
+  ROUTES.en.companies,
   ROUTES.en.gallery,
   ROUTES.en.rates,
   ROUTES.en.contact,
@@ -44,9 +46,12 @@ const REVALIDATE: Record<string, number> = {
   // The rates pages, for live prices and free dates (AGENT-VISIBILITY-PLAN.md step 4).
   [ROUTES.fi.rates]: 900,
   [ROUTES.en.rates]: 900,
+  // The companies pages, for live price examples and the shortest stay.
+  [ROUTES.fi.companies]: 900,
+  [ROUTES.en.companies]: 900,
 };
 
-test("production build marks all twelve canonical pages as static", () => {
+test("production build marks all fourteen canonical pages as static", () => {
   const manifestPath = resolve(".next/prerender-manifest.json");
   assert.ok(existsSync(manifestPath), "prerender-manifest.json must exist (run build first)");
   const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
@@ -75,7 +80,7 @@ test("generated sitemap uses trailing-slash canonical URLs", () => {
   const sitemap = readFileSync(sitemapPath, "utf8");
   const urls = [...sitemap.matchAll(/(?:<loc>|href=")([^<"]+)/g)].map((match) => match[1]);
 
-  assert.equal(sitemap.match(/<loc>/g)?.length, 12, "sitemap must contain twelve pages");
+  assert.equal(sitemap.match(/<loc>/g)?.length, 14, "sitemap must contain fourteen pages");
   for (const value of urls) {
     assert.ok(new URL(value).pathname.endsWith("/"), `sitemap URL must be canonical: ${value}`);
   }

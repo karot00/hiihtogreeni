@@ -29,13 +29,13 @@ import {
   EN_NAV,
 } from "../src/content/en.ts";
 
-test("route map covers all six page pairs in both languages", () => {
+test("route map covers all seven page pairs in both languages", () => {
   const langs = Object.keys(ROUTES) as Array<keyof typeof ROUTES>;
   assert.deepEqual(langs.sort(), ["en", "fi"]);
   for (const lang of langs) {
     assert.deepEqual(
       Object.keys(ROUTES[lang]).sort(),
-      ["cabin", "contact", "gallery", "home", "rates", "teams"],
+      ["cabin", "companies", "contact", "gallery", "home", "rates", "teams"],
       `route keys for ${lang}`,
     );
   }

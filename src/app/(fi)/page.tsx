@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteShell } from "../../components/SiteShell.tsx";
 import { HomeCarousel } from "../../components/HomeCarousel.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, ImageCard, CallToAction } from "../../components/ui/Primitives.tsx";
@@ -188,6 +189,11 @@ export default async function HomePage() {
           <h2 className="mt-3 text-h2 font-display text-ink">Ryhmille yrityksistä ystäviin</h2>
           <p className="mt-4 text-body">{s.groups}</p>
           <p className="mt-4 text-body">{s.groupsCta}</p>
+          <p className="mt-4 text-body">
+            <Link href={getHref("fi", "companies")} className="font-semibold text-fjord-dark underline-offset-2 hover:underline">
+              Strategiapäivät ja yritysryhmät: tilat, hintaesimerkit ja ohjelma
+            </Link>
+          </p>
           <p className="mt-4 text-body">
             {s.leviLink}:{" "}
             <a

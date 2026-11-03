@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteShell } from "../../../../components/SiteShell.tsx";
 import { HomeCarousel } from "../../../../components/HomeCarousel.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, ImageCard, CallToAction } from "../../../../components/ui/Primitives.tsx";
@@ -182,6 +183,11 @@ export default async function EnglishHomePage() {
           <h2 className="mt-3 text-h2 font-display text-ink">For groups, from corporate to friends</h2>
           <p className="mt-4 text-body">{s.groups}</p>
           <p className="mt-4 text-body">{s.groupsCta}</p>
+          <p className="mt-4 text-body">
+            <Link href={getHref("en", "companies")} className="font-semibold text-fjord-dark underline-offset-2 hover:underline">
+              Leadership offsites and company groups: spaces, price examples and a sample programme
+            </Link>
+          </p>
           <p className="mt-4 text-body">
             {s.leviLink}:{" "}
             <a

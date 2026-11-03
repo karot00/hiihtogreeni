@@ -5,6 +5,8 @@ import { ACCOMMODATION_ID, ORGANIZATION_ID, buildFaqJsonLd, buildJsonLd, buildLo
 import { CAPACITY, MAINTENANCE_CONTACT, RENTAL_CONTACT, STAY_TIMES, bookingPageUrl } from "../src/content/shared.ts";
 import { fiCabinSections, fiRatesSections } from "../src/content/fi.ts";
 import { enCabinSections, enRatesSections } from "../src/content/en.ts";
+import { SITE_CONFIG } from "../src/lib/config.ts";
+import { ROUTES } from "../src/lib/routes.ts";
 
 const lodging = buildLodging;
 
@@ -36,6 +38,16 @@ test("apartments A and B carry the per-apartment capacity; pets only in A", () =
     }
     assert.equal(a.petsAllowed, true);
     assert.ok(!("petsAllowed" in b));
+  }
+});
+
+test("the private meeting room seats 20 and links to the companies page", () => {
+  for (const lang of ["fi", "en"] as const) {
+    const room = lodging(lang).containsPlace[2];
+    assert.equal(room["@type"], "MeetingRoom");
+    assert.equal(room.maximumAttendeeCapacity, CAPACITY.meetingRoomSeats);
+    assert.equal(room.url, `${SITE_CONFIG.url}${ROUTES[lang].companies}`);
+    assert.ok(room.amenityFeature.length > 0);
   }
 });
 
