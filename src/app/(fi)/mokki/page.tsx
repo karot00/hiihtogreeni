@@ -1,5 +1,4 @@
 import { SiteShell } from "../../../components/SiteShell.tsx";
-import { LeviNowMap } from "../../../components/LeviNowMap.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, FactList, ImageCard, CallToAction } from "../../../components/ui/Primitives.tsx";
 import { fiCabin, fiCabinSections } from "../../../content/fi.ts";
 import { COMPANY, EXTERNAL_LINKS } from "../../../content/shared.ts";
@@ -98,7 +97,11 @@ export default function CabinPage() {
           {COMPANY.name} sijaitsee osoitteessa {COMPANY.address.street}, {COMPANY.address.postalCode}{" "}
           {COMPANY.address.city}. Kittilän lentoasemalle on matkaa autolla noin {COMPANY.airportDistance}.
         </p>
-        <LeviNowMap lang="fi" page="cabin-page" />
+        <p className="mt-6">
+          <ButtonLink href={`${getHref("fi", "contact")}#sijainti`} variant="secondary">
+            Katso sijainti kartalta
+          </ButtonLink>
+        </p>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           <ImageCard
             href={EXTERNAL_LINKS.leviFi}

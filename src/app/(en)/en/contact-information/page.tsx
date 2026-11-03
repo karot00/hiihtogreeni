@@ -1,10 +1,11 @@
 import { SiteShell } from "../../../../components/SiteShell.tsx";
+import { LeviNowMap } from "../../../../components/LeviNowMap.tsx";
 import { Hero, Section, Eyebrow } from "../../../../components/ui/Primitives.tsx";
 import { ContactForm } from "../../../../components/ContactForm.tsx";
 import { ContactDetails } from "../../../../components/ContactDetails.tsx";
 import { enContact, enContactSections } from "../../../../content/en.ts";
 import { getFormStrings } from "../../../../content/index.ts";
-import { COMPANY, EXTERNAL_LINKS } from "../../../../content/shared.ts";
+import { COMPANY } from "../../../../content/shared.ts";
 import { buildPageMetadata, OG_IMAGES } from "../../../../lib/seo.ts";
 
 export const metadata = buildPageMetadata({
@@ -65,12 +66,10 @@ export default function ContactPage() {
             </address>
             <div className="mt-6">
               <a
-                href={EXTERNAL_LINKS.leviEn}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#location"
                 className="inline-flex min-h-11 items-center rounded-[var(--radius-control)] border border-fjord px-4 font-display text-sm font-semibold text-fjord-dark transition-colors hover:bg-fjord/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fjord"
               >
-                See location (levifinland.fi)
+                See the location on the map
               </a>
             </div>
           </div>
@@ -89,6 +88,12 @@ export default function ContactPage() {
             />
           </div>
         </div>
+      </Section>
+
+      <Section tone="mist" id="location">
+        <Eyebrow>Location</Eyebrow>
+        <h2 className="mt-3 text-h2 font-display text-ink">Hiihtogreeni on the map</h2>
+        <LeviNowMap lang="en" page="contact-page" />
       </Section>
     </SiteShell>
   );
