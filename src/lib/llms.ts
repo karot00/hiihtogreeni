@@ -3,6 +3,7 @@ import type { PageContent } from "../content/types.ts";
 import { enCabin, enCabinSections, enCompanies, enCompaniesSections, enContact, enGallery, enHome, enRates, enRatesSections, enTeams, enTeamsSections } from "../content/en.ts";
 import { fiCabin, fiCompanies, fiContact, fiGallery, fiHome, fiRates, fiTeams } from "../content/fi.ts";
 import { SITE_CONFIG } from "./config.ts";
+import { BROCHURE_PATHS } from "./routes.ts";
 import { API_BASE, MCP_URL, OPENAPI_URL, formatDate, formatDateRange, formatNights, freeRanges, type ApartmentPrices, type Availability, type FreeRange, type Pricing } from "./booking-api.ts";
 import { formatEuros } from "./last-minute.ts";
 
@@ -167,6 +168,7 @@ function companiesShort(): string {
       `Strategy days, team offsites, kick-offs and board meetings for up to ${CAPACITY.meetingRoomSeats} people in the private meeting room, ${whole} beds in the whole house`,
       "Whole house up to 14 people: a bedroom and a bathroom each, meeting room included",
       `Details, set-ups, live price examples and FAQ: ${url(enCompanies.slug)} (Finnish: ${url(fiCompanies.slug)})`,
+      `Brochure (PDF, no sign-up): ${url(BROCHURE_PATHS.en)} (Finnish: ${url(BROCHURE_PATHS.fi)})`,
       COMPANY_AGENT_NOTE,
     ]),
   ].join("\n");
@@ -199,7 +201,7 @@ function companiesFull(live?: LiveData): string {
     "",
     c.faq.map((item) => `**${item.q}**\n${item.a}`).join("\n\n"),
     "",
-    `Page with live price examples: ${url(enCompanies.slug)}`,
+    `Page with live price examples: ${url(enCompanies.slug)}. Brochure (PDF): ${url(BROCHURE_PATHS.en)} (Finnish: ${url(BROCHURE_PATHS.fi)})`,
     "",
     COMPANY_AGENT_NOTE,
   ].join("\n");

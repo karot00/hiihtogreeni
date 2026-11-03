@@ -1,4 +1,4 @@
-import type { CompaniesSections, LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
+import type { BrochureStrings, CompaniesSections, LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
 import { EXTERNAL_LINKS, STAY_TIMES } from "./shared.ts";
 
 export const EN_NAV: NavItem[] = [
@@ -709,4 +709,47 @@ export const enCompaniesSections: CompaniesSections = {
     living: "Large living room with fell views",
     bedroom: "Bedroom with a private bathroom",
   },
+};
+
+export const enBrochure: BrochureStrings = {
+  docTitle: "Hiihtogreeni – leadership offsites and company groups in Levi",
+  subject: "Brochure for companies: spaces, set-ups, prices and a sample programme",
+  keywords: "leadership offsite, strategy days, team offsite, kick-off, meeting room, Levi, Lapland",
+  coverEyebrow: "Levi, Lapland — for companies",
+  coverTitle: "The whole house for your leadership team in Levi",
+  coverLead: "A private 20-person meeting room under the same roof, a private bathroom in every bedroom, your own saunas in the evening and 20 minutes to Kittilä airport.",
+  whyTitle: "Why Hiihtogreeni",
+  why: [
+    "The whole house for your group: when you book both apartments, there are no other guests.",
+    "A private 20-person meeting room under the same roof, with its own entrance, also from outside.",
+    "A private bathroom in every bedroom. In a group of up to 14, everyone has a room of their own.",
+    "Two saunas with covered terraces, yours for the evening.",
+    "20 minutes to Kittilä airport. Ski tracks start from the yard, and the golf course is next door.",
+  ],
+  factsTitle: "The facts",
+  useCasesTitle: "What the house suits",
+  programTitle: "Sample programme: two working days",
+  pricesTitle: "Set-ups and prices",
+  fromPrice: "from {price} per person per night",
+  pricesNote: "Priced by the booking system on {date}, VAT included. The price covers accommodation, made-up beds with linen and towels, the final cleaning and the meeting room. Meals, transport and activities are not included.",
+  pricesUnavailable: "The booking calendar shows current prices for your dates.",
+  locationTitle: "Location",
+  locationLead: "About 200 m to the Koillisrinteet slopes, ski tracks from the yard, Levi Golf next door, 4 km to Levi centre and about 16 km, 20 minutes, to Kittilä airport.",
+  mapSummer: "Summer",
+  mapWinter: "Winter",
+  practicalTitle: "Practical matters",
+  bookTitle: "How to book",
+  bookSteps: [
+    "Pick the dates and apartments in the booking calendar and send a booking request. The request costs nothing.",
+    "We confirm by email. The deposit is invoiced to your company after the confirmation.",
+    "Questions? Call us or use the contact form.",
+  ],
+  qrCaption: "Booking calendar",
+  agentNote: "You can also check availability and prices with an AI assistant: hiihtogreeni.fi/llms.txt.",
+  phoneLabel: "Phone",
+  webLabel: "Companies page",
+  aiLabel: "Illustration: the people were generated with AI",
+  footer: "Levin Hiihtogreeni Oy · hiihtogreeni.fi · updated {date}",
+  downloadLink: "Download the brochure (PDF)",
+  downloadNote: "To pass on to your leadership team; no contact details needed.",
 };

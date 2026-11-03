@@ -275,3 +275,47 @@ export interface CompaniesSections {
   ctaBody: string;
   images: { hero: string; living: string; bedroom: string };
 }
+
+/**
+ * The downloadable brochure for companies (GEO plan phase 4). Facts, set-ups,
+ * programmes and practical matters come from CompaniesSections; these are the
+ * brochure's own headings and lines. `{…}` placeholders are filled when built.
+ */
+export interface BrochureStrings {
+  /** PDF title and <title>. */
+  docTitle: string;
+  subject: string;
+  keywords: string;
+  coverEyebrow: string;
+  coverTitle: string;
+  coverLead: string;
+  whyTitle: string;
+  why: readonly string[];
+  factsTitle: string;
+  useCasesTitle: string;
+  programTitle: string;
+  pricesTitle: string;
+  /** {price}: the lowest per-person price among the examples. */
+  fromPrice: string;
+  /** {date} */
+  pricesNote: string;
+  pricesUnavailable: string;
+  locationTitle: string;
+  locationLead: string;
+  mapSummer: string;
+  mapWinter: string;
+  practicalTitle: string;
+  bookTitle: string;
+  bookSteps: readonly string[];
+  qrCaption: string;
+  agentNote: string;
+  phoneLabel: string;
+  webLabel: string;
+  /** Shown on a photo whose people were generated with AI. */
+  aiLabel: string;
+  /** {date} */
+  footer: string;
+  /** Link text on the website. */
+  downloadLink: string;
+  downloadNote: string;
+}

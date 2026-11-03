@@ -4,7 +4,7 @@ import { HomeCarousel } from "../../../../components/HomeCarousel.tsx";
 import { Hero, Section, Eyebrow, ButtonLink, FactStrip, SplitSection, ImageCard, CallToAction } from "../../../../components/ui/Primitives.tsx";
 import { enHome, enHomeSections, enHomeCarousel, enLastMinute, EN_UI } from "../../../../content/en.ts";
 import { CAPACITY, EXTERNAL_LINKS, RENTAL_CONTACT } from "../../../../content/shared.ts";
-import { getHref } from "../../../../lib/routes.ts";
+import { BROCHURE_PATHS, getHref } from "../../../../lib/routes.ts";
 import { buildPageMetadata, OG_IMAGES } from "../../../../lib/seo.ts";
 import { LastMinuteBanner } from "../../../../components/LastMinuteBanner.tsx";
 import { fill, formatEuros, formatShortDates, getLastMinuteDeal } from "../../../../lib/last-minute.ts";
@@ -187,6 +187,10 @@ export default async function EnglishHomePage() {
             <Link href={getHref("en", "companies")} className="font-semibold text-fjord-dark underline-offset-2 hover:underline">
               Leadership offsites and company groups: spaces, price examples and a sample programme
             </Link>
+          {" · "}
+            <a href={BROCHURE_PATHS.en} className="font-semibold text-fjord-dark underline-offset-2 hover:underline">
+              Download the company brochure (PDF)
+            </a>
           </p>
           <p className="mt-4 text-body">
             {s.leviLink}:{" "}

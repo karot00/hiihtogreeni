@@ -1,17 +1,34 @@
 import type { Lang } from "../content/types.ts";
-import { enCompanies, enCompaniesSections } from "../content/en.ts";
-import { fiCompanies, fiCompaniesSections } from "../content/fi.ts";
+import { enBrochure, enCompanies, enCompaniesSections } from "../content/en.ts";
+import { fiBrochure, fiCompanies, fiCompaniesSections } from "../content/fi.ts";
 import { bookingTermsUrl } from "../content/shared.ts";
 import { formatDate, formatDateRange, getPricing, getQuote, type Quote } from "../lib/booking-api.ts";
 import { companiesFaq, companyExamples, todayInFinland, type CompanyExample } from "../lib/company-examples.ts";
 import { fill, formatEuros } from "../lib/last-minute.ts";
-import { getHref } from "../lib/routes.ts";
+import { BROCHURE_PATHS, getHref } from "../lib/routes.ts";
 import { FaqJsonLd } from "./JsonLd.tsx";
 import { SiteShell } from "./SiteShell.tsx";
 import { ButtonLink, CallToAction, Eyebrow, Hero, Section, SplitSection } from "./ui/Primitives.tsx";
 
 const SECTIONS = { fi: fiCompaniesSections, en: enCompaniesSections } as const;
 const PAGES = { fi: fiCompanies, en: enCompanies } as const;
+const BROCHURES = { fi: fiBrochure, en: enBrochure } as const;
+
+/** Direct link to the brochure PDF: no form, no email asked (plan 7.1). */
+function BrochureLink({ lang, light = false }: { lang: Lang; light?: boolean }) {
+  const b = BROCHURES[lang];
+  return (
+    <p className={`mt-6 text-sm ${light ? "text-white/90" : "text-slate"}`}>
+      <a
+        href={BROCHURE_PATHS[lang]}
+        className={`font-display font-semibold underline-offset-2 hover:underline focus-visible:underline ${light ? "text-white" : "text-fjord-dark"}`}
+      >
+        {b.downloadLink}
+      </a>{" "}
+      – {b.downloadNote}
+    </p>
+  );
+}
 
 const euros = (lang: Lang, amount: number) => formatEuros(lang, Math.round(amount * 100));
 
@@ -106,6 +123,7 @@ export async function CompaniesPage({ lang }: { lang: Lang }) {
             </div>
           ))}
         </dl>
+        <BrochureLink lang={lang} />
       </Section>
 
       <Section tone="mist">
@@ -228,7 +246,16 @@ export async function CompaniesPage({ lang }: { lang: Lang }) {
         </dl>
       </Section>
 
-      <CallToAction eyebrow={s.ctaEyebrow} title={s.ctaTitle} body={s.ctaBody}>
+      <CallToAction
+        eyebrow={s.ctaEyebrow}
+        title={s.ctaTitle}
+        body={
+          <>
+            {s.ctaBody}
+            <BrochureLink lang={lang} light />
+          </>
+        }
+      >
         <ButtonLink href={calendar} variant="light">
           {s.heroCalendar}
         </ButtonLink>

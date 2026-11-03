@@ -37,6 +37,7 @@ export const GA4_EVENTS = {
   contactClick: "contact_click",
   outboundClick: "outbound_click",
   galleryLightboxOpen: "gallery_lightbox_open",
+  brochureDownload: "brochure_download",
 } as const;
 
 export type GtagEventParams = Record<string, string | number | boolean>;

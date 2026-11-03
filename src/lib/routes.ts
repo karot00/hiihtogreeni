@@ -28,6 +28,15 @@ export const MIGRATION_REDIRECTS = APP_REDIRECTS.map((r) => ({
 })) as Array<{ source: string; destination: string; permanent: boolean }>;
 
 export type Language = "fi" | "en";
+
+/**
+ * The companies brochure PDFs (GEO plan phase 4), built into public/ by
+ * scripts/build-brochure.ts. Permanent, so links and QR codes keep working.
+ */
+export const BROCHURE_PATHS: Record<Language, string> = {
+  fi: "/esite/hiihtogreeni-yritysryhmat.pdf",
+  en: "/en/brochure/hiihtogreeni-companies.pdf",
+};
 export type RouteKey = keyof typeof ROUTES.fi;
 
 /** Add a trailing slash to a route path (root "/" is already canonical). */

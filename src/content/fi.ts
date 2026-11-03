@@ -1,4 +1,4 @@
-import type { CompaniesSections, LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
+import type { BrochureStrings, CompaniesSections, LastMinuteStrings, NavItem, PageContent, GalleryImage, UILabels, FormStrings, CookieConsentCopy } from "./types.ts";
 import { EXTERNAL_LINKS, STAY_TIMES } from "./shared.ts";
 
 const fiTime = (time: string) => time.replace(":", ".");
@@ -713,4 +713,47 @@ export const fiCompaniesSections: CompaniesSections = {
     living: "Iso olohuone tunturinäkymin",
     bedroom: "Makuuhuone omalla kylpyhuoneella",
   },
+};
+
+export const fiBrochure: BrochureStrings = {
+  docTitle: "Hiihtogreeni – strategiapäivät ja yritysryhmät Levillä",
+  subject: "Esite yrityksille: tilat, kokoonpanot, hinnat ja esimerkkiohjelma",
+  keywords: "strategiapäivät, johtoryhmä, offsite, kick-off, kokoustila, Levi, Lappi",
+  coverEyebrow: "Levi, Lappi — yrityksille",
+  coverTitle: "Koko talo johtoryhmälle Levillä",
+  coverLead: "Yksityinen 20 hengen kokoustila saman katon alla, oma kylpyhuone jokaisessa makuuhuoneessa, illaksi omat saunat ja Kittilän lentoasemalle 20 minuuttia.",
+  whyTitle: "Miksi Hiihtogreeni",
+  why: [
+    "Koko talo omalle ryhmälle: kun varaatte molemmat huoneistot, talossa ei ole muita vieraita.",
+    "Yksityinen 20 hengen kokoustila saman katon alla, oma sisäänkäynti myös ulkoa.",
+    "Jokaisessa makuuhuoneessa oma kylpyhuone. Enintään 14 hengen ryhmässä jokaiselle oma huone.",
+    "Kaksi saunaa katetuin vilvoitteluterassein illaksi omaan käyttöön.",
+    "Kittilän lentoasemalle 20 minuuttia. Latu alkaa pihasta, ja golfkenttä on vieressä.",
+  ],
+  factsTitle: "Tilat faktoina",
+  useCasesTitle: "Mihin talo sopii",
+  programTitle: "Esimerkkiohjelma: kaksi työpäivää",
+  pricesTitle: "Kokoonpanot ja hinnat",
+  fromPrice: "alkaen {price} / henkilö / yö",
+  pricesNote: "Hinnat laskettu varausjärjestelmässä {date}, sis. alv. Hinta kattaa majoituksen, pedatut vuoteet liinavaatteineen, loppusiivouksen ja kokoustilan käytön. Ruokailu, kuljetukset ja ohjelma eivät sisälly.",
+  pricesUnavailable: "Ajantasaiset hinnat omille päivillenne näet varauskalenterista.",
+  locationTitle: "Sijainti",
+  locationLead: "Koillisrinteille noin 200 m, latu pihasta, Levi Golf vieressä, Levin keskustaan 4 km ja Kittilän lentoasemalle noin 16 km eli 20 minuuttia.",
+  mapSummer: "Kesä",
+  mapWinter: "Talvi",
+  practicalTitle: "Käytännön asiat",
+  bookTitle: "Näin varaatte",
+  bookSteps: [
+    "Valitse päivät ja huoneistot varauskalenterista ja lähetä varauspyyntö. Pyyntö ei maksa mitään.",
+    "Vahvistamme varauksen sähköpostilla. Ennakkomaksu laskutetaan yritykseltä vahvistuksen jälkeen.",
+    "Kysyttävää? Soita tai kirjoita yhteydenottolomakkeella.",
+  ],
+  qrCaption: "Varauskalenteri",
+  agentNote: "Saatavuuden ja hinnan voi tarkistaa myös tekoälyavustajalla: hiihtogreeni.fi/llms.txt.",
+  phoneLabel: "Puhelin",
+  webLabel: "Yrityssivu",
+  aiLabel: "Kuvituskuva: henkilöt on luotu tekoälyllä",
+  footer: "Levin Hiihtogreeni Oy · hiihtogreeni.fi · päivitetty {date}",
+  downloadLink: "Lataa esite (PDF)",
+  downloadNote: "Esite johtoryhmälle välitettäväksi, ei vaadi yhteystietoja.",
 };
