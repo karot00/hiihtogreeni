@@ -143,7 +143,7 @@ export const fiHomeSections = {
   golf:
     "Hiihtogreeni myy edullisia pelilippuja Levi golfiin läpi koko golfkauden, joka alkaa usein kesäkuun alkupuolella ja päättyy syys-lokakuun vaihteessa. Hiihtogreeni on täydellinen majoitus isommallekin golf-porukalle. Ykköstiille on matkaa vain 150 m.",
   golfAfter:
-    "Jälkipelit voit tulla pelaamaan mökin saunaan tai terassille tai klubitalona toimivaan ravintola Draiviin, joka palvelee myös kesäisin aamusta iltaan viikon jokaisena päivänä. Levin golfkenttä tarjoilee haastetta myös kokeneemmalle golffarille, mutta toivottaa tervetulleeksi kaikki golfarit aloittelijasta lähtien. Golfkentän yhteydessä ovat myös täysimittainen range ja hyvät harjoitusalueet lähipeliin. Levillä kannattaa myös kokea keskiyön pelikierros, sillä täällä aurinko ei laske kesällä lainkaan. Kauttamme voit ostaa 7 green feetä samalle päivälle. Green feet ovat Hiihtogreenillä aina kilpailukykyisesti hinnoiteltu.",
+    "Jälkipelit voit tulla pelaamaan mökin saunaan tai terassille tai klubitalona toimivaan ravintola Draiviin, joka palvelee myös kesäisin aamusta iltaan viikon jokaisena päivänä. Levin golfkenttä tarjoilee haastetta myös kokeneemmalle golffarille, mutta toivottaa tervetulleeksi kaikki golfarit aloittelijasta lähtien. Golfkentän yhteydessä ovat myös täysimittainen range ja hyvät harjoitusalueet lähipeliin. Levillä kannattaa myös kokea keskiyön pelikierros, sillä täällä aurinko ei laske kesällä lainkaan. Kauttamme voit ostaa 10 green feetä samalle päivälle. Green feet ovat Hiihtogreenillä aina kilpailukykyisesti hinnoiteltu.",
   golfCta: "Osta Levi golfin peliliput varauslomakkeen kautta",
   viewsLead: "Maisemat",
   views:
@@ -659,10 +659,15 @@ export const fiCompaniesSections: CompaniesSections = {
       season: "Kesä ja golf",
       days: [
         { when: "Saapumisilta", text: "Sisään klo 17 alkaen. Illallinen terassilla yöttömän yön valossa." },
-        { when: "Päivä 1", text: "Aamupäivä työpajassa. Iltapäivällä kierros Levi Golfissa, jonka ykköstiille on noin 150 metriä. Green feet voi ostaa Hiihtogreenin kautta." },
+        { when: "Päivä 1", text: "Aamupäivä työpajassa. Iltapäivällä kierros Levi Golfissa, jonka ykköstiille on noin 150 metriä." },
         { when: "Päivä 2", text: "Aamupäivällä päätökset ja jatkotoimet. Iltapäivällä retki Levijärven rannalle tai maastopyöräreiteille." },
         { when: "Lähtöaamu", text: "Ulos klo 11 mennessä, lentoasemalle 20 minuuttia." },
       ],
+      note: {
+        text: "Peliliput voi ostaa valmiiksi mökkivarauksen yhteydessä: jopa 10 pelilippua päivässä edulliseen hintaan (alk. 27 € / green fee).",
+        linkText: "greenfee.levifinland.fi",
+        href: EXTERNAL_LINKS.greenFee,
+      },
     },
     {
       season: "Ruska",

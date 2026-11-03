@@ -253,7 +253,12 @@ export interface CompaniesSections {
   programLead: string;
   programTitle: string;
   programIntro: string;
-  programs: readonly { season: string; days: readonly { when: string; text: string }[] }[];
+  programs: readonly {
+    season: string;
+    days: readonly { when: string; text: string }[];
+    /** An extra line with a link, e.g. green fees for the golf programme. */
+    note?: { text: string; linkText: string; href: string };
+  }[];
   practicalLead: string;
   practicalTitle: string;
   practical: readonly { title: string; text: string }[];

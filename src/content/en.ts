@@ -141,7 +141,7 @@ export const enHomeSections = {
   golf:
     "Looking to hit the fairways at Levi Golf? Hiihtogreeni offers competitively priced green fees throughout the entire golf season, which typically runs from early June to late September or early October. Hiihtogreeni provides ideal accommodation for larger golf groups. You'll be just 150 meters from the first tee! After your round, unwind in the cabin's sauna or on the spacious terrace. For a different vibe, Restaurant Draivi at the clubhouse is open all summer, serving golfers morning till night, every day.",
   golfAfter:
-    "The Levi Golf course itself presents an engaging challenge for experienced golfers while warmly welcoming players of all skill levels, from beginners onward. The facility also provides a full-length driving range and excellent practice areas for your short game. For a truly unique experience, consider playing a midnight round under the Arctic's perpetual summer sun. You can purchase up to 7 green fees for the same day directly through Hiihtogreeni. Our green fees are always competitively priced.",
+    "The Levi Golf course itself presents an engaging challenge for experienced golfers while warmly welcoming players of all skill levels, from beginners onward. The facility also provides a full-length driving range and excellent practice areas for your short game. For a truly unique experience, consider playing a midnight round under the Arctic's perpetual summer sun. You can purchase up to 10 green fees for the same day directly through Hiihtogreeni. Our green fees are always competitively priced.",
   golfCta: "Purchase your Levi Golf green fees now via our booking form",
   viewsLead: "Scenery",
   views:
@@ -454,7 +454,7 @@ export const enRatesSections = {
   ],
   greenFeeLead: "Levi Golf Green Fees",
   greenFee:
-    "Hiihtogreeni offers competitively priced green fees for Levi Golf, starting from just €27 per green fee. Purchase your green fees conveniently through our booking form. After your purchase, you'll receive an order confirmation and details about your green fees directly via email. You can buy up to 7 green fees for the same day.",
+    "Hiihtogreeni offers competitively priced green fees for Levi Golf, starting from just €27 per green fee. Purchase your green fees conveniently through our booking form. After your purchase, you'll receive an order confirmation and details about your green fees directly via email. You can buy up to 10 green fees for the same day.",
   greenFeeCta: "Buy your Levi Golf green fees here",
 } as const;
 
@@ -655,10 +655,15 @@ export const enCompaniesSections: CompaniesSections = {
       season: "Summer and golf",
       days: [
         { when: "Arrival evening", text: "Check-in from 17:00. Dinner on the terrace in the light summer night." },
-        { when: "Day 1", text: "Workshop in the morning. In the afternoon, a round at Levi Golf, whose first tee is about 150 m away. Green fees can be bought through Hiihtogreeni." },
+        { when: "Day 1", text: "Workshop in the morning. In the afternoon, a round at Levi Golf, whose first tee is about 150 m away." },
         { when: "Day 2", text: "Decisions and next steps in the morning. In the afternoon, a trip to the Levijärvi beach or the mountain bike trails." },
         { when: "Departure morning", text: "Check-out by 11:00, 20 minutes to the airport." },
       ],
+      note: {
+        text: "Green fees can be bought in advance with your cabin booking: up to 10 a day at a good price (from €27 per green fee).",
+        linkText: "greenfee.levifinland.fi",
+        href: EXTERNAL_LINKS.greenFee,
+      },
     },
     {
       season: "Autumn colours",

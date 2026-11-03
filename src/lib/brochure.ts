@@ -159,7 +159,11 @@ export function buildBrochureHtml({ lang, today, examples, images, fontCss, qrSv
       (p) =>
         `<div class="card"><h3>${esc(p.season)}</h3><dl>${p.days
           .map((d) => `<dt>${esc(d.when)}</dt><dd>${esc(d.text)}</dd>`)
-          .join("")}</dl></div>`,
+          .join("")}</dl>${
+          p.note
+            ? `<p style="margin-top:10px;padding-top:8px;border-top:1px solid #dde5e7;font-size:14px;line-height:1.45">${esc(p.note.text)} <a href="${esc(p.note.href)}" style="font-weight:600;color:#294955;text-decoration:underline">${esc(p.note.linkText)}</a></p>`
+            : ""
+        }</div>`,
     )
     .join("")}</div>
 </div>${footer(b, date, ++page)}</section>`);
