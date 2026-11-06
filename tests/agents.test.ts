@@ -110,6 +110,19 @@ test("llms.txt and llms-full.txt point agents to the booking API and its contrac
   }
 });
 
+test("the discovery documents point agents to the booking API and the MCP server card", async () => {
+  const { aiCatalog, apiCatalog, SERVER_CARD_TYPE } = await import("../src/lib/discovery.ts");
+  const { API_BASE, MCP_URL, OPENAPI_URL } = await import("../src/lib/booking-api.ts");
+  const [api] = apiCatalog().linkset;
+  assert.equal(api.anchor, API_BASE);
+  assert.equal(api["service-desc"][0].href, OPENAPI_URL);
+  const { specVersion, entries } = aiCatalog();
+  assert.equal(specVersion, "1.0");
+  assert.equal(entries.length, 1);
+  assert.equal(entries[0].type, SERVER_CARD_TYPE);
+  assert.equal(entries[0].url, `${MCP_URL}/server-card`);
+});
+
 test("every page's head links the property JSON and llms.txt as alternates", async () => {
   const { buildPageMetadata } = await import("../src/lib/seo.ts");
   const { PROPERTY_URL } = await import("../src/lib/booking-api.ts");
