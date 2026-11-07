@@ -1,6 +1,6 @@
 import { COMPANY } from "../content/shared.ts";
 
-// The Levi Now map (map.levifinland.fi, the owners' levi-map project, its docs/DESIGN.md §5.8):
+// Levi Map, formerly Levi Now (map.levifinland.fi, the owners' levi-map project, its docs/DESIGN.md §5.8):
 // Hiihtogreeni, its nearest ski-bus stop with the walking minutes and next buses, and the
 // services around it. It is first-party and cookieless, so it needs no consent and loads lazily.
 // The map is in Finnish and English. UTM tags as on the other links to our sites.

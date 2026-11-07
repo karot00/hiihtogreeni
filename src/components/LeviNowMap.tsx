@@ -1,11 +1,11 @@
 import { GOOGLE_MAPS_URL, leviNowEmbedUrl } from "../lib/levi-now.ts";
 
 const STRINGS = {
-  fi: { title: "Levi nyt: skibussi ja palvelut Levin Hiihtogreenin lähellä", google: "Avaa Google Mapsissa" },
-  en: { title: "Levi Now: ski bus and services near Levin Hiihtogreeni", google: "Open in Google Maps" },
+  fi: { title: "Levin kartta: skibussi ja palvelut Levin Hiihtogreenin lähellä", google: "Avaa Google Mapsissa" },
+  en: { title: "Levi Map: ski bus and services near Levin Hiihtogreeni", google: "Open in Google Maps" },
 };
 
-/** The Levi Now map in the cabin page's location section (see src/lib/levi-now.ts). */
+/** Levi Map in the cabin page's location section (see src/lib/levi-now.ts). */
 export function LeviNowMap({ lang, page }: { lang: "fi" | "en"; page: string }) {
   const s = STRINGS[lang];
   return (
