@@ -445,7 +445,7 @@ export const enRatesSections = {
     },
     {
       q: "When can we check in and when do we leave?",
-      a: `The apartment is available from ${STAY_TIMES.checkIn} and must be vacated by ${STAY_TIMES.checkOut}. Please agree your arrival time and the key handover with us at least two working days before arrival. The keys are handed over once the full price has been paid.`,
+      a: `The apartment is available from ${STAY_TIMES.checkIn} and must be vacated by ${STAY_TIMES.checkOut}. Check-in is self-service with door codes. The codes for the rooms you booked appear on your booking page 24 hours before arrival, once the full price has been paid and the guest registration form required by Finnish law has been completed. We ask for the form by email before arrival.`,
     },
     {
       q: "Can we bring a pet?",
