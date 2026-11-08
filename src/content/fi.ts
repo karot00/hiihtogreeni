@@ -447,7 +447,7 @@ export const fiRatesSections = {
     },
     {
       q: "Milloin pääsee sisään ja milloin pitää lähteä?",
-      a: `Huoneisto on käytettävissä klo ${fiTime(STAY_TIMES.checkIn)} alkaen ja luovutetaan viimeistään klo ${fiTime(STAY_TIMES.checkOut)}. Sovi saapumisaika ja avainten luovutus kanssamme viimeistään kaksi arkipäivää ennen saapumista. Avaimet luovutetaan, kun koko hinta on maksettu.`,
+      a: `Huoneisto on käytettävissä klo ${fiTime(STAY_TIMES.checkIn)} alkaen ja luovutetaan viimeistään klo ${fiTime(STAY_TIMES.checkOut)}. Sisään pääsee itsenäisesti ovikoodeilla. Varattujen tilojen koodit tulevat näkyviin varaussivullenne 24 tuntia ennen saapumista, kun koko hinta on maksettu ja lain edellyttämä matkustajailmoitus on tehty. Pyydämme ilmoituksen sähköpostilla ennen saapumista.`,
     },
     {
       q: "Saako lemmikin tuoda?",
