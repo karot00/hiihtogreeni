@@ -232,7 +232,7 @@ export function buildLlmsTxt(live?: LiveData): string {
       "",
       `- [Full description](${url("/llms-full.txt")}): the cabin, team accommodation, booking FAQ and terms in one file`,
       `- [Hiihtogreeni on levifinland.fi](${EXTERNAL_LINKS.leviEn}): presentation by the sister site`,
-      `- [Levi Golf green fees](${EXTERNAL_LINKS.greenFee}): sold by Hiihtogreeni`,
+      `- [Levi Golf green fees](${EXTERNAL_LINKS.greenFeeEn}): sold by Hiihtogreeni`,
     ].join("\n"),
   ].join("\n\n") + "\n";
 }
@@ -252,7 +252,7 @@ export function buildLlmsFullTxt(live?: LiveData): string {
     ["## For teams and groups", "", t.intro, "", ...t.introParagraphs.flatMap((p) => [p, ""]), t.maintenance, "", t.location].join("\n"),
     ["### Questions from teams", "", t.faq.map((item) => `**${item.q}**\n${item.a}`).join("\n\n")].join("\n"),
     companiesFull(live),
-    ["## Levi Golf green fees", "", enRatesSections.greenFee, "", EXTERNAL_LINKS.greenFee].join("\n"),
+    ["## Levi Golf green fees", "", enRatesSections.greenFee, "", EXTERNAL_LINKS.greenFeeEn].join("\n"),
     agents(),
     pages(),
   ].join("\n\n") + "\n";

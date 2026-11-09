@@ -662,7 +662,7 @@ export const enCompaniesSections: CompaniesSections = {
       note: {
         text: "Green fees can be bought in advance with your cabin booking: up to 10 a day at a good price (from €27 per green fee).",
         linkText: "greenfee.levifinland.fi",
-        href: EXTERNAL_LINKS.greenFee,
+        href: EXTERNAL_LINKS.greenFeeEn,
       },
     },
     {

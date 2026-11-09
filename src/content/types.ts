@@ -10,7 +10,8 @@ export interface NavItem {
 }
 
 export interface ExternalLinks {
-  greenFee: string;
+  greenFeeFi: string;
+  greenFeeEn: string;
   leviFi: string;
   leviEn: string;
 }

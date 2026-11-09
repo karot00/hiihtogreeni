@@ -666,7 +666,7 @@ export const fiCompaniesSections: CompaniesSections = {
       note: {
         text: "Peliliput voi ostaa valmiiksi mökkivarauksen yhteydessä: jopa 10 pelilippua päivässä edulliseen hintaan (alk. 27 € / green fee).",
         linkText: "greenfee.levifinland.fi",
-        href: EXTERNAL_LINKS.greenFee,
+        href: EXTERNAL_LINKS.greenFeeFi,
       },
     },
     {
