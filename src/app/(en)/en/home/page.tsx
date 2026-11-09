@@ -221,7 +221,7 @@ export default async function EnglishHomePage() {
           <p className="mt-4 text-body">{s.golf}</p>
           <p className="mt-4 text-body">{s.golfAfter}</p>
           <div className="mt-6">
-            <ButtonLink href={EXTERNAL_LINKS.greenFee} external>{s.golfCta}</ButtonLink>
+            <ButtonLink href={EXTERNAL_LINKS.greenFeeEn} external>{s.golfCta}</ButtonLink>
           </div>
         </SplitSection>
       </Section>

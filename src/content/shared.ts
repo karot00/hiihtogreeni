@@ -46,9 +46,11 @@ export const STAY_TIMES = {
 } as const;
 
 export const EXTERNAL_LINKS: ExternalLinks = {
-  greenFee: "https://greenfee.levifinland.fi",
-  leviFi: "https://www.levifinland.fi/fi/blog/levin-hiihtogreeni",
-  leviEn: "https://www.levifinland.fi/en/blog/levin-hiihtogreeni",
+  // Direct addresses: the bare greenfee host and www.levifinland.fi both redirect.
+  greenFeeFi: "https://greenfee.levifinland.fi/fi",
+  greenFeeEn: "https://greenfee.levifinland.fi/en",
+  leviFi: "https://levifinland.fi/fi/blog/levin-hiihtogreeni",
+  leviEn: "https://levifinland.fi/en/blog/levin-hiihtogreeni",
 } as const;
 
 /**

@@ -118,7 +118,7 @@ export default async function RatesPage() {
           <h2 className="mt-3 text-h2 font-display text-ink">Levi Golf green fees</h2>
           <p className="mt-4 max-w-[68ch] text-body">{s.greenFee}</p>
           <div className="mt-6">
-            <ButtonLink href={EXTERNAL_LINKS.greenFee} external>
+            <ButtonLink href={EXTERNAL_LINKS.greenFeeEn} external>
               {s.greenFeeCta}
             </ButtonLink>
           </div>
