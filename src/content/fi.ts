@@ -76,7 +76,7 @@ export const FI_COOKIE_CONSENT: CookieConsentCopy = {
     marketing: {
       title: "Markkinointi",
       description:
-        "Käytettäisiin mainonnan kohdentamiseen. Sivusto ei tällä hetkellä käytä markkinointievästeitä.",
+        "Mittaavat, johtiko Google-mainoksen klikkaus yhteydenottoon tai varauspyyntöön (Google Ads). Käytetään vain suostumuksellasi.",
     },
     alwaysActive: "Aina käytössä",
     optional: "Valinnainen",
@@ -102,6 +102,14 @@ export const FI_COOKIE_CONSENT: CookieConsentCopy = {
       ga_session: {
         purpose: "Google Analytics: säilyttää istunnon tilan",
         duration: "2 vuotta",
+      },
+      gcl_au: {
+        purpose: "Google Ads: yhdistää mainosklikkaukset yhteydenottoihin ja varauspyyntöihin",
+        duration: "90 päivää",
+      },
+      gcl_aw: {
+        purpose: "Google Ads: tallentaa mainosklikkauksen tunnisteen, kun saavut sivustolle mainoksesta",
+        duration: "90 päivää",
       },
     },
   },

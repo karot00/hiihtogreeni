@@ -93,6 +93,30 @@ go-live:
 - Performance: no material layout shift; JS budget unchanged (gtag loads
   `afterInteractive`, only after consent).
 
+## Google Ads conversions (added 2026-11-15)
+
+Account 717-274-3401, tag `AW-18574960377`. The search campaign "HG Search –
+Companies EU" and the conversion actions were created with
+`docs/google-ads/google-ads-hakukampanja.js` (a Google Ads script, run from
+Tools → Bulk actions → Scripts; it is idempotent and can be re-run).
+
+Consent: the **marketing** category grants `ad_storage`, `ad_user_data` and
+`ad_personalization` (`buildConsentUpdate(analytics, marketing)`). Only then is
+`gtag('config', 'AW-…')` pushed and are conversions sent
+(`trackAdsConversion` is a no-op without marketing consent or with an empty
+label). The tag loads only where GA4 loads (production).
+
+| Conversion (`ADS_CONVERSIONS`) | Fired from | Google Ads goal |
+| --- | --- | --- |
+| `contactForm` | `ContactForm.tsx` on `/api/contact` 200 | primary, lead form |
+| `contactClick` | `tel:` / `mailto:` click (`GoogleAnalytics.tsx`) | primary, contact |
+| `bookingRequest` | `hiihtogreeni-embed:inquiry` message from the calendar iframe (`BookingCalendar.tsx`) | primary, lead form |
+| `bookingCalendarClick` | outbound click to `cabins.levifinland.fi` | secondary (observation) |
+
+No parameters are sent with a conversion beyond its `send_to`. The Ads cookies
+`_gcl_au` and `_gcl_aw` are listed in the marketing category of the cookie
+inventory.
+
 ## Cookie inventory (Phase 13 table)
 
 The `_ga` and `_ga_4963QM11X1` rows in `CONSENT_INVENTORY` are now marked

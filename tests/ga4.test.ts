@@ -2,12 +2,17 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import {
+  ADS_CONVERSIONS,
+  BOOKING_CALENDAR_HOSTS,
+  GOOGLE_ADS_ID,
   GA4_ADS_DENIED,
   GA4_EVENTS,
   GA4_MEASUREMENT_ID,
   buildConsentUpdate,
   pushToDataLayer,
   safeOutboundHostname,
+  setAdsConsent,
+  trackAdsConversion,
   trackEvent,
 } from "../src/lib/analytics.ts";
 
@@ -17,7 +22,7 @@ test("measurement ID defaults to empty when the env var is unset", () => {
   assert.equal(GA4_MEASUREMENT_ID, "");
 });
 
-test("buildConsentUpdate grants analytics but keeps ads denied", () => {
+test("buildConsentUpdate grants analytics but keeps ads denied without marketing", () => {
   const granted = buildConsentUpdate(true);
   assert.equal(granted.analytics_storage, "granted");
   assert.equal(granted.ad_storage, "denied");
@@ -29,6 +34,49 @@ test("buildConsentUpdate denies analytics when consent is revoked", () => {
   const denied = buildConsentUpdate(false);
   assert.equal(denied.analytics_storage, "denied");
   assert.equal(denied.ad_storage, GA4_ADS_DENIED.ad_storage);
+});
+
+test("buildConsentUpdate grants the ad signals only with marketing consent", () => {
+  const ads = buildConsentUpdate(false, true);
+  assert.equal(ads.ad_storage, "granted");
+  assert.equal(ads.ad_user_data, "granted");
+  assert.equal(ads.ad_personalization, "granted");
+  assert.equal(ads.analytics_storage, "denied");
+  assert.deepEqual(
+    { ...buildConsentUpdate(true, false), analytics_storage: "x" },
+    { ...GA4_ADS_DENIED, analytics_storage: "x" },
+  );
+});
+
+test("Google Ads conversions belong to the account's tag and are sent only with marketing consent", () => {
+  for (const [key, sendTo] of Object.entries(ADS_CONVERSIONS)) {
+    assert.match(sendTo, new RegExp(`^${GOOGLE_ADS_ID}/[A-Za-z0-9_-]+$`), key);
+  }
+  assert.ok(BOOKING_CALENDAR_HOSTS.has("cabins.levifinland.fi"));
+
+  const originalWindow = globalThis.window;
+  const calls: unknown[][] = [];
+  Object.assign(globalThis, { window: { gtag: (...args: unknown[]) => calls.push(args) } });
+  try {
+    setAdsConsent(false);
+    trackAdsConversion("contactForm");
+    assert.equal(calls.length, 0, "no conversion without marketing consent");
+
+    setAdsConsent(true);
+    trackAdsConversion("contactForm");
+    assert.deepEqual(calls, [["event", "conversion", { send_to: ADS_CONVERSIONS.contactForm }]]);
+
+    calls.length = 0;
+    trackAdsConversion("bookingRequest");
+    assert.deepEqual(calls, [["event", "conversion", { send_to: ADS_CONVERSIONS.bookingRequest }]]);
+  } finally {
+    setAdsConsent(false);
+    if (originalWindow === undefined) {
+      delete (globalThis as { window?: unknown }).window;
+    } else {
+      Object.assign(globalThis, { window: originalWindow });
+    }
+  }
 });
 
 test("event names are stable and bilingual-neutral", () => {

@@ -74,7 +74,7 @@ export const EN_COOKIE_CONSENT: CookieConsentCopy = {
     marketing: {
       title: "Marketing",
       description:
-        "Would be used for advertising. This site currently uses no marketing cookies.",
+        "Measure whether a click on a Google ad led to an inquiry or a booking request (Google Ads). Used only with your consent.",
     },
     alwaysActive: "Always active",
     optional: "Optional",
@@ -100,6 +100,14 @@ export const EN_COOKIE_CONSENT: CookieConsentCopy = {
       ga_session: {
         purpose: "Google Analytics: keeps session state",
         duration: "2 years",
+      },
+      gcl_au: {
+        purpose: "Google Ads: links ad clicks to inquiries and booking requests",
+        duration: "90 days",
+      },
+      gcl_aw: {
+        purpose: "Google Ads: stores the ad click ID when you arrive from an ad",
+        duration: "90 days",
       },
     },
   },

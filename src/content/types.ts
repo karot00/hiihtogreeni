@@ -159,6 +159,8 @@ export interface CookieConsentCopy {
       hg_consent: ConsentInventoryItemCopy;
       ga: ConsentInventoryItemCopy;
       ga_session: ConsentInventoryItemCopy;
+      gcl_au: ConsentInventoryItemCopy;
+      gcl_aw: ConsentInventoryItemCopy;
     };
   };
   actions: {

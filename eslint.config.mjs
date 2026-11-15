@@ -21,6 +21,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Google Ads scripts: pasted into the Google Ads UI, not part of the site.
+    "docs/google-ads/**",
   ]),
 ]);
 

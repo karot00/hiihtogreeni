@@ -119,7 +119,7 @@ test("cookie name is the host-only hg_consent, not the levifinland original", ()
   assert.equal(CONSENT_COOKIE_NAME, "hg_consent");
 });
 
-test("inventory is truthful: hg_consent essential+active, GA4 cookies active, no functional/marketing rows", () => {
+test("inventory is truthful: hg_consent essential+active, GA4 and Google Ads cookies active, no functional rows", () => {
   const byId = Object.fromEntries(CONSENT_INVENTORY.map((i) => [i.id, i]));
   assert.equal(byId.hg_consent.category, "essential");
   assert.equal(byId.hg_consent.required, true);
@@ -132,12 +132,17 @@ test("inventory is truthful: hg_consent essential+active, GA4 cookies active, no
   assert.equal(byId.ga_session.category, "analytics");
   assert.equal(byId.ga_session.active, true);
 
+  for (const id of ["gcl_au", "gcl_aw"]) {
+    assert.equal(byId[id].provider, "Google Ads");
+    assert.equal(byId[id].category, "marketing");
+    assert.equal(byId[id].required, false);
+    assert.equal(byId[id].active, true);
+  }
+
   assert.equal(
-    CONSENT_INVENTORY.filter(
-      (i) => i.category === "functional" || i.category === "marketing",
-    ).length,
+    CONSENT_INVENTORY.filter((i) => i.category === "functional").length,
     0,
-    "no invented functional/marketing technologies",
+    "no invented functional technologies",
   );
 });
 

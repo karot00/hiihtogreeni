@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { BOOKING_ORIGIN, bookingEmbedUrl, bookingPageUrl } from "../content/shared.ts";
 import type { Lang } from "../content/types.ts";
+import { trackAdsConversion } from "../lib/analytics.ts";
 import { inquiryEvent, umamiTrack } from "../lib/umami.ts";
 
 /** A stay in this page's link that is passed on to the calendar. */
@@ -21,7 +22,8 @@ export interface BookingCalendarStrings {
  * The cabins.levifinland.fi booking widget in an iframe. The iframe reports
  * its content height (message "hiihtogreeni-embed:height"), so it grows with
  * the widget instead of scrolling inside itself, and a sent booking request
- * ("hiihtogreeni-embed:inquiry"), which becomes the Umami event inquiry_submitted. A stay in this page's link
+ * ("hiihtogreeni-embed:inquiry"), which becomes the Umami event inquiry_submitted
+ * and, with marketing consent, the Google Ads conversion "bookingRequest". A stay in this page's link
  * (?checkIn=…&checkOut=…&units=…, e.g. from the offer banner) is passed on and
  * preselected. Read after mount, so the page itself stays static.
  */
@@ -46,6 +48,7 @@ export function BookingCalendar({ lang, strings }: { lang: Lang; strings: Bookin
       const inquiry = inquiryEvent(event.data);
       if (inquiry) {
         umamiTrack(inquiry);
+        trackAdsConversion("bookingRequest");
         return;
       }
       const data = event.data as { type?: unknown; height?: unknown } | null;
