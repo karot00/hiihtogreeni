@@ -2,7 +2,7 @@
 
 import { useId, useRef, useState } from "react";
 import type { Lang, FormStrings } from "../content/types.ts";
-import { GA4_EVENTS, trackEvent } from "../lib/analytics.ts";
+import { GA4_EVENTS, trackAdsConversion, trackEvent } from "../lib/analytics.ts";
 import { FOUND_VIA, parseFoundVia, type FoundVia } from "../lib/found-via.ts";
 import { UMAMI_EVENTS, umamiTrack } from "../lib/umami.ts";
 
@@ -98,6 +98,7 @@ export function ContactForm({
         // The answer code only, never the person's details.
         const found = parseFoundVia(data.get("foundVia")) || "none";
         trackEvent(GA4_EVENTS.contactSubmit, { language: lang, found_via: found });
+        trackAdsConversion("contactForm");
         umamiTrack({ name: UMAMI_EVENTS.contactSubmitted, data: { language: lang, found_via: found } });
       } else if (res.status === 429) {
         setStatus("error");

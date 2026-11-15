@@ -6,7 +6,7 @@ export type ConsentCategoryConfig = {
 };
 
 /** Stable ids for localized purpose/duration copy in the content modules. */
-export type ConsentInventoryItemId = "hg_consent" | "ga" | "ga_session";
+export type ConsentInventoryItemId = "hg_consent" | "ga" | "ga_session" | "gcl_au" | "gcl_aw";
 
 export type ConsentInventoryItem = {
   id: ConsentInventoryItemId;
@@ -33,10 +33,11 @@ export const CONSENT_CATEGORY_CONFIG: ReadonlyArray<ConsentCategoryConfig> = [
 /**
  * Truthful cookie/technology inventory, built from evidence (2026-07-27
  * production scrape: no Set-Cookie headers; WordPress-era CookieYes cookies
- * confirmed retired). `functional` and `marketing` are intentionally empty —
- * the site sets nothing in those categories and no placeholder rows may be
- * invented. The two GA4 cookies are registered and active now that Phase 14
- * ships the tag (gated behind the analytics consent category + Consent Mode v2).
+ * confirmed retired). `functional` is intentionally empty — the site sets
+ * nothing in that category and no placeholder rows may be invented. The two
+ * GA4 cookies are gated behind the analytics category + Consent Mode v2. The
+ * two Google Ads conversion cookies (2026-11-15) are gated behind the marketing
+ * category: the Ads tag is configured and ad signals granted only after it.
  */
 export const CONSENT_INVENTORY: ReadonlyArray<ConsentInventoryItem> = [
   {
@@ -63,6 +64,24 @@ export const CONSENT_INVENTORY: ReadonlyArray<ConsentInventoryItem> = [
     provider: "Google Analytics",
     type: "cookie",
     category: "analytics",
+    required: false,
+    active: true,
+  },
+  {
+    id: "gcl_au",
+    name: "_gcl_au",
+    provider: "Google Ads",
+    type: "cookie",
+    category: "marketing",
+    required: false,
+    active: true,
+  },
+  {
+    id: "gcl_aw",
+    name: "_gcl_aw",
+    provider: "Google Ads",
+    type: "cookie",
+    category: "marketing",
     required: false,
     active: true,
   },

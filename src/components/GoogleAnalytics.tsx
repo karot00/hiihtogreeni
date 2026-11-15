@@ -9,11 +9,15 @@ import { BROCHURE_PATHS, type Language } from "../lib/routes.ts";
 import { useCookieConsent } from "../lib/cookie-consent/context.tsx";
 import { isCategoryAllowed } from "../lib/cookie-consent/gate.ts";
 import {
+  BOOKING_CALENDAR_HOSTS,
   GA4_MEASUREMENT_ID,
   GA4_EVENTS,
+  GOOGLE_ADS_ID,
   buildConsentUpdate,
   pushToDataLayer,
   safeOutboundHostname,
+  setAdsConsent,
+  trackAdsConversion,
   trackEvent,
 } from "../lib/analytics.ts";
 
@@ -46,6 +50,9 @@ interface GoogleAnalyticsProps {
 export function GoogleAnalytics({ lang }: GoogleAnalyticsProps) {
   const { consent } = useCookieConsent();
   const analyticsAllowed = isCategoryAllowed(consent, "analytics");
+  // The marketing category grants the Consent Mode ad signals and Google Ads
+  // conversion measurement (docs/GA4-MEASUREMENT-PLAN.md, "Google Ads").
+  const marketingAllowed = isCategoryAllowed(consent, "marketing");
   const pathname = usePathname();
 
   // The gtag.js loader is always injected when a measurement ID is configured
@@ -66,17 +73,19 @@ export function GoogleAnalytics({ lang }: GoogleAnalyticsProps) {
     if (!GA4_MEASUREMENT_ID) {
       return;
     }
-    if (analyticsAllowed) {
-      pushToDataLayer(["consent", "update", buildConsentUpdate(true)]);
-    } else {
-      pushToDataLayer(["consent", "update", buildConsentUpdate(false)]);
-    }
+    pushToDataLayer(["consent", "update", buildConsentUpdate(analyticsAllowed, marketingAllowed)]);
     pushToDataLayer([
       "config",
       GA4_MEASUREMENT_ID,
       { page_title: document.title, page_location: window.location.href },
     ]);
-  }, [analyticsAllowed]);
+    // Google Ads is configured only after marketing consent, and conversions
+    // are reported only while it holds (trackAdsConversion checks the flag).
+    setAdsConsent(marketingAllowed);
+    if (marketingAllowed) {
+      pushToDataLayer(["config", GOOGLE_ADS_ID]);
+    }
+  }, [analyticsAllowed, marketingAllowed]);
 
   // Single-fire page views: the config call above already sends the first
   // page_view on load. Fire a manual page_view only on subsequent client-side
@@ -105,38 +114,43 @@ export function GoogleAnalytics({ lang }: GoogleAnalyticsProps) {
   }, [pathname, lang, analyticsAllowed]);
 
   // Click tracking for conversion actions that are not form submissions:
-  // tel:/mailto: (no PII in params) and outbound links (hostname only).
+  // tel:/mailto: (no PII in params) and outbound links (hostname only). GA4
+  // events need analytics consent; Google Ads conversions need marketing
+  // consent (trackAdsConversion is a no-op without it).
   useEffect(() => {
-    if (!analyticsAllowed) {
+    if (!analyticsAllowed && !marketingAllowed) {
       return;
     }
+    const ga4 = (name: string, params: Record<string, string>) => {
+      if (analyticsAllowed) trackEvent(name, params);
+    };
     function onClick(event: MouseEvent) {
       const anchor = (event.target as HTMLElement | null)?.closest("a");
       if (!anchor) {
         return;
       }
       const href = anchor.getAttribute("href") ?? "";
-      if (href.startsWith("tel:")) {
-        trackEvent(GA4_EVENTS.contactClick, { method: "tel" });
-        return;
-      }
-      if (href.startsWith("mailto:")) {
-        trackEvent(GA4_EVENTS.contactClick, { method: "mailto" });
+      if (href.startsWith("tel:") || href.startsWith("mailto:")) {
+        ga4(GA4_EVENTS.contactClick, { method: href.startsWith("tel:") ? "tel" : "mailto" });
+        trackAdsConversion("contactClick");
         return;
       }
       const brochure = (Object.keys(BROCHURE_PATHS) as Language[]).find((lang) => href.split(/[?#]/)[0] === BROCHURE_PATHS[lang]);
       if (brochure) {
-        trackEvent(GA4_EVENTS.brochureDownload, { language: brochure });
+        ga4(GA4_EVENTS.brochureDownload, { language: brochure });
         return;
       }
       const host = safeOutboundHostname(href, window.location.origin);
       if (host) {
-        trackEvent(GA4_EVENTS.outboundClick, { outbound_host: host });
+        ga4(GA4_EVENTS.outboundClick, { outbound_host: host });
+        if (BOOKING_CALENDAR_HOSTS.has(host)) {
+          trackAdsConversion("bookingCalendarClick");
+        }
       }
     }
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
-  }, [analyticsAllowed]);
+  }, [analyticsAllowed, marketingAllowed]);
 
   if (!showLoader) {
     return null;
